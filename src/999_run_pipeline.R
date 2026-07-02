@@ -11,6 +11,11 @@ source("src/02_indicadores_eph_hogar.R")
 
 # 4. Generar visualizaciones por indicador
 source("src/04_desoc.R")                 # Tasa de desocupación
+
+# 5. Puestos de trabajo asalariados privados (SIPA)
+source("src/05_prep_puestos_asalariados_privados.R")
+source("src/05_puestos_asalariados_privados.R")
+
 source("src/09a_informalidad_aportes.R") # Tasa de informalidad
 source("src/10_tasa_empleo.R")           # Tasa de empleo
 source("src/12_educ.R")                  # Educación superior

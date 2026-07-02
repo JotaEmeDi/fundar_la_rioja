@@ -17,7 +17,7 @@ Generar un pipeline replicable que permita calcular y visualizar una serie de in
 | 13a | % Hogares con Necesidades Básicas Insatisfechas (NBI) | Desarrollo – Pobreza | EPH | ✓ |
 | 13b | % Población en hogares con NBI | Desarrollo – Pobreza | EPH | ✓ |
 | — | Salarios en el sector formal (público y privado) | Trabajo – Salarios e ingresos | — | Pendiente |
-| — | Puestos de trabajo asalariados formales privados totales | Trabajo – Salarios e ingresos | — | Pendiente |
+| 05 | Puestos de trabajo asalariados formales privados totales | Trabajo – Salarios e ingresos | SIPA (Min. de Capital Humano) | ✓ |
 | — | Cantidad de empleados públicos cada 1.000 hab. | Trabajo – Salarios e ingresos | — | Pendiente |
 | — | Tasa de pobreza multidimensional | Desarrollo – Pobreza | — | Pendiente |
 | — | Trayectoria escolar | Desarrollo – Educación | — | Pendiente |
@@ -39,6 +39,8 @@ fundar_la_rioja/
 │   ├── 02_indicadores_eph_individuo.R # Etapa 3: indicadores de individuo -> CSVs
 │   ├── 02_indicadores_eph_hogar.R # Etapa 3: indicadores NBI de hogar -> CSVs
 │   ├── 04_desoc.R                # Visualización: tasa de desocupación
+│   ├── 05_prep_puestos_asalariados_privados.R # Prep: lee xlsx SIPA (hoja A.5.2) -> CSV
+│   ├── 05_puestos_asalariados_privados.R # Visualización: puestos asalariados privados
 │   ├── 09a_informalidad_aportes.R # Visualización: tasa de informalidad (aportes)
 │   ├── 10_tasa_empleo.R          # Visualización: tasa de empleo
 │   ├── 12_educ.R                 # Visualización: % población +25 con estudios superiores
@@ -46,7 +48,9 @@ fundar_la_rioja/
 │   ├── 13b_nbi_poblacion.R       # Visualización: % población en hogares con NBI
 │   └── 999_run_pipeline.R        # Corre todo el pipeline EPH de punta a punta
 ├── data/
-│   ├── raw_data/                 # Microdatos EPH crudos por año y trimestre (*.rds)
+│   ├── raw_data/
+│   │   ├── eph/                  # Microdatos EPH crudos por año y trimestre (*.rds)
+│   │   └── sipa/                 # Reporte "Trabajo registrado" del SIPA (*.xlsx)
 │   ├── proc_data/                # Datasets EPH canónicos, ya limpios (eph_individuo.rds, eph_hogar.rds)
 │   └── inputs_md/                # Agregados por indicador listos para graficar (*.csv)
 ├── style/
@@ -109,6 +113,29 @@ y agrupan por `fecha` y `la_rioja_region`, guardando cada indicador como CSV en 
 
 Cada script `src/XX_*.R` lee su CSV correspondiente y genera un gráfico de líneas con `ggplot2`, usando las escalas definidas en `style/fundar_monitor_theme.R`.
 
+## Pipeline de datos (SIPA)
+
+El indicador de puestos de trabajo asalariados privados no viene de la EPH sino del reporte
+mensual "Trabajo registrado" del SIPA (`data/raw_data/sipa/trabajoregistrado_2603_estadisticas.xlsx`),
+hoja **A.5.2**: *"Personas con empleo asalariado en el sector privado, según provincia. Sin
+estacionalidad. En miles"* — serie mensual y desestacionalizada, en miles de personas.
+
+- **`05_prep_puestos_asalariados_privados.R`**: lee la hoja A.5.2 (el período viene con tipo
+  mixto: serial de fecha de Excel hasta ene-2015 y texto abreviado en español desde entonces),
+  homologa los nombres de provincia a los mismos usados en `07_serie_empresas_por_jurisdiccion.csv`,
+  y escribe el formato largo (una fila por fecha-provincia) en
+  `data/inputs_md/05_puestos_asalariados_privados.csv`:
+
+  | Columna | Descripción |
+  |---|---|
+  | `jurisdiccion` | Provincia (24 jurisdicciones) |
+  | `fecha` | Primer día del mes (`YYYY-MM-01`) |
+  | `puestos_miles` | Puestos asalariados privados, en miles (tal cual la fuente) |
+
+- **`05_puestos_asalariados_privados.R`**: lee ese CSV, clasifica cada provincia en
+  `la_rioja_region` y genera el gráfico facetado por región en
+  `outputs/plots/05_puestos_asalariados_privados.png`.
+
 ## Sistema de estilos
 
 El proyecto cuenta con dos archivos de estilo en `style/`:
@@ -159,7 +186,7 @@ Los prefijos numéricos en la clasificación regional garantizan que ggplot dibu
 ## Dependencias
 
 ```r
-install.packages(c("eph", "tidyverse", "lubridate", "tictoc"))
+install.packages(c("eph", "tidyverse", "lubridate", "tictoc", "readxl"))
 ```
 
 | Paquete | Uso |
@@ -168,6 +195,7 @@ install.packages(c("eph", "tidyverse", "lubridate", "tictoc"))
 | `tidyverse` | Manipulación de datos y visualización (`dplyr`, `ggplot2`, `readr`) |
 | `lubridate` | Manejo de fechas |
 | `tictoc` | Medición de tiempos en la descarga |
+| `readxl` | Lectura del reporte SIPA en formato `.xlsx` |
 
 ## Cómo reproducir
 
@@ -193,6 +221,11 @@ source("src/02_indicadores_eph_hogar.R")
 
 # 4. Generar visualizaciones por indicador
 source("src/04_desoc.R")                 # Tasa de desocupación
+
+# 5. Puestos de trabajo asalariados privados (SIPA) -> data/inputs_md/, luego gráfico
+source("src/05_prep_puestos_asalariados_privados.R")
+source("src/05_puestos_asalariados_privados.R")
+
 source("src/09a_informalidad_aportes.R") # Tasa de informalidad
 source("src/10_tasa_empleo.R")           # Tasa de empleo
 source("src/12_educ.R")                  # Educación superior

@@ -1,6 +1,7 @@
 # 1. Descargar microdatos EPH (individuo y hogar)
 source("src/00_descarga_eph.R")
 
+tictoc::tic()
 # 2. Limpiar y canonizar -> data/proc_data/eph_individuo.rds, eph_hogar.rds
 source("src/01_limpieza_eph.R")
 
@@ -15,3 +16,4 @@ source("src/10_tasa_empleo.R")           # Tasa de empleo
 source("src/12_educ.R")                  # Educación superior
 source("src/13a_nbi_hogares.R")          # % Hogares con NBI
 source("src/13b_nbi_poblacion.R")        # % Población en hogares con NBI
+tictoc::toc()

@@ -28,13 +28,24 @@ tema_app <- bs_theme(
   fg           = FUNDAR_TEXTO,
   primary      = "#2D6E6E",     # teal La Rioja
   secondary    = FUNDAR_VERDE,
+  font_scale   = 0.82,          # fuentes globales más chicas (más aire para los gráficos)
   base_font    = font_google("Inter"),
   heading_font = font_google("Inter")
 ) |>
   bs_add_rules(sprintf("
-    .value-box, .card { border-radius: 10px; }
     body { background: #FFFFFF; }
-    .indicador-desc { color: %s; font-size: 0.9rem; }
+    .card { border-radius: 10px; }
+    .indicador-desc { color: %s; font-size: 0.8rem; }
+    .card-header { font-size: 0.95rem; font-weight: 600; padding: 0.4rem 0.75rem; }
+
+    /* KPIs compactos: cuadros bajos y tipografía chica para no comerle
+       espacio al gráfico */
+    .value-box { border-radius: 10px; }
+    .value-box .value-box-area { padding: 0.35rem 0.7rem; }
+    .value-box .value-box-title { font-size: 0.72rem; margin-bottom: 0.05rem; opacity: 0.85; }
+    .value-box .value-box-value { font-size: 1.1rem; line-height: 1.05; }
+    .value-box .value-box-showcase { padding: 0 0.4rem; }
+    .value-box .value-box-showcase svg { width: 1.4rem; height: 1.4rem; }
   ", FUNDAR_GRIS))
 
 # Opciones del selector de indicador, agrupadas por tópico.
@@ -91,24 +102,28 @@ ui <- page_sidebar(
       title = "Último valor — La Rioja",
       value = textOutput("kpi_valor"),
       showcase = bsicons::bs_icon("graph-up"),
-      theme = value_box_theme(bg = "#2D6E6E", fg = "#FFFFFF")
+      theme = value_box_theme(bg = "#2D6E6E", fg = "#FFFFFF"),
+      height = "88px"
     ),
     value_box(
       title = "Variación vs. período previo",
       value = textOutput("kpi_delta"),
       showcase = bsicons::bs_icon("arrow-left-right"),
-      theme = value_box_theme(bg = FUNDAR_BEIGE, fg = FUNDAR_TEXTO)
+      theme = value_box_theme(bg = FUNDAR_BEIGE, fg = FUNDAR_TEXTO),
+      height = "88px"
     ),
     value_box(
       title = "Período más reciente",
       value = textOutput("kpi_fecha"),
       showcase = bsicons::bs_icon("calendar3"),
-      theme = value_box_theme(bg = FUNDAR_BEIGE, fg = FUNDAR_TEXTO)
+      theme = value_box_theme(bg = FUNDAR_BEIGE, fg = FUNDAR_TEXTO),
+      height = "88px"
     )
   ),
 
   card(
     full_screen = TRUE,
+    fill = TRUE,
     card_header(textOutput("titulo_card")),
     uiOutput("grafico_ui")
   ),
@@ -162,8 +177,8 @@ server <- function(input, output, session) {
 
   # Render híbrido: plotly cuando el switch está activo, ggplot fiel si no.
   output$grafico_ui <- renderUI({
-    if (isTRUE(input$interactivo)) plotlyOutput("grafico_plotly", height = "520px")
-    else plotOutput("grafico_ggplot", height = "520px")
+    if (isTRUE(input$interactivo)) plotlyOutput("grafico_plotly", height = "600px")
+    else plotOutput("grafico_ggplot", height = "600px")
   })
   output$grafico_ggplot <- renderPlot({ grafico() }, res = 96)
   output$grafico_plotly <- renderPlotly({ grafico() })

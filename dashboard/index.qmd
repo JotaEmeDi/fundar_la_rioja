@@ -85,7 +85,9 @@ bloque_indicador <- function(id, dimension = "TOT") {
     sprintf("plot_indicador('%s', dimension = '%s', interactivo = TRUE, base_size = 10)",
             id, dimension)
   }
-  c(kpi_cards_html(id, dimension), "",
+  # El HTML de los KPIs va en un bloque raw ```{=html} para que pandoc lo pase
+  # verbatim (si no, lo escapa/lo toma como bloque de código por la indentación).
+  c("```{=html}", kpi_cards_html(id, dimension), "```", "",
     "::: {.chart-card}", "",
     chunk_widget(codigo), "",
     ":::", "")

@@ -120,11 +120,15 @@ plot_indicador <- function(id, regiones = NULL, rango_fechas = NULL,
     if (!requireNamespace("plotly", quietly = TRUE)) {
       stop("El modo interactivo requiere el paquete 'plotly' (install.packages('plotly')).")
     }
+    # En plotly, el título/subtítulo/caption de ggplot se superponen con la
+    # leyenda superior y además duplican lo que ya dicen la pestaña y los KPIs.
+    # Se quitan para dejar el gráfico limpio; la leyenda va horizontal arriba.
+    p <- p + labs(title = NULL, subtitle = NULL, caption = NULL)
     gp <- plotly::ggplotly(p, tooltip = "text")
-    # Leyenda horizontal arriba, como en el tema.
     gp <- plotly::layout(gp,
-      legend = list(orientation = "h", x = 0, y = 1.08, title = list(text = "")),
-      margin = list(t = 60)
+      legend = list(orientation = "h", x = 0, y = 1.12,
+                    xanchor = "left", yanchor = "bottom", title = list(text = "")),
+      margin = list(t = 50)
     )
     return(gp)
   }

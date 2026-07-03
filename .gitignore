@@ -3,6 +3,14 @@
 data/proc_data/
 data/raw_data_eph.rds
 
+# Copias bundleadas para el deploy del dashboard (generadas por dashboard/deploy.R)
+dashboard/data_inputs/
+dashboard/style/
+# HTML renderado del sitio estático (se publica vía CI, no se versiona)
+dashboard/index.html
+dashboard/index_files/
+_site/
+
 
 # History files
 .Rhistory

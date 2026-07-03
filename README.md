@@ -183,10 +183,36 @@ Replica el estilo visual del [Monitor Mensual de Empresas](https://fund.ar/publi
 
 Los prefijos numéricos en la clasificación regional garantizan que ggplot dibuje La Rioja por encima del resto sin transformaciones adicionales.
 
+## Dashboard interactivo
+
+El directorio [`dashboard/`](dashboard/) contiene un dashboard para explorar los
+indicadores online, respetando el estilo visual del informe. Comparte un único
+núcleo de graficado (`dashboard/R/plots.R`, que reusa `style/fundar_monitor_theme.R`)
+entre dos front-ends:
+
+- **App Shiny** (`dashboard/app.R`): interactiva, con filtros por región, rango
+  temporal, sub-dimensión de NBI, switch entre gráfico fiel (ggplot) e interactivo
+  (plotly), y descarga de PNG/CSV. Desplegable a shinyapps.io.
+- **Sitio estático** (`dashboard/index.qmd`): HTML autocontenido publicable en
+  GitHub Pages (sin servidor), con interactividad plotly del lado del cliente.
+
+```r
+# Correr la app localmente
+shiny::runApp("dashboard")
+# Generar el sitio estático
+# quarto render dashboard/index.qmd
+```
+
+Ver [`dashboard/README.md`](dashboard/README.md) y [`dashboard/deploy.md`](dashboard/deploy.md).
+
 ## Dependencias
 
 ```r
+# Pipeline de datos
 install.packages(c("eph", "tidyverse", "lubridate", "tictoc", "readxl"))
+# Dashboard
+install.packages(c("shiny", "bslib", "bsicons", "plotly", "here", "rsconnect"))
+# + Quarto CLI (https://quarto.org) para el sitio estático
 ```
 
 | Paquete | Uso |
@@ -196,6 +222,10 @@ install.packages(c("eph", "tidyverse", "lubridate", "tictoc", "readxl"))
 | `lubridate` | Manejo de fechas |
 | `tictoc` | Medición de tiempos en la descarga |
 | `readxl` | Lectura del reporte SIPA en formato `.xlsx` |
+| `shiny` / `bslib` / `bsicons` | App interactiva del dashboard y su theming |
+| `plotly` | Versión interactiva de los gráficos (hover/zoom) |
+| `here` | Resolución de rutas robusta en el dashboard |
+| `rsconnect` | Deploy de la app a shinyapps.io |
 
 ## Cómo reproducir
 

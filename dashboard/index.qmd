@@ -1,0 +1,84 @@
+---
+title: "Monitor Socioeconómico La Rioja"
+subtitle: "Indicadores para el Gobierno de La Rioja · Fundar / CFI — grupo factor~data"
+format:
+  html:
+    theme: cosmo
+    embed-resources: true
+    page-layout: full
+    toc: false
+    fig-width: 9
+    fig-height: 5
+    css: styles.css
+execute:
+  echo: false
+  warning: false
+  message: false
+lang: es
+---
+
+```{r}
+#| label: setup
+source("R/data.R")
+source("R/plots.R")
+```
+
+Explorá los indicadores socioeconómicos de La Rioja en perspectiva regional
+(**La Rioja**, **NOA-Resto** y **Resto del país**). Cada gráfico es interactivo:
+pasá el mouse para ver los valores, hacé zoom, y clickeá en la leyenda para
+mostrar u ocultar regiones. La versión estática de alta fidelidad de cada
+gráfico está en `outputs/plots/` del repositorio.
+
+```{r}
+#| label: tabs
+#| output: asis
+
+# Genera una pestaña por tópico y, dentro, una por indicador (con sub-pestañas
+# por dimensión en los indicadores NBI). Se usa knit_child para que las
+# dependencias JS de cada widget plotly queden registradas y embebidas por
+# embed-resources.
+chunk_widget <- function(codigo) {
+  knitr::knit_child(
+    text  = c("```{r}", "#| echo: false", codigo, "```", ""),
+    quiet = TRUE
+  )
+}
+
+salida <- lapply(TOPICOS, function(tp) {
+  ids <- Filter(function(id) INDICADORES[[id]]$topico == tp, names(INDICADORES))
+  partes <- c(sprintf("## %s", tp), "", "::: {.panel-tabset}", "")
+
+  for (id in ids) {
+    meta <- INDICADORES[[id]]
+    partes <- c(partes, sprintf("### %s", meta$titulo), "")
+
+    if (!is.null(meta$dimensiones)) {
+      partes <- c(partes, "::: {.panel-tabset}", "")
+      for (d in names(meta$dimensiones)) {
+        partes <- c(partes,
+          sprintf("#### %s", meta$dim_labels[[d]]), "",
+          chunk_widget(sprintf(
+            "plot_indicador('%s', dimension = '%s', interactivo = TRUE)", id, d)),
+          "")
+      }
+      partes <- c(partes, ":::", "",
+                  sprintf("*%s*", meta$desc), "")
+    } else {
+      partes <- c(partes,
+        chunk_widget(sprintf("plot_indicador('%s', interactivo = TRUE)", id)),
+        "", sprintf("*%s*", meta$desc), "")
+    }
+  }
+
+  partes <- c(partes, ":::", "")
+  paste(partes, collapse = "\n")
+})
+
+cat(paste(salida, collapse = "\n\n"))
+```
+
+---
+
+<small>Fuente: EPH-INDEC (indicadores trimestrales), SIPA (ARCA) — Ministerio de
+Capital Humano y SRT (series provinciales). Elaboración: Fundar / CFI. Código y
+metodología: repositorio del proyecto.</small>

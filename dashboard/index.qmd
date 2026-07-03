@@ -8,7 +8,7 @@ format:
     page-layout: full
     toc: false
     fig-width: 9
-    fig-height: 5
+    fig-height: 4.6
     css: styles.css
 execute:
   echo: false
@@ -21,27 +21,74 @@ lang: es
 #| label: setup
 source("R/data.R")
 source("R/plots.R")
+
+# Fila de KPI cards estáticos (último valor de La Rioja, variación y período),
+# reusando kpi_indicador() de R/data.R. Devuelve HTML para inyectar en el loop.
+kpi_cards_html <- function(id, dimension = "TOT") {
+  k     <- kpi_indicador(id, dimension)
+  shape <- INDICADORES[[id]]$shape
+
+  valor <- if (is.na(k$valor)) "s/d" else .fmt_valor(k$valor, shape)
+  fecha <- if (is.na(k$fecha_lab)) "s/d" else k$fecha_lab
+  if (is.na(k$delta)) {
+    delta <- "s/d"; flecha <- ""
+  } else {
+    signo  <- if (k$delta >= 0) "+" else ""
+    delta  <- paste0(signo, format(round(k$delta, 1), nsmall = 1, decimal.mark = ","))
+    flecha <- if (k$delta >= 0) "▲ " else "▼ "
+  }
+
+  sprintf('
+<div class="kpi-row">
+  <div class="kpi-card kpi-card--teal">
+    <div class="kpi-title">Último valor — La Rioja</div>
+    <div class="kpi-value">%s</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-title">Variación vs. período previo</div>
+    <div class="kpi-value">%s%s</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-title">Período más reciente</div>
+    <div class="kpi-value">%s</div>
+  </div>
+</div>', valor, flecha, delta, fecha)
+}
 ```
 
+::: {.intro}
 Explorá los indicadores socioeconómicos de La Rioja en perspectiva regional
-(**La Rioja**, **NOA-Resto** y **Resto del país**). Cada gráfico es interactivo:
-pasá el mouse para ver los valores, hacé zoom, y clickeá en la leyenda para
-mostrar u ocultar regiones. La versión estática de alta fidelidad de cada
-gráfico está en `outputs/plots/` del repositorio.
+(**La Rioja**, **NOA-Resto** y **Resto del país**). Los gráficos son interactivos:
+pasá el mouse para ver los valores, hacé zoom, y clickeá en la leyenda para mostrar
+u ocultar regiones. Los valores destacados corresponden siempre a **La Rioja**.
+:::
 
 ```{r}
 #| label: tabs
 #| output: asis
 
-# Genera una pestaña por tópico y, dentro, una por indicador (con sub-pestañas
-# por dimensión en los indicadores NBI). Se usa knit_child para que las
-# dependencias JS de cada widget plotly queden registradas y embebidas por
-# embed-resources.
+# Genera una pestaña por tópico y, dentro, una por indicador (con sub-pestañas por
+# dimensión en NBI). knit_child asegura que las dependencias JS de cada widget
+# plotly queden registradas y embebidas por embed-resources.
 chunk_widget <- function(codigo) {
   knitr::knit_child(
     text  = c("```{r}", "#| echo: false", codigo, "```", ""),
     quiet = TRUE
   )
+}
+
+# Bloque completo (KPIs + gráfico en tarjeta) para un indicador/dimensión.
+bloque_indicador <- function(id, dimension = "TOT") {
+  codigo <- if (dimension == "TOT" && is.null(INDICADORES[[id]]$dimensiones)) {
+    sprintf("plot_indicador('%s', interactivo = TRUE, base_size = 10)", id)
+  } else {
+    sprintf("plot_indicador('%s', dimension = '%s', interactivo = TRUE, base_size = 10)",
+            id, dimension)
+  }
+  c(kpi_cards_html(id, dimension), "",
+    "::: {.chart-card}", "",
+    chunk_widget(codigo), "",
+    ":::", "")
 }
 
 salida <- lapply(TOPICOS, function(tp) {
@@ -55,18 +102,12 @@ salida <- lapply(TOPICOS, function(tp) {
     if (!is.null(meta$dimensiones)) {
       partes <- c(partes, "::: {.panel-tabset}", "")
       for (d in names(meta$dimensiones)) {
-        partes <- c(partes,
-          sprintf("#### %s", meta$dim_labels[[d]]), "",
-          chunk_widget(sprintf(
-            "plot_indicador('%s', dimension = '%s', interactivo = TRUE)", id, d)),
-          "")
+        partes <- c(partes, sprintf("#### %s", meta$dim_labels[[d]]), "",
+                    bloque_indicador(id, d))
       }
-      partes <- c(partes, ":::", "",
-                  sprintf("*%s*", meta$desc), "")
+      partes <- c(partes, ":::", "", sprintf("*%s*", meta$desc), "")
     } else {
-      partes <- c(partes,
-        chunk_widget(sprintf("plot_indicador('%s', interactivo = TRUE)", id)),
-        "", sprintf("*%s*", meta$desc), "")
+      partes <- c(partes, bloque_indicador(id), sprintf("*%s*", meta$desc), "")
     }
   }
 

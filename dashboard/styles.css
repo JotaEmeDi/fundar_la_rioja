@@ -1,39 +1,125 @@
-/* Estilo del sitio estático — acompaña la paleta Fundar Monitor.
-   Los gráficos ya traen su propio estilo; esto es sólo el chrome de la página. */
+/* =============================================================================
+   Estilo del sitio estático — Monitor Socioeconómico La Rioja
+   Look compacto que acompaña la paleta Fundar Monitor. Los gráficos ya traen su
+   propio estilo (ggplot/plotly); esto es el chrome de la página: banda de título,
+   pestañas, tarjetas de gráfico y KPI cards.
+   ============================================================================ */
 
 :root {
   --fundar-verde: #52C8A0;
   --fundar-teal:  #2D6E6E;
   --fundar-beige: #EDE8E0;
   --fundar-gris:  #888888;
+  --fundar-grilla:#D5D0C8;
   --fundar-texto: #1C1C1C;
 }
 
 body {
   color: var(--fundar-texto);
+  font-size: 0.9rem;
 }
 
+/* --- Banda de título ------------------------------------------------------ */
+.quarto-title-block .quarto-title {
+  background: var(--fundar-teal);
+  color: #fff;
+  padding: 1.1rem 1.3rem;
+  border-radius: 12px;
+  margin-bottom: 0.4rem;
+}
 h1.title {
-  color: var(--fundar-teal);
+  color: #fff;
   font-weight: 700;
+  font-size: 1.6rem;
+  margin: 0;
+}
+.quarto-title-block .subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
 }
 
-.panel-tabset > .nav-tabs .nav-link.active {
-  color: var(--fundar-teal);
-  border-bottom: 3px solid var(--fundar-teal);
-  font-weight: 600;
+.intro {
+  color: #444;
+  font-size: 0.9rem;
+  max-width: 60rem;
+  margin: 0.6rem 0 1.2rem;
 }
 
-.panel-tabset > .nav-tabs .nav-link {
-  color: var(--fundar-gris);
-}
-
+/* --- Secciones por tópico ------------------------------------------------- */
 h2 {
   border-left: 5px solid var(--fundar-verde);
-  padding-left: 0.5rem;
-  margin-top: 2rem;
+  padding-left: 0.55rem;
+  margin-top: 1.8rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--fundar-teal);
+}
+
+/* --- Pestañas ------------------------------------------------------------- */
+.panel-tabset > .nav-tabs {
+  border-bottom: 1px solid var(--fundar-grilla);
+}
+.panel-tabset > .nav-tabs .nav-link {
+  color: var(--fundar-gris);
+  font-size: 0.85rem;
+  padding: 0.35rem 0.7rem;
+}
+.panel-tabset > .nav-tabs .nav-link.active {
+  color: var(--fundar-teal);
+  border: none;
+  border-bottom: 3px solid var(--fundar-teal);
+  font-weight: 600;
+  background: transparent;
+}
+
+/* --- Tarjeta de gráfico --------------------------------------------------- */
+.chart-card {
+  background: #fff;
+  border: 1px solid var(--fundar-grilla);
+  border-radius: 10px;
+  padding: 0.5rem 0.6rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0.8rem;
+}
+
+/* --- KPI cards ------------------------------------------------------------ */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin: 0.6rem 0 0.7rem;
+}
+.kpi-card {
+  background: var(--fundar-beige);
+  color: var(--fundar-texto);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  min-height: 62px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.kpi-card--teal {
+  background: var(--fundar-teal);
+  color: #fff;
+}
+.kpi-title {
+  font-size: 0.72rem;
+  opacity: 0.85;
+  margin-bottom: 0.15rem;
+}
+.kpi-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+@media (max-width: 640px) {
+  .kpi-row { grid-template-columns: 1fr; }
 }
 
 em {
   color: var(--fundar-gris);
+  font-size: 0.85rem;
 }

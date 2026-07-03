@@ -55,8 +55,11 @@ names(REGION_COLORS) <- REGIONES
 # rango_fechas : c(desde, hasta) como Date (NULL = todo el rango)
 # dimension    : sólo NBI ("TOT","HAC","VIV","SAN","ESC","SUB")
 # interactivo  : TRUE -> plotly; FALSE -> ggplot fiel
+# base_size    : tamaño base de tipografía del tema (12 = fidelidad al informe;
+#                la app usa un valor menor para que el gráfico respire en pantalla)
 plot_indicador <- function(id, regiones = NULL, rango_fechas = NULL,
-                           dimension = "TOT", interactivo = FALSE) {
+                           dimension = "TOT", interactivo = FALSE,
+                           base_size = 12) {
   meta <- INDICADORES[[id]]
   if (is.null(meta)) stop("Indicador desconocido: ", id)
 
@@ -82,7 +85,7 @@ plot_indicador <- function(id, regiones = NULL, rango_fechas = NULL,
                       text = .tip)) +
     geom_line(linewidth = 0.7) +
     scale_color_manual(values = REGION_COLORS, name = NULL) +
-    theme_monitor() +
+    theme_monitor(base_size = base_size) +
     labs(title    = meta$titulo,
          subtitle = subt,
          x        = meta$eje_x,

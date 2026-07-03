@@ -64,7 +64,7 @@ ui <- page_sidebar(
   window_title = "Monitor La Rioja — Fundar",
 
   sidebar = sidebar(
-    width = 320,
+    width = 280,
     selectInput("indicador", "Indicador",
                 choices = opciones_indicador, selected = "desocupacion"),
 
@@ -171,7 +171,8 @@ server <- function(input, output, session) {
       regiones     = input$regiones,
       rango_fechas = input$rango,
       dimension    = dim_actual(),
-      interactivo  = isTRUE(input$interactivo)
+      interactivo  = isTRUE(input$interactivo),
+      base_size    = 10   # tipografía interna del gráfico más chica en pantalla
     )
   })
 

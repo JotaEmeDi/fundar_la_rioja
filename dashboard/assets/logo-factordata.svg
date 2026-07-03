@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 150" role="img" aria-label="factor~data — EIDAES UNSAM">
+  <path fill="#1A1A1A" fill-rule="evenodd" d="M10,18 L52,18 L60,28 L68,18 L110,18 L110,122 L68,122 L60,112 L52,122 L10,122 Z M24,32 L54,32 L60,40 L66,32 L96,32 L96,108 L66,108 L60,100 L54,108 L24,108 Z"/>
+  <text x="140" y="70" font-family="'DejaVu Sans Mono','JetBrains Mono','Fira Mono',monospace" font-size="44" font-weight="700" fill="#1A1A1A">factor~data</text>
+  <text x="142" y="116" font-family="'DejaVu Sans Mono','JetBrains Mono','Fira Mono',monospace" font-size="33" font-weight="400" fill="#1A1A1A" letter-spacing="1">EIDAES_UNSAM</text>
+</svg>

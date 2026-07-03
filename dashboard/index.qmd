@@ -1,6 +1,6 @@
 ---
 title: "Monitor Socioeconómico La Rioja"
-subtitle: "Indicadores para el Gobierno de La Rioja · Fundar / CFI — grupo factor~data"
+subtitle: "Indicadores para el Gobierno de La Rioja · Fundar — grupo factor~data"
 format:
   html:
     theme: cosmo
@@ -123,5 +123,12 @@ cat(paste(salida, collapse = "\n\n"))
 ---
 
 <small>Fuente: EPH-INDEC (indicadores trimestrales), SIPA (ARCA) — Ministerio de
-Capital Humano y SRT (series provinciales). Elaboración: Fundar / CFI. Código y
-metodología: repositorio del proyecto.</small>
+Capital Humano y SRT (series provinciales). Elaboración: Fundar — grupo factor~data.
+Código y metodología: repositorio del proyecto.</small>
+
+```{=html}
+<div class="logos">
+  <img class="logo" src="assets/logo-fundar.svg" alt="Fundar">
+  <img class="logo" src="assets/logo-factordata.svg" alt="factor~data — EIDAES UNSAM">
+</div>
+```

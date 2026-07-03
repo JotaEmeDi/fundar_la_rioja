@@ -1,6 +1,6 @@
 # =============================================================================
 # TEMPLATE DE ESTILO — Monitor Socioeconómico La Rioja
-# FundAr / CFI — Grupo factor~data
+# Fundar — grupo factor~data
 # =============================================================================
 # Uso: source("fundar_larioja_theme.R") al inicio de cada script o chunk
 

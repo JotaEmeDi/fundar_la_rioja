@@ -123,3 +123,21 @@ em {
   color: var(--fundar-gris);
   font-size: 0.85rem;
 }
+
+/* --- Footer con logos institucionales ------------------------------------ */
+.logos {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--fundar-grilla);
+}
+.logos .logo {
+  height: 34px;
+  width: auto;
+}
+.logos .logo[alt^="factor"] {
+  height: 40px;
+}

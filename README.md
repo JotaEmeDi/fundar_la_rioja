@@ -1,6 +1,6 @@
 # Fundar – Monitor Socioeconómico La Rioja
 
-Repositorio de código para el procesamiento y visualización de indicadores socioeconómicos del Gobierno de La Rioja, desarrollado por [Fundar](https://fund.ar/) / CFI – Grupo factor~data.
+Repositorio de código para el procesamiento y visualización de indicadores socioeconómicos del Gobierno de La Rioja, desarrollado por [Fundar](https://fund.ar/) — grupo factor~data.
 
 ## Objetivo
 

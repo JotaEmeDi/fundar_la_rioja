@@ -1,5 +1,5 @@
 # =============================================================================
-# DASHBOARD — Monitor Socioeconómico La Rioja (Fundar / CFI)
+# DASHBOARD — Monitor Socioeconómico La Rioja (Fundar — grupo factor~data)
 # -----------------------------------------------------------------------------
 # App Shiny para explorar los indicadores. Reusa el núcleo compartido
 # (R/data.R + R/plots.R), que a su vez reusa el tema del informe. Correr con:

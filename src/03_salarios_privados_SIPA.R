@@ -3,12 +3,12 @@ library(ggrepel)   # etiquetas de puntos clave con reubicación automática (ant
 source('./style/fundar_monitor_theme.R')
 
 ## 03 (viz). Remuneración promedio del sector privado registrado (SIPA).
-## Lee el CSV largo (ya recortado a 2015+ desde 03_prep_salarios_privados.R),
+## Lee el CSV largo (ya recortado a 2015+ desde 03_prep_salarios_privados_SIPA.R),
 ## clasifica cada provincia por región, promedia por región y grafica en el
 ## estilo del Monitor (fundar_monitor_theme.R): las tres líneas regionales
 ## superpuestas en un solo panel.
 
-df <- read_csv("./data/inputs_md/03_salarios_privados.csv")
+df <- read_csv("./data/inputs_md/03_salarios_privados_SIPA.csv")
 
 noa <- c("Catamarca", "Jujuy", "Salta", "Santiago del Estero", "Tucumán", "La Rioja")
 
@@ -75,4 +75,4 @@ df_agg %>%
     caption = fuente_fundar("Fundar, con base en datos de SIPA (Observatorio de Empleo y Dinámica Empresarial, STEySS - Ministerio de Capital Humano).")
   )
 
-ggsave('./outputs/plots/03_salarios_privados.png', width = 12, height = 7)
+ggsave('./outputs/plots/03_salarios_privados_SIPA.png', width = 12, height = 7)

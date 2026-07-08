@@ -13,8 +13,8 @@ source("src/02_indicadores_eph_hogar.R")
 source("src/04_desoc.R")                 # Tasa de desocupación
 
 # 5. Indicadores de fuente SIPA (prep -> viz)
-source("src/03_prep_salarios_privados.R")            # Salarios sector privado
-source("src/03_salarios_privados.R")
+source("src/03_prep_salarios_privados_SIPA.R")       # Salarios sector privado
+source("src/03_salarios_privados_SIPA.R")
 source("src/05_prep_puestos_asalariados_privados.R") # Puestos asalariados privados
 source("src/05_puestos_asalariados_privados.R")
 

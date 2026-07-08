@@ -161,7 +161,7 @@ INDICADORES <- list(
   ),
   salarios_priv = list(
     id = "salarios_priv", titulo = "Remuneración promedio del sector privado registrado",
-    topico = "Trabajo e ingresos", csv = "03_salarios_privados.csv",
+    topico = "Trabajo e ingresos", csv = "03_salarios_privados_SIPA.csv",
     y_var = "salario_promedio", y_lab = "Pesos corrientes",
     eje_x = "Fecha",
     caption = "Fundar, con base en datos de SIPA (Observatorio de Empleo y Dinámica Empresarial, STEySS).",

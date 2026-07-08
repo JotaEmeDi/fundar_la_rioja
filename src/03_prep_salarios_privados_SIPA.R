@@ -116,4 +116,4 @@ df <- df_raw %>%
   arrange(fecha, jurisdiccion)
 
 dir.create("./data/inputs_md", showWarnings = FALSE, recursive = TRUE)
-write_csv(df, "./data/inputs_md/03_salarios_privados.csv")
+write_csv(df, "./data/inputs_md/03_salarios_privados_SIPA.csv")

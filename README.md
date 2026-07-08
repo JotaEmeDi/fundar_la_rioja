@@ -163,8 +163,8 @@ registrado** (el sector público queda pendiente por falta de fuente).
   | `salario_promedio` | Remuneración promedio del sector privado, en pesos corrientes |
 
 - **`03_salarios_privados.R`**: lee ese CSV, clasifica cada provincia en `la_rioja_region`,
-  promedia por región y genera el gráfico facetado por región (eje Y en pesos corrientes)
-  en `outputs/plots/03_salarios_privados.png`.
+  promedia por región y genera un gráfico único con las tres líneas regionales superpuestas
+  (eje Y en pesos corrientes) en `outputs/plots/03_salarios_privados.png`.
 
 ## Sistema de estilos
 

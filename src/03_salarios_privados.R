@@ -64,7 +64,6 @@ df_agg %>%
     x       = "Fecha",
     y       = "Pesos corrientes",
     caption = fuente_fundar("Fundar, con base en datos de SIPA (Observatorio de Empleo y Dinámica Empresarial, STEySS - Ministerio de Capital Humano).")
-  ) +
-  facet_wrap(~la_rioja_region, scales = "free_y")
+  )
 
 ggsave('./outputs/plots/03_salarios_privados.png', width = 12, height = 7)

@@ -9,9 +9,11 @@ vars_individuo <- c("ANO4", "TRIMESTRE","CODUSU", "NRO_HOGAR", "COMPONENTE", ## 
                      "REGION", "AGLOMERADO", "PONDERA", # region
                      "CH03", "CH04", "CH06", "NIVEL_ED", "CH10", "CH12", "CH13", "CH14", # demográficas
                      "ESTADO", "CAT_OCUP", # laborales
+                     "PP04A", # sector (estatal / privado / otro)
                      "PP04C", "PP04C99", # informalidad tamaño
                      "PP07H", "PP07I", # informalidad registro
-                     "PP03C")
+                     "PP03C",
+                     "P21", "PONDIIO") # ingreso de la ocupación principal + su ponderador
 
 vars_hogar <- c("ANO4", "TRIMESTRE","CODUSU", "NRO_HOGAR", ## identificadores
                  "REGION", "AGLOMERADO", "PONDERA", # region

@@ -37,6 +37,21 @@ df %>%
   mutate(tasa_inf_aportes = 100 - (formales / asalariados * 100)) %>%
   write_csv('./data/inputs_md/09a_tasa_informalidad_aportes.csv')
 
+#### 03b. Salario promedio de asalariados registrados, por sector (público/privado)
+#### Ponderado por el ponderador de ingreso PONDIIO (sum(P21*PONDIIO)/sum(PONDIIO),
+#### equivalente a weighted.mean). Universo: asalariados ocupados registrados
+#### (aportes_descuentos == 1) con ingreso de la ocupación principal positivo.
+#### Recorte a años recientes (nominal en pesos corrientes; editable con ANO_DESDE).
+ANO_DESDE_SALARIOS <- 2016
+df %>%
+  filter(ANO4 >= ANO_DESDE_SALARIOS,
+         ESTADO == "Ocupado", CAT_OCUP == "Obrero o empleado",
+         aportes_descuentos == 1,
+         !is.na(sector), !is.na(P21), P21 > 0) %>%
+  group_by(fecha, la_rioja_region, sector) %>%
+  summarise(salario_promedio = sum(P21 * PONDIIO) / sum(PONDIIO), .groups = "drop") %>%
+  write_csv('./data/inputs_md/03b_salarios_registrados_EPH.csv')
+
 #### Tasa informalidad b PENDIENTE
 
 #### 12. % mayores de 25 años con nivel superior completo

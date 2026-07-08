@@ -91,6 +91,8 @@ REGIONES <- .utf8(c("1. Resto país", "2. NOA-Resto", "3. La Rioja"))
 # -----------------------------------------------------------------------------
 # shape "A" = serie trimestral regional de la EPH (una fila por fecha-región).
 # shape "B" = serie mensual provincial (SIPA/SRT), se agrega a nivel región.
+# shape "C" = serie trimestral regional de la EPH con 2 series por SECTOR
+#             (público/privado) y valores en pesos; se facetea por región.
 # `dimensiones` (solo NBI) mapea código -> columna del CSV; `dim_labels` su texto.
 
 INDICADORES <- list(
@@ -168,6 +170,15 @@ INDICADORES <- list(
     ylim = NULL, shape = "B",
     desc = "Remuneración promedio de los trabajadores registrados del sector privado (pesos corrientes), promedio de las provincias de cada región. Fuente SIPA. Serie desde 2015."
   ),
+  salarios_eph = list(
+    id = "salarios_eph", titulo = "Salario de asalariados registrados (público y privado)",
+    topico = "Trabajo e ingresos", csv = "03b_salarios_registrados_EPH.csv",
+    y_var = "salario_promedio", y_lab = "Pesos corrientes",
+    eje_x = "Trimestre",
+    caption = "Fundar, con base en la EPH (INDEC).",
+    ylim = NULL, shape = "C",
+    desc = "Salario promedio de asalariados registrados (ponderado por ingreso), según sector público o privado, en cada zona. Fuente EPH-INDEC. Serie desde 2016."
+  ),
   empresas = list(
     id = "empresas", titulo = "Cantidad de empresas por jurisdicción",
     topico = "Macroeconomía", csv = "07_serie_empresas_por_jurisdiccion.csv",
@@ -212,6 +223,19 @@ cargar_indicador <- function(id, dimension = "TOT") {
       ) %>%
       arrange(fecha, la_rioja_region)
 
+  } else if (meta$shape == "C") {
+    # Serie trimestral regional de la EPH con 2 series por sector (público/privado).
+    # Se conserva la columna `sector` como clave de color; la región queda para facetar.
+    df %>%
+      transmute(
+        fecha_lab       = fecha,
+        fecha           = parse_trimestre(fecha),
+        la_rioja_region = .utf8(la_rioja_region),
+        sector          = .utf8(sector),
+        valor           = .data[[meta$y_var]]
+      ) %>%
+      arrange(fecha, la_rioja_region, sector)
+
   } else {
     # Serie mensual provincial: asignar región y promediar por región y fecha,
     # replicando la agregación de src/05_*.R y src/07_*.R.
@@ -230,8 +254,12 @@ cargar_indicador <- function(id, dimension = "TOT") {
 # -----------------------------------------------------------------------------
 kpi_indicador <- function(id, dimension = "TOT", region = "3. La Rioja") {
   df <- cargar_indicador(id, dimension) %>%
-    filter(la_rioja_region == region, !is.na(valor)) %>%
-    arrange(fecha)
+    filter(la_rioja_region == region, !is.na(valor))
+
+  # Shape "C" tiene 2 series por región (sector): la tarjeta KPI muestra el privado.
+  if (!is.null(df$sector)) df <- dplyr::filter(df, sector == .utf8("Privado"))
+
+  df <- df %>% arrange(fecha)
 
   if (nrow(df) == 0) {
     return(list(valor = NA_real_, fecha_lab = NA_character_,

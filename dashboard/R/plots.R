@@ -38,10 +38,18 @@ REGION_COLORS <- c(
 # locale (ver nota en data.R). REGIONES viene de data.R ya marcado.
 names(REGION_COLORS) <- REGIONES
 
+# Colores por SECTOR (shape "C"), estables por nombre. Marcados UTF-8 igual que
+# los nombres de sector que produce cargar_indicador() (ver nota en data.R).
+SECTOR_COLORS <- c(unname(FUNDAR_MULTI["serie_3"]),   # teal oscuro -> Público
+                   unname(FUNDAR_MULTI["serie_4"]))   # rosa salmón -> Privado
+names(SECTOR_COLORS) <- .utf8(c("Público", "Privado"))
+
 # Formato de valor para tooltips / etiquetas según el tipo de indicador.
 .fmt_valor <- function(v, shape) {
   if (shape == "A") {
     paste0(format(round(v, 1), nsmall = 1, decimal.mark = ","), "%")
+  } else if (shape == "C") {
+    paste0("$", format(round(v), big.mark = ".", decimal.mark = ",", scientific = FALSE))
   } else {
     format(round(v), big.mark = ".", decimal.mark = ",", scientific = FALSE)
   }
@@ -75,16 +83,24 @@ plot_indicador <- function(id, regiones = NULL, rango_fechas = NULL,
   # Subtítulo dinámico: nombre de la sub-dimensión NBI cuando aplica.
   subt <- if (!is.null(meta$dimensiones)) unname(meta$dim_labels[[dimension]]) else NULL
 
-  df <- dplyr::mutate(df,
-    .tip = paste0(la_rioja_region, "<br>", fecha_lab, "<br>",
-                  .fmt_valor(valor, meta$shape))
-  )
+  # Serie de color: por SECTOR en shape "C" (facetado por región), por región en el resto.
+  if (meta$shape == "C") {
+    df <- dplyr::mutate(df, .serie = sector,
+      .tip = paste0(la_rioja_region, " · ", sector, "<br>", fecha_lab, "<br>",
+                    .fmt_valor(valor, meta$shape)))
+    escala_color <- scale_color_manual(values = SECTOR_COLORS, name = NULL)
+  } else {
+    df <- dplyr::mutate(df, .serie = la_rioja_region,
+      .tip = paste0(la_rioja_region, "<br>", fecha_lab, "<br>",
+                    .fmt_valor(valor, meta$shape)))
+    escala_color <- scale_color_manual(values = REGION_COLORS, name = NULL)
+  }
 
   p <- ggplot(df, aes(x = fecha, y = valor,
-                      color = la_rioja_region, group = la_rioja_region,
+                      color = .serie, group = .serie,
                       text = .tip)) +
     geom_line(linewidth = 0.7) +
-    scale_color_manual(values = REGION_COLORS, name = NULL) +
+    escala_color +
     theme_monitor(base_size = base_size) +
     labs(title    = meta$titulo,
          subtitle = subt,
@@ -111,6 +127,13 @@ plot_indicador <- function(id, regiones = NULL, rango_fechas = NULL,
         scale_y_continuous(expand = expansion(mult = c(0.05, 0.18))) +
         coord_cartesian(clip = "off")
     }
+  } else if (meta$shape == "C") {
+    # Serie trimestral EPH por sector: facetas por región + eje Y en pesos.
+    p <- p +
+      facet_wrap(~ la_rioja_region, scales = "free_y") +
+      scale_x_date(date_labels = "%Y", date_breaks = "2 years") +
+      scale_y_continuous(labels = scales::label_number(big.mark = ".",
+                                                       decimal.mark = ",", prefix = "$"))
   } else {
     p <- p + scale_x_date(date_labels = "%Y", date_breaks = "2 years")
     if (!is.null(meta$ylim)) p <- p + coord_cartesian(ylim = meta$ylim)

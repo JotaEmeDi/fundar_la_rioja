@@ -17,6 +17,7 @@ Generar un pipeline replicable que permita calcular y visualizar una serie de in
 | 13a | % Hogares con Necesidades Básicas Insatisfechas (NBI) | Desarrollo – Pobreza | EPH | ✓ |
 | 13b | % Población en hogares con NBI | Desarrollo – Pobreza | EPH | ✓ |
 | 03 | Salarios en el sector formal privado (remuneración promedio) | Trabajo – Salarios e ingresos | SIPA (Min. de Capital Humano) | ✓ |
+| 03b | Salario de asalariados registrados, público y privado | Trabajo – Salarios e ingresos | EPH | ✓ |
 | 05 | Puestos de trabajo asalariados formales privados totales | Trabajo – Salarios e ingresos | SIPA (Min. de Capital Humano) | ✓ |
 | — | Cantidad de empleados públicos cada 1.000 hab. | Trabajo – Salarios e ingresos | — | Pendiente |
 | — | Tasa de pobreza multidimensional | Desarrollo – Pobreza | — | Pendiente |
@@ -40,6 +41,7 @@ fundar_la_rioja/
 │   ├── 02_indicadores_eph_hogar.R # Etapa 3: indicadores NBI de hogar -> CSVs
 │   ├── 03_prep_salarios_privados_SIPA.R # Prep: lee xlsx SIPA (hoja "Total") -> CSV
 │   ├── 03_salarios_privados_SIPA.R # Visualización: remuneración promedio sector privado
+│   ├── 03b_salarios_registrados_EPH.R # Visualización: salario registrados EPH (público/privado)
 │   ├── 04_desoc.R                # Visualización: tasa de desocupación
 │   ├── 05_prep_puestos_asalariados_privados.R # Prep: lee xlsx SIPA (hoja A.5.2) -> CSV
 │   ├── 05_puestos_asalariados_privados.R # Visualización: puestos asalariados privados
@@ -76,6 +78,13 @@ de hogar de la EPH usando `eph::get_microdata()`. Cada trimestre se guarda como 
 `data/raw_data/eph/individuo/` y `data/raw_data/eph/hogar/`. Si el archivo ya existe, se omite la
 descarga.
 
+> **Re-descarga por variables nuevas.** La descarga trae solo un subconjunto de columnas
+> (`vars_individuo` / `vars_hogar`). Al agregar una variable nueva a esa lista, los `.rds` ya
+> en disco **no** se actualizan (el paso es incremental y saltea archivos existentes): hay que
+> **borrar** los `.rds` afectados y volver a correr `00`. El indicador 03b sumó a individuo
+> `P21` (ingreso de la ocupación principal), `PONDIIO` (ponderador de ingreso) y `PP04A`
+> (sector estatal/privado).
+
 ### 2. Limpieza y canonización (`01_limpieza_eph.R`)
 
 Une todos los `.rds` crudos de cada fuente, aplica `organize_labels()`, construye las variables
@@ -83,7 +92,8 @@ analíticas reutilizables, y persiste dos datasets canónicos comprimidos:
 
 - **`data/proc_data/eph_individuo.rds`**: `ocupado`, `desocupado`, `pea`, `no_pea`, `niv_educ_sup`,
   `mayor_25`, `mayor_25_superior`, `tamanio_estab`, `descuento`, `aporta`, `aportes_descuentos`,
-  `asalariado_ocupado`, `la_rioja_region`.
+  `asalariado_ocupado`, `sector` (público/privado, desde `PP04A`), `la_rioja_region`, y las crudas
+  de ingreso `P21` / `PONDIIO`.
 - **`data/proc_data/eph_hogar.rds`**: `la_rioja_region` y los indicadores NBI que dependen solo de
   hogar (`NBI_HAC`, `NBI_VIV`, `NBI_SAN`).
 
@@ -105,6 +115,7 @@ y agrupan por `fecha` y `la_rioja_region`, guardando cada indicador como CSV en 
 | Archivo CSV | Indicador | Variable clave |
 |---|---|---|
 | `04_tasa_desoc.csv` | Tasa de desocupación | `tasa_desoc` |
+| `03b_salarios_registrados_EPH.csv` | Salario de asalariados registrados por sector (`fecha`, `la_rioja_region`, `sector`) | `salario_promedio` |
 | `09a_tasa_informalidad_aportes.csv` | Tasa de informalidad (aportes) | `tasa_inf_aportes` |
 | `10_tasa_empleo.csv` | Tasa de empleo | `tasa_empleo` |
 | `12_mayor_25_superior.csv` | % población +25 con estudios superiores | `porc_mayor_25_superior` |

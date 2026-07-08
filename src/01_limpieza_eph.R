@@ -12,7 +12,7 @@ dir.create("./data/proc_data", showWarnings = FALSE, recursive = TRUE)
 ## ============================== Individuo ==================================
 
 cols_character_individuo <- c("REGION", "AGLOMERADO", "ESTADO", "NIVEL_ED",
-                               "PP04C", "PP04C99", "CAT_OCUP", "PP07H", "PP07I",
+                               "PP04A", "PP04C", "PP04C99", "CAT_OCUP", "PP07H", "PP07I",
                                "CH03", "CH10", "CH12", "CH13")
 
 df_ind <- limpiar_base_eph("./data/raw_data/eph/individuo", type = "individual",
@@ -65,6 +65,17 @@ df_ind <- df_ind %>%
       (aporta == 1 | descuento == 1), 1, 0)
   )
 
+#### Sector (público / privado), desde PP04A. Se usa para el indicador de salarios
+#### de asalariados registrados (03b_salarios_registrados_EPH). "De otro tipo" y
+#### Ns./Nr. quedan en NA y se excluyen del cálculo. NOTA: verificar las etiquetas
+#### exactas que devuelve organize_labels() para PP04A (mismo criterio que PP07H == "Si").
+df_ind <- df_ind %>%
+  mutate(sector = case_when(
+    PP04A == "Estatal" ~ "Público",
+    PP04A == "Privado" ~ "Privado",
+    TRUE               ~ NA_character_
+  ))
+
 ## Región
 df_ind <- df_ind %>%
   asignar_la_rioja_region()
@@ -73,7 +84,7 @@ df_ind <- df_ind %>%
 ## (bajan el peso del canónico; siguen disponibles sin red en los .rds crudos
 ## de data/raw_data/eph/individuo/ si hicieran falta para un indicador nuevo).
 df_ind <- df_ind %>%
-  select(-PP04C, -PP04C99, -CH04, -PP03C)
+  select(-PP04A, -PP04C, -PP04C99, -CH04, -PP03C)
 
 write_rds(df_ind, "./data/proc_data/eph_individuo.rds", compress = "gz")
 

@@ -65,15 +65,20 @@ df_ind <- df_ind %>%
       (aporta == 1 | descuento == 1), 1, 0)
   )
 
-#### Sector (público / privado), desde PP04A. Se usa para el indicador de salarios
-#### de asalariados registrados (03b_salarios_registrados_EPH). "De otro tipo" y
-#### Ns./Nr. quedan en NA y se excluyen del cálculo. NOTA: verificar las etiquetas
-#### exactas que devuelve organize_labels() para PP04A (mismo criterio que PP07H == "Si").
+#### Sector (público / privado), desde PP04A (1 = estatal, 2 = privado, 3 = otro).
+#### Se usa para el indicador de salarios de asalariados registrados
+#### (03b_salarios_registrados_EPH). "De otro tipo" y Ns./Nr. quedan en NA y se
+#### excluyen del cálculo. La derivación es tolerante a cómo llegue PP04A: texto
+#### etiquetado por organize_labels() en cualquier capitalización ("Estatal",
+#### "estatal", "Sector estatal"...) o el código numérico ("1"/"2") si no vino
+#### etiquetado. Diagnóstico: table(df_ind$PP04A, useNA = "always").
 df_ind <- df_ind %>%
   mutate(sector = case_when(
-    PP04A == "Estatal" ~ "Público",
-    PP04A == "Privado" ~ "Privado",
-    TRUE               ~ NA_character_
+    str_detect(str_to_lower(PP04A), "estatal|públic|public") ~ "Público",
+    str_detect(str_to_lower(PP04A), "privad")                ~ "Privado",
+    PP04A == "1" ~ "Público",
+    PP04A == "2" ~ "Privado",
+    TRUE         ~ NA_character_
   ))
 
 ## Región

@@ -30,6 +30,33 @@ FUNDAR_MULTI <- c(
   "serie_5" = "#9B8BC4"    # Violeta
 )
 
+# Colores por región (mismos que FUNDAR_MULTI serie_1/2/3), nombrados por zona.
+FUNDAR_REGION <- c(
+  "1. Resto país" = unname(FUNDAR_MULTI["serie_1"]),
+  "2. NOA-Resto"  = unname(FUNDAR_MULTI["serie_2"]),
+  "3. La Rioja"   = unname(FUNDAR_MULTI["serie_3"])
+)
+
+# Oscurece un color (más saturado + menos luminoso) manipulando HSV. Se usa para
+# derivar la variante "Público" a partir del color base de cada zona, manteniendo
+# el mismo tono (identidad de color de la zona) y distinguiendo el sector por
+# luminancia/saturación.
+.oscurecer_fundar <- function(hex, s_factor = 1.25, v_factor = 0.55) {
+  h <- grDevices::rgb2hsv(grDevices::col2rgb(hex))
+  unname(grDevices::hsv(h[1L], pmin(1, h[2L] * s_factor), pmin(1, h[3L] * v_factor)))
+}
+
+# Paleta zona × sector: por cada zona, "Privado" usa el color base y "Público" una
+# variante más oscura/saturada del MISMO tono. Clave "<zona> · <sector>".
+FUNDAR_ZONA_SECTOR <- c(
+  "1. Resto país · Privado" = unname(FUNDAR_REGION["1. Resto país"]),
+  "1. Resto país · Público" = .oscurecer_fundar(FUNDAR_REGION["1. Resto país"]),
+  "2. NOA-Resto · Privado"  = unname(FUNDAR_REGION["2. NOA-Resto"]),
+  "2. NOA-Resto · Público"  = .oscurecer_fundar(FUNDAR_REGION["2. NOA-Resto"]),
+  "3. La Rioja · Privado"   = unname(FUNDAR_REGION["3. La Rioja"]),
+  "3. La Rioja · Público"   = .oscurecer_fundar(FUNDAR_REGION["3. La Rioja"])
+)
+
 # Escala de color positivo/negativo (para barras divergentes)
 scale_fill_fundar_div <- function(
     pos_label = "Positivo",

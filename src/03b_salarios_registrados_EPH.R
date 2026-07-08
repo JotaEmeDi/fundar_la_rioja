@@ -11,8 +11,14 @@ df <- read_csv("./data/inputs_md/03b_salarios_registrados_EPH.csv")
 
 # La fecha viene como string trimestral "YYYY-Q<n>": se pasa a Date (primer día
 # del trimestre) para poder usar scale_x_date y el formateo de etiquetas.
+# `zona_sector` combina zona y sector: el color conserva el tono de cada zona y
+# distingue Público (más oscuro) de Privado (color base) por luminancia.
 df <- df %>%
-  mutate(fecha = lubridate::yq(fecha))
+  mutate(
+    fecha = lubridate::yq(fecha),
+    zona_sector = factor(paste(la_rioja_region, sector, sep = " · "),
+                         levels = names(FUNDAR_ZONA_SECTOR))
+  )
 
 # Etiqueta solo del último punto de cada zona x sector (con 6 series, etiquetar
 # máx/mín/último satura el gráfico).
@@ -30,8 +36,8 @@ key_pts <- df %>%
 df %>%
   ggplot(aes(x = fecha,
              y = salario_promedio,
-             group = sector,
-             color = sector)) +
+             group = zona_sector,
+             color = zona_sector)) +
   # Quiebre metodológico: cambio en el método de imputación de ingresos y en el
   # ponderador de la EPH (2015-2016). Los niveles a ambos lados no son estrictamente
   # comparables. La EPH además estuvo interrumpida entre 2015-T3 y 2016-T1 (gap real).
@@ -54,7 +60,7 @@ df %>%
     max.overlaps       = Inf,
     seed               = 42
   ) +
-  scale_color_fundar_multi(name = "Sector") +
+  scale_color_manual(values = FUNDAR_ZONA_SECTOR, name = "Zona · sector") +
   scale_y_continuous(
     labels = scales::label_number(big.mark = ".", decimal.mark = ",", prefix = "$"),
     expand = expansion(mult = c(0.05, 0.18))

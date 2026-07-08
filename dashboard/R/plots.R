@@ -38,11 +38,12 @@ REGION_COLORS <- c(
 # locale (ver nota en data.R). REGIONES viene de data.R ya marcado.
 names(REGION_COLORS) <- REGIONES
 
-# Colores por SECTOR (shape "C"), estables por nombre. Marcados UTF-8 igual que
-# los nombres de sector que produce cargar_indicador() (ver nota en data.R).
-SECTOR_COLORS <- c(unname(FUNDAR_MULTI["serie_3"]),   # teal oscuro -> Público
-                   unname(FUNDAR_MULTI["serie_4"]))   # rosa salmón -> Privado
-names(SECTOR_COLORS) <- .utf8(c("Público", "Privado"))
+# Colores por ZONA × SECTOR (shape "C"): cada zona conserva su tono y el sector se
+# distingue por luminancia (Público más oscuro, Privado el color base). Se reusa la
+# paleta FUNDAR_ZONA_SECTOR del tema; los nombres se marcan UTF-8 para que el match
+# por clave "<zona> · <sector>" sea estable en cualquier locale (ver nota en data.R).
+ZONA_SECTOR_COLORS <- FUNDAR_ZONA_SECTOR
+names(ZONA_SECTOR_COLORS) <- .utf8(names(FUNDAR_ZONA_SECTOR))
 
 # Formato de valor para tooltips / etiquetas según el tipo de indicador.
 .fmt_valor <- function(v, shape) {
@@ -85,10 +86,11 @@ plot_indicador <- function(id, regiones = NULL, rango_fechas = NULL,
 
   # Serie de color: por SECTOR en shape "C" (facetado por región), por región en el resto.
   if (meta$shape == "C") {
-    df <- dplyr::mutate(df, .serie = sector,
+    df <- dplyr::mutate(df,
+      .serie = paste(la_rioja_region, sector, sep = " · "),
       .tip = paste0(la_rioja_region, " · ", sector, "<br>", fecha_lab, "<br>",
                     .fmt_valor(valor, meta$shape)))
-    escala_color <- scale_color_manual(values = SECTOR_COLORS, name = NULL)
+    escala_color <- scale_color_manual(values = ZONA_SECTOR_COLORS, name = NULL)
   } else {
     df <- dplyr::mutate(df, .serie = la_rioja_region,
       .tip = paste0(la_rioja_region, "<br>", fecha_lab, "<br>",

@@ -45,7 +45,7 @@ df %>%
 #### (fecha), todas las filas de un grupo caen del mismo lado del quiebre 2015/2016: no
 #### se mezclan ponderadores dentro de una misma celda. Universo: asalariados ocupados
 #### registrados (aportes_descuentos == 1) con ingreso de la ocupación principal positivo.
-ANO_DESDE_SALARIOS <- 2007
+ANO_DESDE_SALARIOS <- 2009 
 df %>%
   filter(ANO4 >= ANO_DESDE_SALARIOS,
          ESTADO == "Ocupado", CAT_OCUP == "Obrero o empleado",

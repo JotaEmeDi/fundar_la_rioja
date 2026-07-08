@@ -1,7 +1,7 @@
+tictoc::tic()
 # 1. Descargar microdatos EPH (individuo y hogar)
 source("src/00_descarga_eph.R")
 
-tictoc::tic()
 # 2. Limpiar y canonizar -> data/proc_data/eph_individuo.rds, eph_hogar.rds
 source("src/01_limpieza_eph.R")
 

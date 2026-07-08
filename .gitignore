@@ -3,6 +3,9 @@
 data/proc_data/
 data/raw_data_eph.rds
 
+# Archivos de lock de LibreOffice/OpenOffice (se cuelan al editar los xlsx)
+.~lock.*#
+
 # Copias bundleadas para el deploy del dashboard (generadas por dashboard/deploy.R)
 dashboard/data_inputs/
 dashboard/style/

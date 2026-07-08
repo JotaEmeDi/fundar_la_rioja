@@ -159,6 +159,15 @@ INDICADORES <- list(
     ylim = NULL, shape = "B",
     desc = "Puestos asalariados registrados del sector privado (en miles), promedio de las provincias de cada región. Fuente SIPA, desestacionalizado."
   ),
+  salarios_priv = list(
+    id = "salarios_priv", titulo = "Remuneración promedio del sector privado registrado",
+    topico = "Trabajo e ingresos", csv = "03_salarios_privados.csv",
+    y_var = "salario_promedio", y_lab = "Pesos corrientes",
+    eje_x = "Fecha",
+    caption = "Fundar, con base en datos de SIPA (Observatorio de Empleo y Dinámica Empresarial, STEySS).",
+    ylim = NULL, shape = "B",
+    desc = "Remuneración promedio de los trabajadores registrados del sector privado (pesos corrientes), promedio de las provincias de cada región. Fuente SIPA. Serie desde 2015."
+  ),
   empresas = list(
     id = "empresas", titulo = "Cantidad de empresas por jurisdicción",
     topico = "Macroeconomía", csv = "07_serie_empresas_por_jurisdiccion.csv",

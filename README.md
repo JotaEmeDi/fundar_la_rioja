@@ -16,7 +16,7 @@ Generar un pipeline replicable que permita calcular y visualizar una serie de in
 | 12 | % de población +25 con estudios superiores completos | Desarrollo – Educación | EPH | ✓ |
 | 13a | % Hogares con Necesidades Básicas Insatisfechas (NBI) | Desarrollo – Pobreza | EPH | ✓ |
 | 13b | % Población en hogares con NBI | Desarrollo – Pobreza | EPH | ✓ |
-| — | Salarios en el sector formal (público y privado) | Trabajo – Salarios e ingresos | — | Pendiente |
+| 03 | Salarios en el sector formal privado (remuneración promedio) | Trabajo – Salarios e ingresos | SIPA (Min. de Capital Humano) | ✓ |
 | 05 | Puestos de trabajo asalariados formales privados totales | Trabajo – Salarios e ingresos | SIPA (Min. de Capital Humano) | ✓ |
 | — | Cantidad de empleados públicos cada 1.000 hab. | Trabajo – Salarios e ingresos | — | Pendiente |
 | — | Tasa de pobreza multidimensional | Desarrollo – Pobreza | — | Pendiente |
@@ -38,6 +38,8 @@ fundar_la_rioja/
 │   ├── 01_limpieza_eph.R          # Etapa 2: limpieza y canonización -> data/proc_data/
 │   ├── 02_indicadores_eph_individuo.R # Etapa 3: indicadores de individuo -> CSVs
 │   ├── 02_indicadores_eph_hogar.R # Etapa 3: indicadores NBI de hogar -> CSVs
+│   ├── 03_prep_salarios_privados.R # Prep: lee xlsx SIPA (hoja "Total") -> CSV
+│   ├── 03_salarios_privados.R    # Visualización: remuneración promedio sector privado
 │   ├── 04_desoc.R                # Visualización: tasa de desocupación
 │   ├── 05_prep_puestos_asalariados_privados.R # Prep: lee xlsx SIPA (hoja A.5.2) -> CSV
 │   ├── 05_puestos_asalariados_privados.R # Visualización: puestos asalariados privados
@@ -135,6 +137,34 @@ estacionalidad. En miles"* — serie mensual y desestacionalizada, en miles de p
 - **`05_puestos_asalariados_privados.R`**: lee ese CSV, clasifica cada provincia en
   `la_rioja_region` y genera el gráfico facetado por región en
   `outputs/plots/05_puestos_asalariados_privados.png`.
+
+### Salarios en el sector formal privado (indicador 03)
+
+El indicador de salarios sale de otro archivo SIPA
+(`data/raw_data/sipa/provinciales_serie_remuneraciones_mensual_2dig_8.xlsx`),
+hoja **"Total"**: *"Remuneración promedio de los trabajadores registrados del sector
+privado. Remuneración por todo concepto por provincia, a valores corrientes. En pesos"* —
+serie mensual por provincia. **Alcance:** la fuente cubre solo el **sector privado
+registrado** (el sector público queda pendiente por falta de fuente).
+
+- **`03_prep_salarios_privados.R`**: la hoja viene **traspuesta** respecto de A.5.2
+  (provincias en filas, meses en columnas, encabezado en la fila 5). El prep pivotea a
+  formato largo, parsea el encabezado de fechas (mixto: serial de Excel / ISO / texto
+  `mmm-yy`, normalizado a primer día de mes), homologa los nombres de provincia a los
+  canónicos de `05`/`07` (tomando `CAPITAL FEDERAL`→`C.A.B.A.` y `BUENOS AIRES`→`Buenos
+  Aires`, y descartando `GRAN BUENOS AIRES` y el `Total` nacional), y **recorta desde
+  2015** (en pesos corrientes la historia previa queda aplastada por la inflación; el raw
+  conserva 1995+). Escribe `data/inputs_md/03_salarios_privados.csv`:
+
+  | Columna | Descripción |
+  |---|---|
+  | `jurisdiccion` | Provincia (24 jurisdicciones) |
+  | `fecha` | Primer día del mes (`YYYY-MM-01`), desde 2015 |
+  | `salario_promedio` | Remuneración promedio del sector privado, en pesos corrientes |
+
+- **`03_salarios_privados.R`**: lee ese CSV, clasifica cada provincia en `la_rioja_region`,
+  promedia por región y genera el gráfico facetado por región (eje Y en pesos corrientes)
+  en `outputs/plots/03_salarios_privados.png`.
 
 ## Sistema de estilos
 

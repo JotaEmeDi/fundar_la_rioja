@@ -38,18 +38,22 @@ df %>%
   write_csv('./data/inputs_md/09a_tasa_informalidad_aportes.csv')
 
 #### 03b. Salario promedio de asalariados registrados, por sector (público/privado)
-#### Ponderado por el ponderador de ingreso PONDIIO (sum(P21*PONDIIO)/sum(PONDIIO),
-#### equivalente a weighted.mean). Universo: asalariados ocupados registrados
-#### (aportes_descuentos == 1) con ingreso de la ocupación principal positivo.
-#### Recorte a años recientes (nominal en pesos corrientes; editable con ANO_DESDE).
-ANO_DESDE_SALARIOS <- 2016
+#### Promedio ponderado sum(P21*w)/sum(w) (equivalente a weighted.mean). El peso `w`
+#### es PONDIIO (ponderador de ingreso, corrige la no-respuesta) cuando existe; en las
+#### ondas viejas (~pre-2016) la EPH imputaba los ingresos y NO hay PONDIIO, así que se
+#### usa PONDERA (ponderador poblacional) como fallback. Como cada punto es un trimestre
+#### (fecha), todas las filas de un grupo caen del mismo lado del quiebre 2015/2016: no
+#### se mezclan ponderadores dentro de una misma celda. Universo: asalariados ocupados
+#### registrados (aportes_descuentos == 1) con ingreso de la ocupación principal positivo.
+ANO_DESDE_SALARIOS <- 2007
 df %>%
   filter(ANO4 >= ANO_DESDE_SALARIOS,
          ESTADO == "Ocupado", CAT_OCUP == "Obrero o empleado",
          aportes_descuentos == 1,
          !is.na(sector), !is.na(P21), P21 > 0) %>%
+  mutate(peso_ing = if_else(!is.na(PONDIIO) & PONDIIO > 0, PONDIIO, PONDERA)) %>%
   group_by(fecha, la_rioja_region, sector) %>%
-  summarise(salario_promedio = sum(P21 * PONDIIO) / sum(PONDIIO), .groups = "drop") %>%
+  summarise(salario_promedio = sum(P21 * peso_ing) / sum(peso_ing), .groups = "drop") %>%
   write_csv('./data/inputs_md/03b_salarios_registrados_EPH.csv')
 
 #### Tasa informalidad b PENDIENTE

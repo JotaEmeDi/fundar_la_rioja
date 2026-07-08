@@ -11,9 +11,16 @@ library(tidyverse)
 ## Si un trimestre todavía no está publicado en INDEC, get_microdata() falla:
 ## se captura el error, se avisa por consola y se sigue con el resto (no corta
 ## el loop ni pierde lo ya descargado en trimestres anteriores).
+##
+## `vars_opcionales`: variables que pueden no existir en algunas ondas (ej. PONDIIO,
+## el ponderador de ingreso, no existe antes de ~2016 porque la EPH imputaba los
+## ingresos faltantes). Si pedirlas hace fallar o devolver un dataset vacío, se
+## reintenta la descarga SIN ellas, así las ondas viejas se bajan igual (esas
+## columnas quedan ausentes -> NA al unir en la limpieza). No se hardcodea el año
+## en que arranca PONDIIO: la onda misma decide si la trae o no.
 descargar_eph_incremental <- function(vars, type, out_dir, file_tag = type,
                                        years = 2007:as.integer(format(Sys.Date(), "%Y")),
-                                       periods = 1:4) {
+                                       periods = 1:4, vars_opcionales = character(0)) {
   periodos <- expand_grid(year = years, period = periods)
   tictoc::tic()
   for (i in seq_len(nrow(periodos))) {
@@ -25,13 +32,21 @@ descargar_eph_incremental <- function(vars, type, out_dir, file_tag = type,
       next
     }
     cat("Descargando", out, "\n")
-    tryCatch({
-      df <- get_microdata(period = p, year = y, type = type, vars = vars)
+    bajar <- function(vs) tryCatch(
+      get_microdata(period = p, year = y, type = type, vars = vs),
+      error = function(e) NULL)
+
+    df <- bajar(vars)
+    # Reintento sin las opcionales si falló o vino vacío (onda sin PONDIIO, etc.).
+    if ((is.null(df) || nrow(df) == 0) && length(vars_opcionales) > 0) {
+      df <- bajar(setdiff(vars, vars_opcionales))
+    }
+
+    if (!is.null(df) && nrow(df) > 0) {
       write_rds(df, out)
-    }, error = function(e) {
-      cat("No se pudo descargar", out, "- probablemente todavía no está publicado. Detalle:",
-          conditionMessage(e), "\n")
-    })
+    } else {
+      cat("No se pudo descargar", out, "- probablemente todavía no está publicado.\n")
+    }
   }
   tictoc::toc()
 }

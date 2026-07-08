@@ -129,7 +129,10 @@ plot_indicador <- function(id, regiones = NULL, rango_fechas = NULL,
     }
   } else if (meta$shape == "C") {
     # Serie trimestral EPH por sector: facetas por región + eje Y en pesos.
+    # Línea de quiebre metodológico de ingresos de la EPH (2015-2016).
     p <- p +
+      geom_vline(xintercept = as.Date("2016-01-01"), linetype = "dashed",
+                 color = FUNDAR_GRIS, linewidth = 0.4) +
       facet_wrap(~ la_rioja_region, scales = "free_y") +
       scale_x_date(date_labels = "%Y", date_breaks = "2 years") +
       scale_y_continuous(labels = scales::label_number(big.mark = ".",

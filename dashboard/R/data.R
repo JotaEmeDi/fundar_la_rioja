@@ -177,7 +177,7 @@ INDICADORES <- list(
     eje_x = "Trimestre",
     caption = "Fundar, con base en la EPH (INDEC).",
     ylim = NULL, shape = "C",
-    desc = "Salario promedio de asalariados registrados (ponderado por ingreso), según sector público o privado, en cada zona. Fuente EPH-INDEC. Serie desde 2016."
+    desc = "Salario promedio de asalariados registrados, según sector público o privado, en cada zona. Ponderado por ingreso (PONDIIO), o por PONDERA antes de 2015. Fuente EPH-INDEC. Serie desde 2007; la línea punteada marca el cambio de metodología de ingresos (2015-2016)."
   ),
   empresas = list(
     id = "empresas", titulo = "Cantidad de empresas por jurisdicción",

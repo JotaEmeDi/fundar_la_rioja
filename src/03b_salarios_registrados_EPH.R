@@ -32,6 +32,11 @@ df %>%
              y = salario_promedio,
              group = sector,
              color = sector)) +
+  # Quiebre metodológico: cambio en el método de imputación de ingresos y en el
+  # ponderador de la EPH (2015-2016). Los niveles a ambos lados no son estrictamente
+  # comparables. La EPH además estuvo interrumpida entre 2015-T3 y 2016-T1 (gap real).
+  geom_vline(xintercept = as.Date("2016-01-01"), linetype = "dashed",
+             color = FUNDAR_GRIS, linewidth = 0.4) +
   geom_line(linewidth = 0.7) +
   geom_point(data = key_pts, size = 2, show.legend = FALSE) +
   geom_text_repel(
@@ -56,13 +61,13 @@ df %>%
   ) +
   theme_monitor() +
   theme(axis.text.x = element_text(size = 8)) +
-  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  scale_x_date(date_labels = "%Y", date_breaks = "2 years") +
   coord_cartesian(clip = "off") +
   labs(
     title   = "Salario promedio de asalariados registrados (público y privado)",
     x       = "Trimestre",
     y       = "Pesos corrientes",
-    caption = fuente_fundar("Fundar, con base en la EPH (INDEC).")
+    caption = fuente_fundar("Fundar, con base en la EPH (INDEC). Línea punteada: cambio de metodología de ingresos de la EPH (2015-2016); niveles a ambos lados no estrictamente comparables.")
   ) +
   facet_wrap(~la_rioja_region, scales = "free_y")
 

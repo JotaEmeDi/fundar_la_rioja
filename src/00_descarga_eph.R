@@ -22,8 +22,11 @@ vars_hogar <- c("ANO4", "TRIMESTRE","CODUSU", "NRO_HOGAR", ## identificadores
                  "II1", "II2", # hacinamiento
                  "IX_TOT") # Total miembros
 
+## PONDIIO no existe en las ondas viejas (~pre-2016): se marca como opcional para que
+## esas ondas se bajen igual, sin esa columna (queda NA al unir). Ver descargar_eph_incremental().
 descargar_eph_incremental(vars_individuo, type = "individual", file_tag = "individuo",
-                           out_dir = "./data/raw_data/eph/individuo")
+                           out_dir = "./data/raw_data/eph/individuo",
+                           vars_opcionales = c("PONDIIO"))
 
 descargar_eph_incremental(vars_hogar, type = "hogar", file_tag = "hogar",
                            out_dir = "./data/raw_data/eph/hogar")

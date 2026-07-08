@@ -122,6 +122,15 @@ y agrupan por `fecha` y `la_rioja_region`, guardando cada indicador como CSV en 
 | `13a_nbi_hogares.csv` | % Hogares con NBI (total y por sub-dimensión) | `pct_hogares_NBI_TOT` |
 | `13b_nbi_poblacion.csv` | % Población en hogares con NBI (total y por sub-dimensión) | `pct_pob_NBI_TOT` |
 
+> **Salarios EPH (03b) — ponderación y quiebre 2015/2016.** El salario es un promedio
+> ponderado `sum(P21*w)/sum(w)` de asalariados registrados. El peso `w` es `PONDIIO`
+> (ponderador de ingreso, que corrige la no-respuesta) cuando existe, y `PONDERA`
+> (ponderador poblacional) como fallback en las ondas viejas (~pre-2016), donde la EPH
+> imputaba los ingresos y no publica `PONDIIO`. La serie arranca en 2007; como en 2015/2016
+> cambió el método de imputación de ingresos (y la EPH estuvo interrumpida entre 2015-T3 y
+> 2016-T1), los niveles a ambos lados del quiebre no son estrictamente comparables — el
+> gráfico lo marca con una línea vertical punteada.
+
 ### 4. Visualización
 
 Cada script `src/XX_*.R` lee su CSV correspondiente y genera un gráfico de líneas con `ggplot2`, usando las escalas definidas en `style/fundar_monitor_theme.R`.

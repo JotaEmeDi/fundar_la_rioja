@@ -21,6 +21,7 @@ library(tidyverse)
 descargar_eph_incremental <- function(vars, type, out_dir, file_tag = type,
                                        years = 2007:as.integer(format(Sys.Date(), "%Y")),
                                        periods = 1:4, vars_opcionales = character(0)) {
+
   periodos <- expand_grid(year = years, period = periods)
   tictoc::tic()
   for (i in seq_len(nrow(periodos))) {

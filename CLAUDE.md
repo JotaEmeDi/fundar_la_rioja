@@ -7,7 +7,7 @@
 ## Indicadores
 | Indicadores seleccionados                                                                        | TOPICO                                               |
 |--------------------------------------------------------------------------------------------------|------------------------------------------------------|
-| Tasa de pobreza multidimensional                                                                 | Desarrollo -  Pobreza                                |
+| Tasa de pobreza por NBI (Necesidades Básicas Insatisfechas)                                      | Desarrollo - Pobreza                                 |
 | PIB provincial                                                                                   | Macroeconomía - Crecimiento                          |
 | Salarios en el sector formal (público y privado)                                                 | Trabajo e ingresos - Salarios e ingresos             |
 | Tasa de desempleo (% de la PEA)                                                                  | Trabajo e ingresos - Informalidad y Desempleo        |

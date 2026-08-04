@@ -14,54 +14,107 @@ Generar un pipeline replicable que permita calcular y visualizar una serie de in
 | 09a | Tasa de informalidad por aportes a SS (% de asalariados) | Trabajo – Informalidad y Desempleo | EPH | ✓ |
 | 10 | Tasa de empleo (ocupados cada 100 hab.) | Trabajo – Participación laboral | EPH | ✓ |
 | 12 | % de población +25 con estudios superiores completos | Desarrollo – Educación | EPH | ✓ |
-| 13a | % Hogares con Necesidades Básicas Insatisfechas (NBI) | Desarrollo – Pobreza | EPH | ✓ |
-| 13b | % Población en hogares con NBI | Desarrollo – Pobreza | EPH | ✓ |
+| 13a | % Hogares con Necesidades Básicas Insatisfechas (NBI) — pobreza por NBI | Desarrollo – Pobreza | EPH | ✓ |
+| 13b | % Población en hogares con NBI — pobreza por NBI | Desarrollo – Pobreza | EPH | ✓ |
 | 03 | Salarios en el sector formal privado (remuneración promedio) | Trabajo – Salarios e ingresos | SIPA (Min. de Capital Humano) | ✓ |
 | 03b | Salario de asalariados registrados, público y privado | Trabajo – Salarios e ingresos | EPH | ✓ |
 | 05 | Puestos de trabajo asalariados formales privados totales | Trabajo – Salarios e ingresos | SIPA (Min. de Capital Humano) | ✓ |
-| — | Cantidad de empleados públicos cada 1.000 hab. | Trabajo – Salarios e ingresos | — | Pendiente |
-| — | Tasa de pobreza multidimensional | Desarrollo – Pobreza | — | Pendiente |
-| — | Trayectoria escolar | Desarrollo – Educación | — | Pendiente |
-| — | PIB provincial | Macroeconomía – Crecimiento | — | Pendiente |
-| — | % del PIB que es industrial | Macroeconomía – Crecimiento | — | Pendiente |
-| — | Cantidad de empresas | Macroeconomía – Crecimiento | — | ✓ |
-| — | Exportaciones | Macroeconomía – Crecimiento | — | Pendiente |
-| — | Resultado fiscal (ingreso total – gasto total) | Macroeconomía – Crecimiento | — | Pendiente |
-| — | Recursos propios sobre recursos totales | Macroeconomía – Crecimiento | — | Pendiente |
+| 06 | Cantidad de empleados públicos cada 1.000 hab. | Trabajo – Salarios e ingresos | EPH Total Urbano | ✓ |
+| 07 | Cantidad de empresas | Macroeconomía – Crecimiento | SRT | ✓ |
+| 14 | Exportaciones | Macroeconomía – Crecimiento | OPEX-INDEC | ✓ |
+| 15 | PIB / PBG provincial y % industrial / estructura | Macroeconomía – Crecimiento | CEPAL / Min. Economía | ✓ |
+| 16 | Recursos propios sobre recursos totales | Macroeconomía – Crecimiento | Min. Economía (TOP + RON) | ✓ |
+| 17 | Resultado fiscal APNF (ingreso − gasto) | Macroeconomía – Crecimiento | Min. Economía (ejecuciones APNF) | ✓ (CSV/plots; RMD pendiente) |
+| 18 | Trayectoria escolar (cohorte primaria→secundaria) | Desarrollo – Educación | Relevamiento Anual (provincia) | ✓ (CSV/plots; RMD pendiente) |
 
 ## Estructura del repositorio
 
 ```
 fundar_la_rioja/
-├── src/
-│   ├── utils_eph.R                # Funciones compartidas: descarga, limpieza, región
-│   ├── 00_descarga_eph.R          # Etapa 1: descarga incremental (individuo + hogar)
-│   ├── 01_limpieza_eph.R          # Etapa 2: limpieza y canonización -> data/proc_data/
-│   ├── 02_indicadores_eph_individuo.R # Etapa 3: indicadores de individuo -> CSVs
-│   ├── 02_indicadores_eph_hogar.R # Etapa 3: indicadores NBI de hogar -> CSVs
-│   ├── 03_prep_salarios_privados_SIPA.R # Prep: lee xlsx SIPA (hoja "Total") -> CSV
-│   ├── 03_salarios_privados_SIPA.R # Visualización: remuneración promedio sector privado
-│   ├── 03b_salarios_registrados_EPH.R # Visualización: salario registrados EPH (público/privado)
-│   ├── 04_desoc.R                # Visualización: tasa de desocupación
-│   ├── 05_prep_puestos_asalariados_privados.R # Prep: lee xlsx SIPA (hoja A.5.2) -> CSV
-│   ├── 05_puestos_asalariados_privados.R # Visualización: puestos asalariados privados
-│   ├── 09a_informalidad_aportes.R # Visualización: tasa de informalidad (aportes)
-│   ├── 10_tasa_empleo.R          # Visualización: tasa de empleo
-│   ├── 12_educ.R                 # Visualización: % población +25 con estudios superiores
-│   ├── 13a_nbi_hogares.R         # Visualización: % hogares con NBI
-│   ├── 13b_nbi_poblacion.R       # Visualización: % población en hogares con NBI
-│   └── 999_run_pipeline.R        # Corre todo el pipeline EPH de punta a punta
+├── src/                          # Prep + visualización por indicador (numerados)
+│   └── 000_install_deps.R        # Dependencias (paquetes R + opcional TinyTeX)
 ├── data/
-│   ├── raw_data/
-│   │   ├── eph/                  # Microdatos EPH crudos por año y trimestre (*.rds)
-│   │   └── sipa/                 # Reporte "Trabajo registrado" del SIPA (*.xlsx)
-│   ├── proc_data/                # Datasets EPH canónicos, ya limpios (eph_individuo.rds, eph_hogar.rds)
-│   └── inputs_md/                # Agregados por indicador listos para graficar (*.csv)
-├── style/
-│   ├── fundar_larioja_theme.R    # Tema original (paleta La Rioja / NOA / Resto país)
-│   └── fundar_monitor_theme.R    # Tema inspirado en el Monitor Mensual de Empresas de Fundar
-└── fundar_larioja.Rproj          # Proyecto RStudio
+│   ├── raw_data/                 # Fuentes crudas (EPH, SIPA, OPEX, CEPAL, TOP/RON, …)
+│   ├── proc_data/                # EPH canónica (eph_individuo.rds, eph_hogar.rds)
+│   └── inputs_md/                # CSVs tidy listos para graficar / informe
+├── outputs/plots/                # PNG estáticos del monitor
+├── informe/
+│   └── monitor_la_rioja.Rmd      # Informe knit-able (coyuntura + fichas al final)
+├── dashboard/                    # App Shiny + sitio Quarto
+├── style/                        # Temas ggplot (activo: fundar_monitor_theme.R)
+└── fundar_larioja.Rproj
 ```
+
+### Informe para la provincia (HTML, PDF o Word)
+
+El mismo `informe/monitor_la_rioja.Rmd` puede salir como **HTML**, **PDF** o **Word**.
+
+**Recomendado: HTML.** El monitor está pensado así (TOC flotante a la izquierda,
+link a fichas metodológicas, navegación web). PDF y Word son opciones de entrega
+(archivo único / edición); no replican igual esa experiencia.
+
+Hay dos cosas distintas:
+
+| Qué | Dónde | Cuándo |
+|---|---|---|
+| Instalar dependencias | `src/000_install_deps.R` (consola, **fuera** del RMD) | Una vez por máquina |
+| Generar el informe | Desde el RMD: Knit en RStudio, o `rmarkdown::render(...)` | Cada vez que quieras HTML / PDF / Word |
+
+Las dependencias **no** se corren “desde adentro” del RMD: el knit solo usa lo
+ya instalado. Si falta LaTeX, el PDF falla aunque el RMD esté bien. Word no
+necesita LaTeX.
+
+#### HTML (default, recomendado)
+
+```r
+# Una vez por máquina:
+source("src/000_install_deps.R")
+
+# Luego, cada vez — Knit → Knit to HTML
+# o en consola (raíz del repo):
+rmarkdown::render("informe/monitor_la_rioja.Rmd")
+# → informe/monitor_la_rioja.html
+```
+
+#### PDF (opcional)
+
+Requiere la misma base del HTML **más** una distribución LaTeX. El RMD usa
+`xelatex` (Unicode / texto en español). Primera instalación de TinyTeX: varios
+minutos; el primer knit a PDF también puede tardar (paquetes LaTeX + PNG).
+
+```r
+# Una vez por máquina (paquete tinytex + TinyTeX):
+source("src/000_install_deps.R")
+install_project_deps(pdf = TRUE)
+# Si aún no hay motor: tinytex::install_tinytex()
+# Reiniciar R / RStudio. Chequear: Sys.which("xelatex")
+
+# Luego, cada vez — Knit → Knit to PDF, o:
+rmarkdown::render(
+  "informe/monitor_la_rioja.Rmd",
+  output_format = "pdf_document"
+)
+# → informe/monitor_la_rioja.pdf
+```
+
+#### Word (opcional)
+
+Misma base de paquetes que el HTML (sin LaTeX). Útil para editar texto o mandar
+un `.docx`. Sin TOC flotante ni layout web.
+
+```r
+# Dependencias: las del HTML (source("src/000_install_deps.R"))
+
+# Knit → Knit to Word, o:
+rmarkdown::render(
+  "informe/monitor_la_rioja.Rmd",
+  output_format = "word_document"
+)
+# → informe/monitor_la_rioja.docx
+```
+
+El RMD inserta los PNG de `outputs/plots/` (no re-descarga datos). Ver
+**Qué actualizar / qué no tocar** más abajo.
 
 > Los archivos en `data/raw_data/` y `data/proc_data/` están excluidos del control de versiones (`.gitignore`). Los CSVs en `data/inputs_md/` sí están versionados.
 
@@ -257,13 +310,30 @@ Ver [`dashboard/README.md`](dashboard/README.md) y [`dashboard/deploy.md`](dashb
 
 ## Dependencias
 
+Todo se instala **fuera del RMD**, con `src/000_install_deps.R` (una vez por
+máquina, o cuando falte un paquete). El script solo instala lo que falta.
+
 ```r
-# Pipeline de datos
-install.packages(c("eph", "tidyverse", "lubridate", "tictoc", "readxl"))
-# Dashboard
-install.packages(c("shiny", "bslib", "bsicons", "plotly", "here", "rsconnect"))
-# + Quarto CLI (https://quarto.org) para el sitio estático
+# Mínimo: pipeline + knit HTML
+source("src/000_install_deps.R")
+
+# Opcional: dashboard Shiny
+install_project_deps(dashboard = TRUE)
+
+# Opcional: salida PDF (paquete tinytex + distribución LaTeX TinyTeX)
+install_project_deps(pdf = TRUE)
+# Si pdflatex sigue sin encontrarse: tinytex::install_tinytex()
+# Luego reiniciar R / RStudio. Chequear: Sys.which("pdflatex")
 ```
+
+| Salida del RMD | ¿Qué hace falta? | Dónde se instala (no en el RMD) |
+|---|---|---|
+| HTML (recomendado) | `rmarkdown`, `knitr`, etc. | `source("src/000_install_deps.R")` |
+| Word (opcional) | Lo mismo que HTML (sin LaTeX) | `source("src/000_install_deps.R")` |
+| PDF (opcional) | Lo de HTML **más** LaTeX (`xelatex` vía TinyTeX o MiKTeX) | `install_project_deps(pdf = TRUE)` |
+
+Alternativa a TinyTeX en Windows: [MiKTeX](https://miktex.org). Quarto CLI
+([quarto.org](https://quarto.org)) solo hace falta para el sitio del dashboard.
 
 | Paquete | Uso |
 |---|---|
@@ -271,10 +341,12 @@ install.packages(c("shiny", "bslib", "bsicons", "plotly", "here", "rsconnect"))
 | `tidyverse` | Manipulación de datos y visualización (`dplyr`, `ggplot2`, `readr`) |
 | `lubridate` | Manejo de fechas |
 | `tictoc` | Medición de tiempos en la descarga |
-| `readxl` | Lectura del reporte SIPA en formato `.xlsx` |
+| `readxl` / `janitor` | Lectura y limpieza de Excel (SIPA, OPEX, PBG, finanzas) |
+| `ggrepel` / `treemapify` | Etiquetas y treemaps en gráficos del monitor |
+| `rmarkdown` / `knitr` / `here` | Knit del informe |
+| `tinytex` | LaTeX liviano para salida PDF (opcional) |
 | `shiny` / `bslib` / `bsicons` | App interactiva del dashboard y su theming |
 | `plotly` | Versión interactiva de los gráficos (hover/zoom) |
-| `here` | Resolución de rutas robusta en el dashboard |
 | `rsconnect` | Deploy de la app a shinyapps.io |
 
 ## Cómo reproducir
@@ -314,6 +386,357 @@ source("src/13b_nbi_poblacion.R")        # % Población en hogares con NBI
 ```
 
 > La descarga completa (2007–2025) puede tomar varios minutos. El script de descarga es incremental: si se interrumpe, retoma desde el último archivo faltante.
+
+### Pipelines no-EPH (corrida puntual)
+
+```r
+# Empleados públicos (EPH Total Urbano)
+source("src/06_prep_empleados_publicos_eph_tu.R")
+source("src/06_empleados_publicos.R")
+
+# Exportaciones (OPEX)
+source("src/14_prep_exportaciones.R")
+source("src/14_prep_exportaciones_subrubros.R")
+source("src/14_exportaciones_subrubros.R")
+source("src/14_prep_exportaciones_indice.R")
+source("src/14_exportaciones_indice.R")
+
+# Salarios SIPA reales (después del prep/viz nominal 03)
+source("src/03_prep_salarios_privados_SIPA_real.R")
+source("src/03_salarios_privados_SIPA_real.R")
+
+# PBG / estructura / % industrial (CEPAL)
+source("src/15_prep_pbg.R")
+source("src/15_pbg.R")
+
+# Recursos propios (TOP + RON)
+source("src/16_prep_recursos_propios.R")
+source("src/16_recursos_propios.R")
+```
+
+## Qué actualizar / qué no tocar
+
+### Actualizar (cuando salga dato nuevo)
+
+| Fuente | Indicadores | Frecuencia típica | Acción |
+|---|---|---|---|
+| EPH continua | 04, 09a, 10, 12, 13a, 13b, 03b | Trimestral | `00` → `01` → `02` → scripts viz |
+| EPH Total Urbano | 06 | Anual (3T) | Reemplazar raw TU → `06_prep` → `06` viz |
+| SIPA | 03, 05 | Mensual | Reemplazar xlsx en `data/raw_data/sipa/` → prep → viz |
+| SRT empresas | 07 | Según fuente | Actualizar CSV/raw → `07_cant_empresas.R` |
+| OPEX INDEC | 14 | Anual | Descargar xls OPEX → `14_prep*` → viz |
+| CEPAL VAB 52 sectores | 15 | Cuando publiquen | Borrar/reemplazar Excel en `data/raw_data/pbg/` → `15_prep` → `15_pbg` |
+| TOP / RON Min. Economía | 16 | Anual | Reemplazar xlsx en `data/raw_data/finanzas/` → `16_prep` → viz |
+| Ejecuciones APNF Min. Economía | 17 | Anual | Reemplazar `serie_aif-apnf-*.xlsx` → `17_prep` → viz |
+| Relevamiento Anual (educación) | 18 Trayectoria | Anual | **Tarea provincia:** actualizar Excel de cohorte → prep → viz (ficha 18) |
+
+Después de regenerar PNG: `rmarkdown::render("informe/monitor_la_rioja.Rmd")`.
+
+### No tocar (salvo decisión metodológica explícita)
+
+- Corte **La Rioja / NOA-Resto / Resto país** (NOA-Resto = Catamarca, Jujuy, Salta, Santiago del Estero, Tucumán; **no** incluye La Rioja).
+- Fórmulas de cada indicador (documentadas en el RMD y en el encabezado de cada `src/*_prep*.R`).
+- Tema visual `style/fundar_monitor_theme.R` y paleta regional.
+- Agrupación de letras CIIU → grandes sectores en PBG (salvo acuerdo con el equipo).
+
+---
+
+## Continuidad para el equipo provincial
+
+La idea del monitor es que **alguien del equipo de la provincia pueda actualizarlo** sin rearmar el análisis desde cero.
+
+**Tres entregables (separados):**
+
+1. **Fichas metodológicas** (PPT / HTML) — qué mide cada indicador, fuente, fórmula.
+2. **RMD de coyuntura** (`informe/monitor_la_rioja.Rmd`) — gráficos + análisis; sin el manual de proyecto adentro.
+3. **Este README** — cómo instalar, actualizar y mantener.
+
+### Plantilla de sección del RMD (para quien edita el monitor)
+
+Cada indicador en el RMD sigue este orden (no meter acá el PPT de fichas ni este README):
+
+1. Título (`##`)
+2. Pregunta guía
+3. Definición
+4. Fuente / URL
+5. Raw / scripts / CSV
+6. Cálculo / limitaciones
+7. Actualización (breve; detalle en la ficha de abajo)
+8. Gráficos (`mostrar(...)`)
+9. Análisis (texto de *Análisis indicadores*), con último dato preferentemente desde CSV
+
+Esqueleto:
+
+~~~~
+## Nombre
+
+**Pregunta.** ¿…?
+**Definición.** …
+**Fuente / URL.** … — [link](https://…)
+**Raw / scripts / CSV.** `data/raw_data/…` · `src/…` · `data/inputs_md/…`
+**Cálculo.** … Limitaciones: …
+**Actualización.** …
+
+```{r id}
+mostrar("outputs/plots/XX.png")
+```
+
+### Análisis
+…
+~~~~
+
+Hay dos piezas técnicas de mantenimiento:
+
+1. **Este README** — manual de fuentes y pasos de actualización (fichas abajo).
+2. **`informe/monitor_la_rioja.Rmd`** — informe reproducible: al actualizar datos y re-correr el pipeline, los **gráficos cambian**; el texto fijo explica cómo leer (no debe congelar para siempre el “último número”).
+
+Flujo habitual cuando sale dato nuevo:
+
+```text
+1. Bajar / reemplazar el raw en data/raw_data/...
+2. Correr prep → viz del indicador (o source("src/999_run_pipeline.R"))
+3. Revisar PNG en outputs/plots/
+4. Knit: rmarkdown::render("informe/monitor_la_rioja.Rmd")
+```
+
+### Inventario rápido (estado de entrega)
+
+| Indicador | CSV / plots | Texto talleres | En RMD | Notas |
+|---|---|---|---|---|
+| 04 Desempleo | ✓ | ✓ (borrador) | Básico | Completar lectura dinámica en RMD |
+| 10 Empleo | ✓ | ✓ (doc principal) | Básico | |
+| 09a Informalidad | ✓ | ✓ | Básico | |
+| 05 Puestos SIPA | ✓ | ✓ | Básico | Ficha README modelo ↓ |
+| 03 Salarios SIPA (+ real) | ✓ | ✓ | Parcial | Falta meter real/MA12 al RMD |
+| 03b Salarios EPH | ✓ | Pendiente gráfico en análisis | Parcial | |
+| 06 Empleo público | ✓ | ✓ | ✓ | |
+| 07 Empresas | ✓ | ✓ | Básico | |
+| 12 Educ. superior | ✓ | ✓ | Básico | |
+| 13 NBI (pobreza por NBI) | ✓ | ✓ | Básico | No es IPM / pobreza multidimensional |
+| 14 Exportaciones | ✓ | ✓ | Piloto (plantilla + análisis + último dato CSV) | |
+| 15 PBG | ✓ | Borrador PBI en doc | ✓ | |
+| 16 Recursos propios | ✓ | — | ✓ | |
+| 17 Resultado fiscal APNF | ✓ | — | Pendiente | Ratio resultado/ingresos; RMD después |
+| 15 PBG per cápita | ✓ | — | Pendiente | Extensión del 15; RMD después |
+| 18 Trayectoria escolar | ✓ | Notas reuniones | Pendiente | Update RA = tarea provincia |
+
+### Plantilla de ficha (usar para cada indicador)
+
+Copiar y completar:
+
+```markdown
+### XX — Nombre del indicador
+
+- **Qué mide:** …
+- **Tópico:** …
+- **Fuente / organismo:** …
+- **Publicación / URL:** … (página + nombre típico del archivo)
+- **Frecuencia:** …
+- **Archivo raw en el repo:** `data/raw_data/...`
+- **CSV tidy:** `data/inputs_md/...`
+- **Scripts:** prep `src/XX_prep_....R` → viz `src/XX_....R`
+- **Gráficos:** `outputs/plots/XX_....png`
+- **Cómo actualizar:**
+  1. …
+  2. …
+  3. …
+- **Último dato esperado tras update:** el PNG y, en el RMD, la serie deben
+  reflejar el nuevo período (subas/bajas incluidas).
+- **No confundir / limitaciones:** …
+```
+
+### Fichas modelo (completas)
+
+#### 05 — Puestos de trabajo asalariados privados
+
+- **Qué mide:** Stock de personas con empleo asalariado en el sector privado registrado, en miles, por provincia.
+- **Tópico:** Trabajo e ingresos – Salarios e ingresos.
+- **Fuente / organismo:** SIPA / Observatorio de Empleo y Dinámica Empresarial (OEDE), Ministerio de Capital Humano. Reporte *Trabajo registrado*, hoja **A.5.2** (sin estacionalidad).
+- **Publicación / URL:** Portal de estadísticas de trabajo registrado del Ministerio de Capital Humano / OEDE (buscar “Trabajo registrado” / estadísticas mensuales). El nombre del Excel cambia con el mes (ej. `trabajoregistrado_2603_estadisticas.xlsx`).
+- **Frecuencia:** Mensual.
+- **Archivo raw:** `data/raw_data/sipa/trabajoregistrado_XXXX_estadisticas.xlsx` (reemplazar el archivo vigente; actualizar `path_raw` en el prep si cambia el nombre).
+- **CSV tidy:** `data/inputs_md/05_puestos_asalariados_privados.csv`
+- **Scripts:** `src/05_prep_puestos_asalariados_privados.R` → `src/05_puestos_asalariados_privados.R`
+- **Gráficos:** `outputs/plots/05_puestos_asalariados_privados.png`
+- **Cómo actualizar:**
+  1. Descargar el Excel nuevo de Trabajo registrado.
+  2. Guardarlo en `data/raw_data/sipa/` y ajustar `path_raw` en el prep si el nombre cambió.
+  3. `source("src/05_prep_puestos_asalariados_privados.R")`
+  4. `source("src/05_puestos_asalariados_privados.R")`
+  5. Knit del RMD (o revisar el PNG).
+- **Limitaciones:** No incluye no registrados ni monotributo puro. La comparación de **niveles** entre provincias está condicionada por tamaño; lo útil es la **dinámica** de La Rioja. Agregación regional en el gráfico = **promedio** de provincias del grupo.
+
+#### 03 — Salarios privados registrados (SIPA) + serie real (IPC)
+
+- **Qué mide:** Remuneración promedio por todo concepto del sector privado registrado (pesos corrientes). Complemento: misma serie en precios constantes (IPC nac./reg.) y media móvil 12 meses.
+- **Tópico:** Trabajo e ingresos – Salarios e ingresos.
+- **Fuente / organismo:** SIPA / OEDE – serie provincial de remuneraciones mensuales (`provinciales_serie_remuneraciones_mensual_*.xlsx`, hoja **Total**). IPC: INDEC/SSPM base dic-2016.
+- **Publicación / URL:**
+  - Remuneraciones: mismas estadísticas OEDE / Capital Humano (serie provincial de remuneraciones).
+  - IPC: [datos.gob.ar – IPC nivel general base dic-2016](https://infra.datos.gob.ar/catalog/sspm/dataset/145/distribution/145.3/download/indice-precios-al-consumidor-nivel-general-base-diciembre-2016-mensual.csv)
+- **Frecuencia:** Mensual (SIPA e IPC).
+- **Archivos raw:** `data/raw_data/sipa/provinciales_serie_remuneraciones_mensual_2dig_8.xlsx`; `data/raw_data/ipc/ipc_nacional_base_dic2016_mensual.csv`
+- **CSV tidy:** `data/inputs_md/03_salarios_privados_SIPA.csv`, `data/inputs_md/03_salarios_privados_SIPA_real.csv`
+- **Scripts:** `03_prep_salarios_privados_SIPA.R` → `03_salarios_privados_SIPA.R`; luego `03_prep_salarios_privados_SIPA_real.R` → `03_salarios_privados_SIPA_real.R`
+- **Gráficos:** `03_salarios_privados_SIPA.png`, `03_salarios_privados_SIPA_real.png`, `03_salarios_privados_SIPA_real_ma12.png`
+- **Cómo actualizar:**
+  1. Reemplazar el Excel de remuneraciones en `data/raw_data/sipa/`.
+  2. Correr prep + viz nominal.
+  3. Correr prep real (descarga/actualiza IPC si hace falta) + viz real / MA12.
+  4. Knit del RMD.
+- **Limitaciones:** Solo privado registrado. “Por todo concepto” incluye aguinaldo (SAC) → serrucho en jun/dic; para tendencia usar MA12. El ranking nominal entre provincias en un mismo mes es más robusto que mirar solo la variación nominal en el tiempo.
+
+#### 14 — Exportaciones (OPEX)
+
+- **Qué mide:** Exportaciones de bienes por origen provincial (millones USD); índice 2015=100; participación sobre la suma de las 24 jurisdicciones; composición por subrubros.
+- **Tópico:** Macroeconomía – Crecimiento.
+- **Fuente / organismo:** INDEC – Origen provincial de las exportaciones (OPEX).
+- **Publicación / URL:**
+  - Página: https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-2-79
+  - Archivo típico: `https://www.indec.gob.ar/ftp/cuadros/economia/sh_opex_principales_grubros_1993_XXXX.xls` (el año final del nombre cambia).
+- **Frecuencia:** Anual (años recientes a menudo provisorios).
+- **Archivo raw:** `data/raw_data/exportaciones/sh_opex_principales_grubros_1993_2025.xls` (reemplazar y/o actualizar `url_opex` / `path_raw` en el prep).
+- **CSV tidy:** `14_exportaciones_por_provincia.csv`, `14_exportaciones_subrubros_*.csv`, `14_exportaciones_indice_2015_region.csv`
+- **Scripts:** `14_prep_exportaciones.R`, `14_prep_exportaciones_subrubros.R`, `14_prep_exportaciones_indice.R` → `14_exportaciones_subrubros.R`, `14_exportaciones_indice.R`
+- **Gráficos:** totales, treemap, heatmap, índice 2015=100, share nacional (`outputs/plots/14_*.png`)
+- **Cómo actualizar:**
+  1. Descargar el xls OPEX nuevo desde la página INDEC (o borrar el raw local para que el prep lo baje si la URL está al día).
+  2. Actualizar el nombre/URL en `14_prep_exportaciones.R` si cambió el año del archivo.
+  3. Correr prep totales → prep subrubros → prep índice → ambos viz.
+  4. Knit del RMD.
+- **Limitaciones:** Solo bienes (no servicios). La suma de subrubros detallados **no** cierra con el total provincial (usar filas/total del CSV de totales para shares). Agregación regional = **suma**. El índice compara dinámicas, no niveles absolutos. Minería puede no aparecer desagregada para La Rioja en OPEX.
+
+#### 04 — Tasa de desempleo
+
+- **Qué mide:** Desocupados / PEA × 100 (aglomerados).
+- **Fuente / URL:** EPH continua (INDEC) — [bases de microdatos](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos). Descarga en repo vía `eph::get_microdata()` (`00_descarga_eph.R`).
+- **Frecuencia:** Trimestral.
+- **Scripts:** `00` → `01` → `02` → `04_desoc.R`.
+- **CSV / plot:** indicadores en `data/inputs_md/` (serie desoc) · `outputs/plots/04_desoc.png`.
+- **Cómo actualizar:** correr descarga incremental → limpieza → indicadores → viz.
+- **Limitaciones:** Para La Rioja es el aglomerado capital, no toda la provincia.
+
+#### 10 — Tasa de empleo
+
+- **Qué mide:** Ocupados / población × 100.
+- **Fuente / URL:** misma EPH continua — [bases](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos).
+- **Scripts:** pipeline EPH → `10_tasa_empleo.R`.
+- **Plot:** `outputs/plots/10_tasa_empleo.png`.
+
+#### 09a — Informalidad (aportes)
+
+- **Qué mide:** Asalariados sin aportes / asalariados × 100.
+- **Fuente / URL:** misma EPH continua — [bases](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos).
+- **Scripts:** pipeline EPH → `09a_informalidad_aportes.R`.
+- **Plot:** `outputs/plots/09a_informalidad_aportes.png`.
+
+#### 12 — Educación superior (+25)
+
+- **Qué mide:** % de 25+ con estudios superiores completos.
+- **Fuente / URL:** misma EPH continua — [bases](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos).
+- **Scripts:** pipeline EPH → `12_educ.R`.
+- **Plot:** `outputs/plots/12_educ.png`.
+
+#### 13a / 13b — Pobreza por NBI (hogares y población)
+
+- **Qué mide:** % de hogares (13a) y % de población en esos hogares (13b) con al
+  menos una Necesidad Básica Insatisfecha (`NBI_TOT`). Sub-dimensiones: hacinamiento,
+  vivienda, saneamiento, escolaridad, capacidad de subsistencia (definiciones en
+  `CLAUDE.md` / pipeline EPH).
+- **Nombre en el monitor / fichas:** **pobreza por NBI** (no “pobreza
+  multidimensional” / IPM).
+- **Tópico:** Desarrollo – Pobreza.
+- **Fuente / URL:** EPH continua (INDEC) — [bases de microdatos](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos).
+- **Scripts:** pipeline EPH → `13a_nbi_hogares.R`, `13b_nbi_poblacion.R`.
+- **Plots:** `13a_nbi_hogares.png`, `13b_nbi_poblacion.png`.
+- **No confundir / limitaciones:** Conserva dimensiones críticas de privación
+  (vivienda, saneamiento, escolaridad, hacinamiento, subsistencia), pero **no es
+  un Índice de Pobreza Multidimensional (IPM)**: no usa la misma canasta de
+  indicadores, umbrales ni agregación (p. ej. Alkire-Foster) que un IPM. Es el
+  indicador clásico de NBI sobre EPH. Para La Rioja, aglomerado capital (EPH
+  continua), no toda la provincia.
+
+#### 06 — Empleados públicos cada 1.000 hab. (+ composición)
+
+- **Qué mide:** Asalariados estatales cada 1.000 habitantes (urbano); composición por rama CAES.
+- **Fuente / URL:** EPH Total Urbano (INDEC) — [bases de microdatos](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos) (personas, 3T).
+- **Frecuencia:** Anual (3er trimestre).
+- **Raw:** `data/raw_data/eph_total_urbano_*/`.
+- **Scripts:** `06_prep_empleados_publicos_eph_tu.R` → `06_empleados_publicos.R`; composición `06_prep_empleados_publicos_composicion.R` → `06_empleados_publicos_composicion.R`.
+- **Plots:** `06_empleados_publicos_*.png`.
+- **Cómo actualizar:** sumar carpeta del nuevo 3T → prep → viz.
+- **Limitaciones:** Cobertura urbana; 2019/2020 con jurisdicciones faltantes en algunos años.
+
+#### 07 — Cantidad de empresas
+
+- **Qué mide:** Empresas empleadoras registradas por jurisdicción.
+- **Fuente / URL:** SRT (Superintendencia de Riesgos del Trabajo) — estadísticas de empleadores (verificar portal SRT / datos abiertos vigentes).
+- **CSV / script / plot:** `07_serie_empresas_por_jurisdiccion.csv` · `07_cant_empresas.R` · `11_empresas_jurisdiccion.png`.
+- **Cómo actualizar:** reemplazar serie tidy/raw → viz.
+
+#### 15 — PBG / % industrial / estructura
+
+- **Qué mide:** VAB provincial precios 2004; share industrial; estructura sectorial.
+- **Fuente / URL:** [Excel CEPAL 52 sectores](https://repositorio.cepal.org/server/api/core/bitstreams/539fcce5-8977-4061-a222-fbfd7358a35f/content).
+- **Scripts:** `15_prep_pbg.R` → `15_pbg.R`.
+- **Plots:** `15_pbg_*.png`.
+- **Cómo actualizar:** reemplazar Excel en `data/raw_data/pbg/` → prep → viz.
+
+#### 16 — Recursos propios / totales
+
+- **Qué mide:** TOP / (TOP + RON).
+- **Fuente / URL:** [TOP](https://www.argentina.gob.ar/sites/default/files/serie_top_1984_2024_1.xlsx), [RON](https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.xlsx) (Min. Economía; nombres pueden cambiar).
+- **Scripts:** `16_prep_recursos_propios.R` → `16_recursos_propios.R`.
+- **Plot:** `16_recursos_propios.png`.
+- **Relacionado:** resultado fiscal APNF (17) — cuenta completa, no solo tributario.
+
+#### 17 — Resultado fiscal (APNF)
+
+- **Qué mide:** Resultado financiero / ingresos totales (y complemento primario / ingresos). APNF = Administración Pública No Financiera.
+- **Fuente / URL:** [Ejecuciones presupuestarias](https://www.argentina.gob.ar/economia/sechacienda/coordinacion-fiscal-provincial/ejecucion-presupuestaria-provincial/ejecuciones) · `serie_aif-apnf-2025.xlsx`.
+- **Scripts:** `17_prep_resultado_fiscal.R` → `17_resultado_fiscal.R`.
+- **Plots:** `17_resultado_fiscal.png`, `17_resultado_fiscal_primario.png`.
+- **Nota:** valores nominales; no se deflacta (se usa el ratio). RMD pendiente.
+
+#### 18 — Trayectoria escolar (cohorte primaria → secundaria)
+
+- **Qué mide:** Para una cohorte teórica de **12 años** (7 de primaria + 5 de secundaria en La Rioja):
+
+  \[
+  \text{Trayectoria} = \frac{\text{matrícula en 5° año (año final)}}{\text{matrícula en 1° grado (año inicial)}} \times 100
+  \]
+
+  Ejemplo con la base provincial 2014–2025: \(5325 / 6912 \approx 77\%\).
+
+- **Tópico:** Desarrollo – Educación.
+- **Fuente / organismo:** Relevamiento Anual (RA) procesado por la Unidad de Información y Estadística Educativa de La Rioja (no es EPH).
+- **Acuerdo metodológico con la provincia** (dejar registro explícito):
+  - Reunión **3/7/2026** con Claudia Garcete (Coordinadora Unidad de Información y Estadística Educativa): priorizar flujo primaria→secundaria; no cobertura; no cruzar con lengua/matemática; La Rioja es 7+5 (no 6+6).
+  - Reunión **10/7/2026** con Diego Oviedo: fijar numerador = matrícula de **5° año** (no egreso formal si el RA del año aún no cierra); denominador = matrícula de **1° grado** de la cohorte; ideal restar repitentes de 1° grado cuando existan; desagregar sexo y estatal/privado si la base lo permite.
+  - Notas/Word de esas reuniones y Excel de trabajo viven en `trayectoria educativa/` del repo (insumo de diseño; el raw operativo del pipeline irá a `data/raw_data/educacion/` cuando se versionen los scripts).
+- **Qué NO mide:** egreso con título; panel nominal de los mismos alumnos; cobertura escolar; trayectoria desde inicial.
+- **Limitaciones:** aproximación de stock de matrícula entre dos puntas de cohorte (migración, repitencia y reingresos afectan la lectura). Mejora futura: excluir repitentes de 1° grado del denominador; comparar cohortes sucesivas; NOA vía anuarios nacionales.
+- **Frecuencia:** Anual (cuando cierra el RA / anuario).
+- **Archivo raw:** `data/raw_data/educacion/trayectoria_2014_2025_la_rioja.xlsx` (copia operativa del Excel provincial).
+- **CSV tidy:** `18_trayectoria_escolar_matricula.csv`, `18_trayectoria_escolar_cohorte.csv`.
+- **Scripts:** `18_prep_trayectoria_escolar.R` → `18_trayectoria_escolar.R`.
+- **Gráficos:** `18_trayectoria_escolar.png`, `18_trayectoria_escolar_matricula.png`, `18_trayectoria_escolar_desagregada.png`.
+- **Cómo actualizar (tarea de la provincia):**
+  1. Cuando cierre el Relevamiento Anual del año nuevo, armar/actualizar la tabla de cohorte (mismo formato: nivel, año calendario, año de estudio, matrícula total, y si se puede sexo y sector).
+  2. Para la cohorte “a término” de 12 años: 1° grado en \(t\) y 5° año en \(t+11\) (con primaria de 7 años).
+  3. Reemplazar el Excel en `data/raw_data/educacion/` (mantener el nombre o ajustar `path_raw` en el prep).
+  4. `source("src/18_prep_trayectoria_escolar.R")` → `source("src/18_trayectoria_escolar.R")` → knit del monitor (cuando esté en el RMD).
+  5. Validar el número con el equipo de Educación antes de publicar.
+- **Responsable de la serie de matrícula:** cartera educativa provincial (RA). Fundar deja el pipeline reproducible; la provincia sostiene la actualización del input.
+
+#### 03b — Salarios registrados EPH (público/privado)
+
+- **Qué mide:** Ingreso ocupación principal de asalariados registrados, por sector.
+- **Fuente / URL:** EPH continua / Total Urbano según script — [bases INDEC](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos).
+- **Scripts:** `03b_salarios_registrados_EPH.R` y preps `03b_prep_*`.
+- **Nota:** útil para sector público; el análisis de talleres priorizó SIPA privado por ahora.
+
+---
 
 ## Contexto del proyecto
 

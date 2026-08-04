@@ -1,0 +1,2072 @@
+tipo,provincia,ANO4,TRIMESTRE,rama,empleados_publicos,empleados_publicos_tot,share,n_obs
+provincia,Buenos Aires,2016,3,Adm. pública y defensa,422652,927350,0.4557631962042379,421
+provincia,Buenos Aires,2016,3,Enseñanza,269788,927350,0.2909235995039629,289
+provincia,Buenos Aires,2016,3,Salud y asistencia social,120957,927350,0.13043295411656872,137
+provincia,Buenos Aires,2016,3,"Electricidad, gas y agua",3771,927350,0.0040664258370625974,3
+provincia,Buenos Aires,2016,3,Transporte,29374,927350,0.031675203536960156,27
+provincia,Buenos Aires,2016,3,Finanzas y seguros,9994,927350,0.010776945058500027,12
+provincia,Buenos Aires,2016,3,Construcción,4274,927350,0.004608831616973096,7
+provincia,Buenos Aires,2016,3,Servicios de seguridad / edificios,6094,927350,0.006571413166549847,6
+provincia,Buenos Aires,2016,3,Otros,50405,927350,0.054353803849679194,56
+provincia,Buenos Aires,2016,3,Sin clasificar / NsNr,10041,927350,0.010827627109505581,9
+provincia,C.A.B.A.,2016,3,Adm. pública y defensa,144841,282442,0.5128167907039322,112
+provincia,C.A.B.A.,2016,3,Enseñanza,55912,282442,0.19795922702714186,50
+provincia,C.A.B.A.,2016,3,Salud y asistencia social,49677,282442,0.17588389828708195,32
+provincia,C.A.B.A.,2016,3,Transporte,4822,282442,0.01707253170562452,4
+provincia,C.A.B.A.,2016,3,Finanzas y seguros,1524,282442,0.005395798075357065,2
+provincia,C.A.B.A.,2016,3,Construcción,829,282442,0.002935115882198823,1
+provincia,C.A.B.A.,2016,3,Servicios de seguridad / edificios,1164,282442,0.004121200104800277,1
+provincia,C.A.B.A.,2016,3,Otros,21936,282442,0.07766550300592688,16
+provincia,C.A.B.A.,2016,3,Sin clasificar / NsNr,1737,282442,0.006149935207936497,2
+provincia,Catamarca,2016,3,Adm. pública y defensa,23553,49335,0.47740954697476434,268
+provincia,Catamarca,2016,3,Enseñanza,15491,49335,0.3139961487787575,187
+provincia,Catamarca,2016,3,Salud y asistencia social,3389,49335,0.06869362521536435,40
+provincia,Catamarca,2016,3,"Electricidad, gas y agua",405,49335,0.0082091821222256,4
+provincia,Catamarca,2016,3,Finanzas y seguros,556,49335,0.011269889530759096,6
+provincia,Catamarca,2016,3,Construcción,2131,49335,0.04319448667274754,23
+provincia,Catamarca,2016,3,Servicios de seguridad / edificios,729,49335,0.014776527820006082,10
+provincia,Catamarca,2016,3,Otros,2925,49335,0.05928853754940711,31
+provincia,Catamarca,2016,3,Sin clasificar / NsNr,156,49335,0.0031620553359683794,2
+provincia,Chaco,2016,3,Adm. pública y defensa,47500,101106,0.46980396811267383,142
+provincia,Chaco,2016,3,Enseñanza,38155,101106,0.3773762190176646,104
+provincia,Chaco,2016,3,Salud y asistencia social,8536,101106,0.08442624572231124,33
+provincia,Chaco,2016,3,"Electricidad, gas y agua",2172,101106,0.021482404605067947,8
+provincia,Chaco,2016,3,Transporte,547,101106,0.005410163590687002,2
+provincia,Chaco,2016,3,Finanzas y seguros,335,101106,0.003313354301426226,2
+provincia,Chaco,2016,3,Construcción,939,101106,0.009287282653848436,5
+provincia,Chaco,2016,3,Otros,2922,101106,0.028900361996320692,10
+provincia,Chubut,2016,3,Adm. pública y defensa,22091,52672,0.41940689550425275,175
+provincia,Chubut,2016,3,Enseñanza,17788,52672,0.3377126366950182,127
+provincia,Chubut,2016,3,Salud y asistencia social,6369,52672,0.12091813487241798,45
+provincia,Chubut,2016,3,Transporte,1175,52672,0.022307867557715674,9
+provincia,Chubut,2016,3,Finanzas y seguros,337,52672,0.006398086269744836,3
+provincia,Chubut,2016,3,Construcción,1576,52672,0.029921020656136086,12
+provincia,Chubut,2016,3,Servicios de seguridad / edificios,259,52672,0.004917223572296476,2
+provincia,Chubut,2016,3,Otros,2956,52672,0.05612089914945322,21
+provincia,Chubut,2016,3,Sin clasificar / NsNr,121,52672,0.002297235722964763,1
+provincia,Corrientes,2016,3,Adm. pública y defensa,39453,84669,0.46596747333734895,131
+provincia,Corrientes,2016,3,Enseñanza,24425,84669,0.2884763018342014,91
+provincia,Corrientes,2016,3,Salud y asistencia social,10760,84669,0.12708311188274338,33
+provincia,Corrientes,2016,3,"Electricidad, gas y agua",521,84669,0.006153373725920939,2
+provincia,Corrientes,2016,3,Transporte,932,84669,0.011007570657501565,3
+provincia,Corrientes,2016,3,Finanzas y seguros,564,84669,0.0066612337455266984,2
+provincia,Corrientes,2016,3,Construcción,2288,84669,0.02702287732227852,7
+provincia,Corrientes,2016,3,Servicios de seguridad / edificios,38,84669,4.4880652895392645e-4,1
+provincia,Corrientes,2016,3,Otros,5463,84669,0.06452184388619212,22
+provincia,Corrientes,2016,3,Sin clasificar / NsNr,225,84669,0.0026574070793324595,1
+provincia,Córdoba,2016,3,Adm. pública y defensa,71642,162890,0.4398182822763828,146
+provincia,Córdoba,2016,3,Enseñanza,46536,162890,0.28568972926514824,117
+provincia,Córdoba,2016,3,Salud y asistencia social,24084,162890,0.1478543802566149,38
+provincia,Córdoba,2016,3,"Electricidad, gas y agua",1850,162890,0.01135735772607281,8
+provincia,Córdoba,2016,3,Transporte,2822,162890,0.017324574866474308,8
+provincia,Córdoba,2016,3,Finanzas y seguros,632,162890,0.0038799189637178464,2
+provincia,Córdoba,2016,3,Construcción,607,162890,0.0037264411566087542,5
+provincia,Córdoba,2016,3,Otros,14717,162890,0.0903493154889803,23
+provincia,Entre Ríos,2016,3,Adm. pública y defensa,35054,102267,0.34276941730959154,184
+provincia,Entre Ríos,2016,3,Enseñanza,26422,102267,0.2583629127675594,136
+provincia,Entre Ríos,2016,3,Salud y asistencia social,10085,102267,0.09861441129592147,38
+provincia,Entre Ríos,2016,3,"Electricidad, gas y agua",5462,102267,0.05340921313815796,7
+provincia,Entre Ríos,2016,3,Transporte,1550,102267,0.015156404314197151,6
+provincia,Entre Ríos,2016,3,Finanzas y seguros,754,102267,0.007372857324454614,6
+provincia,Entre Ríos,2016,3,Construcción,2925,102267,0.02860160168969462,13
+provincia,Entre Ríos,2016,3,Servicios de seguridad / edificios,7035,102267,0.06879051893572707,10
+provincia,Entre Ríos,2016,3,Otros,12980,102267,0.12692266322469614,22
+provincia,Formosa,2016,3,Adm. pública y defensa,23039,41336,0.5573592026320883,149
+provincia,Formosa,2016,3,Enseñanza,12266,41336,0.29673892006967295,79
+provincia,Formosa,2016,3,Salud y asistencia social,3795,41336,0.09180859299400039,24
+provincia,Formosa,2016,3,Transporte,172,41336,0.004161021869556802,1
+provincia,Formosa,2016,3,Finanzas y seguros,141,41336,0.00341107025353203,1
+provincia,Formosa,2016,3,Construcción,492,41336,0.011902457905941553,3
+provincia,Formosa,2016,3,Servicios de seguridad / edificios,428,41336,0.010354170698664603,4
+provincia,Formosa,2016,3,Otros,1003,41336,0.024264563576543448,6
+provincia,Jujuy,2016,3,Adm. pública y defensa,35664,78095,0.4566745630322044,190
+provincia,Jujuy,2016,3,Enseñanza,29829,78095,0.38195787182277996,154
+provincia,Jujuy,2016,3,Salud y asistencia social,9318,78095,0.11931621742749215,54
+provincia,Jujuy,2016,3,"Electricidad, gas y agua",298,78095,0.0038158652922722323,2
+provincia,Jujuy,2016,3,Transporte,55,78095,7.04270439848902e-4,1
+provincia,Jujuy,2016,3,Finanzas y seguros,506,78095,0.006479288046609898,3
+provincia,Jujuy,2016,3,Construcción,518,78095,0.00663294705166784,3
+provincia,Jujuy,2016,3,Servicios de seguridad / edificios,207,78095,0.0026506178372495037,2
+provincia,Jujuy,2016,3,Otros,1483,78095,0.01898969204174403,8
+provincia,Jujuy,2016,3,Sin clasificar / NsNr,217,78095,0.0027786670081311224,1
+provincia,La Pampa,2016,3,Adm. pública y defensa,12686,30265,0.4191640508838592,108
+provincia,La Pampa,2016,3,Enseñanza,9420,30265,0.31125061952750704,87
+provincia,La Pampa,2016,3,Salud y asistencia social,3623,30265,0.119709235090038,27
+provincia,La Pampa,2016,3,"Electricidad, gas y agua",516,30265,0.0170493969932265,3
+provincia,La Pampa,2016,3,Transporte,363,30265,0.011994052535932595,2
+provincia,La Pampa,2016,3,Finanzas y seguros,261,30265,0.008623822897736659,3
+provincia,La Pampa,2016,3,Construcción,544,30265,0.017974558070378326,5
+provincia,La Pampa,2016,3,Servicios de seguridad / edificios,1079,30265,0.03565174293738642,8
+provincia,La Pampa,2016,3,Otros,1544,30265,0.05101602511151495,13
+provincia,La Pampa,2016,3,Sin clasificar / NsNr,229,30265,0.007566495952420287,2
+provincia,La Rioja,2016,3,Adm. pública y defensa,26674,51307,0.5198900734792523,303
+provincia,La Rioja,2016,3,Enseñanza,14668,51307,0.28588691601535854,177
+provincia,La Rioja,2016,3,Salud y asistencia social,5050,51307,0.09842711520845109,65
+provincia,La Rioja,2016,3,"Electricidad, gas y agua",453,51307,0.008829204591966008,5
+provincia,La Rioja,2016,3,Transporte,649,51307,0.012649346093125695,6
+provincia,La Rioja,2016,3,Finanzas y seguros,598,51307,0.011655329682109654,6
+provincia,La Rioja,2016,3,Construcción,528,51307,0.01029099343169548,6
+provincia,La Rioja,2016,3,Servicios de seguridad / edificios,581,51307,0.01132399087843764,8
+provincia,La Rioja,2016,3,Otros,1917,51307,0.03736332274348529,21
+provincia,La Rioja,2016,3,Sin clasificar / NsNr,189,51307,0.0036837078761182683,2
+provincia,Mendoza,2016,3,Adm. pública y defensa,56483,113477,0.4977484424156437,136
+provincia,Mendoza,2016,3,Enseñanza,38608,113477,0.3402275350952175,102
+provincia,Mendoza,2016,3,Salud y asistencia social,8363,113477,0.07369775372983071,21
+provincia,Mendoza,2016,3,"Electricidad, gas y agua",705,113477,0.006212712708302123,2
+provincia,Mendoza,2016,3,Transporte,1867,113477,0.01645267322893626,4
+provincia,Mendoza,2016,3,Finanzas y seguros,871,113477,0.007675564211249857,3
+provincia,Mendoza,2016,3,Construcción,678,113477,0.005974779030111829,2
+provincia,Mendoza,2016,3,Servicios de seguridad / edificios,1585,113477,0.013967588145615412,4
+provincia,Mendoza,2016,3,Otros,4317,113477,0.03804295143509257,9
+provincia,Misiones,2016,3,Adm. pública y defensa,45491,90901,0.5004455396530291,156
+provincia,Misiones,2016,3,Enseñanza,29743,90901,0.327202120988768,98
+provincia,Misiones,2016,3,Salud y asistencia social,9034,90901,0.09938284507321152,28
+provincia,Misiones,2016,3,"Electricidad, gas y agua",1697,90901,0.018668661510874467,4
+provincia,Misiones,2016,3,Transporte,213,90901,0.002343208545560555,1
+provincia,Misiones,2016,3,Finanzas y seguros,484,90901,0.005324473878175157,2
+provincia,Misiones,2016,3,Construcción,2273,90901,0.02500522546506639,7
+provincia,Misiones,2016,3,Otros,1966,90901,0.021627924885314793,8
+provincia,Neuquén,2016,3,Adm. pública y defensa,34191,68045,0.5024763024469101,164
+provincia,Neuquén,2016,3,Enseñanza,17470,68045,0.2567418620030862,84
+provincia,Neuquén,2016,3,Salud y asistencia social,7871,68045,0.11567345139246087,39
+provincia,Neuquén,2016,3,"Electricidad, gas y agua",1022,68045,0.015019472407965317,4
+provincia,Neuquén,2016,3,Transporte,455,68045,0.006686751414505107,3
+provincia,Neuquén,2016,3,Finanzas y seguros,670,68045,0.009846425159820708,3
+provincia,Neuquén,2016,3,Construcción,1363,68045,0.020030861929605407,8
+provincia,Neuquén,2016,3,Servicios de seguridad / edificios,1774,68045,0.02607098243809244,11
+provincia,Neuquén,2016,3,Otros,3080,68045,0.04526416342126534,18
+provincia,Neuquén,2016,3,Sin clasificar / NsNr,149,68045,0.0021897273862884854,1
+provincia,Río Negro,2016,3,Adm. pública y defensa,27941,54930,0.5086655743673767,202
+provincia,Río Negro,2016,3,Enseñanza,16889,54930,0.30746404514837067,88
+provincia,Río Negro,2016,3,Salud y asistencia social,4658,54930,0.08479883488075733,20
+provincia,Río Negro,2016,3,"Electricidad, gas y agua",763,54930,0.013890405971236119,8
+provincia,Río Negro,2016,3,Transporte,558,54930,0.010158383397050792,4
+provincia,Río Negro,2016,3,Finanzas y seguros,353,54930,0.006426360822865465,1
+provincia,Río Negro,2016,3,Construcción,394,54930,0.00717276533770253,4
+provincia,Río Negro,2016,3,Otros,2878,54930,0.052393955943928636,24
+provincia,Río Negro,2016,3,Sin clasificar / NsNr,496,54930,0.009029674130711814,1
+provincia,Salta,2016,3,Adm. pública y defensa,38306,77871,0.4919161176818071,170
+provincia,Salta,2016,3,Enseñanza,27253,77871,0.3499762427604628,114
+provincia,Salta,2016,3,Salud y asistencia social,8609,77871,0.11055463523005997,34
+provincia,Salta,2016,3,"Electricidad, gas y agua",339,77871,0.004353353623300073,1
+provincia,Salta,2016,3,Transporte,415,77871,0.005329326706989765,2
+provincia,Salta,2016,3,Finanzas y seguros,153,77871,0.001964787918480564,1
+provincia,Salta,2016,3,Construcción,433,77871,0.005560478226811008,2
+provincia,Salta,2016,3,Otros,2363,77871,0.03034505785208871,10
+provincia,San Juan,2016,3,Adm. pública y defensa,23840,54710,0.43575214768780846,128
+provincia,San Juan,2016,3,Enseñanza,16788,54710,0.3068543227929081,101
+provincia,San Juan,2016,3,Salud y asistencia social,8462,54710,0.1546700785962347,35
+provincia,San Juan,2016,3,"Electricidad, gas y agua",436,54710,0.007969292633887771,3
+provincia,San Juan,2016,3,Transporte,33,54710,6.031804057759093e-4,1
+provincia,San Juan,2016,3,Finanzas y seguros,1053,54710,0.019246938402485834,4
+provincia,San Juan,2016,3,Construcción,1397,54710,0.02553463717784683,4
+provincia,San Juan,2016,3,Servicios de seguridad / edificios,311,54710,0.005684518369585085,3
+provincia,San Juan,2016,3,Otros,2390,54710,0.043684883933467374,9
+provincia,San Luis,2016,3,Adm. pública y defensa,13782,35690,0.386158587839731,116
+provincia,San Luis,2016,3,Enseñanza,12935,35690,0.3624264499859905,113
+provincia,San Luis,2016,3,Salud y asistencia social,4678,35690,0.1310731297282152,31
+provincia,San Luis,2016,3,"Electricidad, gas y agua",687,35690,0.01924908938077893,3
+provincia,San Luis,2016,3,Transporte,735,35690,0.020594003922667414,12
+provincia,San Luis,2016,3,Construcción,146,35690,0.004090781731577473,1
+provincia,San Luis,2016,3,Servicios de seguridad / edificios,67,35690,0.0018772765480526757,1
+provincia,San Luis,2016,3,Otros,2109,35690,0.059092182684225274,17
+provincia,San Luis,2016,3,Sin clasificar / NsNr,551,35690,0.015438498178761558,4
+provincia,Santa Cruz,2016,3,Adm. pública y defensa,27447,55765,0.49219044203353357,208
+provincia,Santa Cruz,2016,3,Enseñanza,14466,55765,0.2594100242087331,105
+provincia,Santa Cruz,2016,3,Salud y asistencia social,6253,55765,0.11213126513045817,40
+provincia,Santa Cruz,2016,3,"Electricidad, gas y agua",421,55765,0.007549538240832063,1
+provincia,Santa Cruz,2016,3,Transporte,1530,55765,0.02743656415314265,10
+provincia,Santa Cruz,2016,3,Finanzas y seguros,541,55765,0.00970142562539227,5
+provincia,Santa Cruz,2016,3,Construcción,1201,55765,0.021536806240473414,8
+provincia,Santa Cruz,2016,3,Servicios de seguridad / edificios,480,55765,0.008607549538240833,2
+provincia,Santa Cruz,2016,3,Otros,2301,55765,0.04126244059894199,21
+provincia,Santa Cruz,2016,3,Sin clasificar / NsNr,1125,55765,0.02017394423025195,6
+provincia,Santa Fe,2016,3,Adm. pública y defensa,59967,161977,0.3702192286559203,140
+provincia,Santa Fe,2016,3,Enseñanza,58289,161977,0.35985973317199355,104
+provincia,Santa Fe,2016,3,Salud y asistencia social,20413,161977,0.12602406514505146,43
+provincia,Santa Fe,2016,3,"Electricidad, gas y agua",1158,161977,0.007149163152793298,5
+provincia,Santa Fe,2016,3,Transporte,3549,161977,0.021910518159985678,5
+provincia,Santa Fe,2016,3,Finanzas y seguros,1772,161977,0.010939824789939313,4
+provincia,Santa Fe,2016,3,Construcción,3614,161977,0.022311809701377357,4
+provincia,Santa Fe,2016,3,Servicios de seguridad / edificios,3458,161977,0.021348710002037325,3
+provincia,Santa Fe,2016,3,Otros,9757,161977,0.06023694722090173,21
+provincia,Santiago del Estero,2016,3,Adm. pública y defensa,32037,70387,0.4551550712489522,157
+provincia,Santiago del Estero,2016,3,Enseñanza,23923,70387,0.3398781024905167,124
+provincia,Santiago del Estero,2016,3,Salud y asistencia social,8791,70387,0.12489522212908634,40
+provincia,Santiago del Estero,2016,3,Transporte,556,70387,0.007899185929219885,3
+provincia,Santiago del Estero,2016,3,Finanzas y seguros,270,70387,0.0038359356131103754,1
+provincia,Santiago del Estero,2016,3,Construcción,1119,70387,0.01589782204100189,4
+provincia,Santiago del Estero,2016,3,Servicios de seguridad / edificios,651,70387,0.009248866978277238,3
+provincia,Santiago del Estero,2016,3,Otros,3040,70387,0.043189793569835336,16
+provincia,Tierra del Fuego,2016,3,Adm. pública y defensa,10098,21542,0.468758703927212,87
+provincia,Tierra del Fuego,2016,3,Enseñanza,7786,21542,0.3614334787856281,68
+provincia,Tierra del Fuego,2016,3,Salud y asistencia social,1103,21542,0.05120230247887847,11
+provincia,Tierra del Fuego,2016,3,Transporte,288,21542,0.013369232197567542,2
+provincia,Tierra del Fuego,2016,3,Finanzas y seguros,194,21542,0.009005663355305914,2
+provincia,Tierra del Fuego,2016,3,Construcción,666,21542,0.030916349456874943,6
+provincia,Tierra del Fuego,2016,3,Servicios de seguridad / edificios,292,21542,0.013554915978089313,3
+provincia,Tierra del Fuego,2016,3,Otros,980,21542,0.045492526227834,10
+provincia,Tierra del Fuego,2016,3,Sin clasificar / NsNr,135,21542,0.006266827592609786,1
+provincia,Tucumán,2016,3,Adm. pública y defensa,44094,99161,0.4446707879105697,170
+provincia,Tucumán,2016,3,Enseñanza,31227,99161,0.3149121126249231,113
+provincia,Tucumán,2016,3,Salud y asistencia social,15664,99161,0.15796532911124334,51
+provincia,Tucumán,2016,3,"Electricidad, gas y agua",596,99161,0.00601042748661268,2
+provincia,Tucumán,2016,3,Transporte,483,99161,0.004870866570526719,2
+provincia,Tucumán,2016,3,Finanzas y seguros,416,99161,0.004195197708776636,1
+provincia,Tucumán,2016,3,Construcción,2922,99161,0.029467230060205123,11
+provincia,Tucumán,2016,3,Servicios de seguridad / edificios,1518,99161,0.015308437793083975,7
+provincia,Tucumán,2016,3,Otros,1903,99161,0.019191012595677737,6
+provincia,Tucumán,2016,3,Sin clasificar / NsNr,338,99161,0.003408598138381017,1
+provincia,Buenos Aires,2017,3,Adm. pública y defensa,419112,937528,0.44703944842180715,431
+provincia,Buenos Aires,2017,3,Enseñanza,256316,937528,0.27339556791903813,268
+provincia,Buenos Aires,2017,3,Salud y asistencia social,107448,937528,0.11460777704772551,111
+provincia,Buenos Aires,2017,3,"Electricidad, gas y agua",5264,937528,0.005614765638999582,5
+provincia,Buenos Aires,2017,3,Transporte,38695,937528,0.041273433966772195,34
+provincia,Buenos Aires,2017,3,Finanzas y seguros,10904,937528,0.011630585966499133,15
+provincia,Buenos Aires,2017,3,Construcción,8993,937528,0.009592246844894233,7
+provincia,Buenos Aires,2017,3,Servicios de seguridad / edificios,11707,937528,0.012487093718800931,12
+provincia,Buenos Aires,2017,3,Otros,69963,937528,0.07462497120086013,62
+provincia,Buenos Aires,2017,3,Sin clasificar / NsNr,9126,937528,0.009734109274602998,6
+provincia,C.A.B.A.,2017,3,Adm. pública y defensa,126356,257173,0.49132685001924775,101
+provincia,C.A.B.A.,2017,3,Enseñanza,58501,257173,0.2274772235032449,52
+provincia,C.A.B.A.,2017,3,Salud y asistencia social,35738,257173,0.13896482134594224,28
+provincia,C.A.B.A.,2017,3,Transporte,1540,257173,0.005988186940308664,2
+provincia,C.A.B.A.,2017,3,Finanzas y seguros,3882,257173,0.01509489720927158,4
+provincia,C.A.B.A.,2017,3,Servicios de seguridad / edificios,2524,257173,0.009814405089181213,2
+provincia,C.A.B.A.,2017,3,Otros,22301,257173,0.08671594607521008,20
+provincia,C.A.B.A.,2017,3,Sin clasificar / NsNr,6331,257173,0.024617669817593606,4
+provincia,Catamarca,2017,3,Adm. pública y defensa,23353,48840,0.47815315315315315,260
+provincia,Catamarca,2017,3,Enseñanza,15855,48840,0.32463144963144963,185
+provincia,Catamarca,2017,3,Salud y asistencia social,3633,48840,0.07438574938574939,42
+provincia,Catamarca,2017,3,"Electricidad, gas y agua",281,48840,0.0057534807534807535,3
+provincia,Catamarca,2017,3,Transporte,49,48840,0.0010032760032760034,1
+provincia,Catamarca,2017,3,Finanzas y seguros,602,48840,0.012325962325962326,7
+provincia,Catamarca,2017,3,Construcción,1575,48840,0.03224815724815725,18
+provincia,Catamarca,2017,3,Servicios de seguridad / edificios,420,48840,0.0085995085995086,5
+provincia,Catamarca,2017,3,Otros,3072,48840,0.0628992628992629,30
+provincia,Chaco,2017,3,Adm. pública y defensa,40733,99808,0.4081135780698942,130
+provincia,Chaco,2017,3,Enseñanza,37108,99808,0.37179384418082717,96
+provincia,Chaco,2017,3,Salud y asistencia social,7005,99808,0.07018475472907984,26
+provincia,Chaco,2017,3,"Electricidad, gas y agua",3853,99808,0.038604119910227636,8
+provincia,Chaco,2017,3,Transporte,3817,99808,0.038243427380570696,7
+provincia,Chaco,2017,3,Finanzas y seguros,1604,99808,0.01607085604360372,3
+provincia,Chaco,2017,3,Construcción,248,99808,0.002484770759858929,2
+provincia,Chaco,2017,3,Otros,5140,99808,0.05149887784546329,15
+provincia,Chaco,2017,3,Sin clasificar / NsNr,300,99808,0.003005771080474511,1
+provincia,Chubut,2017,3,Adm. pública y defensa,25620,50370,0.5086360929124479,206
+provincia,Chubut,2017,3,Enseñanza,15838,50370,0.31443319436172323,114
+provincia,Chubut,2017,3,Salud y asistencia social,5433,50370,0.10786182251340083,39
+provincia,Chubut,2017,3,Transporte,658,50370,0.013063331348024617,4
+provincia,Chubut,2017,3,Construcción,606,50370,0.012030970815961882,5
+provincia,Chubut,2017,3,Servicios de seguridad / edificios,217,50370,0.004308119912646417,2
+provincia,Chubut,2017,3,Otros,1899,50370,0.037701012507444905,15
+provincia,Chubut,2017,3,Sin clasificar / NsNr,99,50370,0.0019654556283502083,1
+provincia,Corrientes,2017,3,Adm. pública y defensa,40386,89644,0.45051537191557717,144
+provincia,Corrientes,2017,3,Enseñanza,29023,89644,0.32375842220338225,98
+provincia,Corrientes,2017,3,Salud y asistencia social,8854,89644,0.09876846191602338,32
+provincia,Corrientes,2017,3,"Electricidad, gas y agua",2099,89644,0.02341484092633082,6
+provincia,Corrientes,2017,3,Transporte,727,89644,0.008109856766766321,3
+provincia,Corrientes,2017,3,Finanzas y seguros,1297,89644,0.014468341439471687,3
+provincia,Corrientes,2017,3,Construcción,674,89644,0.0075186292445674,3
+provincia,Corrientes,2017,3,Servicios de seguridad / edificios,37,89644,4.127437419124537e-4,1
+provincia,Corrientes,2017,3,Otros,6547,89644,0.0730333318459685,17
+provincia,Córdoba,2017,3,Adm. pública y defensa,55330,147505,0.3751059286125894,121
+provincia,Córdoba,2017,3,Enseñanza,53481,147505,0.36257076031320973,106
+provincia,Córdoba,2017,3,Salud y asistencia social,21356,147505,0.14478153282939563,37
+provincia,Córdoba,2017,3,"Electricidad, gas y agua",2850,147505,0.019321378936307244,9
+provincia,Córdoba,2017,3,Transporte,1351,147505,0.009159011558930206,4
+provincia,Córdoba,2017,3,Finanzas y seguros,3942,147505,0.026724517812955494,6
+provincia,Córdoba,2017,3,Construcción,635,147505,0.0043049388156333685,1
+provincia,Córdoba,2017,3,Servicios de seguridad / edificios,226,147505,0.0015321514524931359,1
+provincia,Córdoba,2017,3,Otros,6565,147505,0.04450696586556388,15
+provincia,Córdoba,2017,3,Sin clasificar / NsNr,1769,147505,0.011992813802921935,3
+provincia,Entre Ríos,2017,3,Adm. pública y defensa,52743,107659,0.48990795010171,211
+provincia,Entre Ríos,2017,3,Enseñanza,27154,107659,0.2522222944667887,133
+provincia,Entre Ríos,2017,3,Salud y asistencia social,16861,107659,0.1566148673125331,67
+provincia,Entre Ríos,2017,3,"Electricidad, gas y agua",1650,107659,0.015326168736473494,9
+provincia,Entre Ríos,2017,3,Transporte,64,107659,5.944695752329114e-4,1
+provincia,Entre Ríos,2017,3,Finanzas y seguros,458,107659,0.004254172897760522,3
+provincia,Entre Ríos,2017,3,Construcción,1081,107659,0.010040962669168393,8
+provincia,Entre Ríos,2017,3,Servicios de seguridad / edificios,231,107659,0.002145663623106289,3
+provincia,Entre Ríos,2017,3,Otros,7417,107659,0.06889345061722661,18
+provincia,Formosa,2017,3,Adm. pública y defensa,24997,48324,0.517279198741826,141
+provincia,Formosa,2017,3,Enseñanza,16139,48324,0.33397483652015564,94
+provincia,Formosa,2017,3,Salud y asistencia social,3669,48324,0.07592500620809535,20
+provincia,Formosa,2017,3,"Electricidad, gas y agua",89,48324,0.0018417349557155864,1
+provincia,Formosa,2017,3,Finanzas y seguros,520,48324,0.010760698617664101,3
+provincia,Formosa,2017,3,Construcción,671,48324,0.013885439947024254,3
+provincia,Formosa,2017,3,Otros,1779,48324,0.03681400546312391,11
+provincia,Formosa,2017,3,Sin clasificar / NsNr,460,48324,0.009519079546395167,3
+provincia,Jujuy,2017,3,Adm. pública y defensa,39084,77951,0.5013919000397685,222
+provincia,Jujuy,2017,3,Enseñanza,28899,77951,0.3707328963066542,154
+provincia,Jujuy,2017,3,Salud y asistencia social,6280,77951,0.08056343087324089,35
+provincia,Jujuy,2017,3,"Electricidad, gas y agua",742,77951,0.009518800271965722,3
+provincia,Jujuy,2017,3,Transporte,364,77951,0.004669600133417147,2
+provincia,Jujuy,2017,3,Finanzas y seguros,355,77951,0.004554142987261228,2
+provincia,Jujuy,2017,3,Construcción,480,77951,0.0061577144616489846,1
+provincia,Jujuy,2017,3,Otros,1370,77951,0.01757514335928981,6
+provincia,Jujuy,2017,3,Sin clasificar / NsNr,377,77951,0.004836371566753473,2
+provincia,La Pampa,2017,3,Adm. pública y defensa,9060,27255,0.33241607044578975,85
+provincia,La Pampa,2017,3,Enseñanza,9387,27255,0.34441386901485965,84
+provincia,La Pampa,2017,3,Salud y asistencia social,4469,27255,0.16396991377728856,29
+provincia,La Pampa,2017,3,"Electricidad, gas y agua",441,27255,0.016180517336268574,2
+provincia,La Pampa,2017,3,Transporte,51,27255,0.0018712162905888828,1
+provincia,La Pampa,2017,3,Finanzas y seguros,485,27255,0.017794900018345258,5
+provincia,La Pampa,2017,3,Construcción,976,27255,0.03580994312970097,8
+provincia,La Pampa,2017,3,Servicios de seguridad / edificios,191,27255,0.007007888460832875,2
+provincia,La Pampa,2017,3,Otros,1996,27255,0.07323426894147862,17
+provincia,La Pampa,2017,3,Sin clasificar / NsNr,199,27255,0.007301412584846817,2
+provincia,La Rioja,2017,3,Adm. pública y defensa,28797,52623,0.5472321988484123,305
+provincia,La Rioja,2017,3,Enseñanza,14415,52623,0.27392965053303686,156
+provincia,La Rioja,2017,3,Salud y asistencia social,4753,52623,0.09032172244075784,52
+provincia,La Rioja,2017,3,"Electricidad, gas y agua",109,52623,0.0020713376280333696,1
+provincia,La Rioja,2017,3,Transporte,249,52623,0.004731771278718431,2
+provincia,La Rioja,2017,3,Finanzas y seguros,1247,52623,0.02369686258860194,10
+provincia,La Rioja,2017,3,Construcción,699,52623,0.013283165155920415,7
+provincia,La Rioja,2017,3,Otros,2236,52623,0.042490926020941414,19
+provincia,La Rioja,2017,3,Sin clasificar / NsNr,118,52623,0.002242365505577409,1
+provincia,Mendoza,2017,3,Adm. pública y defensa,46165,102397,0.45084328642440696,116
+provincia,Mendoza,2017,3,Enseñanza,35118,102397,0.3429592663847574,87
+provincia,Mendoza,2017,3,Salud y asistencia social,10294,102397,0.10053028897330976,28
+provincia,Mendoza,2017,3,"Electricidad, gas y agua",2039,102397,0.019912692754670547,5
+provincia,Mendoza,2017,3,Transporte,1655,102397,0.016162582888170553,3
+provincia,Mendoza,2017,3,Construcción,899,102397,0.008779554088498686,2
+provincia,Mendoza,2017,3,Servicios de seguridad / edificios,1629,102397,0.015908669199292947,4
+provincia,Mendoza,2017,3,Otros,4598,102397,0.04490365928689317,10
+provincia,Misiones,2017,3,Adm. pública y defensa,45748,89664,0.5102159172019985,152
+provincia,Misiones,2017,3,Enseñanza,28337,89664,0.3160354211277659,91
+provincia,Misiones,2017,3,Salud y asistencia social,12038,89664,0.13425678087080656,32
+provincia,Misiones,2017,3,"Electricidad, gas y agua",1009,89664,0.011253122769450393,4
+provincia,Misiones,2017,3,Finanzas y seguros,203,89664,0.002264007851534618,1
+provincia,Misiones,2017,3,Construcción,902,89664,0.010059778729478944,4
+provincia,Misiones,2017,3,Otros,1427,89664,0.015914971448965025,6
+provincia,Neuquén,2017,3,Adm. pública y defensa,36741,74579,0.4926453827484949,165
+provincia,Neuquén,2017,3,Enseñanza,22261,74579,0.2984888507488703,102
+provincia,Neuquén,2017,3,Salud y asistencia social,8218,74579,0.11019187706995266,41
+provincia,Neuquén,2017,3,"Electricidad, gas y agua",1588,74579,0.02129285723863286,9
+provincia,Neuquén,2017,3,Transporte,404,74579,0.005417074511591735,2
+provincia,Neuquén,2017,3,Finanzas y seguros,1685,74579,0.022593491465425924,7
+provincia,Neuquén,2017,3,Construcción,1092,74579,0.014642191501629145,4
+provincia,Neuquén,2017,3,Otros,2590,74579,0.034728274715402456,14
+provincia,Río Negro,2017,3,Adm. pública y defensa,30366,65434,0.4640706666259131,198
+provincia,Río Negro,2017,3,Enseñanza,21823,65434,0.333511630039429,109
+provincia,Río Negro,2017,3,Salud y asistencia social,7094,65434,0.10841458568939695,30
+provincia,Río Negro,2017,3,"Electricidad, gas y agua",833,65434,0.012730384815233671,8
+provincia,Río Negro,2017,3,Transporte,691,65434,0.010560259192468746,4
+provincia,Río Negro,2017,3,Finanzas y seguros,248,65434,0.003790078552434514,2
+provincia,Río Negro,2017,3,Construcción,263,65434,0.0040193171745575695,2
+provincia,Río Negro,2017,3,Servicios de seguridad / edificios,359,65434,0.005486444356145123,2
+provincia,Río Negro,2017,3,Otros,3025,65434,0.04622978879481615,20
+provincia,Río Negro,2017,3,Sin clasificar / NsNr,732,65434,0.011186844759605099,2
+provincia,Salta,2017,3,Adm. pública y defensa,44497,97371,0.4569841123127009,186
+provincia,Salta,2017,3,Enseñanza,32645,97371,0.3352640930051042,135
+provincia,Salta,2017,3,Salud y asistencia social,14346,97371,0.14733339495332287,60
+provincia,Salta,2017,3,Transporte,1429,97371,0.014675827505109325,6
+provincia,Salta,2017,3,Finanzas y seguros,336,97371,0.0034507194133777,2
+provincia,Salta,2017,3,Construcción,408,97371,0.004190159287672921,2
+provincia,Salta,2017,3,Otros,3500,97371,0.03594499388935104,15
+provincia,Salta,2017,3,Sin clasificar / NsNr,210,97371,0.002156699633361062,1
+provincia,San Juan,2017,3,Adm. pública y defensa,27480,54784,0.501606308411215,148
+provincia,San Juan,2017,3,Enseñanza,17664,54784,0.32242990654205606,105
+provincia,San Juan,2017,3,Salud y asistencia social,6406,54784,0.11693195093457943,35
+provincia,San Juan,2017,3,Transporte,154,54784,0.002811039719626168,2
+provincia,San Juan,2017,3,Finanzas y seguros,150,54784,0.0027380257009345793,3
+provincia,San Juan,2017,3,Otros,2930,54784,0.053482768691588786,14
+provincia,San Luis,2017,3,Adm. pública y defensa,16596,34591,0.4797779769304154,126
+provincia,San Luis,2017,3,Enseñanza,11040,34591,0.31915816252782514,91
+provincia,San Luis,2017,3,Salud y asistencia social,3933,34591,0.11370009540053772,31
+provincia,San Luis,2017,3,"Electricidad, gas y agua",283,34591,0.008181318840160736,2
+provincia,San Luis,2017,3,Transporte,599,34591,0.01731664305744269,7
+provincia,San Luis,2017,3,Finanzas y seguros,219,34591,0.006331126593622618,2
+provincia,San Luis,2017,3,Construcción,419,34591,0.012112977364054233,4
+provincia,San Luis,2017,3,Servicios de seguridad / edificios,411,34591,0.01188170333323697,2
+provincia,San Luis,2017,3,Otros,637,34591,0.018415194703824696,6
+provincia,San Luis,2017,3,Sin clasificar / NsNr,454,34591,0.013124801248879766,4
+provincia,Santa Cruz,2017,3,Adm. pública y defensa,28284,59203,0.47774606016586996,197
+provincia,Santa Cruz,2017,3,Enseñanza,13916,59203,0.23505565596338024,86
+provincia,Santa Cruz,2017,3,Salud y asistencia social,5928,59203,0.10013006097663969,38
+provincia,Santa Cruz,2017,3,"Electricidad, gas y agua",711,59203,0.012009526544262959,5
+provincia,Santa Cruz,2017,3,Transporte,2458,59203,0.04151816630913974,12
+provincia,Santa Cruz,2017,3,Finanzas y seguros,208,59203,0.0035133354728645507,2
+provincia,Santa Cruz,2017,3,Construcción,1510,59203,0.02550546425012246,7
+provincia,Santa Cruz,2017,3,Servicios de seguridad / edificios,1109,59203,0.01873215884330186,6
+provincia,Santa Cruz,2017,3,Otros,4498,59203,0.0759758796006959,24
+provincia,Santa Cruz,2017,3,Sin clasificar / NsNr,581,59203,0.009813691873722616,4
+provincia,Santa Fe,2017,3,Adm. pública y defensa,71375,175431,0.4068551168265586,165
+provincia,Santa Fe,2017,3,Enseñanza,64688,175431,0.36873756633662236,101
+provincia,Santa Fe,2017,3,Salud y asistencia social,17707,175431,0.10093427045391065,38
+provincia,Santa Fe,2017,3,"Electricidad, gas y agua",2122,175431,0.012095923753498527,8
+provincia,Santa Fe,2017,3,Transporte,2973,175431,0.01694683379790345,7
+provincia,Santa Fe,2017,3,Finanzas y seguros,4694,175431,0.026756958576306354,6
+provincia,Santa Fe,2017,3,Construcción,1424,175431,0.008117151472658766,5
+provincia,Santa Fe,2017,3,Servicios de seguridad / edificios,5175,175431,0.029498777297056963,4
+provincia,Santa Fe,2017,3,Otros,4460,175431,0.025423100820265516,9
+provincia,Santa Fe,2017,3,Sin clasificar / NsNr,813,175431,0.004634300665218804,1
+provincia,Santiago del Estero,2017,3,Adm. pública y defensa,34514,78068,0.44210175744222985,157
+provincia,Santiago del Estero,2017,3,Enseñanza,27872,78068,0.35702208331198443,141
+provincia,Santiago del Estero,2017,3,Salud y asistencia social,12252,78068,0.15694010349951323,57
+provincia,Santiago del Estero,2017,3,"Electricidad, gas y agua",117,78068,0.0014986934467387406,1
+provincia,Santiago del Estero,2017,3,Finanzas y seguros,438,78068,0.0056104934159963106,2
+provincia,Santiago del Estero,2017,3,Construcción,573,78068,0.007339755085310242,3
+provincia,Santiago del Estero,2017,3,Servicios de seguridad / edificios,239,78068,0.0030614336219705897,1
+provincia,Santiago del Estero,2017,3,Otros,1335,78068,0.01710047650765999,7
+provincia,Santiago del Estero,2017,3,Sin clasificar / NsNr,728,78068,0.009325203668596608,3
+provincia,Tierra del Fuego,2017,3,Adm. pública y defensa,13112,20445,0.641330398630472,102
+provincia,Tierra del Fuego,2017,3,Enseñanza,4578,20445,0.2239178283198826,37
+provincia,Tierra del Fuego,2017,3,Salud y asistencia social,1088,20445,0.05321594521887992,9
+provincia,Tierra del Fuego,2017,3,"Electricidad, gas y agua",139,20445,0.006798728295426755,1
+provincia,Tierra del Fuego,2017,3,Transporte,308,20445,0.015064808021521154,2
+provincia,Tierra del Fuego,2017,3,Construcción,153,20445,0.007483492296404989,1
+provincia,Tierra del Fuego,2017,3,Servicios de seguridad / edificios,86,20445,0.004206407434580582,1
+provincia,Tierra del Fuego,2017,3,Otros,585,20445,0.028613352898019074,5
+provincia,Tierra del Fuego,2017,3,Sin clasificar / NsNr,396,20445,0.019369038884812912,3
+provincia,Tucumán,2017,3,Adm. pública y defensa,48116,100336,0.4795487163131877,167
+provincia,Tucumán,2017,3,Enseñanza,33200,100336,0.3308882155955988,113
+provincia,Tucumán,2017,3,Salud y asistencia social,13106,100336,0.130621113060118,44
+provincia,Tucumán,2017,3,"Electricidad, gas y agua",1178,100336,0.011740551746132992,6
+provincia,Tucumán,2017,3,Construcción,1205,100336,0.012009647584117366,5
+provincia,Tucumán,2017,3,Servicios de seguridad / edificios,517,100336,0.005152686971774837,2
+provincia,Tucumán,2017,3,Otros,3014,100336,0.030039068729070324,10
+provincia,Buenos Aires,2018,3,Adm. pública y defensa,402325,912618,0.4408471014159265,402
+provincia,Buenos Aires,2018,3,Enseñanza,286524,912618,0.31395830456992957,279
+provincia,Buenos Aires,2018,3,Salud y asistencia social,97232,912618,0.10654183897315196,93
+provincia,Buenos Aires,2018,3,"Electricidad, gas y agua",8301,912618,0.009095810076066876,8
+provincia,Buenos Aires,2018,3,Transporte,21552,912618,0.023615576287121225,21
+provincia,Buenos Aires,2018,3,Finanzas y seguros,15894,912618,0.01741583006252342,12
+provincia,Buenos Aires,2018,3,Construcción,6333,912618,0.006939376606641552,7
+provincia,Buenos Aires,2018,3,Servicios de seguridad / edificios,12860,912618,0.014091328463826047,11
+provincia,Buenos Aires,2018,3,Otros,57353,912618,0.06284447600200742,56
+provincia,Buenos Aires,2018,3,Sin clasificar / NsNr,4244,912618,0.004650357542805424,3
+provincia,C.A.B.A.,2018,3,Adm. pública y defensa,118771,236845,0.5014714264603433,84
+provincia,C.A.B.A.,2018,3,Enseñanza,52838,236845,0.22309105110937533,43
+provincia,C.A.B.A.,2018,3,Salud y asistencia social,29898,236845,0.1262344571344128,21
+provincia,C.A.B.A.,2018,3,Transporte,4836,236845,0.020418417108235346,4
+provincia,C.A.B.A.,2018,3,Finanzas y seguros,5164,236845,0.021803289070911357,4
+provincia,C.A.B.A.,2018,3,Otros,25338,236845,0.10698135911672191,17
+provincia,Catamarca,2018,3,Adm. pública y defensa,26170,49798,0.5255231133780474,274
+provincia,Catamarca,2018,3,Enseñanza,14249,49798,0.28613598939716456,163
+provincia,Catamarca,2018,3,Salud y asistencia social,5131,49798,0.10303626651672758,54
+provincia,Catamarca,2018,3,"Electricidad, gas y agua",123,49798,0.0024699787140045784,2
+provincia,Catamarca,2018,3,Transporte,136,49798,0.0027310333748343306,2
+provincia,Catamarca,2018,3,Finanzas y seguros,369,49798,0.007409936142013736,3
+provincia,Catamarca,2018,3,Construcción,1666,49798,0.03345515884172055,18
+provincia,Catamarca,2018,3,Servicios de seguridad / edificios,204,49798,0.004096550062251496,1
+provincia,Catamarca,2018,3,Otros,1750,49798,0.035141973573235875,18
+provincia,Chaco,2018,3,Adm. pública y defensa,46621,93681,0.4976569421761083,149
+provincia,Chaco,2018,3,Enseñanza,33122,93681,0.35356155463754657,83
+provincia,Chaco,2018,3,Salud y asistencia social,5303,93681,0.05660699608245002,16
+provincia,Chaco,2018,3,"Electricidad, gas y agua",1514,93681,0.01616122799713923,7
+provincia,Chaco,2018,3,Transporte,623,93681,0.00665022790106852,2
+provincia,Chaco,2018,3,Finanzas y seguros,731,93681,0.007803076397561939,3
+provincia,Chaco,2018,3,Construcción,266,93681,0.0028394231487708288,2
+provincia,Chaco,2018,3,Servicios de seguridad / edificios,1101,93681,0.011752649950363467,4
+provincia,Chaco,2018,3,Otros,4142,93681,0.04421387474514576,12
+provincia,Chaco,2018,3,Sin clasificar / NsNr,258,93681,0.0027540269638453903,1
+provincia,Chubut,2018,3,Adm. pública y defensa,23039,48935,0.47080821497905384,174
+provincia,Chubut,2018,3,Enseñanza,18275,48935,0.37345458260958414,120
+provincia,Chubut,2018,3,Salud y asistencia social,4179,48935,0.08539899867170736,26
+provincia,Chubut,2018,3,"Electricidad, gas y agua",180,48935,0.003678348830080719,2
+provincia,Chubut,2018,3,Transporte,104,48935,0.002125268212935527,1
+provincia,Chubut,2018,3,Finanzas y seguros,200,48935,0.004087054255645243,1
+provincia,Chubut,2018,3,Construcción,876,48935,0.017901297639726168,8
+provincia,Chubut,2018,3,Otros,1981,48935,0.04048227240216614,16
+provincia,Chubut,2018,3,Sin clasificar / NsNr,101,48935,0.002063962399100848,1
+provincia,Corrientes,2018,3,Adm. pública y defensa,43320,95787,0.45225343731404055,135
+provincia,Corrientes,2018,3,Enseñanza,31531,95787,0.32917828097758567,91
+provincia,Corrientes,2018,3,Salud y asistencia social,13982,95787,0.14596970361322517,38
+provincia,Corrientes,2018,3,"Electricidad, gas y agua",512,95787,0.005345192980258281,2
+provincia,Corrientes,2018,3,Transporte,226,95787,0.002359401588942132,1
+provincia,Corrientes,2018,3,Finanzas y seguros,1145,95787,0.011953605395304165,5
+provincia,Corrientes,2018,3,Construcción,1372,95787,0.014323446814285863,5
+provincia,Corrientes,2018,3,Servicios de seguridad / edificios,280,95787,0.0029231524110787475,1
+provincia,Corrientes,2018,3,Otros,3063,95787,0.031977199411193584,13
+provincia,Corrientes,2018,3,Sin clasificar / NsNr,356,95787,0.0037165794940858363,1
+provincia,Córdoba,2018,3,Adm. pública y defensa,72188,158394,0.45574958647423514,120
+provincia,Córdoba,2018,3,Enseñanza,47079,158394,0.29722716769574603,97
+provincia,Córdoba,2018,3,Salud y asistencia social,17319,158394,0.109341262926626,32
+provincia,Córdoba,2018,3,"Electricidad, gas y agua",1826,158394,0.011528214452567648,6
+provincia,Córdoba,2018,3,Transporte,2708,158394,0.01709660719471697,2
+provincia,Córdoba,2018,3,Finanzas y seguros,109,158394,6.881573796987259e-4,1
+provincia,Córdoba,2018,3,Servicios de seguridad / edificios,588,158394,0.003712261828099549,1
+provincia,Córdoba,2018,3,Otros,15953,158394,0.1007171988837961,22
+provincia,Córdoba,2018,3,Sin clasificar / NsNr,624,158394,0.003939543164513807,1
+provincia,Entre Ríos,2018,3,Adm. pública y defensa,37791,98364,0.3841954373551299,173
+provincia,Entre Ríos,2018,3,Enseñanza,31035,98364,0.3155117725997316,122
+provincia,Entre Ríos,2018,3,Salud y asistencia social,16952,98364,0.17233947379122444,66
+provincia,Entre Ríos,2018,3,"Electricidad, gas y agua",548,98364,0.005571143914440242,4
+provincia,Entre Ríos,2018,3,Transporte,389,98364,0.003954698873571632,4
+provincia,Entre Ríos,2018,3,Finanzas y seguros,764,98364,0.007767069252978732,4
+provincia,Entre Ríos,2018,3,Construcción,7779,98364,0.07908381115042089,5
+provincia,Entre Ríos,2018,3,Otros,2861,98364,0.029085844414623235,14
+provincia,Entre Ríos,2018,3,Sin clasificar / NsNr,245,98364,0.0024907486478793054,2
+provincia,Formosa,2018,3,Adm. pública y defensa,23644,48229,0.4902444587281511,127
+provincia,Formosa,2018,3,Enseñanza,16404,48229,0.3401273092952373,87
+provincia,Formosa,2018,3,Salud y asistencia social,5371,48229,0.11136453171328455,28
+provincia,Formosa,2018,3,"Electricidad, gas y agua",178,48229,0.0036907254971075493,1
+provincia,Formosa,2018,3,Construcción,350,48229,0.007257044516784507,2
+provincia,Formosa,2018,3,Servicios de seguridad / edificios,475,48229,0.009848846129921832,2
+provincia,Formosa,2018,3,Otros,1372,48229,0.02844761450579527,9
+provincia,Formosa,2018,3,Sin clasificar / NsNr,435,48229,0.009019469613717888,2
+provincia,Jujuy,2018,3,Adm. pública y defensa,39993,82951,0.48212800327904426,235
+provincia,Jujuy,2018,3,Enseñanza,30952,82951,0.3731359477281769,163
+provincia,Jujuy,2018,3,Salud y asistencia social,7458,82951,0.08990850019891261,41
+provincia,Jujuy,2018,3,"Electricidad, gas y agua",1133,82951,0.013658665959421827,6
+provincia,Jujuy,2018,3,Transporte,456,82951,0.005497221251100047,3
+provincia,Jujuy,2018,3,Finanzas y seguros,246,82951,0.002965606201251341,2
+provincia,Jujuy,2018,3,Construcción,652,82951,0.007860061964292172,2
+provincia,Jujuy,2018,3,Servicios de seguridad / edificios,522,82951,0.006292871695338212,4
+provincia,Jujuy,2018,3,Otros,1358,82951,0.016371110655688297,8
+provincia,Jujuy,2018,3,Sin clasificar / NsNr,181,82951,0.002182011066774361,1
+provincia,La Pampa,2018,3,Adm. pública y defensa,13005,27887,0.46634632624520383,92
+provincia,La Pampa,2018,3,Enseñanza,8312,27887,0.2980600279700219,68
+provincia,La Pampa,2018,3,Salud y asistencia social,4493,27887,0.16111449779467135,22
+provincia,La Pampa,2018,3,"Electricidad, gas y agua",150,27887,0.0053788503603829745,1
+provincia,La Pampa,2018,3,Finanzas y seguros,199,27887,0.007135941478108079,1
+provincia,La Pampa,2018,3,Servicios de seguridad / edificios,302,27887,0.010829418725571055,2
+provincia,La Pampa,2018,3,Otros,1109,27887,0.03976763366443146,9
+provincia,La Pampa,2018,3,Sin clasificar / NsNr,317,27887,0.011367303761609352,3
+provincia,La Rioja,2018,3,Adm. pública y defensa,32139,58035,0.5537865081416387,311
+provincia,La Rioja,2018,3,Enseñanza,15601,58035,0.26882053932971484,163
+provincia,La Rioja,2018,3,Salud y asistencia social,6382,58035,0.10996812268458689,64
+provincia,La Rioja,2018,3,"Electricidad, gas y agua",162,58035,0.002791418971310416,2
+provincia,La Rioja,2018,3,Transporte,669,58035,0.011527526492633755,5
+provincia,La Rioja,2018,3,Finanzas y seguros,326,58035,0.005617299905229603,3
+provincia,La Rioja,2018,3,Construcción,553,58035,0.009528732661325062,5
+provincia,La Rioja,2018,3,Servicios de seguridad / edificios,153,58035,0.0026363401395709486,1
+provincia,La Rioja,2018,3,Otros,2050,58035,0.03532351167398983,17
+provincia,Mendoza,2018,3,Adm. pública y defensa,44119,116565,0.378492686483936,109
+provincia,Mendoza,2018,3,Enseñanza,37202,116565,0.3191524042379788,96
+provincia,Mendoza,2018,3,Salud y asistencia social,17224,116565,0.14776305065843093,46
+provincia,Mendoza,2018,3,"Electricidad, gas y agua",1791,116565,0.015364817912752541,4
+provincia,Mendoza,2018,3,Transporte,933,116565,0.008004117874147471,2
+provincia,Mendoza,2018,3,Finanzas y seguros,410,116565,0.00351735083429846,1
+provincia,Mendoza,2018,3,Construcción,1482,116565,0.012713936430317848,4
+provincia,Mendoza,2018,3,Otros,13404,116565,0.11499163556813795,25
+provincia,Misiones,2018,3,Adm. pública y defensa,38387,71474,0.5370764193972634,135
+provincia,Misiones,2018,3,Enseñanza,20119,71474,0.28148697428435515,72
+provincia,Misiones,2018,3,Salud y asistencia social,8843,71474,0.1237233119735848,27
+provincia,Misiones,2018,3,"Electricidad, gas y agua",380,71474,0.0053166186305509695,2
+provincia,Misiones,2018,3,Construcción,567,71474,0.00793295464084842,2
+provincia,Misiones,2018,3,Otros,2172,71474,0.030388672804096593,9
+provincia,Misiones,2018,3,Sin clasificar / NsNr,1006,71474,0.014075048269300726,1
+provincia,Neuquén,2018,3,Adm. pública y defensa,33509,72665,0.4611436042111058,153
+provincia,Neuquén,2018,3,Enseñanza,23643,72665,0.325369847932292,111
+provincia,Neuquén,2018,3,Salud y asistencia social,8699,72665,0.11971375490263537,42
+provincia,Neuquén,2018,3,"Electricidad, gas y agua",1841,72665,0.025335443473474162,7
+provincia,Neuquén,2018,3,Transporte,132,72665,0.0018165554255831556,1
+provincia,Neuquén,2018,3,Finanzas y seguros,1063,72665,0.01462877588935526,4
+provincia,Neuquén,2018,3,Construcción,763,72665,0.010500240831211725,3
+provincia,Neuquén,2018,3,Otros,2783,72665,0.03829904355604486,11
+provincia,Neuquén,2018,3,Sin clasificar / NsNr,232,72665,0.0031927337782976673,1
+provincia,Río Negro,2018,3,Adm. pública y defensa,30542,60452,0.5052272877654999,221
+provincia,Río Negro,2018,3,Enseñanza,18880,60452,0.31231390193872827,112
+provincia,Río Negro,2018,3,Salud y asistencia social,5144,60452,0.08509230463839079,32
+provincia,Río Negro,2018,3,"Electricidad, gas y agua",836,60452,0.013829153708727586,7
+provincia,Río Negro,2018,3,Transporte,287,60452,0.004747568318666049,3
+provincia,Río Negro,2018,3,Finanzas y seguros,327,60452,0.005409250314298948,2
+provincia,Río Negro,2018,3,Construcción,878,60452,0.01452391980414213,7
+provincia,Río Negro,2018,3,Otros,3209,60452,0.053083438099649306,20
+provincia,Río Negro,2018,3,Sin clasificar / NsNr,349,60452,0.005773175411897043,1
+provincia,Salta,2018,3,Adm. pública y defensa,47223,93839,0.5032342629397158,194
+provincia,Salta,2018,3,Enseñanza,32201,93839,0.3431515681113396,131
+provincia,Salta,2018,3,Salud y asistencia social,11611,93839,0.12373320261298607,53
+provincia,Salta,2018,3,"Electricidad, gas y agua",206,93839,0.002195249309988384,1
+provincia,Salta,2018,3,Transporte,763,93839,0.008130947686995812,3
+provincia,Salta,2018,3,Construcción,396,93839,0.004219993819200972,2
+provincia,Salta,2018,3,Servicios de seguridad / edificios,234,93839,0.002493632711346029,1
+provincia,Salta,2018,3,Otros,1205,93839,0.0128411428084272,6
+provincia,San Juan,2018,3,Adm. pública y defensa,23576,55693,0.4233207045768768,129
+provincia,San Juan,2018,3,Enseñanza,23056,55693,0.413983804068734,118
+provincia,San Juan,2018,3,Salud y asistencia social,5940,55693,0.10665613272763184,28
+provincia,San Juan,2018,3,"Electricidad, gas y agua",722,55693,0.012963927243998348,3
+provincia,San Juan,2018,3,Transporte,334,55693,0.005997163018691756,2
+provincia,San Juan,2018,3,Finanzas y seguros,937,55693,0.016824376492557414,5
+provincia,San Juan,2018,3,Construcción,222,55693,0.003986138293860988,2
+provincia,San Juan,2018,3,Otros,906,55693,0.016267753577648897,5
+provincia,San Luis,2018,3,Adm. pública y defensa,30848,55708,0.5537445250233359,225
+provincia,San Luis,2018,3,Enseñanza,13667,55708,0.24533280677820063,115
+provincia,San Luis,2018,3,Salud y asistencia social,5291,55708,0.09497738206361743,39
+provincia,San Luis,2018,3,"Electricidad, gas y agua",295,55708,0.005295469232426222,2
+provincia,San Luis,2018,3,Transporte,920,55708,0.016514683707905507,12
+provincia,San Luis,2018,3,Finanzas y seguros,138,55708,0.002477202556185826,1
+provincia,San Luis,2018,3,Construcción,386,55708,0.006928986860056006,3
+provincia,San Luis,2018,3,Servicios de seguridad / edificios,271,55708,0.004864651396567818,2
+provincia,San Luis,2018,3,Otros,3477,55708,0.062414733969986355,18
+provincia,San Luis,2018,3,Sin clasificar / NsNr,415,55708,0.007449558411718245,3
+provincia,Santa Cruz,2018,3,Adm. pública y defensa,36501,62864,0.5806343853397811,183
+provincia,Santa Cruz,2018,3,Enseñanza,11800,62864,0.18770679562229575,54
+provincia,Santa Cruz,2018,3,Salud y asistencia social,8394,62864,0.13352634258080937,38
+provincia,Santa Cruz,2018,3,"Electricidad, gas y agua",713,62864,0.011341944515143802,5
+provincia,Santa Cruz,2018,3,Transporte,1111,62864,0.01767307202850598,6
+provincia,Santa Cruz,2018,3,Finanzas y seguros,182,62864,0.002895138712140494,1
+provincia,Santa Cruz,2018,3,Construcción,437,62864,0.006951514380249427,3
+provincia,Santa Cruz,2018,3,Otros,2968,62864,0.047213031305675744,13
+provincia,Santa Cruz,2018,3,Sin clasificar / NsNr,758,62864,0.012057775515398321,4
+provincia,Santa Fe,2018,3,Adm. pública y defensa,73529,182041,0.403914502776847,148
+provincia,Santa Fe,2018,3,Enseñanza,71875,182041,0.39482863750473796,112
+provincia,Santa Fe,2018,3,Salud y asistencia social,20104,182041,0.11043665987332524,38
+provincia,Santa Fe,2018,3,"Electricidad, gas y agua",3377,182041,0.018550766036222608,4
+provincia,Santa Fe,2018,3,Transporte,4116,182041,0.022610291088271322,9
+provincia,Santa Fe,2018,3,Finanzas y seguros,2728,182041,0.014985635104179827,1
+provincia,Santa Fe,2018,3,Construcción,2017,182041,0.011079921556132959,5
+provincia,Santa Fe,2018,3,Servicios de seguridad / edificios,533,182041,0.002927911844035135,1
+provincia,Santa Fe,2018,3,Otros,3762,182041,0.020665674216247987,9
+provincia,Santiago del Estero,2018,3,Adm. pública y defensa,33533,72803,0.46059915113388183,167
+provincia,Santiago del Estero,2018,3,Enseñanza,27233,72803,0.3740642555938629,146
+provincia,Santiago del Estero,2018,3,Salud y asistencia social,8411,72803,0.11553095339477769,42
+provincia,Santiago del Estero,2018,3,"Electricidad, gas y agua",187,72803,0.002568575470791039,1
+provincia,Santiago del Estero,2018,3,Transporte,42,72803,5.768993036001263e-4,1
+provincia,Santiago del Estero,2018,3,Finanzas y seguros,659,72803,0.009051824787440078,3
+provincia,Santiago del Estero,2018,3,Construcción,705,72803,0.009683666881859263,3
+provincia,Santiago del Estero,2018,3,Servicios de seguridad / edificios,101,72803,0.0013873054681812563,1
+provincia,Santiago del Estero,2018,3,Otros,1932,72803,0.026537367965605813,9
+provincia,Tierra del Fuego,2018,3,Adm. pública y defensa,9754,19756,0.4937234257946953,76
+provincia,Tierra del Fuego,2018,3,Enseñanza,5772,19756,0.29216440575015185,49
+provincia,Tierra del Fuego,2018,3,Salud y asistencia social,1437,19756,0.07273739623405548,10
+provincia,Tierra del Fuego,2018,3,"Electricidad, gas y agua",551,19756,0.027890261186474995,5
+provincia,Tierra del Fuego,2018,3,Transporte,252,19756,0.012755618546264426,2
+provincia,Tierra del Fuego,2018,3,Finanzas y seguros,107,19756,0.005416076128771007,1
+provincia,Tierra del Fuego,2018,3,Construcción,82,19756,0.004150637780927313,1
+provincia,Tierra del Fuego,2018,3,Otros,967,19756,0.04894715529459405,8
+provincia,Tierra del Fuego,2018,3,Sin clasificar / NsNr,834,19756,0.0422150232840656,5
+provincia,Tucumán,2018,3,Adm. pública y defensa,51281,94495,0.5426847981374676,176
+provincia,Tucumán,2018,3,Enseñanza,27720,94495,0.2933488544367427,92
+provincia,Tucumán,2018,3,Salud y asistencia social,12356,94495,0.13075824117678184,41
+provincia,Tucumán,2018,3,Finanzas y seguros,609,94495,0.006444785438382983,1
+provincia,Tucumán,2018,3,Construcción,477,94495,0.005047886131541351,2
+provincia,Tucumán,2018,3,Servicios de seguridad / edificios,366,94495,0.0038732208053336155,1
+provincia,Tucumán,2018,3,Otros,1686,94495,0.017842213873749933,5
+provincia,Buenos Aires,2019,3,Adm. pública y defensa,522266,1022939,0.5105543927839294,439
+provincia,Buenos Aires,2019,3,Enseñanza,279812,1022939,0.27353732725020746,281
+provincia,Buenos Aires,2019,3,Salud y asistencia social,83405,1022939,0.08153467606572826,83
+provincia,Buenos Aires,2019,3,"Electricidad, gas y agua",1478,1022939,0.0014448564381649345,2
+provincia,Buenos Aires,2019,3,Transporte,33520,1022939,0.032768327339166854,25
+provincia,Buenos Aires,2019,3,Finanzas y seguros,8249,1022939,0.00806401945766072,10
+provincia,Buenos Aires,2019,3,Construcción,3372,1022939,0.0032963842418756153,4
+provincia,Buenos Aires,2019,3,Servicios de seguridad / edificios,15616,1022939,0.015265817414332625,17
+provincia,Buenos Aires,2019,3,Otros,71870,1022939,0.07025834385041532,74
+provincia,Buenos Aires,2019,3,Sin clasificar / NsNr,3351,1022939,0.0032758551585187388,3
+provincia,C.A.B.A.,2019,3,Adm. pública y defensa,107888,252887,0.42662533068129244,80
+provincia,C.A.B.A.,2019,3,Enseñanza,66950,252887,0.2647427507147461,49
+provincia,C.A.B.A.,2019,3,Salud y asistencia social,52658,252887,0.20822739009913518,31
+provincia,C.A.B.A.,2019,3,"Electricidad, gas y agua",1880,252887,0.007434150430824835,1
+provincia,C.A.B.A.,2019,3,Transporte,2998,252887,0.011855097335964284,2
+provincia,C.A.B.A.,2019,3,Finanzas y seguros,2135,252887,0.008442505941388841,2
+provincia,C.A.B.A.,2019,3,Servicios de seguridad / edificios,910,252887,0.0035984451553460637,1
+provincia,C.A.B.A.,2019,3,Otros,15509,252887,0.061327786718969345,14
+provincia,C.A.B.A.,2019,3,Sin clasificar / NsNr,1959,252887,0.0077465429223329,1
+provincia,Catamarca,2019,3,Adm. pública y defensa,25051,47116,0.5316877493844978,249
+provincia,Catamarca,2019,3,Enseñanza,12940,47116,0.27464131080736903,146
+provincia,Catamarca,2019,3,Salud y asistencia social,5066,47116,0.10752186093895917,47
+provincia,Catamarca,2019,3,"Electricidad, gas y agua",90,47116,0.0019101791323541896,1
+provincia,Catamarca,2019,3,Transporte,384,47116,0.008150097631377876,4
+provincia,Catamarca,2019,3,Finanzas y seguros,680,47116,0.014432464555564989,6
+provincia,Catamarca,2019,3,Construcción,1254,47116,0.026615162577468376,13
+provincia,Catamarca,2019,3,Servicios de seguridad / edificios,352,47116,0.007470922828763053,3
+provincia,Catamarca,2019,3,Otros,1180,47116,0.025044570846421598,13
+provincia,Catamarca,2019,3,Sin clasificar / NsNr,119,47116,0.002525681297223873,1
+provincia,Chubut,2019,3,Adm. pública y defensa,24733,54950,0.45010009099181075,175
+provincia,Chubut,2019,3,Enseñanza,19751,54950,0.3594358507734304,122
+provincia,Chubut,2019,3,Salud y asistencia social,3695,54950,0.06724294813466788,27
+provincia,Chubut,2019,3,"Electricidad, gas y agua",578,54950,0.010518653321201091,3
+provincia,Chubut,2019,3,Transporte,1311,54950,0.023858052775250226,6
+provincia,Chubut,2019,3,Finanzas y seguros,515,54950,0.009372156505914468,4
+provincia,Chubut,2019,3,Construcción,641,54950,0.011665150136487716,6
+provincia,Chubut,2019,3,Servicios de seguridad / edificios,200,54950,0.003639672429481347,1
+provincia,Chubut,2019,3,Otros,3526,54950,0.06416742493175615,23
+provincia,Corrientes,2019,3,Adm. pública y defensa,51699,96912,0.5334633481921743,150
+provincia,Corrientes,2019,3,Enseñanza,25492,96912,0.2630427604424633,83
+provincia,Corrientes,2019,3,Salud y asistencia social,13459,96912,0.13887857024929834,38
+provincia,Corrientes,2019,3,"Electricidad, gas y agua",344,96912,0.003549612019151395,1
+provincia,Corrientes,2019,3,Finanzas y seguros,992,96912,0.01023609047383193,5
+provincia,Corrientes,2019,3,Construcción,1602,96912,0.016530460624071323,5
+provincia,Corrientes,2019,3,Servicios de seguridad / edificios,574,96912,0.0059228991249793625,1
+provincia,Corrientes,2019,3,Otros,2750,96912,0.028376258874030048,7
+provincia,Córdoba,2019,3,Adm. pública y defensa,60728,151181,0.4016906886447371,112
+provincia,Córdoba,2019,3,Enseñanza,55111,151181,0.36453654890495496,94
+provincia,Córdoba,2019,3,Salud y asistencia social,21722,151181,0.14368207645140593,35
+provincia,Córdoba,2019,3,"Electricidad, gas y agua",886,151181,0.005860524801397001,4
+provincia,Córdoba,2019,3,Transporte,1566,151181,0.01035844451353014,3
+provincia,Córdoba,2019,3,Finanzas y seguros,1103,151181,0.0072958903565924285,3
+provincia,Córdoba,2019,3,Construcción,700,151181,0.004630211468372348,1
+provincia,Córdoba,2019,3,Servicios de seguridad / edificios,309,151181,0.0020439076338957937,1
+provincia,Córdoba,2019,3,Otros,8944,151181,0.059160873390174694,13
+provincia,Córdoba,2019,3,Sin clasificar / NsNr,112,151181,7.408338349395757e-4,1
+provincia,Entre Ríos,2019,3,Adm. pública y defensa,42602,92959,0.4582880624791575,223
+provincia,Entre Ríos,2019,3,Enseñanza,27959,92959,0.30076700480857155,139
+provincia,Entre Ríos,2019,3,Salud y asistencia social,17019,92959,0.18308071300250647,66
+provincia,Entre Ríos,2019,3,"Electricidad, gas y agua",635,92959,0.0068309684914854936,5
+provincia,Entre Ríos,2019,3,Transporte,330,92959,0.003549952129433406,3
+provincia,Entre Ríos,2019,3,Finanzas y seguros,858,92959,0.009229875536526856,6
+provincia,Entre Ríos,2019,3,Construcción,1575,92959,0.016942953345023076,6
+provincia,Entre Ríos,2019,3,Servicios de seguridad / edificios,182,92959,0.0019578523865359998,2
+provincia,Entre Ríos,2019,3,Otros,1799,92959,0.01935261782075969,13
+provincia,Formosa,2019,3,Adm. pública y defensa,18481,40394,0.45751844333316827,97
+provincia,Formosa,2019,3,Enseñanza,15780,40394,0.39065207704114474,79
+provincia,Formosa,2019,3,Salud y asistencia social,3307,40394,0.0818685943456949,17
+provincia,Formosa,2019,3,"Electricidad, gas y agua",643,40394,0.015918205674110016,2
+provincia,Formosa,2019,3,Transporte,164,40394,0.004060008912214685,1
+provincia,Formosa,2019,3,Construcción,474,40394,0.011734416002376591,3
+provincia,Formosa,2019,3,Servicios de seguridad / edificios,119,40394,0.002945982076546022,1
+provincia,Formosa,2019,3,Otros,1426,40394,0.035302272614744765,9
+provincia,Jujuy,2019,3,Adm. pública y defensa,39074,81017,0.48229383956453586,203
+provincia,Jujuy,2019,3,Enseñanza,28644,81017,0.3535554266388536,161
+provincia,Jujuy,2019,3,Salud y asistencia social,8825,81017,0.10892775590308207,47
+provincia,Jujuy,2019,3,"Electricidad, gas y agua",607,81017,0.00749225471197403,3
+provincia,Jujuy,2019,3,Transporte,515,81017,0.006356690571114704,1
+provincia,Jujuy,2019,3,Finanzas y seguros,248,81017,0.0030610859449251393,2
+provincia,Jujuy,2019,3,Construcción,675,81017,0.008331584729130924,5
+provincia,Jujuy,2019,3,Otros,2429,81017,0.029981361936383722,11
+provincia,La Pampa,2019,3,Adm. pública y defensa,14222,25558,0.5564598168870803,99
+provincia,La Pampa,2019,3,Enseñanza,7882,25558,0.3083965881524376,61
+provincia,La Pampa,2019,3,Salud y asistencia social,3025,25558,0.11835824399405274,25
+provincia,La Pampa,2019,3,Transporte,273,25558,0.010681586978636826,1
+provincia,La Pampa,2019,3,Otros,156,25558,0.006103763987792472,1
+provincia,La Rioja,2019,3,Adm. pública y defensa,31286,59938,0.5219727051286329,294
+provincia,La Rioja,2019,3,Enseñanza,16929,59938,0.282441856585138,169
+provincia,La Rioja,2019,3,Salud y asistencia social,6396,59938,0.10671026727618539,58
+provincia,La Rioja,2019,3,"Electricidad, gas y agua",41,59938,6.840401748473422e-4,1
+provincia,La Rioja,2019,3,Transporte,395,59938,0.006590143147919517,3
+provincia,La Rioja,2019,3,Finanzas y seguros,498,59938,0.00830858553838967,4
+provincia,La Rioja,2019,3,Construcción,1172,59938,0.019553538656611833,11
+provincia,La Rioja,2019,3,Servicios de seguridad / edificios,208,59938,0.0034702525943474923,2
+provincia,La Rioja,2019,3,Otros,3013,59938,0.050268610897927855,33
+provincia,Mendoza,2019,3,Adm. pública y defensa,39199,111399,0.35187928078348996,94
+provincia,Mendoza,2019,3,Enseñanza,43512,111399,0.39059596585247625,94
+provincia,Mendoza,2019,3,Salud y asistencia social,10139,111399,0.09101517966947639,27
+provincia,Mendoza,2019,3,"Electricidad, gas y agua",2023,111399,0.01815994757583102,3
+provincia,Mendoza,2019,3,Transporte,1818,111399,0.016319715616836775,3
+provincia,Mendoza,2019,3,Finanzas y seguros,1315,111399,0.011804414761353334,3
+provincia,Mendoza,2019,3,Construcción,2081,111399,0.01868059856910744,4
+provincia,Mendoza,2019,3,Otros,10795,111399,0.09690392193825798,17
+provincia,Mendoza,2019,3,Sin clasificar / NsNr,517,111399,0.0046409752331708545,1
+provincia,Misiones,2019,3,Adm. pública y defensa,50189,93754,0.53532649273630994,139
+provincia,Misiones,2019,3,Enseñanza,25182,93754,0.2685965398809651,83
+provincia,Misiones,2019,3,Salud y asistencia social,7306,93754,0.07792734176675128,26
+provincia,Misiones,2019,3,"Electricidad, gas y agua",2390,93754,0.025492245664184995,6
+provincia,Misiones,2019,3,Construcción,1208,93754,0.012884783582567144,3
+provincia,Misiones,2019,3,Servicios de seguridad / edificios,1817,93754,0.01938050643172558,7
+provincia,Misiones,2019,3,Otros,5662,93754,0.060392089937496,19
+provincia,Neuquén,2019,3,Adm. pública y defensa,37604,75921,0.4953043295004017,164
+provincia,Neuquén,2019,3,Enseñanza,26817,75921,0.35322242857707353,115
+provincia,Neuquén,2019,3,Salud y asistencia social,6132,75921,0.08076816691034101,26
+provincia,Neuquén,2019,3,"Electricidad, gas y agua",926,75921,0.012196888871326774,4
+provincia,Neuquén,2019,3,Transporte,244,75921,0.003213867046008351,1
+provincia,Neuquén,2019,3,Finanzas y seguros,359,75921,0.004728599465233598,2
+provincia,Neuquén,2019,3,Construcción,926,75921,0.012196888871326774,3
+provincia,Neuquén,2019,3,Otros,2913,75921,0.038368830758288223,13
+provincia,Río Negro,2019,3,Adm. pública y defensa,28486,69099,0.4122490918826611,190
+provincia,Río Negro,2019,3,Enseñanza,21942,69099,0.31754439282768204,126
+provincia,Río Negro,2019,3,Salud y asistencia social,9044,69099,0.13088467271595827,47
+provincia,Río Negro,2019,3,"Electricidad, gas y agua",891,69099,0.012894542612772978,8
+provincia,Río Negro,2019,3,Transporte,468,69099,0.006772891069335302,4
+provincia,Río Negro,2019,3,Finanzas y seguros,122,69099,0.0017655827146557837,1
+provincia,Río Negro,2019,3,Construcción,401,69099,0.00580326777522106,6
+provincia,Río Negro,2019,3,Servicios de seguridad / edificios,1462,69099,0.02115804859694062,7
+provincia,Río Negro,2019,3,Otros,6283,69099,0.09092750980477286,46
+provincia,Salta,2019,3,Adm. pública y defensa,46664,89205,0.5231096911608094,186
+provincia,Salta,2019,3,Enseñanza,26126,89205,0.2928759598677204,112
+provincia,Salta,2019,3,Salud y asistencia social,10860,89205,0.12174205481755507,42
+provincia,Salta,2019,3,"Electricidad, gas y agua",355,89205,0.003979597556190796,1
+provincia,Salta,2019,3,Transporte,242,89205,0.002712852418586402,1
+provincia,Salta,2019,3,Finanzas y seguros,187,89205,0.002096295050725856,1
+provincia,Salta,2019,3,Construcción,1617,89205,0.01812678661510005,4
+provincia,Salta,2019,3,Otros,3154,89205,0.03535676251331203,12
+provincia,San Juan,2019,3,Adm. pública y defensa,28119,58946,0.4770298239066264,145
+provincia,San Juan,2019,3,Enseñanza,22262,58946,0.37766769585722526,115
+provincia,San Juan,2019,3,Salud y asistencia social,5866,58946,0.09951481016523597,28
+provincia,San Juan,2019,3,Finanzas y seguros,904,58946,0.015336070301632003,6
+provincia,San Juan,2019,3,Construcción,342,58946,0.005801920401723611,3
+provincia,San Juan,2019,3,Otros,1453,58946,0.024649679367556746,11
+provincia,San Luis,2019,3,Adm. pública y defensa,36848,62046,0.5938819585468845,266
+provincia,San Luis,2019,3,Enseñanza,17095,62046,0.2755213873577668,114
+provincia,San Luis,2019,3,Salud y asistencia social,5229,62046,0.08427618218740934,34
+provincia,San Luis,2019,3,"Electricidad, gas y agua",229,62046,0.003690810044160784,2
+provincia,San Luis,2019,3,Transporte,403,62046,0.006495180994745834,4
+provincia,San Luis,2019,3,Finanzas y seguros,494,62046,0.007961834767752958,4
+provincia,San Luis,2019,3,Construcción,148,62046,0.0023853270154401574,1
+provincia,San Luis,2019,3,Servicios de seguridad / edificios,87,62046,0.001402185475292525,1
+provincia,San Luis,2019,3,Otros,1513,62046,0.024385133610547012,15
+provincia,Santa Cruz,2019,3,Adm. pública y defensa,33143,57749,0.5739146998216419,201
+provincia,Santa Cruz,2019,3,Enseñanza,11493,57749,0.1990164331849902,71
+provincia,Santa Cruz,2019,3,Salud y asistencia social,7005,57749,0.12130080174548477,33
+provincia,Santa Cruz,2019,3,"Electricidad, gas y agua",1188,57749,0.020571784792810265,6
+provincia,Santa Cruz,2019,3,Transporte,992,57749,0.017177786628339884,4
+provincia,Santa Cruz,2019,3,Finanzas y seguros,102,57749,0.001766264350897851,1
+provincia,Santa Cruz,2019,3,Construcción,999,57749,0.01729900084849954,7
+provincia,Santa Cruz,2019,3,Servicios de seguridad / edificios,122,57749,0.0021125906942111553,1
+provincia,Santa Cruz,2019,3,Otros,2705,57749,0.04684063793312438,17
+provincia,Santa Fe,2019,3,Adm. pública y defensa,79303,226086,0.35076475323549444,154
+provincia,Santa Fe,2019,3,Enseñanza,91406,226086,0.4042974797201065,138
+provincia,Santa Fe,2019,3,Salud y asistencia social,35287,226086,0.1560777757136665,57
+provincia,Santa Fe,2019,3,"Electricidad, gas y agua",3772,226086,0.016683916739647746,4
+provincia,Santa Fe,2019,3,Transporte,3223,226086,0.014255637235388304,4
+provincia,Santa Fe,2019,3,Finanzas y seguros,82,226086,3.6269384216625533e-4,1
+provincia,Santa Fe,2019,3,Construcción,4719,226086,0.020872588307104378,3
+provincia,Santa Fe,2019,3,Servicios de seguridad / edificios,658,226086,0.0029103969286023903,1
+provincia,Santa Fe,2019,3,Otros,6978,226086,0.030864361349221093,13
+provincia,Santa Fe,2019,3,Sin clasificar / NsNr,658,226086,0.0029103969286023903,1
+provincia,Santiago del Estero,2019,3,Adm. pública y defensa,34461,71715,0.48052708638360175,158
+provincia,Santiago del Estero,2019,3,Enseñanza,24768,71715,0.3453670780171512,130
+provincia,Santiago del Estero,2019,3,Salud y asistencia social,7888,71715,0.10999093634525553,42
+provincia,Santiago del Estero,2019,3,"Electricidad, gas y agua",421,71715,0.005870459457575123,2
+provincia,Santiago del Estero,2019,3,Transporte,194,71715,0.0027051523391201284,1
+provincia,Santiago del Estero,2019,3,Finanzas y seguros,430,71715,0.005995956215575542,2
+provincia,Santiago del Estero,2019,3,Construcción,189,71715,0.0026354319180087846,1
+provincia,Santiago del Estero,2019,3,Servicios de seguridad / edificios,1394,71715,0.01943805340584257,6
+provincia,Santiago del Estero,2019,3,Otros,1970,71715,0.027469845917869343,10
+provincia,Tierra del Fuego,2019,3,Adm. pública y defensa,11344,18796,0.6035326665247925,77
+provincia,Tierra del Fuego,2019,3,Enseñanza,4459,18796,0.23723132581400297,31
+provincia,Tierra del Fuego,2019,3,Salud y asistencia social,1309,18796,0.06964247712279209,9
+provincia,Tierra del Fuego,2019,3,Transporte,175,18796,0.009310491593956161,1
+provincia,Tierra del Fuego,2019,3,Finanzas y seguros,166,18796,0.008831666311981273,1
+provincia,Tierra del Fuego,2019,3,Construcción,261,18796,0.01388593317727176,2
+provincia,Tierra del Fuego,2019,3,Servicios de seguridad / edificios,200,18796,0.010640561821664184,1
+provincia,Tierra del Fuego,2019,3,Otros,769,18796,0.040912960204298784,6
+provincia,Tierra del Fuego,2019,3,Sin clasificar / NsNr,113,18796,0.006011917429240264,1
+provincia,Tucumán,2019,3,Adm. pública y defensa,42782,97756,0.4376406563280003,148
+provincia,Tucumán,2019,3,Enseñanza,26598,97756,0.2720856008838332,84
+provincia,Tucumán,2019,3,Salud y asistencia social,19431,97756,0.19877040795449896,61
+provincia,Tucumán,2019,3,"Electricidad, gas y agua",1365,97756,0.013963337288759769,4
+provincia,Tucumán,2019,3,Transporte,328,97756,0.003355292769753263,1
+provincia,Tucumán,2019,3,Finanzas y seguros,377,97756,0.003856540774990793,1
+provincia,Tucumán,2019,3,Construcción,1405,97756,0.01437251933385163,4
+provincia,Tucumán,2019,3,Servicios de seguridad / edificios,1595,97756,0.016316134048037972,5
+provincia,Tucumán,2019,3,Otros,3875,97756,0.03963951061827407,11
+provincia,Buenos Aires,2020,3,Adm. pública y defensa,520125,1181845,0.44009578244186,251
+provincia,Buenos Aires,2020,3,Enseñanza,367614,1181845,0.3110509415363267,179
+provincia,Buenos Aires,2020,3,Salud y asistencia social,146795,1181845,0.12420833527239189,60
+provincia,Buenos Aires,2020,3,"Electricidad, gas y agua",12682,1181845,0.010730679573040459,4
+provincia,Buenos Aires,2020,3,Transporte,52409,1181845,0.04434507063108953,18
+provincia,Buenos Aires,2020,3,Finanzas y seguros,5208,1181845,0.004406669233275091,7
+provincia,Buenos Aires,2020,3,Construcción,6990,1181845,0.005914481171388803,4
+provincia,Buenos Aires,2020,3,Servicios de seguridad / edificios,3711,1181845,0.0031400056691021244,3
+provincia,Buenos Aires,2020,3,Otros,60935,1181845,0.05155921461782213,43
+provincia,Buenos Aires,2020,3,Sin clasificar / NsNr,5376,1181845,0.00454881985370332,3
+provincia,C.A.B.A.,2020,3,Adm. pública y defensa,114122,272488,0.4188147734946126,33
+provincia,C.A.B.A.,2020,3,Enseñanza,99533,272488,0.3652748010921582,34
+provincia,C.A.B.A.,2020,3,Salud y asistencia social,39124,272488,0.14358063474354835,13
+provincia,C.A.B.A.,2020,3,Transporte,1993,272488,0.007314083555973107,1
+provincia,C.A.B.A.,2020,3,Finanzas y seguros,346,272488,0.0012697806875899122,1
+provincia,C.A.B.A.,2020,3,Otros,17370,272488,0.06374592642611784,7
+provincia,Catamarca,2020,3,Adm. pública y defensa,27140,51880,0.523130300693909,157
+provincia,Catamarca,2020,3,Enseñanza,15399,51880,0.2968195836545875,92
+provincia,Catamarca,2020,3,Salud y asistencia social,3294,51880,0.06349267540478026,23
+provincia,Catamarca,2020,3,"Electricidad, gas y agua",486,51880,0.009367771781033154,2
+provincia,Catamarca,2020,3,Transporte,441,51880,0.008500385505011565,3
+provincia,Catamarca,2020,3,Finanzas y seguros,197,51880,0.003797224363916731,2
+provincia,Catamarca,2020,3,Construcción,1983,51880,0.038222821896684654,10
+provincia,Catamarca,2020,3,Servicios de seguridad / edificios,112,51880,0.002158828064764842,1
+provincia,Catamarca,2020,3,Otros,2828,51880,0.05451040863531226,21
+provincia,Chaco,2020,3,Adm. pública y defensa,50952,96783,0.5264560924955829,95
+provincia,Chaco,2020,3,Enseñanza,32332,96783,0.33406693324240827,58
+provincia,Chaco,2020,3,Salud y asistencia social,8495,96783,0.08777367926185384,25
+provincia,Chaco,2020,3,"Electricidad, gas y agua",1995,96783,0.020613124205697282,9
+provincia,Chaco,2020,3,Transporte,318,96783,0.00328570100120889,1
+provincia,Chaco,2020,3,Construcción,645,96783,0.006664393540187843,2
+provincia,Chaco,2020,3,Otros,1809,96783,0.01869129909178265,4
+provincia,Chaco,2020,3,Sin clasificar / NsNr,237,96783,0.0024487771612783237,1
+provincia,Chubut,2020,3,Adm. pública y defensa,26330,52411,0.5023754555341436,180
+provincia,Chubut,2020,3,Enseñanza,15756,52411,0.30062391482704015,99
+provincia,Chubut,2020,3,Salud y asistencia social,4722,52411,0.09009559062028963,34
+provincia,Chubut,2020,3,"Electricidad, gas y agua",539,52411,0.010284100665890748,2
+provincia,Chubut,2020,3,Transporte,1086,52411,0.020720841044818836,6
+provincia,Chubut,2020,3,Finanzas y seguros,171,52411,0.0032626738661731317,1
+provincia,Chubut,2020,3,Construcción,1223,52411,0.023334796130583275,10
+provincia,Chubut,2020,3,Servicios de seguridad / edificios,300,52411,0.005723989238900231,1
+provincia,Chubut,2020,3,Otros,2183,52411,0.04165156169506401,14
+provincia,Chubut,2020,3,Sin clasificar / NsNr,101,52411,0.001927076377096411,1
+provincia,Corrientes,2020,3,Adm. pública y defensa,36617,86156,0.4250081247968801,116
+provincia,Corrientes,2020,3,Enseñanza,23981,86156,0.2783439342587864,77
+provincia,Corrientes,2020,3,Salud y asistencia social,16446,86156,0.19088629927108966,40
+provincia,Corrientes,2020,3,"Electricidad, gas y agua",3366,86156,0.039068666140489344,5
+provincia,Corrientes,2020,3,Transporte,781,86156,0.00906495194762988,4
+provincia,Corrientes,2020,3,Finanzas y seguros,699,86156,0.008113190027392173,3
+provincia,Corrientes,2020,3,Construcción,1349,86156,0.015657644273178884,6
+provincia,Corrientes,2020,3,Servicios de seguridad / edificios,212,86156,0.002460652769395051,1
+provincia,Corrientes,2020,3,Otros,2705,86156,0.03139653651515855,12
+provincia,Córdoba,2020,3,Adm. pública y defensa,92422,156003,0.5924373249232386,62
+provincia,Córdoba,2020,3,Enseñanza,25047,156003,0.16055460471914001,35
+provincia,Córdoba,2020,3,Salud y asistencia social,19640,156003,0.12589501483945822,26
+provincia,Córdoba,2020,3,"Electricidad, gas y agua",953,156003,0.0061088568809574174,2
+provincia,Córdoba,2020,3,Transporte,1567,156003,0.010044678627975104,2
+provincia,Córdoba,2020,3,Finanzas y seguros,3529,156003,0.022621359845643993,4
+provincia,Córdoba,2020,3,Construcción,3364,156003,0.021563687877797222,1
+provincia,Córdoba,2020,3,Servicios de seguridad / edificios,2906,156003,0.01862784690038012,1
+provincia,Córdoba,2020,3,Otros,6575,156003,0.04214662538540925,6
+provincia,Entre Ríos,2020,3,Adm. pública y defensa,40499,96037,0.42170205233399627,133
+provincia,Entre Ríos,2020,3,Enseñanza,41304,96037,0.4300842383664629,88
+provincia,Entre Ríos,2020,3,Salud y asistencia social,8779,96037,0.09141268469444068,42
+provincia,Entre Ríos,2020,3,"Electricidad, gas y agua",254,96037,0.002644813977946,3
+provincia,Entre Ríos,2020,3,Transporte,939,96037,0.009777481595635016,4
+provincia,Entre Ríos,2020,3,Finanzas y seguros,74,96037,7.705363557795432e-4,1
+provincia,Entre Ríos,2020,3,Construcción,1185,96037,0.012338994345929173,6
+provincia,Entre Ríos,2020,3,Servicios de seguridad / edificios,447,96037,0.004654456095046701,4
+provincia,Entre Ríos,2020,3,Otros,2556,96037,0.026614742234763684,10
+provincia,Formosa,2020,3,Adm. pública y defensa,17393,35259,0.49329249269690006,94
+provincia,Formosa,2020,3,Enseñanza,9809,35259,0.27819847414844434,54
+provincia,Formosa,2020,3,Salud y asistencia social,3253,35259,0.09226013216483735,18
+provincia,Formosa,2020,3,"Electricidad, gas y agua",468,35259,0.013273206840806602,2
+provincia,Formosa,2020,3,Transporte,169,35259,0.004793102470291273,1
+provincia,Formosa,2020,3,Finanzas y seguros,108,35259,0.0030630477324938314,1
+provincia,Formosa,2020,3,Construcción,385,35259,0.010919197935278936,1
+provincia,Formosa,2020,3,Servicios de seguridad / edificios,1146,35259,0.03250233982812899,5
+provincia,Formosa,2020,3,Otros,2040,35259,0.05785756828043904,10
+provincia,Formosa,2020,3,Sin clasificar / NsNr,488,35259,0.013840437902379535,3
+provincia,Jujuy,2020,3,Adm. pública y defensa,31853,67162,0.4742711652422501,188
+provincia,Jujuy,2020,3,Enseñanza,20761,67162,0.30911825139215626,132
+provincia,Jujuy,2020,3,Salud y asistencia social,9930,67162,0.14785146362526427,49
+provincia,Jujuy,2020,3,"Electricidad, gas y agua",789,67162,0.011747714481403174,3
+provincia,Jujuy,2020,3,Transporte,436,67162,0.006491766177302642,3
+provincia,Jujuy,2020,3,Finanzas y seguros,129,67162,0.0019207289836514695,1
+provincia,Jujuy,2020,3,Construcción,336,67162,0.005002828980673595,2
+provincia,Jujuy,2020,3,Servicios de seguridad / edificios,174,67162,0.0025907507221345403,1
+provincia,Jujuy,2020,3,Otros,2651,67162,0.039471725082636015,13
+provincia,Jujuy,2020,3,Sin clasificar / NsNr,103,67162,0.0015336053125279176,1
+provincia,La Pampa,2020,3,Adm. pública y defensa,12451,27016,0.4608750370151022,68
+provincia,La Pampa,2020,3,Enseñanza,9452,27016,0.3498667456322179,46
+provincia,La Pampa,2020,3,Salud y asistencia social,2379,27016,0.0880589280426414,10
+provincia,La Pampa,2020,3,"Electricidad, gas y agua",108,27016,0.0039976310334616525,1
+provincia,La Pampa,2020,3,Finanzas y seguros,149,27016,0.005515250222090613,1
+provincia,La Pampa,2020,3,Construcción,437,27016,0.01617559964465502,4
+provincia,La Pampa,2020,3,Otros,1317,27016,0.04874888954693515,7
+provincia,La Pampa,2020,3,Sin clasificar / NsNr,723,27016,0.026761918862896063,3
+provincia,La Rioja,2020,3,Adm. pública y defensa,32061,60053,0.5338784074067907,259
+provincia,La Rioja,2020,3,Enseñanza,16491,60053,0.27460743010340866,148
+provincia,La Rioja,2020,3,Salud y asistencia social,6243,60053,0.10395817028291676,49
+provincia,La Rioja,2020,3,"Electricidad, gas y agua",418,60053,0.006960518208915458,2
+provincia,La Rioja,2020,3,Transporte,386,60053,0.006427655570912361,3
+provincia,La Rioja,2020,3,Finanzas y seguros,646,60053,0.010757164504687526,5
+provincia,La Rioja,2020,3,Construcción,390,60053,0.006494263400662748,4
+provincia,La Rioja,2020,3,Servicios de seguridad / edificios,835,60053,0.01390438446039332,6
+provincia,La Rioja,2020,3,Otros,2243,60053,0.0373503405325296,21
+provincia,La Rioja,2020,3,Sin clasificar / NsNr,340,60053,0.005661665528782909,3
+provincia,Mendoza,2020,3,Adm. pública y defensa,45345,115377,0.3930159390519774,94
+provincia,Mendoza,2020,3,Enseñanza,43060,115377,0.37321129861237506,98
+provincia,Mendoza,2020,3,Salud y asistencia social,16134,115377,0.13983722925713096,40
+provincia,Mendoza,2020,3,"Electricidad, gas y agua",925,115377,0.008017195801589572,3
+provincia,Mendoza,2020,3,Transporte,467,115377,0.004047600474964681,1
+provincia,Mendoza,2020,3,Finanzas y seguros,1341,115377,0.011622767102628773,3
+provincia,Mendoza,2020,3,Construcción,2395,115377,0.020758036697088676,6
+provincia,Mendoza,2020,3,Otros,5710,115377,0.049489933002244815,14
+provincia,Misiones,2020,3,Adm. pública y defensa,46626,83859,0.5560047222122849,136
+provincia,Misiones,2020,3,Enseñanza,20310,83859,0.24219225127893249,67
+provincia,Misiones,2020,3,Salud y asistencia social,8545,83859,0.10189723225891079,21
+provincia,Misiones,2020,3,"Electricidad, gas y agua",1793,83859,0.02138112784555027,8
+provincia,Misiones,2020,3,Transporte,468,83859,0.005580796336708046,2
+provincia,Misiones,2020,3,Construcción,1004,83859,0.011972477611228372,3
+provincia,Misiones,2020,3,Servicios de seguridad / edificios,1240,83859,0.014786725336576873,6
+provincia,Misiones,2020,3,Otros,3127,83859,0.03728878236086765,13
+provincia,Misiones,2020,3,Sin clasificar / NsNr,746,83859,0.008895884758940603,2
+provincia,Neuquén,2020,3,Adm. pública y defensa,31215,68932,0.4528375790634248,125
+provincia,Neuquén,2020,3,Enseñanza,21460,68932,0.31132130215284626,87
+provincia,Neuquén,2020,3,Salud y asistencia social,6890,68932,0.09995357743863517,27
+provincia,Neuquén,2020,3,"Electricidad, gas y agua",2596,68932,0.03766030290721291,7
+provincia,Neuquén,2020,3,Transporte,776,68932,0.011257471130969652,3
+provincia,Neuquén,2020,3,Finanzas y seguros,1227,68932,0.017800150873324434,4
+provincia,Neuquén,2020,3,Construcción,747,68932,0.01083676666860094,3
+provincia,Neuquén,2020,3,Otros,4021,68932,0.05833284976498578,17
+provincia,Río Negro,2020,3,Adm. pública y defensa,38803,76214,0.5091321804392893,187
+provincia,Río Negro,2020,3,Enseñanza,21061,76214,0.2763403049308526,91
+provincia,Río Negro,2020,3,Salud y asistencia social,9607,76214,0.12605295614978876,35
+provincia,Río Negro,2020,3,Transporte,314,76214,0.004119977956805836,2
+provincia,Río Negro,2020,3,Construcción,444,76214,0.005825701314719081,3
+provincia,Río Negro,2020,3,Servicios de seguridad / edificios,141,76214,0.0018500537958905188,1
+provincia,Río Negro,2020,3,Otros,5251,76214,0.06889810271078804,30
+provincia,Río Negro,2020,3,Sin clasificar / NsNr,593,76214,0.007780722701865799,7
+provincia,Salta,2020,3,Adm. pública y defensa,49936,97737,0.5109221686771642,133
+provincia,Salta,2020,3,Enseñanza,28174,97737,0.2882634007591802,82
+provincia,Salta,2020,3,Salud y asistencia social,12592,97737,0.128835548461688,34
+provincia,Salta,2020,3,"Electricidad, gas y agua",568,97737,0.005811514574828366,2
+provincia,Salta,2020,3,Transporte,793,97737,0.008113611017321996,3
+provincia,Salta,2020,3,Finanzas y seguros,468,97737,0.004788360600386752,2
+provincia,Salta,2020,3,Construcción,774,97737,0.00791921176217809,2
+provincia,Salta,2020,3,Otros,4432,97737,0.04534618414725232,14
+provincia,San Juan,2020,3,Adm. pública y defensa,30350,61537,0.4931992134813202,142
+provincia,San Juan,2020,3,Enseñanza,22942,61537,0.3728163543884167,97
+provincia,San Juan,2020,3,Salud y asistencia social,6092,61537,0.09899735118709069,23
+provincia,San Juan,2020,3,"Electricidad, gas y agua",348,61537,0.005655134309439849,3
+provincia,San Juan,2020,3,Transporte,415,61537,0.006743910167866487,1
+provincia,San Juan,2020,3,Construcción,725,61537,0.011781529811333019,3
+provincia,San Juan,2020,3,Otros,312,61537,0.005070120415359865,1
+provincia,San Juan,2020,3,Sin clasificar / NsNr,353,61537,0.00573638623917318,2
+provincia,San Luis,2020,3,Adm. pública y defensa,32568,60002,0.5427819072697577,215
+provincia,San Luis,2020,3,Enseñanza,17807,60002,0.29677344088530383,114
+provincia,San Luis,2020,3,Salud y asistencia social,5208,60002,0.0867971067631079,36
+provincia,San Luis,2020,3,"Electricidad, gas y agua",194,60002,0.0032332255591480284,3
+provincia,San Luis,2020,3,Transporte,2292,60002,0.0381987267091097,22
+provincia,San Luis,2020,3,Construcción,577,60002,0.009616346121795941,5
+provincia,San Luis,2020,3,Otros,1218,60002,0.020299323355888136,10
+provincia,San Luis,2020,3,Sin clasificar / NsNr,138,60002,0.002299923335888804,1
+provincia,Santa Cruz,2020,3,Adm. pública y defensa,33876,50661,0.6686800497424054,97
+provincia,Santa Cruz,2020,3,Enseñanza,9200,50661,0.18159925781172895,29
+provincia,Santa Cruz,2020,3,Salud y asistencia social,2973,50661,0.05868419494285545,6
+provincia,Santa Cruz,2020,3,"Electricidad, gas y agua",769,50661,0.015179329267089082,2
+provincia,Santa Cruz,2020,3,Transporte,283,50661,0.005586151082686879,1
+provincia,Santa Cruz,2020,3,Construcción,1061,50661,0.02094313179763526,5
+provincia,Santa Cruz,2020,3,Servicios de seguridad / edificios,910,50661,0.01796253528355145,3
+provincia,Santa Cruz,2020,3,Otros,1589,50661,0.031365350072047535,3
+provincia,Santa Fe,2020,3,Adm. pública y defensa,76331,204223,0.3737629943737973,133
+provincia,Santa Fe,2020,3,Enseñanza,79004,204223,0.3868516278773693,113
+provincia,Santa Fe,2020,3,Salud y asistencia social,26584,204223,0.13017143025026565,41
+provincia,Santa Fe,2020,3,"Electricidad, gas y agua",2420,204223,0.011849791649324513,3
+provincia,Santa Fe,2020,3,Transporte,4077,204223,0.019963471303428116,5
+provincia,Santa Fe,2020,3,Finanzas y seguros,4924,204223,0.024110898380691696,2
+provincia,Santa Fe,2020,3,Construcción,2528,204223,0.012378625326236516,2
+provincia,Santa Fe,2020,3,Servicios de seguridad / edificios,1627,204223,0.007966781410516936,2
+provincia,Santa Fe,2020,3,Otros,5108,204223,0.025011874274689923,12
+provincia,Santa Fe,2020,3,Sin clasificar / NsNr,1620,204223,0.007932505153680046,1
+provincia,Tucumán,2020,3,Adm. pública y defensa,36815,83538,0.44069764657999955,72
+provincia,Tucumán,2020,3,Enseñanza,22807,83538,0.27301347889583183,38
+provincia,Tucumán,2020,3,Salud y asistencia social,16863,83538,0.20186023127199598,24
+provincia,Tucumán,2020,3,Transporte,110,83538,0.0013167660226483756,1
+provincia,Tucumán,2020,3,Construcción,2635,83538,0.03154253154253154,2
+provincia,Tucumán,2020,3,Servicios de seguridad / edificios,2352,83538,0.02815485168426345,8
+provincia,Tucumán,2020,3,Otros,1559,83538,0.01866216572098925,3
+provincia,Tucumán,2020,3,Sin clasificar / NsNr,397,83538,0.004752328281740046,2
+provincia,Buenos Aires,2021,3,Adm. pública y defensa,626519,1295276,0.4836953668561758,346
+provincia,Buenos Aires,2021,3,Enseñanza,324955,1295276,0.250877033157412,224
+provincia,Buenos Aires,2021,3,Salud y asistencia social,182829,1295276,0.141150611915916,89
+provincia,Buenos Aires,2021,3,"Electricidad, gas y agua",11430,1295276,0.008824374110228244,9
+provincia,Buenos Aires,2021,3,Transporte,48558,1295276,0.03748853526198277,23
+provincia,Buenos Aires,2021,3,Finanzas y seguros,20240,1295276,0.01562601329755203,12
+provincia,Buenos Aires,2021,3,Construcción,2267,1295276,0.001750206133673441,4
+provincia,Buenos Aires,2021,3,Servicios de seguridad / edificios,9084,1295276,0.007013177114375623,3
+provincia,Buenos Aires,2021,3,Otros,64730,1295276,0.04997390517542207,46
+provincia,Buenos Aires,2021,3,Sin clasificar / NsNr,4664,1295276,0.0036007769772619888,4
+provincia,C.A.B.A.,2021,3,Adm. pública y defensa,120956,282198,0.42862103912855515,45
+provincia,C.A.B.A.,2021,3,Enseñanza,65303,282198,0.23140844371682295,28
+provincia,C.A.B.A.,2021,3,Salud y asistencia social,50974,282198,0.18063203849779233,20
+provincia,C.A.B.A.,2021,3,Transporte,2845,282198,0.010081573930360951,2
+provincia,C.A.B.A.,2021,3,Finanzas y seguros,15983,282198,0.056637538182410935,7
+provincia,C.A.B.A.,2021,3,Construcción,5728,282198,0.02029780508720827,2
+provincia,C.A.B.A.,2021,3,Otros,17700,282198,0.06272191865286075,7
+provincia,C.A.B.A.,2021,3,Sin clasificar / NsNr,2709,282198,0.009599642803988688,1
+provincia,Catamarca,2021,3,Adm. pública y defensa,27106,50978,0.5317195653026796,265
+provincia,Catamarca,2021,3,Enseñanza,13762,50978,0.2699595904115501,135
+provincia,Catamarca,2021,3,Salud y asistencia social,4859,50978,0.09531562634862098,44
+provincia,Catamarca,2021,3,"Electricidad, gas y agua",193,50978,0.003785946879045863,4
+provincia,Catamarca,2021,3,Transporte,107,50978,0.0020989446427870846,1
+provincia,Catamarca,2021,3,Finanzas y seguros,426,50978,0.008356545961002786,6
+provincia,Catamarca,2021,3,Construcción,1318,50978,0.025854290085919416,12
+provincia,Catamarca,2021,3,Servicios de seguridad / edificios,227,50978,0.004452901251520263,2
+provincia,Catamarca,2021,3,Otros,2980,50978,0.058456589116873944,32
+provincia,Chaco,2021,3,Adm. pública y defensa,34247,91438,0.3745379382751154,90
+provincia,Chaco,2021,3,Enseñanza,31958,91438,0.3495045823399462,68
+provincia,Chaco,2021,3,Salud y asistencia social,11980,91438,0.1310177387956867,32
+provincia,Chaco,2021,3,"Electricidad, gas y agua",5857,91438,0.06405433189702311,14
+provincia,Chaco,2021,3,Transporte,1685,91438,0.01842778713445176,3
+provincia,Chaco,2021,3,Finanzas y seguros,555,91438,0.006069686563573131,1
+provincia,Chaco,2021,3,Construcción,1775,91438,0.019412060631247403,4
+provincia,Chaco,2021,3,Otros,3381,91438,0.036975874362956324,10
+provincia,Chubut,2021,3,Adm. pública y defensa,27025,57783,0.4676981119014243,193
+provincia,Chubut,2021,3,Enseñanza,16621,57783,0.2876451551494384,112
+provincia,Chubut,2021,3,Salud y asistencia social,6971,57783,0.12064101898482253,43
+provincia,Chubut,2021,3,Transporte,626,57783,0.010833636190575082,3
+provincia,Chubut,2021,3,Finanzas y seguros,105,57783,0.0018171434504958206,1
+provincia,Chubut,2021,3,Construcción,1513,57783,0.026184171815239778,11
+provincia,Chubut,2021,3,Otros,4762,57783,0.08241178201201045,26
+provincia,Chubut,2021,3,Sin clasificar / NsNr,160,57783,0.0027689804959936315,2
+provincia,Corrientes,2021,3,Adm. pública y defensa,42147,88705,0.47513668902542133,121
+provincia,Corrientes,2021,3,Enseñanza,32658,88705,0.36816413956372246,77
+provincia,Corrientes,2021,3,Salud y asistencia social,9977,88705,0.11247393044360521,23
+provincia,Corrientes,2021,3,"Electricidad, gas y agua",215,88705,0.0024237641621103656,1
+provincia,Corrientes,2021,3,Finanzas y seguros,285,88705,0.003212896680006764,1
+provincia,Corrientes,2021,3,Construcción,334,88705,0.0037652894425342425,1
+provincia,Corrientes,2021,3,Otros,2695,88705,0.030381601939011328,8
+provincia,Corrientes,2021,3,Sin clasificar / NsNr,394,88705,0.004441688743588299,1
+provincia,Córdoba,2021,3,Adm. pública y defensa,103655,206175,0.5027525160664484,154
+provincia,Córdoba,2021,3,Enseñanza,53282,206175,0.25843094458591004,93
+provincia,Córdoba,2021,3,Salud y asistencia social,19028,206175,0.09229052988965684,34
+provincia,Córdoba,2021,3,"Electricidad, gas y agua",2828,206175,0.013716502970777252,5
+provincia,Córdoba,2021,3,Transporte,9415,206175,0.04566509033587971,6
+provincia,Córdoba,2021,3,Finanzas y seguros,1991,206175,0.009656844913301807,4
+provincia,Córdoba,2021,3,Construcción,1115,206175,0.005408027161392021,3
+provincia,Córdoba,2021,3,Servicios de seguridad / edificios,3647,206175,0.01768885655389839,4
+provincia,Córdoba,2021,3,Otros,11214,206175,0.05439068752273554,14
+provincia,Entre Ríos,2021,3,Adm. pública y defensa,43484,112509,0.38649352496244743,169
+provincia,Entre Ríos,2021,3,Enseñanza,47877,112509,0.4255392901901181,131
+provincia,Entre Ríos,2021,3,Salud y asistencia social,13362,112509,0.1187638322267552,46
+provincia,Entre Ríos,2021,3,"Electricidad, gas y agua",3196,112509,0.028406616359580122,6
+provincia,Entre Ríos,2021,3,Transporte,1373,112509,0.012203468166991084,6
+provincia,Entre Ríos,2021,3,Finanzas y seguros,302,112509,0.002684229706067959,2
+provincia,Entre Ríos,2021,3,Construcción,348,112509,0.0030930858864624163,3
+provincia,Entre Ríos,2021,3,Servicios de seguridad / edificios,546,112509,0.004852945097725515,1
+provincia,Entre Ríos,2021,3,Otros,2021,112509,0.017963007403852135,7
+provincia,Formosa,2021,3,Adm. pública y defensa,16518,34749,0.47535180868514204,95
+provincia,Formosa,2021,3,Enseñanza,9416,34749,0.2709718265273821,53
+provincia,Formosa,2021,3,Salud y asistencia social,4161,34749,0.11974445307778642,21
+provincia,Formosa,2021,3,"Electricidad, gas y agua",517,34749,0.014878125989237101,3
+provincia,Formosa,2021,3,Finanzas y seguros,334,34749,0.009611787389565167,1
+provincia,Formosa,2021,3,Construcción,378,34749,0.010878010878010878,2
+provincia,Formosa,2021,3,Servicios de seguridad / edificios,684,34749,0.019684019684019685,5
+provincia,Formosa,2021,3,Otros,2321,34749,0.06679328901551124,15
+provincia,Formosa,2021,3,Sin clasificar / NsNr,420,34749,0.01208667875334542,2
+provincia,Jujuy,2021,3,Adm. pública y defensa,40571,81181,0.499759796011382,228
+provincia,Jujuy,2021,3,Enseñanza,18611,81181,0.22925315036769686,115
+provincia,Jujuy,2021,3,Salud y asistencia social,12103,81181,0.14908660893558837,77
+provincia,Jujuy,2021,3,"Electricidad, gas y agua",45,81181,5.543168968108301e-4,1
+provincia,Jujuy,2021,3,Transporte,595,81181,0.00732930119116542,3
+provincia,Jujuy,2021,3,Finanzas y seguros,903,81181,0.011123292396003992,5
+provincia,Jujuy,2021,3,Construcción,1271,81181,0.015656372796590334,5
+provincia,Jujuy,2021,3,Servicios de seguridad / edificios,604,81181,0.007440164570527586,2
+provincia,Jujuy,2021,3,Otros,6195,81181,0.07631095946095762,33
+provincia,Jujuy,2021,3,Sin clasificar / NsNr,283,81181,0.0034860373732769983,2
+provincia,La Pampa,2021,3,Adm. pública y defensa,10591,30569,0.34646210212960843,55
+provincia,La Pampa,2021,3,Enseñanza,13128,30569,0.4294546763060617,44
+provincia,La Pampa,2021,3,Salud y asistencia social,2725,30569,0.08914259543982465,11
+provincia,La Pampa,2021,3,Transporte,739,30569,0.024174817625699237,4
+provincia,La Pampa,2021,3,Finanzas y seguros,429,30569,0.014033825116948543,2
+provincia,La Pampa,2021,3,Construcción,147,30569,0.004808793221891459,1
+provincia,La Pampa,2021,3,Servicios de seguridad / edificios,87,30569,0.002846020478262292,1
+provincia,La Pampa,2021,3,Otros,2686,30569,0.0878667931564657,14
+provincia,La Pampa,2021,3,Sin clasificar / NsNr,37,30569,0.0012103765252379861,1
+provincia,La Rioja,2021,3,Adm. pública y defensa,36537,67241,0.5433738344165019,307
+provincia,La Rioja,2021,3,Enseñanza,17027,67241,0.2532234797221933,167
+provincia,La Rioja,2021,3,Salud y asistencia social,8887,67241,0.1321663865796166,75
+provincia,La Rioja,2021,3,"Electricidad, gas y agua",634,67241,0.009428771136657695,6
+provincia,La Rioja,2021,3,Transporte,238,67241,0.003539507145937746,2
+provincia,La Rioja,2021,3,Finanzas y seguros,337,67241,0.0050118231436177335,3
+provincia,La Rioja,2021,3,Construcción,399,67241,0.00593387962701328,3
+provincia,La Rioja,2021,3,Otros,2868,67241,0.042652548296426285,24
+provincia,La Rioja,2021,3,Sin clasificar / NsNr,314,67241,0.004669769932035514,2
+provincia,Mendoza,2021,3,Adm. pública y defensa,63629,131821,0.4826924389892354,120
+provincia,Mendoza,2021,3,Enseñanza,38052,131821,0.28866417338663797,86
+provincia,Mendoza,2021,3,Salud y asistencia social,18277,131821,0.13865013920392047,40
+provincia,Mendoza,2021,3,"Electricidad, gas y agua",2170,131821,0.01646171702536015,5
+provincia,Mendoza,2021,3,Transporte,181,131821,0.0013730740928987034,1
+provincia,Mendoza,2021,3,Finanzas y seguros,881,131821,0.006683305391401977,2
+provincia,Mendoza,2021,3,Construcción,3568,131821,0.0270670075329424,6
+provincia,Mendoza,2021,3,Otros,5063,131821,0.03840814437760296,12
+provincia,Misiones,2021,3,Adm. pública y defensa,43408,89978,0.4824290382093401,129
+provincia,Misiones,2021,3,Enseñanza,20897,89978,0.2322456600502345,66
+provincia,Misiones,2021,3,Salud y asistencia social,13940,89978,0.15492675987463603,38
+provincia,Misiones,2021,3,"Electricidad, gas y agua",3192,89978,0.03547533841605726,6
+provincia,Misiones,2021,3,Transporte,512,89978,0.005690279846184623,2
+provincia,Misiones,2021,3,Construcción,1292,89978,0.014359065549356509,4
+provincia,Misiones,2021,3,Servicios de seguridad / edificios,1231,89978,0.01368112205205717,3
+provincia,Misiones,2021,3,Otros,5506,89978,0.06119273600213385,15
+provincia,Neuquén,2021,3,Adm. pública y defensa,35537,67038,0.5301023300217786,147
+provincia,Neuquén,2021,3,Enseñanza,18615,67038,0.2776783316924729,81
+provincia,Neuquén,2021,3,Salud y asistencia social,6949,67038,0.10365762701751245,29
+provincia,Neuquén,2021,3,"Electricidad, gas y agua",851,67038,0.012694292789164355,4
+provincia,Neuquén,2021,3,Transporte,871,67038,0.01299263104507891,3
+provincia,Neuquén,2021,3,Finanzas y seguros,733,67038,0.010934097079268474,3
+provincia,Neuquén,2021,3,Construcción,1064,67038,0.015871595214654376,6
+provincia,Neuquén,2021,3,Servicios de seguridad / edificios,259,67038,0.0038634804140934994,1
+provincia,Neuquén,2021,3,Otros,2159,67038,0.032205614725976314,10
+provincia,Río Negro,2021,3,Adm. pública y defensa,37145,77254,0.4808165272995573,177
+provincia,Río Negro,2021,3,Enseñanza,24755,77254,0.3204364822533461,109
+provincia,Río Negro,2021,3,Salud y asistencia social,8672,77254,0.11225308721878478,40
+provincia,Río Negro,2021,3,"Electricidad, gas y agua",1738,77254,0.022497216972583944,6
+provincia,Río Negro,2021,3,Finanzas y seguros,332,77254,0.004297512102933182,1
+provincia,Río Negro,2021,3,Construcción,1558,77254,0.02016724053123463,8
+provincia,Río Negro,2021,3,Servicios de seguridad / edificios,1501,77254,0.01942941465814068,8
+provincia,Río Negro,2021,3,Otros,1252,77254,0.016206280580940792,10
+provincia,Río Negro,2021,3,Sin clasificar / NsNr,301,77254,0.0038962383824785772,2
+provincia,Salta,2021,3,Adm. pública y defensa,56183,98804,0.5686308246629691,199
+provincia,Salta,2021,3,Enseñanza,23072,98804,0.23351281324642728,89
+provincia,Salta,2021,3,Salud y asistencia social,15358,98804,0.15543905105056474,54
+provincia,Salta,2021,3,"Electricidad, gas y agua",624,98804,0.006315533784057326,2
+provincia,Salta,2021,3,Transporte,1034,98804,0.010465163353710377,3
+provincia,Salta,2021,3,Construcción,260,98804,0.0026314724100238857,1
+provincia,Salta,2021,3,Otros,2273,98804,0.023005141492247277,9
+provincia,San Juan,2021,3,Adm. pública y defensa,29378,59659,0.49243198846779196,134
+provincia,San Juan,2021,3,Enseñanza,18979,59659,0.31812467523760035,101
+provincia,San Juan,2021,3,Salud y asistencia social,7785,59659,0.13049162741581322,35
+provincia,San Juan,2021,3,"Electricidad, gas y agua",117,59659,0.001961145845555574,1
+provincia,San Juan,2021,3,Transporte,642,59659,0.010761159255099817,2
+provincia,San Juan,2021,3,Finanzas y seguros,403,59659,0.0067550579124692,1
+provincia,San Juan,2021,3,Construcción,971,59659,0.016275834325080875,4
+provincia,San Juan,2021,3,Servicios de seguridad / edificios,99,59659,0.0016594311000854857,1
+provincia,San Juan,2021,3,Otros,946,59659,0.01585678606748353,7
+provincia,San Juan,2021,3,Sin clasificar / NsNr,339,59659,0.005682294373019997,1
+provincia,San Luis,2021,3,Adm. pública y defensa,34860,63820,0.5462237543089941,220
+provincia,San Luis,2021,3,Enseñanza,18574,63820,0.29103729238483234,126
+provincia,San Luis,2021,3,Salud y asistencia social,5779,63820,0.09055155123785646,37
+provincia,San Luis,2021,3,Transporte,665,63820,0.010419931056095268,9
+provincia,San Luis,2021,3,Finanzas y seguros,427,63820,0.006690692572861172,3
+provincia,San Luis,2021,3,Construcción,1060,63820,0.016609213412723284,5
+provincia,San Luis,2021,3,Servicios de seguridad / edificios,397,63820,0.006220620495142589,3
+provincia,San Luis,2021,3,Otros,1871,63820,0.029316828580382325,11
+provincia,San Luis,2021,3,Sin clasificar / NsNr,187,63820,0.002930115951112504,1
+provincia,Santa Cruz,2021,3,Adm. pública y defensa,30336,56305,0.5387798596927449,160
+provincia,Santa Cruz,2021,3,Enseñanza,12089,56305,0.21470562117041114,57
+provincia,Santa Cruz,2021,3,Salud y asistencia social,4168,56305,0.07402539738921943,27
+provincia,Santa Cruz,2021,3,"Electricidad, gas y agua",1727,56305,0.030672231595773022,4
+provincia,Santa Cruz,2021,3,Transporte,228,56305,0.004049373945475535,1
+provincia,Santa Cruz,2021,3,Construcción,726,56305,0.012894059142172098,5
+provincia,Santa Cruz,2021,3,Otros,4802,56305,0.08528549862356807,21
+provincia,Santa Cruz,2021,3,Sin clasificar / NsNr,2229,56305,0.039587958440635826,6
+provincia,Santa Fe,2021,3,Adm. pública y defensa,77425,199925,0.38727022633487557,135
+provincia,Santa Fe,2021,3,Enseñanza,78815,199925,0.394222833562586,139
+provincia,Santa Fe,2021,3,Salud y asistencia social,30809,199925,0.15410278854570464,48
+provincia,Santa Fe,2021,3,"Electricidad, gas y agua",843,199925,0.004216581217956734,2
+provincia,Santa Fe,2021,3,Transporte,3243,199925,0.016221082906089784,5
+provincia,Santa Fe,2021,3,Construcción,1907,199925,0.009538576966362386,4
+provincia,Santa Fe,2021,3,Servicios de seguridad / edificios,686,199925,0.0034312867325246967,1
+provincia,Santa Fe,2021,3,Otros,5114,199925,0.025579592347130174,13
+provincia,Santa Fe,2021,3,Sin clasificar / NsNr,1083,199925,0.005417031386770039,2
+provincia,Santiago del Estero,2021,3,Adm. pública y defensa,37656,73630,0.5114219747385577,168
+provincia,Santiago del Estero,2021,3,Enseñanza,19195,73630,0.26069536873556975,94
+provincia,Santiago del Estero,2021,3,Salud y asistencia social,8829,73630,0.11991036262393047,39
+provincia,Santiago del Estero,2021,3,"Electricidad, gas y agua",206,73630,0.002797772647018878,1
+provincia,Santiago del Estero,2021,3,Finanzas y seguros,615,73630,0.008352573679206846,2
+provincia,Santiago del Estero,2021,3,Construcción,876,73630,0.01189732446013853,3
+provincia,Santiago del Estero,2021,3,Servicios de seguridad / edificios,185,73630,0.002512562814070352,1
+provincia,Santiago del Estero,2021,3,Otros,5856,73630,0.07953279913078908,27
+provincia,Santiago del Estero,2021,3,Sin clasificar / NsNr,212,73630,0.0028792611707184573,1
+provincia,Tierra del Fuego,2021,3,Adm. pública y defensa,12947,23329,0.554974495263406,74
+provincia,Tierra del Fuego,2021,3,Enseñanza,6461,23329,0.2769514338377127,41
+provincia,Tierra del Fuego,2021,3,Salud y asistencia social,816,23329,0.0349779244716876,5
+provincia,Tierra del Fuego,2021,3,"Electricidad, gas y agua",206,23329,0.00883021132496035,1
+provincia,Tierra del Fuego,2021,3,Transporte,550,23329,0.023575806935573748,4
+provincia,Tierra del Fuego,2021,3,Finanzas y seguros,903,23329,0.03870718847786017,4
+provincia,Tierra del Fuego,2021,3,Construcción,219,23329,0.009387457670710276,1
+provincia,Tierra del Fuego,2021,3,Otros,1052,23329,0.0450940889022247,6
+provincia,Tierra del Fuego,2021,3,Sin clasificar / NsNr,175,23329,0.007501393115864375,1
+provincia,Tucumán,2021,3,Adm. pública y defensa,53093,99678,0.532645117277634,150
+provincia,Tucumán,2021,3,Enseñanza,23355,99678,0.23430446036236682,73
+provincia,Tucumán,2021,3,Salud y asistencia social,15818,99678,0.15869098497160858,44
+provincia,Tucumán,2021,3,"Electricidad, gas y agua",627,99678,0.006290254619876001,2
+provincia,Tucumán,2021,3,Transporte,531,99678,0.005327153434057666,2
+provincia,Tucumán,2021,3,Finanzas y seguros,947,99678,0.009500591905937118,2
+provincia,Tucumán,2021,3,Construcción,2132,99678,0.02138887216838219,5
+provincia,Tucumán,2021,3,Servicios de seguridad / edificios,720,99678,0.007223258893637513,4
+provincia,Tucumán,2021,3,Otros,2455,99678,0.02462930636650013,7
+provincia,Buenos Aires,2022,3,Adm. pública y defensa,465731,1083267,0.42993186352025864,362
+provincia,Buenos Aires,2022,3,Enseñanza,275952,1083267,0.2547405210349803,239
+provincia,Buenos Aires,2022,3,Salud y asistencia social,161893,1083267,0.1494488431753206,110
+provincia,Buenos Aires,2022,3,"Electricidad, gas y agua",20210,1083267,0.018656526968882096,11
+provincia,Buenos Aires,2022,3,Transporte,46252,1083267,0.04269676820211453,24
+provincia,Buenos Aires,2022,3,Finanzas y seguros,18877,1083267,0.01742599008370051,14
+provincia,Buenos Aires,2022,3,Construcción,6719,1083267,0.006202533632059317,8
+provincia,Buenos Aires,2022,3,Servicios de seguridad / edificios,26042,1083267,0.024040241233232434,12
+provincia,Buenos Aires,2022,3,Otros,61591,1083267,0.056856712149451615,53
+provincia,C.A.B.A.,2022,3,Adm. pública y defensa,157154,316135,0.49711041169120784,84
+provincia,C.A.B.A.,2022,3,Enseñanza,52425,316135,0.16583105318930205,30
+provincia,C.A.B.A.,2022,3,Salud y asistencia social,31254,316135,0.09886282758947917,24
+provincia,C.A.B.A.,2022,3,Transporte,6220,316135,0.019675138785645373,6
+provincia,C.A.B.A.,2022,3,Finanzas y seguros,30797,316135,0.09741724263368498,14
+provincia,C.A.B.A.,2022,3,Otros,38285,316135,0.12110332611068056,19
+provincia,Catamarca,2022,3,Adm. pública y defensa,29008,52521,0.5523124083699853,256
+provincia,Catamarca,2022,3,Enseñanza,14767,52521,0.281163724986196,127
+provincia,Catamarca,2022,3,Salud y asistencia social,5094,52521,0.09698977551836409,45
+provincia,Catamarca,2022,3,"Electricidad, gas y agua",202,52521,0.0038460806153728985,2
+provincia,Catamarca,2022,3,Transporte,72,52521,0.001370880219340835,1
+provincia,Catamarca,2022,3,Finanzas y seguros,383,52521,0.007292321166771387,3
+provincia,Catamarca,2022,3,Construcción,1270,52521,0.02418080386892862,10
+provincia,Catamarca,2022,3,Servicios de seguridad / edificios,136,52521,0.0025894404143104663,1
+provincia,Catamarca,2022,3,Otros,1589,52521,0.030254564840730375,14
+provincia,Chaco,2022,3,Adm. pública y defensa,48833,113204,0.43137168297940004,102
+provincia,Chaco,2022,3,Enseñanza,33665,113204,0.29738348468252007,75
+provincia,Chaco,2022,3,Salud y asistencia social,14323,113204,0.1265237977456627,32
+provincia,Chaco,2022,3,"Electricidad, gas y agua",4789,113204,0.042304158863644394,12
+provincia,Chaco,2022,3,Transporte,425,113204,0.003754284300908095,2
+provincia,Chaco,2022,3,Finanzas y seguros,907,113204,0.008012084378643864,2
+provincia,Chaco,2022,3,Construcción,3359,113204,0.029672096392353627,6
+provincia,Chaco,2022,3,Servicios de seguridad / edificios,537,113204,0.004743648634323875,2
+provincia,Chaco,2022,3,Otros,5677,113204,0.050148404650012364,18
+provincia,Chaco,2022,3,Sin clasificar / NsNr,689,113204,0.006086357372531006,1
+provincia,Chubut,2022,3,Adm. pública y defensa,30434,70083,0.4342565244067748,180
+provincia,Chubut,2022,3,Enseñanza,25640,70083,0.3658519184395645,127
+provincia,Chubut,2022,3,Salud y asistencia social,7802,70083,0.1113251430446756,44
+provincia,Chubut,2022,3,"Electricidad, gas y agua",167,70083,0.0023828888603512977,1
+provincia,Chubut,2022,3,Transporte,284,70083,0.004052337942154303,1
+provincia,Chubut,2022,3,Finanzas y seguros,187,70083,0.002668264771770615,1
+provincia,Chubut,2022,3,Construcción,1555,70083,0.022187977112851903,9
+provincia,Chubut,2022,3,Servicios de seguridad / edificios,101,70083,0.0014411483526675514,1
+provincia,Chubut,2022,3,Otros,3566,70083,0.05088252500606424,22
+provincia,Chubut,2022,3,Sin clasificar / NsNr,347,70083,0.004951272063125151,2
+provincia,Corrientes,2022,3,Adm. pública y defensa,38421,94047,0.40852977766435933,102
+provincia,Corrientes,2022,3,Enseñanza,33133,94047,0.3523025721181962,70
+provincia,Corrientes,2022,3,Salud y asistencia social,12631,94047,0.1343051878316161,32
+provincia,Corrientes,2022,3,"Electricidad, gas y agua",594,94047,0.006315990940699863,2
+provincia,Corrientes,2022,3,Transporte,1461,94047,0.015534785798590066,2
+provincia,Corrientes,2022,3,Finanzas y seguros,719,94047,0.007645113613406063,1
+provincia,Corrientes,2022,3,Construcción,245,94047,0.0026050804385041523,1
+provincia,Corrientes,2022,3,Servicios de seguridad / edificios,425,94047,0.004519017087201081,2
+provincia,Corrientes,2022,3,Otros,6038,94047,0.0642019415824003,13
+provincia,Corrientes,2022,3,Sin clasificar / NsNr,380,94047,0.004040532925026848,1
+provincia,Córdoba,2022,3,Adm. pública y defensa,86692,182377,0.4753450270593331,140
+provincia,Córdoba,2022,3,Enseñanza,57300,182377,0.3141843543867922,76
+provincia,Córdoba,2022,3,Salud y asistencia social,12354,182377,0.06773880478349792,19
+provincia,Córdoba,2022,3,"Electricidad, gas y agua",4694,182377,0.02573789458100528,9
+provincia,Córdoba,2022,3,Transporte,4563,182377,0.025019602252477013,3
+provincia,Córdoba,2022,3,Finanzas y seguros,9096,182377,0.049874710078573505,7
+provincia,Córdoba,2022,3,Servicios de seguridad / edificios,550,182377,0.0030157311503095237,1
+provincia,Córdoba,2022,3,Otros,7128,182377,0.039083875708011424,12
+provincia,Entre Ríos,2022,3,Adm. pública y defensa,49836,115269,0.4323452099003201,140
+provincia,Entre Ríos,2022,3,Enseñanza,30616,115269,0.265604802678951,110
+provincia,Entre Ríos,2022,3,Salud y asistencia social,20806,115269,0.18049952719291396,68
+provincia,Entre Ríos,2022,3,"Electricidad, gas y agua",310,115269,0.0026893614067962767,1
+provincia,Entre Ríos,2022,3,Transporte,938,115269,0.008137487095402927,4
+provincia,Entre Ríos,2022,3,Finanzas y seguros,1293,115269,0.011217239674153502,6
+provincia,Entre Ríos,2022,3,Construcción,1182,115269,0.0102542747833329,3
+provincia,Entre Ríos,2022,3,Servicios de seguridad / edificios,1290,115269,0.011191213596023215,8
+provincia,Entre Ríos,2022,3,Otros,8998,115269,0.07806088367210612,12
+provincia,Formosa,2022,3,Adm. pública y defensa,20590,39006,0.527867507562939,105
+provincia,Formosa,2022,3,Enseñanza,10034,39006,0.2572424755165872,47
+provincia,Formosa,2022,3,Salud y asistencia social,3768,39006,0.09660052299646209,17
+provincia,Formosa,2022,3,"Electricidad, gas y agua",342,39006,0.008767881864328565,2
+provincia,Formosa,2022,3,Transporte,264,39006,0.00676818950930626,1
+provincia,Formosa,2022,3,Finanzas y seguros,197,39006,0.005050505050505051,1
+provincia,Formosa,2022,3,Construcción,1570,39006,0.04025021791519254,7
+provincia,Formosa,2022,3,Servicios de seguridad / edificios,863,39006,0.022124801312618573,4
+provincia,Formosa,2022,3,Otros,1218,39006,0.03122596523611752,5
+provincia,Formosa,2022,3,Sin clasificar / NsNr,160,39006,0.004101933035943188,1
+provincia,Jujuy,2022,3,Adm. pública y defensa,40956,87814,0.4663948800874576,203
+provincia,Jujuy,2022,3,Enseñanza,21950,87814,0.24996014302958525,118
+provincia,Jujuy,2022,3,Salud y asistencia social,16753,87814,0.19077823581661238,89
+provincia,Jujuy,2022,3,"Electricidad, gas y agua",585,87814,0.0066618079121780124,3
+provincia,Jujuy,2022,3,Transporte,859,87814,0.009782039310360535,4
+provincia,Jujuy,2022,3,Finanzas y seguros,1406,87814,0.016011114400892795,5
+provincia,Jujuy,2022,3,Construcción,638,87814,0.007265356321315508,3
+provincia,Jujuy,2022,3,Servicios de seguridad / edificios,186,87814,0.0021181132848976246,1
+provincia,Jujuy,2022,3,Otros,4148,87814,0.047236203794383584,21
+provincia,Jujuy,2022,3,Sin clasificar / NsNr,333,87814,0.0037921060423167148,1
+provincia,La Pampa,2022,3,Adm. pública y defensa,15231,32444,0.46945506102823326,98
+provincia,La Pampa,2022,3,Enseñanza,10341,32444,0.31873381827148317,66
+provincia,La Pampa,2022,3,Salud y asistencia social,3915,32444,0.12066946122549624,22
+provincia,La Pampa,2022,3,Transporte,338,32444,0.010417950930834668,2
+provincia,La Pampa,2022,3,Finanzas y seguros,181,32444,0.005578843545801997,1
+provincia,La Pampa,2022,3,Construcción,321,32444,0.00989397115028973,2
+provincia,La Pampa,2022,3,Servicios de seguridad / edificios,580,32444,0.017876957218592036,3
+provincia,La Pampa,2022,3,Otros,1156,32444,0.03563062507705585,6
+provincia,La Pampa,2022,3,Sin clasificar / NsNr,381,32444,0.011743311552213044,1
+provincia,La Rioja,2022,3,Adm. pública y defensa,36031,69812,0.5161147080731107,291
+provincia,La Rioja,2022,3,Enseñanza,17264,69812,0.2472927290437174,144
+provincia,La Rioja,2022,3,Salud y asistencia social,10574,69812,0.15146393170228614,78
+provincia,La Rioja,2022,3,"Electricidad, gas y agua",333,69812,0.00476995358964075,3
+provincia,La Rioja,2022,3,Transporte,440,69812,0.006302641379705495,3
+provincia,La Rioja,2022,3,Finanzas y seguros,536,69812,0.007677763135277603,5
+provincia,La Rioja,2022,3,Construcción,593,69812,0.008494241677648541,4
+provincia,La Rioja,2022,3,Servicios de seguridad / edificios,562,69812,0.008050191944078381,5
+provincia,La Rioja,2022,3,Otros,3333,69812,0.04774250845126912,27
+provincia,La Rioja,2022,3,Sin clasificar / NsNr,146,69812,0.002091331003265914,2
+provincia,Mendoza,2022,3,Adm. pública y defensa,63108,145706,0.433118745967908,114
+provincia,Mendoza,2022,3,Enseñanza,44612,145706,0.30617819444635086,92
+provincia,Mendoza,2022,3,Salud y asistencia social,20769,145706,0.14254045818291627,43
+provincia,Mendoza,2022,3,"Electricidad, gas y agua",3964,145706,0.02720546854625067,6
+provincia,Mendoza,2022,3,Transporte,1381,145706,0.0094779899249173,3
+provincia,Mendoza,2022,3,Finanzas y seguros,624,145706,0.004282596461367411,2
+provincia,Mendoza,2022,3,Construcción,4080,145706,0.028001592247402302,8
+provincia,Mendoza,2022,3,Otros,7168,145706,0.04919495422288719,12
+provincia,Misiones,2022,3,Adm. pública y defensa,54341,104768,0.5186793677458766,160
+provincia,Misiones,2022,3,Enseñanza,27628,104768,0.26370647525962126,81
+provincia,Misiones,2022,3,Salud y asistencia social,11447,104768,0.10926046120952963,33
+provincia,Misiones,2022,3,"Electricidad, gas y agua",1326,104768,0.012656536346976176,5
+provincia,Misiones,2022,3,Transporte,4193,104768,0.04002176237018937,6
+provincia,Misiones,2022,3,Servicios de seguridad / edificios,1268,104768,0.012102932193036042,3
+provincia,Misiones,2022,3,Otros,4565,104768,0.04357246487477092,14
+provincia,Neuquén,2022,3,Adm. pública y defensa,44416,83616,0.5311902028319939,163
+provincia,Neuquén,2022,3,Enseñanza,25333,83616,0.30296833141982393,94
+provincia,Neuquén,2022,3,Salud y asistencia social,6600,83616,0.07893226176808267,23
+provincia,Neuquén,2022,3,"Electricidad, gas y agua",382,83616,0.004568503635667815,1
+provincia,Neuquén,2022,3,Transporte,458,83616,0.0054774205893608876,2
+provincia,Neuquén,2022,3,Finanzas y seguros,537,83616,0.006422215843857635,2
+provincia,Neuquén,2022,3,Construcción,1776,83616,0.02123995407577497,6
+provincia,Neuquén,2022,3,Servicios de seguridad / edificios,400,83616,0.004783773440489858,1
+provincia,Neuquén,2022,3,Otros,3537,83616,0.04230051664753157,12
+provincia,Neuquén,2022,3,Sin clasificar / NsNr,177,83616,0.0021168197474167624,1
+provincia,Río Negro,2022,3,Adm. pública y defensa,36821,76231,0.48301871941860924,186
+provincia,Río Negro,2022,3,Enseñanza,21955,76231,0.28800619170678593,99
+provincia,Río Negro,2022,3,Salud y asistencia social,7387,76231,0.09690283480473823,31
+provincia,Río Negro,2022,3,"Electricidad, gas y agua",2196,76231,0.028807178182104393,5
+provincia,Río Negro,2022,3,Transporte,96,76231,0.0012593301937531974,1
+provincia,Río Negro,2022,3,Construcción,1255,76231,0.016463118678752737,6
+provincia,Río Negro,2022,3,Servicios de seguridad / edificios,312,76231,0.004092823129697892,1
+provincia,Río Negro,2022,3,Otros,6209,76231,0.08144980388555836,29
+provincia,Salta,2022,3,Adm. pública y defensa,49631,106535,0.46586567794621486,157
+provincia,Salta,2022,3,Enseñanza,26727,106535,0.25087529919744683,93
+provincia,Salta,2022,3,Salud y asistencia social,19534,106535,0.18335758201530014,56
+provincia,Salta,2022,3,"Electricidad, gas y agua",335,106535,0.003144506500211198,1
+provincia,Salta,2022,3,Transporte,2338,106535,0.021945839395503826,7
+provincia,Salta,2022,3,Construcción,2161,106535,0.020284413573004176,5
+provincia,Salta,2022,3,Servicios de seguridad / edificios,1370,106535,0.012859623597878631,4
+provincia,Salta,2022,3,Otros,4439,106535,0.041667057774440325,13
+provincia,San Juan,2022,3,Adm. pública y defensa,28113,57043,0.49283873569061937,116
+provincia,San Juan,2022,3,Enseñanza,19378,57043,0.33970864084988517,92
+provincia,San Juan,2022,3,Salud y asistencia social,6079,57043,0.10656872885367179,23
+provincia,San Juan,2022,3,"Electricidad, gas y agua",1113,57043,0.019511596514909805,5
+provincia,San Juan,2022,3,Transporte,302,57043,0.005294251704854233,2
+provincia,San Juan,2022,3,Finanzas y seguros,430,57043,0.007538172957242782,2
+provincia,San Juan,2022,3,Construcción,665,57043,0.011657872131549884,3
+provincia,San Juan,2022,3,Servicios de seguridad / edificios,184,57043,0.003225636800308539,1
+provincia,San Juan,2022,3,Otros,391,57043,0.0068544782006556455,3
+provincia,San Juan,2022,3,Sin clasificar / NsNr,388,57043,0.006801886296302789,1
+provincia,San Luis,2022,3,Adm. pública y defensa,26016,64887,0.40094317814045954,163
+provincia,San Luis,2022,3,Enseñanza,20381,64887,0.3140998967435696,118
+provincia,San Luis,2022,3,Salud y asistencia social,7892,64887,0.12162682817821752,45
+provincia,San Luis,2022,3,"Electricidad, gas y agua",441,64887,0.006796430718017476,3
+provincia,San Luis,2022,3,Transporte,1727,64887,0.026615500793687488,12
+provincia,San Luis,2022,3,Finanzas y seguros,203,64887,0.003128515727341378,1
+provincia,San Luis,2022,3,Construcción,345,64887,0.0053169355957279575,2
+provincia,San Luis,2022,3,Servicios de seguridad / edificios,4559,64887,0.07026060690122829,27
+provincia,San Luis,2022,3,Otros,3276,64887,0.05048777104812983,19
+provincia,San Luis,2022,3,Sin clasificar / NsNr,47,64887,7.243361536209102e-4,1
+provincia,Santa Cruz,2022,3,Adm. pública y defensa,41348,69720,0.5930579460699943,162
+provincia,Santa Cruz,2022,3,Enseñanza,12592,69720,0.18060814687320711,53
+provincia,Santa Cruz,2022,3,Salud y asistencia social,8615,69720,0.12356569133677567,37
+provincia,Santa Cruz,2022,3,"Electricidad, gas y agua",287,69720,0.004116465863453815,2
+provincia,Santa Cruz,2022,3,Transporte,520,69720,0.007458405048766495,3
+provincia,Santa Cruz,2022,3,Finanzas y seguros,267,69720,0.00382960413080895,2
+provincia,Santa Cruz,2022,3,Construcción,832,69720,0.011933448078026392,4
+provincia,Santa Cruz,2022,3,Servicios de seguridad / edificios,1048,69720,0.015031554790590936,4
+provincia,Santa Cruz,2022,3,Otros,3526,69720,0.05057372346528973,17
+provincia,Santa Cruz,2022,3,Sin clasificar / NsNr,685,69720,0.009825014343086632,3
+provincia,Santa Fe,2022,3,Adm. pública y defensa,97510,246248,0.39598291153633736,152
+provincia,Santa Fe,2022,3,Enseñanza,90794,246248,0.36870959358045546,122
+provincia,Santa Fe,2022,3,Salud y asistencia social,37194,246248,0.15104285110945065,59
+provincia,Santa Fe,2022,3,"Electricidad, gas y agua",2629,246248,0.010676228842467756,5
+provincia,Santa Fe,2022,3,Transporte,1114,246248,0.004523894610311556,3
+provincia,Santa Fe,2022,3,Finanzas y seguros,2158,246248,0.00876352295247068,4
+provincia,Santa Fe,2022,3,Construcción,3133,246248,0.012722945973165265,3
+provincia,Santa Fe,2022,3,Servicios de seguridad / edificios,1480,246248,0.006010201098079984,2
+provincia,Santa Fe,2022,3,Otros,9124,246248,0.037052077580325526,14
+provincia,Santa Fe,2022,3,Sin clasificar / NsNr,1112,246248,0.004515772716935772,1
+provincia,Santiago del Estero,2022,3,Adm. pública y defensa,34267,69966,0.48976645799388274,133
+provincia,Santiago del Estero,2022,3,Enseñanza,22181,69966,0.3170254123431381,81
+provincia,Santiago del Estero,2022,3,Salud y asistencia social,6415,69966,0.0916873910184947,29
+provincia,Santiago del Estero,2022,3,Transporte,389,69966,0.005559843352485493,2
+provincia,Santiago del Estero,2022,3,Finanzas y seguros,327,69966,0.004673698653631764,1
+provincia,Santiago del Estero,2022,3,Construcción,300,69966,0.004287796929937398,2
+provincia,Santiago del Estero,2022,3,Servicios de seguridad / edificios,2899,69966,0.04143441099962839,11
+provincia,Santiago del Estero,2022,3,Otros,3188,69966,0.04556498870880142,13
+provincia,Tierra del Fuego,2022,3,Adm. pública y defensa,13989,24769,0.5647785538374581,84
+provincia,Tierra del Fuego,2022,3,Enseñanza,6236,24769,0.2517663208042311,41
+provincia,Tierra del Fuego,2022,3,Salud y asistencia social,1337,24769,0.05397876377730227,10
+provincia,Tierra del Fuego,2022,3,"Electricidad, gas y agua",541,24769,0.0218418184020348,3
+provincia,Tierra del Fuego,2022,3,Transporte,86,24769,0.00347208203803141,1
+provincia,Tierra del Fuego,2022,3,Finanzas y seguros,222,24769,0.008962816423755501,1
+provincia,Tierra del Fuego,2022,3,Construcción,204,24769,0.008236101578586136,1
+provincia,Tierra del Fuego,2022,3,Otros,1766,24769,0.07129880092050547,9
+provincia,Tierra del Fuego,2022,3,Sin clasificar / NsNr,388,24769,0.0156647422180952,2
+provincia,Tucumán,2022,3,Adm. pública y defensa,51158,111839,0.45742540616421823,137
+provincia,Tucumán,2022,3,Enseñanza,24650,111839,0.2204061195110829,72
+provincia,Tucumán,2022,3,Salud y asistencia social,21075,111839,0.1884405261134309,61
+provincia,Tucumán,2022,3,"Electricidad, gas y agua",412,111839,0.003683866987365767,1
+provincia,Tucumán,2022,3,Finanzas y seguros,1096,111839,0.00979980150037107,3
+provincia,Tucumán,2022,3,Construcción,795,111839,0.007108432657659671,2
+provincia,Tucumán,2022,3,Servicios de seguridad / edificios,7867,111839,0.0703421883242876,27
+provincia,Tucumán,2022,3,Otros,4786,111839,0.04279365874158388,19
+provincia,Buenos Aires,2023,3,Adm. pública y defensa,679035,1428392,0.47538420825655703,444
+provincia,Buenos Aires,2023,3,Enseñanza,407441,1428392,0.2852445267125551,295
+provincia,Buenos Aires,2023,3,Salud y asistencia social,131997,1428392,0.09240950663403323,105
+provincia,Buenos Aires,2023,3,"Electricidad, gas y agua",6115,1428392,0.004281037698334911,5
+provincia,Buenos Aires,2023,3,Transporte,40225,1428392,0.028161037026250498,26
+provincia,Buenos Aires,2023,3,Finanzas y seguros,14960,1428392,0.010473315448420322,8
+provincia,Buenos Aires,2023,3,Construcción,6463,1428392,0.0045246682983382715,5
+provincia,Buenos Aires,2023,3,Servicios de seguridad / edificios,11225,1428392,0.007858487025970463,10
+provincia,Buenos Aires,2023,3,Otros,128485,1428392,0.08995079782020622,79
+provincia,Buenos Aires,2023,3,Sin clasificar / NsNr,2446,1428392,0.0017124150793339644,4
+provincia,C.A.B.A.,2023,3,Adm. pública y defensa,170426,313927,0.5428841737091744,97
+provincia,C.A.B.A.,2023,3,Enseñanza,62040,313927,0.1976255626308027,37
+provincia,C.A.B.A.,2023,3,Salud y asistencia social,42236,313927,0.1345408327413698,27
+provincia,C.A.B.A.,2023,3,"Electricidad, gas y agua",1766,313927,0.005625511663539613,2
+provincia,C.A.B.A.,2023,3,Transporte,6043,313927,0.01924969817823889,4
+provincia,C.A.B.A.,2023,3,Finanzas y seguros,2626,313927,0.008365002054617793,1
+provincia,C.A.B.A.,2023,3,Servicios de seguridad / edificios,2532,313927,0.008065569383965063,1
+provincia,C.A.B.A.,2023,3,Otros,26258,313927,0.08364364963829171,15
+provincia,Catamarca,2023,3,Adm. pública y defensa,29946,50686,0.5908140314879848,256
+provincia,Catamarca,2023,3,Enseñanza,11914,50686,0.23505504478554237,120
+provincia,Catamarca,2023,3,Salud y asistencia social,4914,50686,0.09694984808428363,37
+provincia,Catamarca,2023,3,"Electricidad, gas y agua",54,50686,0.0010653829459811388,1
+provincia,Catamarca,2023,3,Transporte,513,50686,0.010121137986820818,3
+provincia,Catamarca,2023,3,Construcción,920,50686,0.01815096870930829,6
+provincia,Catamarca,2023,3,Servicios de seguridad / edificios,889,50686,0.01753935998105986,7
+provincia,Catamarca,2023,3,Otros,1536,50686,0.030304226019019057,12
+provincia,Chaco,2023,3,Adm. pública y defensa,45914,111691,0.4110805705025472,104
+provincia,Chaco,2023,3,Enseñanza,38326,111691,0.34314313597335505,78
+provincia,Chaco,2023,3,Salud y asistencia social,15622,111691,0.13986802875791246,37
+provincia,Chaco,2023,3,"Electricidad, gas y agua",1568,111691,0.01403873185843085,6
+provincia,Chaco,2023,3,Transporte,1100,111691,0.009848600155786948,3
+provincia,Chaco,2023,3,Finanzas y seguros,234,111691,0.0020950658513219506,1
+provincia,Chaco,2023,3,Construcción,1427,111691,0.01277632038391634,6
+provincia,Chaco,2023,3,Servicios de seguridad / edificios,1622,111691,0.0145222085933513,4
+provincia,Chaco,2023,3,Otros,5013,111691,0.04488275689178179,8
+provincia,Chaco,2023,3,Sin clasificar / NsNr,865,111691,0.0077445810315961,1
+provincia,Chubut,2023,3,Adm. pública y defensa,30155,66353,0.4544632495893177,167
+provincia,Chubut,2023,3,Enseñanza,23381,66353,0.352372914563019,117
+provincia,Chubut,2023,3,Salud y asistencia social,8206,66353,0.12367187617741474,43
+provincia,Chubut,2023,3,"Electricidad, gas y agua",111,66353,0.0016728708573839916,1
+provincia,Chubut,2023,3,Transporte,286,66353,0.004310279866773167,2
+provincia,Chubut,2023,3,Construcción,1678,66353,0.025288984672885928,10
+provincia,Chubut,2023,3,Servicios de seguridad / edificios,139,66353,0.00209485629888626,1
+provincia,Chubut,2023,3,Otros,2226,66353,0.03354784259943032,12
+provincia,Chubut,2023,3,Sin clasificar / NsNr,171,66353,0.002577125374888852,1
+provincia,Corrientes,2023,3,Adm. pública y defensa,46197,98312,0.4699019448287086,102
+provincia,Corrientes,2023,3,Enseñanza,29681,98312,0.30190617625518756,73
+provincia,Corrientes,2023,3,Salud y asistencia social,11021,98312,0.11210228659777037,30
+provincia,Corrientes,2023,3,"Electricidad, gas y agua",1617,98312,0.016447636097322808,5
+provincia,Corrientes,2023,3,Transporte,568,98312,0.0057775246155098055,2
+provincia,Corrientes,2023,3,Finanzas y seguros,265,98312,0.002695500040686793,1
+provincia,Corrientes,2023,3,Construcción,1413,98312,0.014372609650907316,3
+provincia,Corrientes,2023,3,Servicios de seguridad / edificios,241,98312,0.00245137928228497,1
+provincia,Corrientes,2023,3,Otros,7309,98312,0.07434494263162178,14
+provincia,Córdoba,2023,3,Adm. pública y defensa,92183,188523,0.48897482004848214,139
+provincia,Córdoba,2023,3,Enseñanza,51636,188523,0.2738976146146624,80
+provincia,Córdoba,2023,3,Salud y asistencia social,21803,188523,0.11565167114887838,25
+provincia,Córdoba,2023,3,"Electricidad, gas y agua",4843,188523,0.025689173204330507,12
+provincia,Córdoba,2023,3,Transporte,2698,188523,0.014311251147074893,4
+provincia,Córdoba,2023,3,Finanzas y seguros,8102,188523,0.04297618858176456,6
+provincia,Córdoba,2023,3,Servicios de seguridad / edificios,206,188523,0.0010927048689019377,1
+provincia,Córdoba,2023,3,Otros,6325,188523,0.033550282989343476,9
+provincia,Córdoba,2023,3,Sin clasificar / NsNr,727,188523,0.0038562933965616926,1
+provincia,Entre Ríos,2023,3,Adm. pública y defensa,45365,114251,0.3970643582988333,156
+provincia,Entre Ríos,2023,3,Enseñanza,26084,114251,0.22830434744553657,98
+provincia,Entre Ríos,2023,3,Salud y asistencia social,23453,114251,0.20527610261616966,78
+provincia,Entre Ríos,2023,3,"Electricidad, gas y agua",221,114251,0.001934337555032341,2
+provincia,Entre Ríos,2023,3,Transporte,6027,114251,0.05275227350307656,3
+provincia,Entre Ríos,2023,3,Finanzas y seguros,99,114251,8.665132033855283e-4,1
+provincia,Entre Ríos,2023,3,Construcción,1102,114251,0.009645429799301539,4
+provincia,Entre Ríos,2023,3,Servicios de seguridad / edificios,3223,114251,0.028209818732439978,8
+provincia,Entre Ríos,2023,3,Otros,8399,114251,0.07351357974984901,12
+provincia,Entre Ríos,2023,3,Sin clasificar / NsNr,278,114251,0.002433239096375524,1
+provincia,Formosa,2023,3,Adm. pública y defensa,21444,44132,0.4859059186078129,114
+provincia,Formosa,2023,3,Enseñanza,12971,44132,0.2939137134052388,74
+provincia,Formosa,2023,3,Salud y asistencia social,3940,44132,0.08927762168041331,23
+provincia,Formosa,2023,3,"Electricidad, gas y agua",450,44132,0.010196682679235023,3
+provincia,Formosa,2023,3,Transporte,1083,44132,0.024540016314692287,5
+provincia,Formosa,2023,3,Construcción,1223,44132,0.027712317592676516,6
+provincia,Formosa,2023,3,Servicios de seguridad / edificios,784,44132,0.017764887156711682,3
+provincia,Formosa,2023,3,Otros,2014,44132,0.04563581981328741,9
+provincia,Formosa,2023,3,Sin clasificar / NsNr,223,44132,0.005053022749932022,1
+provincia,Jujuy,2023,3,Adm. pública y defensa,38489,87976,0.43749431663180866,204
+provincia,Jujuy,2023,3,Enseñanza,26096,87976,0.2966263526416295,124
+provincia,Jujuy,2023,3,Salud y asistencia social,14623,87976,0.16621578612348822,70
+provincia,Jujuy,2023,3,"Electricidad, gas y agua",166,87976,0.001886878239519869,1
+provincia,Jujuy,2023,3,Transporte,146,87976,0.0016595435118668728,1
+provincia,Jujuy,2023,3,Finanzas y seguros,1000,87976,0.011366736382649813,4
+provincia,Jujuy,2023,3,Construcción,903,87976,0.010264162953532783,5
+provincia,Jujuy,2023,3,Servicios de seguridad / edificios,377,87976,0.00428525961625898,2
+provincia,Jujuy,2023,3,Otros,6176,87976,0.07020096389924525,29
+provincia,La Pampa,2023,3,Adm. pública y defensa,15942,34564,0.46123133896539753,101
+provincia,La Pampa,2023,3,Enseñanza,10565,34564,0.30566485360490686,65
+provincia,La Pampa,2023,3,Salud y asistencia social,4496,34564,0.1300775373220692,29
+provincia,La Pampa,2023,3,"Electricidad, gas y agua",181,34564,0.005236662423330633,1
+provincia,La Pampa,2023,3,Transporte,1017,34564,0.0294236778150677,5
+provincia,La Pampa,2023,3,Finanzas y seguros,129,34564,0.003732206920495313,1
+provincia,La Pampa,2023,3,Construcción,410,34564,0.011862053003124639,2
+provincia,La Pampa,2023,3,Servicios de seguridad / edificios,221,34564,0.00639393588705011,2
+provincia,La Pampa,2023,3,Otros,1537,34564,0.0444682328434209,10
+provincia,La Pampa,2023,3,Sin clasificar / NsNr,66,34564,0.001909501215137137,1
+provincia,La Rioja,2023,3,Adm. pública y defensa,42698,73053,0.5844797612692155,337
+provincia,La Rioja,2023,3,Enseñanza,15881,73053,0.21739011402680247,131
+provincia,La Rioja,2023,3,Salud y asistencia social,8241,73053,0.1128085088908053,60
+provincia,La Rioja,2023,3,"Electricidad, gas y agua",593,73053,0.008117394220634334,6
+provincia,La Rioja,2023,3,Transporte,511,73053,0.006994921495352689,4
+provincia,La Rioja,2023,3,Finanzas y seguros,111,73053,0.0015194447866617388,1
+provincia,La Rioja,2023,3,Construcción,1079,73053,0.014770098421693838,5
+provincia,La Rioja,2023,3,Servicios de seguridad / edificios,126,73053,0.0017247751632376493,1
+provincia,La Rioja,2023,3,Otros,3388,73053,0.04637728772261235,24
+provincia,La Rioja,2023,3,Sin clasificar / NsNr,425,73053,0.005817694002984135,4
+provincia,Mendoza,2023,3,Adm. pública y defensa,55652,135764,0.40991720927491826,105
+provincia,Mendoza,2023,3,Enseñanza,41955,135764,0.3090289030965499,78
+provincia,Mendoza,2023,3,Salud y asistencia social,19778,135764,0.14567926696325978,33
+provincia,Mendoza,2023,3,"Electricidad, gas y agua",1855,135764,0.013663415927639139,4
+provincia,Mendoza,2023,3,Transporte,3553,135764,0.026170413364367578,6
+provincia,Mendoza,2023,3,Finanzas y seguros,1669,135764,0.012293391473439204,2
+provincia,Mendoza,2023,3,Construcción,1305,135764,0.009612268348015674,4
+provincia,Mendoza,2023,3,Servicios de seguridad / edificios,533,135764,0.003925930290798739,1
+provincia,Mendoza,2023,3,Otros,9464,135764,0.06970920126101175,16
+provincia,Misiones,2023,3,Adm. pública y defensa,68022,113846,0.597491347961281,174
+provincia,Misiones,2023,3,Enseñanza,26584,113846,0.23350842366003197,70
+provincia,Misiones,2023,3,Salud y asistencia social,10982,113846,0.096463643869789,30
+provincia,Misiones,2023,3,"Electricidad, gas y agua",1836,113846,0.016127048820336245,6
+provincia,Misiones,2023,3,Transporte,1846,113846,0.01621488677687402,2
+provincia,Misiones,2023,3,Finanzas y seguros,406,113846,0.0035662210354338317,1
+provincia,Misiones,2023,3,Construcción,914,113846,0.00802838922755301,3
+provincia,Misiones,2023,3,Otros,3256,113846,0.028600038648700876,5
+provincia,Neuquén,2023,3,Adm. pública y defensa,36100,86001,0.41976256090045466,152
+provincia,Neuquén,2023,3,Enseñanza,29775,86001,0.34621690445459935,111
+provincia,Neuquén,2023,3,Salud y asistencia social,10340,86001,0.1202311601027895,41
+provincia,Neuquén,2023,3,"Electricidad, gas y agua",614,86001,0.007139451866838758,3
+provincia,Neuquén,2023,3,Transporte,556,86001,0.006465041104173207,2
+provincia,Neuquén,2023,3,Finanzas y seguros,890,86001,0.01034871687538517,5
+provincia,Neuquén,2023,3,Construcción,1330,86001,0.015464936454227276,8
+provincia,Neuquén,2023,3,Otros,6191,86001,0.07198753502866245,23
+provincia,Neuquén,2023,3,Sin clasificar / NsNr,205,86001,0.002383693212869618,1
+provincia,Río Negro,2023,3,Adm. pública y defensa,39821,78249,0.5089010722181753,181
+provincia,Río Negro,2023,3,Enseñanza,22429,78249,0.28663625094250406,96
+provincia,Río Negro,2023,3,Salud y asistencia social,8376,78249,0.10704290150672852,30
+provincia,Río Negro,2023,3,"Electricidad, gas y agua",1179,78249,0.015067285204922747,4
+provincia,Río Negro,2023,3,Transporte,572,78249,0.0073099975718539534,3
+provincia,Río Negro,2023,3,Finanzas y seguros,374,78249,0.004779613796981431,1
+provincia,Río Negro,2023,3,Construcción,785,78249,0.010032077087247121,4
+provincia,Río Negro,2023,3,Otros,4632,78249,0.05919564467277537,18
+provincia,Río Negro,2023,3,Sin clasificar / NsNr,81,78249,0.0010351569988114864,1
+provincia,Salta,2023,3,Adm. pública y defensa,43183,110141,0.39207016460718536,127
+provincia,Salta,2023,3,Enseñanza,32217,110141,0.29250687754787047,92
+provincia,Salta,2023,3,Salud y asistencia social,20806,110141,0.1889033148418845,50
+provincia,Salta,2023,3,"Electricidad, gas y agua",672,110141,0.006101270190029144,2
+provincia,Salta,2023,3,Transporte,346,110141,0.0031414278061757204,1
+provincia,Salta,2023,3,Finanzas y seguros,234,110141,0.0021245494411708627,1
+provincia,Salta,2023,3,Construcción,809,110141,0.007345130332936872,3
+provincia,Salta,2023,3,Servicios de seguridad / edificios,2531,110141,0.022979635194886553,7
+provincia,Salta,2023,3,Otros,9343,110141,0.08482763003786056,25
+provincia,San Juan,2023,3,Adm. pública y defensa,31920,60582,0.526889175002476,130
+provincia,San Juan,2023,3,Enseñanza,19836,60582,0.32742398732296724,88
+provincia,San Juan,2023,3,Salud y asistencia social,5930,60582,0.09788385989237727,29
+provincia,San Juan,2023,3,"Electricidad, gas y agua",393,60582,0.006487075368921462,2
+provincia,San Juan,2023,3,Transporte,296,60582,0.004885939718068073,1
+provincia,San Juan,2023,3,Construcción,984,60582,0.016242448251956025,3
+provincia,San Juan,2023,3,Otros,642,60582,0.010597207091215212,5
+provincia,San Juan,2023,3,Sin clasificar / NsNr,581,60582,0.009590307352018752,1
+provincia,San Luis,2023,3,Adm. pública y defensa,27685,61804,0.44794835285742024,174
+provincia,San Luis,2023,3,Enseñanza,19208,61804,0.3107889456993075,119
+provincia,San Luis,2023,3,Salud y asistencia social,5536,61804,0.08957349038897158,37
+provincia,San Luis,2023,3,"Electricidad, gas y agua",509,61804,0.008235712898841499,4
+provincia,San Luis,2023,3,Transporte,791,61804,0.012798524367354864,7
+provincia,San Luis,2023,3,Construcción,114,61804,0.0018445408064202964,1
+provincia,San Luis,2023,3,Servicios de seguridad / edificios,5605,61804,0.09068992298233124,30
+provincia,San Luis,2023,3,Otros,1962,61804,0.03174551808944405,13
+provincia,San Luis,2023,3,Sin clasificar / NsNr,394,61804,0.006374991909908744,2
+provincia,Santa Cruz,2023,3,Adm. pública y defensa,39365,69873,0.5633792738253689,162
+provincia,Santa Cruz,2023,3,Enseñanza,15522,69873,0.22214589326349232,57
+provincia,Santa Cruz,2023,3,Salud y asistencia social,8048,69873,0.11518039872339816,32
+provincia,Santa Cruz,2023,3,"Electricidad, gas y agua",1147,69873,0.016415496686846134,4
+provincia,Santa Cruz,2023,3,Transporte,926,69873,0.013252615459476478,2
+provincia,Santa Cruz,2023,3,Construcción,783,69873,0.011206045253531407,3
+provincia,Santa Cruz,2023,3,Servicios de seguridad / edificios,310,69873,0.004436620726174631,2
+provincia,Santa Cruz,2023,3,Otros,3654,69873,0.05229487784981323,14
+provincia,Santa Cruz,2023,3,Sin clasificar / NsNr,118,69873,0.0016887782118987305,1
+provincia,Santa Fe,2023,3,Adm. pública y defensa,92691,251223,0.3689590523160698,136
+provincia,Santa Fe,2023,3,Enseñanza,97932,251223,0.38982099568908896,130
+provincia,Santa Fe,2023,3,Salud y asistencia social,38563,251223,0.15350107275209673,57
+provincia,Santa Fe,2023,3,"Electricidad, gas y agua",4244,251223,0.016893357694160168,6
+provincia,Santa Fe,2023,3,Transporte,595,251223,0.002368413720081362,2
+provincia,Santa Fe,2023,3,Finanzas y seguros,2212,251223,0.00880492630053777,3
+provincia,Santa Fe,2023,3,Servicios de seguridad / edificios,1736,251223,0.00691019532447268,3
+provincia,Santa Fe,2023,3,Otros,12583,251223,0.050086974520645006,14
+provincia,Santa Fe,2023,3,Sin clasificar / NsNr,667,251223,0.00265501168284751,1
+provincia,Santiago del Estero,2023,3,Adm. pública y defensa,34293,79516,0.4312716937471704,132
+provincia,Santiago del Estero,2023,3,Enseñanza,20738,79516,0.2608028572865838,75
+provincia,Santiago del Estero,2023,3,Salud y asistencia social,9216,79516,0.11590120227375622,32
+provincia,Santiago del Estero,2023,3,Transporte,976,79516,0.012274259268574879,4
+provincia,Santiago del Estero,2023,3,Finanzas y seguros,177,79516,0.0022259671009608128,1
+provincia,Santiago del Estero,2023,3,Construcción,1167,79516,0.01467629156396197,6
+provincia,Santiago del Estero,2023,3,Servicios de seguridad / edificios,5784,79516,0.07274007746868555,19
+provincia,Santiago del Estero,2023,3,Otros,6560,79516,0.08249911967402787,30
+provincia,Santiago del Estero,2023,3,Sin clasificar / NsNr,605,79516,0.007608531616278485,2
+provincia,Tierra del Fuego,2023,3,Adm. pública y defensa,11484,21628,0.5309783613833919,66
+provincia,Tierra del Fuego,2023,3,Enseñanza,6013,21628,0.2780192343258739,39
+provincia,Tierra del Fuego,2023,3,Salud y asistencia social,2104,21628,0.0972813020159053,11
+provincia,Tierra del Fuego,2023,3,Transporte,366,21628,0.016922507860181246,2
+provincia,Tierra del Fuego,2023,3,Otros,1444,21628,0.0667653042352506,6
+provincia,Tierra del Fuego,2023,3,Sin clasificar / NsNr,217,21628,0.010033290179397077,1
+provincia,Tucumán,2023,3,Adm. pública y defensa,61359,123423,0.49714396830412483,166
+provincia,Tucumán,2023,3,Enseñanza,27736,123423,0.2247231067143077,81
+provincia,Tucumán,2023,3,Salud y asistencia social,19494,123423,0.15794462944507912,53
+provincia,Tucumán,2023,3,"Electricidad, gas y agua",480,123423,0.0038890644369363896,1
+provincia,Tucumán,2023,3,Finanzas y seguros,882,123423,0.0071461559028706155,3
+provincia,Tucumán,2023,3,Construcción,1867,123423,0.015126840216167165,5
+provincia,Tucumán,2023,3,Servicios de seguridad / edificios,6692,123423,0.05422004002495483,21
+provincia,Tucumán,2023,3,Otros,4913,123423,0.039806194955559336,13
+provincia,Buenos Aires,2024,3,Adm. pública y defensa,565509,1320223,0.42834354499202026,390
+provincia,Buenos Aires,2024,3,Enseñanza,390987,1320223,0.2961522409471733,287
+provincia,Buenos Aires,2024,3,Salud y asistencia social,188382,1320223,0.14268953048083544,118
+provincia,Buenos Aires,2024,3,"Electricidad, gas y agua",12187,1320223,0.009231016275280767,11
+provincia,Buenos Aires,2024,3,Transporte,28447,1320223,0.021547117418799704,20
+provincia,Buenos Aires,2024,3,Finanzas y seguros,19419,1320223,0.014708878727305917,11
+provincia,Buenos Aires,2024,3,Construcción,2560,1320223,0.0019390663546991682,3
+provincia,Buenos Aires,2024,3,Servicios de seguridad / edificios,21490,1320223,0.016277553110345754,16
+provincia,Buenos Aires,2024,3,Otros,84639,1320223,0.06410962390444644,65
+provincia,Buenos Aires,2024,3,Sin clasificar / NsNr,6603,1320223,0.005001427789093206,4
+provincia,C.A.B.A.,2024,3,Adm. pública y defensa,128050,269197,0.4756739488181518,68
+provincia,C.A.B.A.,2024,3,Enseñanza,69594,269197,0.2585244263494764,50
+provincia,C.A.B.A.,2024,3,Salud y asistencia social,29346,269197,0.10901310192907053,19
+provincia,C.A.B.A.,2024,3,"Electricidad, gas y agua",5589,269197,0.020761746973406093,4
+provincia,C.A.B.A.,2024,3,Transporte,9789,269197,0.03636370390457546,3
+provincia,C.A.B.A.,2024,3,Finanzas y seguros,2716,269197,0.01008926548215619,2
+provincia,C.A.B.A.,2024,3,Otros,24113,269197,0.08957380654316356,16
+provincia,Catamarca,2024,3,Adm. pública y defensa,29358,55051,0.5332873153984488,240
+provincia,Catamarca,2024,3,Enseñanza,13530,55051,0.24577210223247534,141
+provincia,Catamarca,2024,3,Salud y asistencia social,4070,55051,0.07393144538700477,36
+provincia,Catamarca,2024,3,"Electricidad, gas y agua",65,55051,0.0011807233292764892,1
+provincia,Catamarca,2024,3,Transporte,893,55051,0.016221322046829304,6
+provincia,Catamarca,2024,3,Finanzas y seguros,108,55051,0.001961817224028628,1
+provincia,Catamarca,2024,3,Construcción,1602,55051,0.029100288823091316,15
+provincia,Catamarca,2024,3,Servicios de seguridad / edificios,1458,55051,0.026484532524386477,13
+provincia,Catamarca,2024,3,Otros,3967,55051,0.07206045303445896,28
+provincia,Chaco,2024,3,Adm. pública y defensa,44767,103602,0.43210555780776433,118
+provincia,Chaco,2024,3,Enseñanza,38645,103602,0.3730140344780989,87
+provincia,Chaco,2024,3,Salud y asistencia social,12114,103602,0.11692824462848207,32
+provincia,Chaco,2024,3,"Electricidad, gas y agua",2134,103602,0.020598057952549178,6
+provincia,Chaco,2024,3,Transporte,871,103602,0.00840717360668713,1
+provincia,Chaco,2024,3,Finanzas y seguros,579,103602,0.005588695198934383,2
+provincia,Chaco,2024,3,Construcción,118,103602,0.0011389741510781646,1
+provincia,Chaco,2024,3,Servicios de seguridad / edificios,232,103602,0.0022393390088994423,1
+provincia,Chaco,2024,3,Otros,4142,103602,0.03997992316750642,15
+provincia,Chubut,2024,3,Adm. pública y defensa,31351,64836,0.4835430933432044,140
+provincia,Chubut,2024,3,Enseñanza,21535,64836,0.33214572151273986,86
+provincia,Chubut,2024,3,Salud y asistencia social,7262,64836,0.11200567585909063,31
+provincia,Chubut,2024,3,"Electricidad, gas y agua",146,64836,0.002251835400086372,1
+provincia,Chubut,2024,3,Transporte,695,64836,0.010719353445616633,3
+provincia,Chubut,2024,3,Finanzas y seguros,324,64836,0.004997223764575236,2
+provincia,Chubut,2024,3,Construcción,862,64836,0.01329508297859214,5
+provincia,Chubut,2024,3,Servicios de seguridad / edificios,363,64836,0.005598741439940774,2
+provincia,Chubut,2024,3,Otros,2298,64836,0.03544327225615399,9
+provincia,Corrientes,2024,3,Adm. pública y defensa,36672,79983,0.4584974307040246,77
+provincia,Corrientes,2024,3,Enseñanza,26724,79983,0.33412100071265144,65
+provincia,Corrientes,2024,3,Salud y asistencia social,11253,79983,0.14069239713439105,25
+provincia,Corrientes,2024,3,Finanzas y seguros,1587,79983,0.019841716364727504,5
+provincia,Corrientes,2024,3,Servicios de seguridad / edificios,326,79983,0.004075866121550829,1
+provincia,Corrientes,2024,3,Otros,3421,79983,0.042771588962654566,8
+provincia,Córdoba,2024,3,Adm. pública y defensa,76354,193137,0.3953359532352682,111
+provincia,Córdoba,2024,3,Enseñanza,73561,193137,0.3808747158752595,110
+provincia,Córdoba,2024,3,Salud y asistencia social,26705,193137,0.1382697256351709,25
+provincia,Córdoba,2024,3,"Electricidad, gas y agua",3467,193137,0.017950988158664576,6
+provincia,Córdoba,2024,3,Transporte,813,193137,0.00420944717998105,2
+provincia,Córdoba,2024,3,Finanzas y seguros,1413,193137,0.007316050264837913,2
+provincia,Córdoba,2024,3,Construcción,817,193137,0.004230157867213429,2
+provincia,Córdoba,2024,3,Servicios de seguridad / edificios,1927,193137,0.009977373574198626,4
+provincia,Córdoba,2024,3,Otros,8080,193137,0.04183558820940576,15
+provincia,Entre Ríos,2024,3,Adm. pública y defensa,44934,113717,0.39513880950077823,147
+provincia,Entre Ríos,2024,3,Enseñanza,37055,113717,0.3258527748709516,113
+provincia,Entre Ríos,2024,3,Salud y asistencia social,12516,113717,0.11006269950842881,54
+provincia,Entre Ríos,2024,3,"Electricidad, gas y agua",3079,113717,0.02707598687971016,7
+provincia,Entre Ríos,2024,3,Transporte,571,113717,0.005021236930274277,3
+provincia,Entre Ríos,2024,3,Finanzas y seguros,5567,113717,0.04895486163018722,3
+provincia,Entre Ríos,2024,3,Construcción,1331,113717,0.011704494490709393,4
+provincia,Entre Ríos,2024,3,Servicios de seguridad / edificios,1174,113717,0.010323874178882664,5
+provincia,Entre Ríos,2024,3,Otros,7490,113717,0.06586526201007765,29
+provincia,Formosa,2024,3,Adm. pública y defensa,19097,45022,0.4241704055794945,92
+provincia,Formosa,2024,3,Enseñanza,13334,45022,0.29616631868864113,60
+provincia,Formosa,2024,3,Salud y asistencia social,4133,45022,0.09179956465727866,24
+provincia,Formosa,2024,3,"Electricidad, gas y agua",179,45022,0.003975834036693172,1
+provincia,Formosa,2024,3,Transporte,752,45022,0.01670294522677802,4
+provincia,Formosa,2024,3,Finanzas y seguros,115,45022,0.002554306783350362,1
+provincia,Formosa,2024,3,Construcción,828,45022,0.018391008840122607,4
+provincia,Formosa,2024,3,Servicios de seguridad / edificios,1943,45022,0.04315667895695438,7
+provincia,Formosa,2024,3,Otros,4641,45022,0.10308293723068722,19
+provincia,Jujuy,2024,3,Adm. pública y defensa,40983,81106,0.5053017039429882,184
+provincia,Jujuy,2024,3,Enseñanza,26007,81106,0.3206544521983577,123
+provincia,Jujuy,2024,3,Salud y asistencia social,10120,81106,0.12477498582102434,49
+provincia,Jujuy,2024,3,"Electricidad, gas y agua",529,81106,0.006522328804280817,1
+provincia,Jujuy,2024,3,Finanzas y seguros,414,81106,0.005104431238132814,2
+provincia,Jujuy,2024,3,Construcción,620,81106,0.00764431731314576,3
+provincia,Jujuy,2024,3,Otros,2433,81106,0.029997780682070378,11
+provincia,La Pampa,2024,3,Adm. pública y defensa,17101,36364,0.47027279727202725,117
+provincia,La Pampa,2024,3,Enseñanza,11258,36364,0.3095919040809592,72
+provincia,La Pampa,2024,3,Salud y asistencia social,4591,36364,0.12625123748762512,26
+provincia,La Pampa,2024,3,Transporte,360,36364,0.00989990100098999,3
+provincia,La Pampa,2024,3,Finanzas y seguros,341,36364,0.00937740622593774,3
+provincia,La Pampa,2024,3,Construcción,684,36364,0.018809811901880982,5
+provincia,La Pampa,2024,3,Servicios de seguridad / edificios,299,36364,0.008222417775822242,2
+provincia,La Pampa,2024,3,Otros,1730,36364,0.04757452425475745,12
+provincia,La Rioja,2024,3,Adm. pública y defensa,36864,74983,0.4916314364589307,269
+provincia,La Rioja,2024,3,Enseñanza,14863,74983,0.19821826280623608,121
+provincia,La Rioja,2024,3,Salud y asistencia social,8806,74983,0.11743995305602603,57
+provincia,La Rioja,2024,3,"Electricidad, gas y agua",602,74983,0.008028486456930238,5
+provincia,La Rioja,2024,3,Transporte,285,74983,0.0038008615286131524,3
+provincia,La Rioja,2024,3,Finanzas y seguros,158,74983,0.0021071442860381684,2
+provincia,La Rioja,2024,3,Construcción,2891,74983,0.03855540589200219,16
+provincia,La Rioja,2024,3,Servicios de seguridad / edificios,1338,74983,0.017844044650120693,10
+provincia,La Rioja,2024,3,Otros,7503,74983,0.10006268087433151,47
+provincia,La Rioja,2024,3,Sin clasificar / NsNr,1673,74983,0.02231172399077124,11
+provincia,Mendoza,2024,3,Adm. pública y defensa,49526,131264,0.3773007069722087,87
+provincia,Mendoza,2024,3,Enseñanza,50977,131264,0.3883547659678206,87
+provincia,Mendoza,2024,3,Salud y asistencia social,18068,131264,0.13764627011214042,28
+provincia,Mendoza,2024,3,"Electricidad, gas y agua",1709,131264,0.013019563627498782,1
+provincia,Mendoza,2024,3,Transporte,1510,131264,0.011503534861043394,3
+provincia,Mendoza,2024,3,Finanzas y seguros,985,131264,0.007503961482203803,2
+provincia,Mendoza,2024,3,Servicios de seguridad / edificios,213,131264,0.0016226840565577768,1
+provincia,Mendoza,2024,3,Otros,8276,131264,0.06304851292052657,14
+provincia,Misiones,2024,3,Adm. pública y defensa,50768,87679,0.5790212023403551,131
+provincia,Misiones,2024,3,Enseñanza,21887,87679,0.24962647840417887,65
+provincia,Misiones,2024,3,Salud y asistencia social,7230,87679,0.08245988206982288,22
+provincia,Misiones,2024,3,"Electricidad, gas y agua",1132,87679,0.012910731189908644,3
+provincia,Misiones,2024,3,Transporte,342,87679,0.0039005919319335305,1
+provincia,Misiones,2024,3,Construcción,1110,87679,0.012659815919433388,4
+provincia,Misiones,2024,3,Servicios de seguridad / edificios,248,87679,0.002828499412630162,1
+provincia,Misiones,2024,3,Otros,4962,87679,0.05659279873173736,10
+provincia,Neuquén,2024,3,Adm. pública y defensa,38491,77425,0.4971391669357443,162
+provincia,Neuquén,2024,3,Enseñanza,21619,77425,0.2792250565062964,107
+provincia,Neuquén,2024,3,Salud y asistencia social,11018,77425,0.14230545689376817,47
+provincia,Neuquén,2024,3,Transporte,386,77425,0.004985469809493058,2
+provincia,Neuquén,2024,3,Finanzas y seguros,174,77425,0.0022473361317403937,1
+provincia,Neuquén,2024,3,Construcción,701,77425,0.009053923151436874,4
+provincia,Neuquén,2024,3,Servicios de seguridad / edificios,117,77425,0.001511139812721989,1
+provincia,Neuquén,2024,3,Otros,4555,77425,0.05883112689699709,18
+provincia,Neuquén,2024,3,Sin clasificar / NsNr,364,77425,0.004701323861801744,1
+provincia,Río Negro,2024,3,Adm. pública y defensa,39729,78484,0.5062050863870343,143
+provincia,Río Negro,2024,3,Enseñanza,28183,78484,0.3590922990673258,100
+provincia,Río Negro,2024,3,Salud y asistencia social,6720,78484,0.08562254727078131,21
+provincia,Río Negro,2024,3,"Electricidad, gas y agua",1272,78484,0.016207125019112176,4
+provincia,Río Negro,2024,3,Transporte,87,78484,0.0011085061923449366,1
+provincia,Río Negro,2024,3,Finanzas y seguros,179,78484,0.0022807196371234903,1
+provincia,Río Negro,2024,3,Construcción,107,78484,0.0013633352020794047,1
+provincia,Río Negro,2024,3,Otros,2207,78484,0.028120381224198562,12
+provincia,Salta,2024,3,Adm. pública y defensa,39266,91062,0.43120072038830687,119
+provincia,Salta,2024,3,Enseñanza,33068,91062,0.3631372032241769,92
+provincia,Salta,2024,3,Salud y asistencia social,13698,91062,0.15042498517493577,40
+provincia,Salta,2024,3,"Electricidad, gas y agua",871,91062,0.009564911818321583,1
+provincia,Salta,2024,3,Transporte,264,91062,0.002899123673980365,1
+provincia,Salta,2024,3,Construcción,264,91062,0.002899123673980365,1
+provincia,Salta,2024,3,Servicios de seguridad / edificios,996,91062,0.010937602951835013,2
+provincia,Salta,2024,3,Otros,2635,91062,0.028936329094463115,9
+provincia,San Juan,2024,3,Adm. pública y defensa,27039,57286,0.4720001396501763,110
+provincia,San Juan,2024,3,Enseñanza,20546,57286,0.3586565653039137,92
+provincia,San Juan,2024,3,Salud y asistencia social,7484,57286,0.13064273993645917,34
+provincia,San Juan,2024,3,"Electricidad, gas y agua",1072,57286,0.018713123625318576,5
+provincia,San Juan,2024,3,Construcción,211,57286,0.003683273400132668,2
+provincia,San Juan,2024,3,Otros,934,57286,0.01630415808399958,7
+provincia,San Luis,2024,3,Adm. pública y defensa,25501,59532,0.42835785795874487,149
+provincia,San Luis,2024,3,Enseñanza,19365,59532,0.32528724047571056,111
+provincia,San Luis,2024,3,Salud y asistencia social,7776,59532,0.13061882684942552,45
+provincia,San Luis,2024,3,"Electricidad, gas y agua",241,59532,0.0040482429617684605,2
+provincia,San Luis,2024,3,Transporte,1915,59532,0.03216757374185312,15
+provincia,San Luis,2024,3,Finanzas y seguros,192,59532,0.003225156218504334,1
+provincia,San Luis,2024,3,Construcción,436,59532,0.007323792246186925,2
+provincia,San Luis,2024,3,Servicios de seguridad / edificios,1457,59532,0.024474232345629243,10
+provincia,San Luis,2024,3,Otros,2401,59532,0.04033125041994222,14
+provincia,San Luis,2024,3,Sin clasificar / NsNr,248,59532,0.004165826782234765,1
+provincia,Santa Cruz,2024,3,Adm. pública y defensa,36670,73354,0.4999045723477929,156
+provincia,Santa Cruz,2024,3,Enseñanza,16525,73354,0.2252774218174878,62
+provincia,Santa Cruz,2024,3,Salud y asistencia social,6742,73354,0.09191046159718624,26
+provincia,Santa Cruz,2024,3,"Electricidad, gas y agua",853,73354,0.01162854104752297,2
+provincia,Santa Cruz,2024,3,Transporte,1621,73354,0.022098317746816806,5
+provincia,Santa Cruz,2024,3,Finanzas y seguros,840,73354,0.011451318264852633,2
+provincia,Santa Cruz,2024,3,Construcción,1083,73354,0.014764021048613572,5
+provincia,Santa Cruz,2024,3,Servicios de seguridad / edificios,2167,73354,0.029541674618971017,6
+provincia,Santa Cruz,2024,3,Otros,5848,73354,0.07972298715816452,24
+provincia,Santa Cruz,2024,3,Sin clasificar / NsNr,1005,73354,0.013700684352591542,2
+provincia,Santa Fe,2024,3,Adm. pública y defensa,90231,239541,0.3766829060578356,130
+provincia,Santa Fe,2024,3,Enseñanza,98648,239541,0.41182094088277166,134
+provincia,Santa Fe,2024,3,Salud y asistencia social,34891,239541,0.1456577370888491,48
+provincia,Santa Fe,2024,3,"Electricidad, gas y agua",4445,239541,0.01855632229973157,8
+provincia,Santa Fe,2024,3,Transporte,1166,239541,0.004867642699997078,3
+provincia,Santa Fe,2024,3,Finanzas y seguros,1322,239541,0.005518888207029277,2
+provincia,Santa Fe,2024,3,Construcción,776,239541,0.00323952893241658,1
+provincia,Santa Fe,2024,3,Servicios de seguridad / edificios,1101,239541,0.004596290405400328,2
+provincia,Santa Fe,2024,3,Otros,5819,239541,0.024292292342438248,10
+provincia,Santa Fe,2024,3,Sin clasificar / NsNr,1142,239541,0.004767451083530586,1
+provincia,Santiago del Estero,2024,3,Adm. pública y defensa,27518,70596,0.3897954558331917,104
+provincia,Santiago del Estero,2024,3,Enseñanza,21492,70596,0.30443651198368177,88
+provincia,Santiago del Estero,2024,3,Salud y asistencia social,11805,70596,0.16721910589835118,38
+provincia,Santiago del Estero,2024,3,Transporte,1423,70596,0.02015694940223242,4
+provincia,Santiago del Estero,2024,3,Finanzas y seguros,210,70596,0.002974672785993541,1
+provincia,Santiago del Estero,2024,3,Construcción,616,70596,0.008725706838914386,5
+provincia,Santiago del Estero,2024,3,Servicios de seguridad / edificios,4350,70596,0.06161822199558049,14
+provincia,Santiago del Estero,2024,3,Otros,2892,70596,0.04096549379568248,12
+provincia,Santiago del Estero,2024,3,Sin clasificar / NsNr,290,70596,0.004107881466372032,1
+provincia,Tierra del Fuego,2024,3,Adm. pública y defensa,8306,22551,0.36832069531284645,54
+provincia,Tierra del Fuego,2024,3,Enseñanza,8007,22551,0.3550618597844885,46
+provincia,Tierra del Fuego,2024,3,Salud y asistencia social,3039,22551,0.13476120792869495,18
+provincia,Tierra del Fuego,2024,3,"Electricidad, gas y agua",164,22551,0.0072724047714070325,1
+provincia,Tierra del Fuego,2024,3,Transporte,114,22551,0.005055208194758547,1
+provincia,Tierra del Fuego,2024,3,Finanzas y seguros,141,22551,0.006252494346148729,1
+provincia,Tierra del Fuego,2024,3,Construcción,782,22551,0.034676954458782314,5
+provincia,Tierra del Fuego,2024,3,Servicios de seguridad / edificios,704,22551,0.03121812779921068,4
+provincia,Tierra del Fuego,2024,3,Otros,1294,22551,0.05738104740366281,8
+provincia,Tucumán,2024,3,Adm. pública y defensa,65665,127843,0.513637821390299,178
+provincia,Tucumán,2024,3,Enseñanza,24932,127843,0.19502045477656188,70
+provincia,Tucumán,2024,3,Salud y asistencia social,25520,127843,0.1996198462176263,64
+provincia,Tucumán,2024,3,"Electricidad, gas y agua",409,127843,0.0031992365635975374,1
+provincia,Tucumán,2024,3,Transporte,334,127843,0.002612579492033197,1
+provincia,Tucumán,2024,3,Construcción,1440,127843,0.011263815774035341,3
+provincia,Tucumán,2024,3,Servicios de seguridad / edificios,4832,127843,0.037796359597318585,13
+provincia,Tucumán,2024,3,Otros,4711,127843,0.036849886188528115,10
+provincia,Buenos Aires,2025,3,Adm. pública y defensa,458043,1086782,0.4214672307785738,322
+provincia,Buenos Aires,2025,3,Enseñanza,296376,1086782,0.2727097062704388,218
+provincia,Buenos Aires,2025,3,Salud y asistencia social,167173,1086782,0.15382385795863385,100
+provincia,Buenos Aires,2025,3,"Electricidad, gas y agua",11616,1086782,0.010688436135305885,7
+provincia,Buenos Aires,2025,3,Transporte,45256,1086782,0.04164220607260702,26
+provincia,Buenos Aires,2025,3,Finanzas y seguros,14786,1086782,0.013605304467685332,6
+provincia,Buenos Aires,2025,3,Construcción,10079,1086782,0.009274169060584368,7
+provincia,Buenos Aires,2025,3,Servicios de seguridad / edificios,11960,1086782,0.011004966957494696,7
+provincia,Buenos Aires,2025,3,Otros,62856,1086782,0.057836806277615935,51
+provincia,Buenos Aires,2025,3,Sin clasificar / NsNr,8637,1086782,0.007947316021060342,4
+provincia,C.A.B.A.,2025,3,Adm. pública y defensa,129243,265828,0.4861903185518456,60
+provincia,C.A.B.A.,2025,3,Enseñanza,76247,265828,0.2868283250823841,37
+provincia,C.A.B.A.,2025,3,Salud y asistencia social,37054,265828,0.13939088433122168,17
+provincia,C.A.B.A.,2025,3,"Electricidad, gas y agua",1722,265828,0.0064778729103029025,1
+provincia,C.A.B.A.,2025,3,Transporte,6182,265828,0.02325563898460659,2
+provincia,C.A.B.A.,2025,3,Servicios de seguridad / edificios,1692,265828,0.006365017981551981,1
+provincia,C.A.B.A.,2025,3,Otros,13688,265828,0.05149194215808718,7
+provincia,Catamarca,2025,3,Adm. pública y defensa,28712,57882,0.49604367506305935,223
+provincia,Catamarca,2025,3,Enseñanza,12971,57882,0.2240938461006876,133
+provincia,Catamarca,2025,3,Salud y asistencia social,4941,57882,0.08536332538613041,45
+provincia,Catamarca,2025,3,"Electricidad, gas y agua",1151,57882,0.01988528385335683,3
+provincia,Catamarca,2025,3,Transporte,830,57882,0.014339518330396324,5
+provincia,Catamarca,2025,3,Finanzas y seguros,64,57882,0.0011056977989703188,2
+provincia,Catamarca,2025,3,Construcción,1525,57882,0.026346705366089632,15
+provincia,Catamarca,2025,3,Servicios de seguridad / edificios,2848,57882,0.049203552054179193,15
+provincia,Catamarca,2025,3,Otros,4719,57882,0.0815279361459521,36
+provincia,Catamarca,2025,3,Sin clasificar / NsNr,121,57882,0.0020904599011782594,1
+provincia,Chaco,2025,3,Adm. pública y defensa,40848,93560,0.4365968362548098,83
+provincia,Chaco,2025,3,Enseñanza,35950,93560,0.38424540401881147,71
+provincia,Chaco,2025,3,Salud y asistencia social,10429,93560,0.11146857631466439,24
+provincia,Chaco,2025,3,"Electricidad, gas y agua",1158,93560,0.012377084224027363,3
+provincia,Chaco,2025,3,Transporte,540,93560,0.005771697306541257,1
+provincia,Chaco,2025,3,Finanzas y seguros,1622,93560,0.017336468576314663,4
+provincia,Chaco,2025,3,Construcción,346,93560,0.0036981616075245833,1
+provincia,Chaco,2025,3,Servicios de seguridad / edificios,119,93560,0.001271911073108166,1
+provincia,Chaco,2025,3,Otros,2548,93560,0.027233860624198376,8
+provincia,Chubut,2025,3,Adm. pública y defensa,31131,59925,0.5194993742177723,129
+provincia,Chubut,2025,3,Enseñanza,17517,59925,0.2923153942428035,67
+provincia,Chubut,2025,3,Salud y asistencia social,5350,59925,0.08927826449728828,23
+provincia,Chubut,2025,3,Transporte,1197,59925,0.01997496871088861,4
+provincia,Chubut,2025,3,Finanzas y seguros,868,59925,0.014484772632457238,3
+provincia,Chubut,2025,3,Construcción,941,59925,0.01570296203587818,5
+provincia,Chubut,2025,3,Servicios de seguridad / edificios,502,59925,0.008377138089278265,3
+provincia,Chubut,2025,3,Otros,2419,59925,0.04036712557363371,11
+provincia,Corrientes,2025,3,Adm. pública y defensa,37421,82690,0.45254565243681216,76
+provincia,Corrientes,2025,3,Enseñanza,29037,82690,0.35115491595114284,59
+provincia,Corrientes,2025,3,Salud y asistencia social,9992,82690,0.12083686056355061,25
+provincia,Corrientes,2025,3,Finanzas y seguros,85,82690,0.0010279356633208368,1
+provincia,Corrientes,2025,3,Construcción,1183,82690,0.01430644576127706,3
+provincia,Corrientes,2025,3,Servicios de seguridad / edificios,243,82690,0.0029386866610230985,1
+provincia,Corrientes,2025,3,Otros,4729,82690,0.05718950296287338,6
+provincia,Córdoba,2025,3,Adm. pública y defensa,86505,197443,0.4381264466200372,101
+provincia,Córdoba,2025,3,Enseñanza,69202,197443,0.35049102779029895,92
+provincia,Córdoba,2025,3,Salud y asistencia social,22335,197443,0.11312125524835015,35
+provincia,Córdoba,2025,3,"Electricidad, gas y agua",376,197443,0.001904347077384359,1
+provincia,Córdoba,2025,3,Transporte,3731,197443,0.018896592940747456,5
+provincia,Córdoba,2025,3,Finanzas y seguros,3350,197443,0.016966922099036177,4
+provincia,Córdoba,2025,3,Construcción,1779,197443,0.009010195347518018,5
+provincia,Córdoba,2025,3,Servicios de seguridad / edificios,664,197443,0.0033629959026149317,2
+provincia,Córdoba,2025,3,Otros,9501,197443,0.04812021697401275,17
+provincia,Entre Ríos,2025,3,Adm. pública y defensa,40273,107068,0.37614413270071356,137
+provincia,Entre Ríos,2025,3,Enseñanza,35410,107068,0.3307243994470804,114
+provincia,Entre Ríos,2025,3,Salud y asistencia social,14612,107068,0.13647401651287033,61
+provincia,Entre Ríos,2025,3,"Electricidad, gas y agua",1247,107068,0.011646803900325027,5
+provincia,Entre Ríos,2025,3,Transporte,3411,107068,0.031858258303134455,11
+provincia,Entre Ríos,2025,3,Finanzas y seguros,661,107068,0.0061736466544625845,4
+provincia,Entre Ríos,2025,3,Construcción,1788,107068,0.016699667501027384,7
+provincia,Entre Ríos,2025,3,Servicios de seguridad / edificios,2471,107068,0.023078791048679343,5
+provincia,Entre Ríos,2025,3,Otros,7195,107068,0.06720028393170695,17
+provincia,Formosa,2025,3,Adm. pública y defensa,21063,43947,0.47928186224315655,89
+provincia,Formosa,2025,3,Enseñanza,10654,43947,0.24242837963911074,51
+provincia,Formosa,2025,3,Salud y asistencia social,3503,43947,0.07970965026054111,18
+provincia,Formosa,2025,3,Transporte,1123,43947,0.025553507634195737,4
+provincia,Formosa,2025,3,Finanzas y seguros,288,43947,0.006553348351423305,2
+provincia,Formosa,2025,3,Construcción,1060,43947,0.024119962682321888,3
+provincia,Formosa,2025,3,Servicios de seguridad / edificios,4239,43947,0.09645709604751178,8
+provincia,Formosa,2025,3,Otros,1683,43947,0.03829612942862994,7
+provincia,Formosa,2025,3,Sin clasificar / NsNr,334,43947,0.007600063713108972,1
+provincia,Jujuy,2025,3,Adm. pública y defensa,34138,74194,0.46011806884653744,168
+provincia,Jujuy,2025,3,Enseñanza,24833,74194,0.3347036148475618,126
+provincia,Jujuy,2025,3,Salud y asistencia social,11841,74194,0.15959511550799255,59
+provincia,Jujuy,2025,3,Transporte,356,74194,0.004798231662937704,2
+provincia,Jujuy,2025,3,Finanzas y seguros,931,74194,0.012548184489311805,4
+provincia,Jujuy,2025,3,Construcción,805,74194,0.01084993395692374,3
+provincia,Jujuy,2025,3,Otros,1043,74194,0.014057740518101195,6
+provincia,Jujuy,2025,3,Sin clasificar / NsNr,247,74194,0.003329110170633744,1
+provincia,La Pampa,2025,3,Adm. pública y defensa,14628,37351,0.391636100773741,103
+provincia,La Pampa,2025,3,Enseñanza,13972,37351,0.374072983320393,87
+provincia,La Pampa,2025,3,Salud y asistencia social,4667,37351,0.1249498005408155,28
+provincia,La Pampa,2025,3,"Electricidad, gas y agua",372,37351,0.009959572702203422,2
+provincia,La Pampa,2025,3,Transporte,162,37351,0.004337233273540199,1
+provincia,La Pampa,2025,3,Finanzas y seguros,60,37351,0.0016063826939037777,1
+provincia,La Pampa,2025,3,Construcción,623,37351,0.016679606971700893,5
+provincia,La Pampa,2025,3,Servicios de seguridad / edificios,588,37351,0.015742550400257023,5
+provincia,La Pampa,2025,3,Otros,2279,37351,0.06101576932344516,13
+provincia,La Rioja,2025,3,Adm. pública y defensa,35325,73064,0.48348023650498195,242
+provincia,La Rioja,2025,3,Enseñanza,16904,73064,0.23135880871564657,140
+provincia,La Rioja,2025,3,Salud y asistencia social,7803,73064,0.10679678090441257,49
+provincia,La Rioja,2025,3,"Electricidad, gas y agua",532,73064,0.007281287638234972,5
+provincia,La Rioja,2025,3,Transporte,404,73064,0.005529398883170919,2
+provincia,La Rioja,2025,3,Finanzas y seguros,138,73064,0.0018887550640534327,2
+provincia,La Rioja,2025,3,Construcción,2139,73064,0.029275703492828205,11
+provincia,La Rioja,2025,3,Servicios de seguridad / edificios,3173,73064,0.043427679842330015,21
+provincia,La Rioja,2025,3,Otros,5429,73064,0.07430471915033396,35
+provincia,La Rioja,2025,3,Sin clasificar / NsNr,1217,73064,0.016656629804007447,8
+provincia,Mendoza,2025,3,Adm. pública y defensa,51229,143382,0.35729031538128914,75
+provincia,Mendoza,2025,3,Enseñanza,59383,143382,0.41415937844359824,90
+provincia,Mendoza,2025,3,Salud y asistencia social,20790,143382,0.1449972799933046,32
+provincia,Mendoza,2025,3,"Electricidad, gas y agua",1612,143382,0.011242694340991198,2
+provincia,Mendoza,2025,3,Transporte,475,143382,0.0033128286674756944,1
+provincia,Mendoza,2025,3,Construcción,1464,143382,0.010210486671967193,2
+provincia,Mendoza,2025,3,Otros,8429,143382,0.058787016501373954,15
+provincia,Misiones,2025,3,Adm. pública y defensa,49080,87642,0.5600054768261792,106
+provincia,Misiones,2025,3,Enseñanza,28795,87642,0.3285525204810479,78
+provincia,Misiones,2025,3,Salud y asistencia social,8168,87642,0.09319732548321581,22
+provincia,Misiones,2025,3,"Electricidad, gas y agua",307,87642,0.0035028867437986353,1
+provincia,Misiones,2025,3,Construcción,190,87642,0.002167910362611533,1
+provincia,Misiones,2025,3,Otros,1102,87642,0.012573880103146893,4
+provincia,Neuquén,2025,3,Adm. pública y defensa,32783,79224,0.4138013733212158,136
+provincia,Neuquén,2025,3,Enseñanza,25169,79224,0.31769413309098254,99
+provincia,Neuquén,2025,3,Salud y asistencia social,11133,79224,0.14052559830354439,48
+provincia,Neuquén,2025,3,"Electricidad, gas y agua",987,79224,0.012458345955770979,3
+provincia,Neuquén,2025,3,Transporte,1385,79224,0.017482076138543877,5
+provincia,Neuquén,2025,3,Finanzas y seguros,473,79224,0.00597041300615975,2
+provincia,Neuquén,2025,3,Construcción,645,79224,0.008141472281126931,3
+provincia,Neuquén,2025,3,Otros,6185,79224,0.07806977683530243,25
+provincia,Neuquén,2025,3,Sin clasificar / NsNr,464,79224,0.005856811067353327,1
+provincia,Río Negro,2025,3,Adm. pública y defensa,37401,74598,0.5013673288828119,122
+provincia,Río Negro,2025,3,Enseñanza,27867,74598,0.3735622938952787,87
+provincia,Río Negro,2025,3,Salud y asistencia social,5854,74598,0.07847395372530094,20
+provincia,Río Negro,2025,3,"Electricidad, gas y agua",462,74598,0.006193195528030242,2
+provincia,Río Negro,2025,3,Finanzas y seguros,132,74598,0.0017694844365800692,1
+provincia,Río Negro,2025,3,Construcción,165,74598,0.0022118555457250866,1
+provincia,Río Negro,2025,3,Otros,2717,74598,0.03642188798627309,12
+provincia,Salta,2025,3,Adm. pública y defensa,37718,84162,0.4481595019129774,117
+provincia,Salta,2025,3,Enseñanza,30347,84162,0.36057840830778737,84
+provincia,Salta,2025,3,Salud y asistencia social,12165,84162,0.1445426677122692,35
+provincia,Salta,2025,3,Transporte,2156,84162,0.025617261947197073,5
+provincia,Salta,2025,3,Finanzas y seguros,362,84162,0.004301228582970937,1
+provincia,Salta,2025,3,Construcción,245,84162,0.0029110524939996675,1
+provincia,Salta,2025,3,Servicios de seguridad / edificios,384,84162,0.004562629215085193,1
+provincia,Salta,2025,3,Otros,785,84162,0.00932724982771322,2
+provincia,San Juan,2025,3,Adm. pública y defensa,23854,50828,0.46930825529235853,77
+provincia,San Juan,2025,3,Enseñanza,12828,50828,0.25238057763437477,58
+provincia,San Juan,2025,3,Salud y asistencia social,7852,50828,0.15448178169512866,24
+provincia,San Juan,2025,3,"Electricidad, gas y agua",1730,50828,0.03403635791296136,5
+provincia,San Juan,2025,3,Transporte,1147,50828,0.022566302038246635,3
+provincia,San Juan,2025,3,Finanzas y seguros,219,50828,0.0043086487762650505,1
+provincia,San Juan,2025,3,Otros,3198,50828,0.06291807665066498,11
+provincia,San Luis,2025,3,Adm. pública y defensa,22748,58036,0.39196360879454134,123
+provincia,San Luis,2025,3,Enseñanza,18673,58036,0.32174856985319455,96
+provincia,San Luis,2025,3,Salud y asistencia social,10625,58036,0.1830760217795851,44
+provincia,San Luis,2025,3,"Electricidad, gas y agua",723,58036,0.012457784823213178,3
+provincia,San Luis,2025,3,Transporte,807,58036,0.013905162313047075,6
+provincia,San Luis,2025,3,Finanzas y seguros,268,58036,0.00461782341994624,1
+provincia,San Luis,2025,3,Construcción,1063,58036,0.0183162175201599,5
+provincia,San Luis,2025,3,Servicios de seguridad / edificios,457,58036,0.007874422772072507,2
+provincia,San Luis,2025,3,Otros,2672,58036,0.04604038872424013,15
+provincia,Santa Cruz,2025,3,Adm. pública y defensa,30454,55851,0.5452722422158959,132
+provincia,Santa Cruz,2025,3,Enseñanza,13977,55851,0.25025514314873504,62
+provincia,Santa Cruz,2025,3,Salud y asistencia social,4680,55851,0.08379438147929312,21
+provincia,Santa Cruz,2025,3,"Electricidad, gas y agua",366,55851,0.006553150346457539,3
+provincia,Santa Cruz,2025,3,Transporte,532,55851,0.009525344219441012,2
+provincia,Santa Cruz,2025,3,Finanzas y seguros,1064,55851,0.019050688438882024,2
+provincia,Santa Cruz,2025,3,Construcción,588,55851,0.01052801203201375,4
+provincia,Santa Cruz,2025,3,Servicios de seguridad / edificios,555,55851,0.00993715421389053,4
+provincia,Santa Cruz,2025,3,Otros,3635,55851,0.06508388390539113,15
+provincia,Santa Fe,2025,3,Adm. pública y defensa,98793,220701,0.44763277012791064,129
+provincia,Santa Fe,2025,3,Enseñanza,68242,220701,0.3092056673961604,105
+provincia,Santa Fe,2025,3,Salud y asistencia social,28910,220701,0.13099170370773128,35
+provincia,Santa Fe,2025,3,"Electricidad, gas y agua",2129,220701,0.009646535357791763,4
+provincia,Santa Fe,2025,3,Transporte,3794,220701,0.017190678791668367,7
+provincia,Santa Fe,2025,3,Finanzas y seguros,1845,220701,0.008359726507809207,2
+provincia,Santa Fe,2025,3,Construcción,3422,220701,0.015505140438874314,5
+provincia,Santa Fe,2025,3,Servicios de seguridad / edificios,315,220701,0.0014272703793820599,2
+provincia,Santa Fe,2025,3,Otros,13251,220701,0.060040507292671984,16
+provincia,Santiago del Estero,2025,3,Adm. pública y defensa,24918,58806,0.4237322722171207,91
+provincia,Santiago del Estero,2025,3,Enseñanza,21254,58806,0.36142570486004827,76
+provincia,Santiago del Estero,2025,3,Salud y asistencia social,6313,58806,0.10735299119137504,27
+provincia,Santiago del Estero,2025,3,"Electricidad, gas y agua",766,58806,0.0130258817127504,3
+provincia,Santiago del Estero,2025,3,Transporte,538,58806,0.009148726320443492,3
+provincia,Santiago del Estero,2025,3,Construcción,1029,58806,0.017498214467911437,3
+provincia,Santiago del Estero,2025,3,Servicios de seguridad / edificios,1341,58806,0.022803795531068257,4
+provincia,Santiago del Estero,2025,3,Otros,2471,58806,0.04201952181750161,11
+provincia,Santiago del Estero,2025,3,Sin clasificar / NsNr,176,58806,0.0029928918817807705,1
+provincia,Tierra del Fuego,2025,3,Adm. pública y defensa,10390,27000,0.38481481481481483,54
+provincia,Tierra del Fuego,2025,3,Enseñanza,9341,27000,0.34596296296296297,55
+provincia,Tierra del Fuego,2025,3,Salud y asistencia social,3103,27000,0.11492592592592593,23
+provincia,Tierra del Fuego,2025,3,"Electricidad, gas y agua",713,27000,0.026407407407407407,3
+provincia,Tierra del Fuego,2025,3,Transporte,686,27000,0.025407407407407406,2
+provincia,Tierra del Fuego,2025,3,Finanzas y seguros,137,27000,0.005074074074074074,1
+provincia,Tierra del Fuego,2025,3,Construcción,991,27000,0.036703703703703704,4
+provincia,Tierra del Fuego,2025,3,Otros,1556,27000,0.05762962962962963,9
+provincia,Tierra del Fuego,2025,3,Sin clasificar / NsNr,83,27000,0.003074074074074074,1
+provincia,Tucumán,2025,3,Adm. pública y defensa,46158,96072,0.4804521608793405,127
+provincia,Tucumán,2025,3,Enseñanza,21306,96072,0.22177117162128404,57
+provincia,Tucumán,2025,3,Salud y asistencia social,18891,96072,0.19663377466899826,49
+provincia,Tucumán,2025,3,Transporte,412,96072,0.004288450328919976,1
+provincia,Tucumán,2025,3,Finanzas y seguros,246,96072,0.0025605795653260055,1
+provincia,Tucumán,2025,3,Construcción,695,96072,0.007234157715047048,3
+provincia,Tucumán,2025,3,Servicios de seguridad / edificios,6084,96072,0.0633275043717212,18
+provincia,Tucumán,2025,3,Otros,2280,96072,0.023732200849362978,5

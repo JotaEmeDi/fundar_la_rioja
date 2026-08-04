@@ -1,0 +1,297 @@
+tipo,serie,ANO4,TRIMESTRE,rama,empleados_publicos,empleados_publicos_tot,share,n_obs
+agregado,1. Resto país,2016,3,Adm. pública y defensa,1118198,2442034,0.4578961636078777,2905
+agregado,1. Resto país,2016,3,Enseñanza,713686,2442034,0.2922506402449761,1943
+agregado,1. Resto país,2016,3,Salud y asistencia social,308721,2442034,0.12641961577930527,675
+agregado,1. Resto país,2016,3,"Electricidad, gas y agua",21181,2442034,0.008673507412263711,61
+agregado,1. Resto país,2016,3,Transporte,50985,2442034,0.02087808769247275,104
+agregado,1. Resto país,2016,3,Finanzas y seguros,20480,2442034,0.00838645162188569,57
+agregado,1. Resto país,2016,3,Construcción,26206,2442034,0.010731218320465644,102
+agregado,1. Resto país,2016,3,Servicios de seguridad / edificios,24064,2442034,0.009854080655715686,59
+agregado,1. Resto país,2016,3,Otros,143704,2442034,0.05884602753278619,326
+agregado,1. Resto país,2016,3,Sin clasificar / NsNr,14809,2442034,0.00606420713225123,28
+agregado,2. NOA-Resto,2016,3,Adm. pública y defensa,173654,374849,0.463263874253366,955
+agregado,2. NOA-Resto,2016,3,Enseñanza,127723,374849,0.3407318680321943,692
+agregado,2. NOA-Resto,2016,3,Salud y asistencia social,45771,374849,0.12210516768085282,219
+agregado,2. NOA-Resto,2016,3,"Electricidad, gas y agua",1638,374849,0.004369759556514757,9
+agregado,2. NOA-Resto,2016,3,Transporte,1509,374849,0.004025620983382642,8
+agregado,2. NOA-Resto,2016,3,Finanzas y seguros,1901,374849,0.005071375407163951,12
+agregado,2. NOA-Resto,2016,3,Construcción,7123,374849,0.019002318266822107,43
+agregado,2. NOA-Resto,2016,3,Servicios de seguridad / edificios,3105,374849,0.008283335423063688,22
+agregado,2. NOA-Resto,2016,3,Otros,11714,374849,0.031249916633097594,71
+agregado,2. NOA-Resto,2016,3,Sin clasificar / NsNr,711,374849,0.0018967637635421196,4
+agregado,3. La Rioja,2016,3,Adm. pública y defensa,26674,51307,0.5198900734792523,303
+agregado,3. La Rioja,2016,3,Enseñanza,14668,51307,0.28588691601535854,177
+agregado,3. La Rioja,2016,3,Salud y asistencia social,5050,51307,0.09842711520845109,65
+agregado,3. La Rioja,2016,3,"Electricidad, gas y agua",453,51307,0.008829204591966008,5
+agregado,3. La Rioja,2016,3,Transporte,649,51307,0.012649346093125695,6
+agregado,3. La Rioja,2016,3,Finanzas y seguros,598,51307,0.011655329682109654,6
+agregado,3. La Rioja,2016,3,Construcción,528,51307,0.01029099343169548,6
+agregado,3. La Rioja,2016,3,Servicios de seguridad / edificios,581,51307,0.01132399087843764,8
+agregado,3. La Rioja,2016,3,Otros,1917,51307,0.03736332274348529,21
+agregado,3. La Rioja,2016,3,Sin clasificar / NsNr,189,51307,0.0036837078761182683,2
+agregado,1. Resto país,2017,3,Adm. pública y defensa,1110204,2441794,0.45466734704074135,2939
+agregado,1. Resto país,2017,3,Enseñanza,722372,2441794,0.2958365857234476,1854
+agregado,1. Resto país,2017,3,Salud y asistencia social,283539,2441794,0.11611913208075701,671
+agregado,1. Resto país,2017,3,"Electricidad, gas y agua",24970,2441794,0.010226087868182165,82
+agregado,1. Resto país,2017,3,Transporte,56145,2441794,0.022993340142534548,95
+agregado,1. Resto país,2017,3,Finanzas y seguros,30499,2441794,0.012490406643639882,65
+agregado,1. Resto país,2017,3,Construcción,20546,2441794,0.00841430521985065,66
+agregado,1. Resto país,2017,3,Servicios de seguridad / edificios,23902,2441794,0.009788704534452948,42
+agregado,1. Resto país,2017,3,Otros,148357,2441794,0.060757377567477025,298
+agregado,1. Resto país,2017,3,Sin clasificar / NsNr,21260,2441794,0.008706713178916813,34
+agregado,2. NOA-Resto,2017,3,Adm. pública y defensa,189564,402566,0.4708892454901805,992
+agregado,2. NOA-Resto,2017,3,Enseñanza,138471,402566,0.34397092650646105,728
+agregado,2. NOA-Resto,2017,3,Salud y asistencia social,49617,402566,0.12325183944992871,238
+agregado,2. NOA-Resto,2017,3,"Electricidad, gas y agua",2318,402566,0.005758062032064307,13
+agregado,2. NOA-Resto,2017,3,Transporte,1842,402566,0.004575647223064044,9
+agregado,2. NOA-Resto,2017,3,Finanzas y seguros,1731,402566,0.004299916038612302,13
+agregado,2. NOA-Resto,2017,3,Construcción,4241,402566,0.010534918497836379,29
+agregado,2. NOA-Resto,2017,3,Servicios de seguridad / edificios,1176,402566,0.002921260116353592,8
+agregado,2. NOA-Resto,2017,3,Otros,12291,402566,0.030531639532399655,68
+agregado,2. NOA-Resto,2017,3,Sin clasificar / NsNr,1315,402566,0.003266545113099467,6
+agregado,3. La Rioja,2017,3,Adm. pública y defensa,28797,52623,0.5472321988484123,305
+agregado,3. La Rioja,2017,3,Enseñanza,14415,52623,0.27392965053303686,156
+agregado,3. La Rioja,2017,3,Salud y asistencia social,4753,52623,0.09032172244075784,52
+agregado,3. La Rioja,2017,3,"Electricidad, gas y agua",109,52623,0.0020713376280333696,1
+agregado,3. La Rioja,2017,3,Transporte,249,52623,0.004731771278718431,2
+agregado,3. La Rioja,2017,3,Finanzas y seguros,1247,52623,0.02369686258860194,10
+agregado,3. La Rioja,2017,3,Construcción,699,52623,0.013283165155920415,7
+agregado,3. La Rioja,2017,3,Otros,2236,52623,0.042490926020941414,19
+agregado,3. La Rioja,2017,3,Sin clasificar / NsNr,118,52623,0.002242365505577409,1
+agregado,1. Resto país,2018,3,Adm. pública y defensa,1101469,2417958,0.4555368620960331,2835
+agregado,1. Resto país,2018,3,Enseñanza,751134,2417958,0.31064807577302833,1829
+agregado,1. Resto país,2018,3,Salud y asistencia social,275805,2417958,0.11406525671661791,642
+agregado,1. Resto país,2018,3,"Electricidad, gas y agua",23715,2417958,0.00980786266758976,70
+agregado,1. Resto país,2018,3,Transporte,38523,2417958,0.015932038521760925,72
+agregado,1. Resto país,2018,3,Finanzas y seguros,30098,2417958,0.012447693466966754,47
+agregado,1. Resto país,2018,3,Construcción,23810,2417958,0.009847152018355985,59
+agregado,1. Resto país,2018,3,Servicios de seguridad / edificios,16410,2417958,0.0067867183797237175,24
+agregado,1. Resto país,2018,3,Otros,146820,2417958,0.0607206576789175,286
+agregado,1. Resto país,2018,3,Sin clasificar / NsNr,10174,2417958,0.004207682681006039,29
+agregado,2. NOA-Resto,2018,3,Adm. pública y defensa,198200,393886,0.5031912786948508,1046
+agregado,2. NOA-Resto,2018,3,Enseñanza,132355,393886,0.3360236210477143,695
+agregado,2. NOA-Resto,2018,3,Salud y asistencia social,44967,393886,0.11416247340601088,231
+agregado,2. NOA-Resto,2018,3,"Electricidad, gas y agua",1649,393886,0.004186490507405696,10
+agregado,2. NOA-Resto,2018,3,Transporte,1397,393886,0.0035467114850489738,9
+agregado,2. NOA-Resto,2018,3,Finanzas y seguros,1883,393886,0.00478057102816551,9
+agregado,2. NOA-Resto,2018,3,Construcción,3896,393886,0.009891186790086472,27
+agregado,2. NOA-Resto,2018,3,Servicios de seguridad / edificios,1427,393886,0.0036228756543771547,8
+agregado,2. NOA-Resto,2018,3,Otros,7931,393886,0.02013526756472685,46
+agregado,2. NOA-Resto,2018,3,Sin clasificar / NsNr,181,393886,4.5952382161336023e-4,1
+agregado,3. La Rioja,2018,3,Adm. pública y defensa,32139,58035,0.5537865081416387,311
+agregado,3. La Rioja,2018,3,Enseñanza,15601,58035,0.26882053932971484,163
+agregado,3. La Rioja,2018,3,Salud y asistencia social,6382,58035,0.10996812268458689,64
+agregado,3. La Rioja,2018,3,"Electricidad, gas y agua",162,58035,0.002791418971310416,2
+agregado,3. La Rioja,2018,3,Transporte,669,58035,0.011527526492633755,5
+agregado,3. La Rioja,2018,3,Finanzas y seguros,326,58035,0.005617299905229603,3
+agregado,3. La Rioja,2018,3,Construcción,553,58035,0.009528732661325062,5
+agregado,3. La Rioja,2018,3,Servicios de seguridad / edificios,153,58035,0.0026363401395709486,1
+agregado,3. La Rioja,2018,3,Otros,2050,58035,0.03532351167398983,17
+agregado,1. Resto país,2019,3,Adm. pública y defensa,1186854,2511576,0.47255348832764765,2805
+agregado,1. Resto país,2019,3,Enseñanza,762905,2511576,0.30375549057643486,1795
+agregado,1. Resto país,2019,3,Salud y asistencia social,285607,2511576,0.11371624828394601,609
+agregado,1. Resto país,2019,3,"Electricidad, gas y agua",17863,2511576,0.007112267357229087,51
+agregado,1. Resto país,2019,3,Transporte,47485,2511576,0.01890645554822948,62
+agregado,1. Resto país,2019,3,Finanzas y seguros,17396,2511576,0.006926328329303991,49
+agregado,1. Resto país,2019,3,Construcción,19449,2511576,0.007743743370696328,57
+agregado,1. Resto país,2019,3,Servicios de seguridad / edificios,22256,2511576,0.008861368320130469,42
+agregado,1. Resto país,2019,3,Otros,145051,2511576,0.057752980598636074,311
+agregado,1. Resto país,2019,3,Sin clasificar / NsNr,6710,2511576,0.002671629287746021,8
+agregado,2. NOA-Resto,2019,3,Adm. pública y defensa,188032,386809,0.48611071614155826,944
+agregado,2. NOA-Resto,2019,3,Enseñanza,119076,386809,0.3078418547655303,633
+agregado,2. NOA-Resto,2019,3,Salud y asistencia social,52070,386809,0.13461424113709866,239
+agregado,2. NOA-Resto,2019,3,"Electricidad, gas y agua",2838,386809,0.007336954414194086,11
+agregado,2. NOA-Resto,2019,3,Transporte,1663,386809,0.004299279489360382,8
+agregado,2. NOA-Resto,2019,3,Finanzas y seguros,1922,386809,0.004968860600451386,12
+agregado,2. NOA-Resto,2019,3,Construcción,5140,386809,0.013288212011612966,27
+agregado,2. NOA-Resto,2019,3,Servicios de seguridad / edificios,3341,386809,0.008637337807548428,14
+agregado,2. NOA-Resto,2019,3,Otros,12608,386809,0.03259489825727943,57
+agregado,2. NOA-Resto,2019,3,Sin clasificar / NsNr,119,386809,3.076453753661368e-4,1
+agregado,3. La Rioja,2019,3,Adm. pública y defensa,31286,59938,0.5219727051286329,294
+agregado,3. La Rioja,2019,3,Enseñanza,16929,59938,0.282441856585138,169
+agregado,3. La Rioja,2019,3,Salud y asistencia social,6396,59938,0.10671026727618539,58
+agregado,3. La Rioja,2019,3,"Electricidad, gas y agua",41,59938,6.840401748473422e-4,1
+agregado,3. La Rioja,2019,3,Transporte,395,59938,0.006590143147919517,3
+agregado,3. La Rioja,2019,3,Finanzas y seguros,498,59938,0.00830858553838967,4
+agregado,3. La Rioja,2019,3,Construcción,1172,59938,0.019553538656611833,11
+agregado,3. La Rioja,2019,3,Servicios de seguridad / edificios,208,59938,0.0034702525943474923,2
+agregado,3. La Rioja,2019,3,Otros,3013,59938,0.050268610897927855,33
+agregado,1. Resto país,2020,3,Adm. pública y defensa,1246025,2724803,0.45728993985987243,2161
+agregado,1. Resto país,2020,3,Enseñanza,859672,2724803,0.31549877183781727,1366
+agregado,1. Resto país,2020,3,Salud y asistencia social,331666,2724803,0.12172109323132718,497
+agregado,1. Resto país,2020,3,"Electricidad, gas y agua",29410,2724803,0.010793440846916273,57
+agregado,1. Resto país,2020,3,Transporte,68354,2724803,0.025085850243118494,74
+agregado,1. Resto país,2020,3,Finanzas y seguros,17776,2724803,0.006523774379285401,28
+agregado,1. Resto país,2020,3,Construcción,25059,2724803,0.009196628159907341,64
+agregado,1. Resto país,2020,3,Servicios de seguridad / edificios,12640,2724803,0.004638867470418962,27
+agregado,1. Resto país,2020,3,Otros,123826,2724803,0.04544401925570399,213
+agregado,1. Resto país,2020,3,Sin clasificar / NsNr,10375,2724803,0.003807614715632653,24
+agregado,2. NOA-Resto,2020,3,Adm. pública y defensa,145744,300317,0.48530053243739113,550
+agregado,2. NOA-Resto,2020,3,Enseñanza,87141,300317,0.2901633940136589,344
+agregado,2. NOA-Resto,2020,3,Salud y asistencia social,42679,300317,0.1421131670867783,130
+agregado,2. NOA-Resto,2020,3,"Electricidad, gas y agua",1843,300317,0.006136848729842133,7
+agregado,2. NOA-Resto,2020,3,Transporte,1780,300317,0.0059270703956153,10
+agregado,2. NOA-Resto,2020,3,Finanzas y seguros,794,300317,0.0026438729742239036,5
+agregado,2. NOA-Resto,2020,3,Construcción,5728,300317,0.019073179340496876,16
+agregado,2. NOA-Resto,2020,3,Servicios de seguridad / edificios,2638,300317,0.008784051518895034,10
+agregado,2. NOA-Resto,2020,3,Otros,11470,300317,0.038192976088599714,51
+agregado,2. NOA-Resto,2020,3,Sin clasificar / NsNr,500,300317,0.0016649074144986797,3
+agregado,3. La Rioja,2020,3,Adm. pública y defensa,32061,60053,0.5338784074067907,259
+agregado,3. La Rioja,2020,3,Enseñanza,16491,60053,0.27460743010340866,148
+agregado,3. La Rioja,2020,3,Salud y asistencia social,6243,60053,0.10395817028291676,49
+agregado,3. La Rioja,2020,3,"Electricidad, gas y agua",418,60053,0.006960518208915458,2
+agregado,3. La Rioja,2020,3,Transporte,386,60053,0.006427655570912361,3
+agregado,3. La Rioja,2020,3,Finanzas y seguros,646,60053,0.010757164504687526,5
+agregado,3. La Rioja,2020,3,Construcción,390,60053,0.006494263400662748,4
+agregado,3. La Rioja,2020,3,Servicios de seguridad / edificios,835,60053,0.01390438446039332,6
+agregado,3. La Rioja,2020,3,Otros,2243,60053,0.0373503405325296,21
+agregado,3. La Rioja,2020,3,Sin clasificar / NsNr,340,60053,0.005661665528782909,3
+agregado,1. Resto país,2021,3,Adm. pública y defensa,1389807,2968531,0.46818005269272917,2564
+agregado,1. Resto país,2021,3,Enseñanza,832435,2968531,0.28041984402386233,1636
+agregado,1. Resto país,2021,3,Salud y asistencia social,399202,2968531,0.1344779623322108,618
+agregado,1. Resto país,2021,3,"Electricidad, gas y agua",34887,2968531,0.011752277473268765,67
+agregado,1. Resto país,2021,3,Transporte,72133,2968531,0.024299224094341612,74
+agregado,1. Resto país,2021,3,Finanzas y seguros,43903,2968531,0.014789469943214338,45
+agregado,1. Resto país,2021,3,Construcción,25970,2968531,0.008748434831908443,74
+agregado,1. Resto país,2021,3,Servicios de seguridad / edificios,18221,2968531,0.006138052794462986,31
+agregado,1. Resto país,2021,3,Otros,139275,2968531,0.04691714521424907,252
+agregado,1. Resto país,2021,3,Sin clasificar / NsNr,12698,2968531,0.004277536599752538,24
+agregado,2. NOA-Resto,2021,3,Adm. pública y defensa,214609,404271,0.5308543031778188,1010
+agregado,2. NOA-Resto,2021,3,Enseñanza,97995,404271,0.2423992816699689,506
+agregado,2. NOA-Resto,2021,3,Salud y asistencia social,56967,404271,0.14091290248372998,258
+agregado,2. NOA-Resto,2021,3,"Electricidad, gas y agua",1695,404271,0.0041927321029705325,10
+agregado,2. NOA-Resto,2021,3,Transporte,2267,404271,0.005607624588456753,9
+agregado,2. NOA-Resto,2021,3,Finanzas y seguros,2891,404271,0.00715114366353263,15
+agregado,2. NOA-Resto,2021,3,Construcción,5857,404271,0.014487806446665726,26
+agregado,2. NOA-Resto,2021,3,Servicios de seguridad / edificios,1736,404271,0.0042941492216854536,9
+agregado,2. NOA-Resto,2021,3,Otros,19759,404271,0.04887563045580811,108
+agregado,2. NOA-Resto,2021,3,Sin clasificar / NsNr,495,404271,0.0012244261893630758,3
+agregado,3. La Rioja,2021,3,Adm. pública y defensa,36537,67241,0.5433738344165019,307
+agregado,3. La Rioja,2021,3,Enseñanza,17027,67241,0.2532234797221933,167
+agregado,3. La Rioja,2021,3,Salud y asistencia social,8887,67241,0.1321663865796166,75
+agregado,3. La Rioja,2021,3,"Electricidad, gas y agua",634,67241,0.009428771136657695,6
+agregado,3. La Rioja,2021,3,Transporte,238,67241,0.003539507145937746,2
+agregado,3. La Rioja,2021,3,Finanzas y seguros,337,67241,0.0050118231436177335,3
+agregado,3. La Rioja,2021,3,Construcción,399,67241,0.00593387962701328,3
+agregado,3. La Rioja,2021,3,Otros,2868,67241,0.042652548296426285,24
+agregado,3. La Rioja,2021,3,Sin clasificar / NsNr,314,67241,0.004669769932035514,2
+agregado,1. Resto país,2022,3,Adm. pública y defensa,1318584,2918820,0.4517524204986947,2613
+agregado,1. Resto país,2022,3,Enseñanza,798015,2918820,0.2734032931115999,1632
+agregado,1. Resto país,2022,3,Salud y asistencia social,376066,2918820,0.1288417922311071,672
+agregado,1. Resto país,2022,3,"Electricidad, gas y agua",43985,2918820,0.015069445871961957,73
+agregado,1. Resto país,2022,3,Transporte,70622,2918820,0.024195394029093948,78
+agregado,1. Resto país,2022,3,Finanzas y seguros,66695,2918820,0.022849987323644485,61
+agregado,1. Resto país,2022,3,Construcción,27241,2918820,0.009332881095785284,69
+agregado,1. Resto país,2022,3,Servicios de seguridad / edificios,39639,2918820,0.01358048800542685,72
+agregado,1. Resto país,2022,3,Otros,173219,2918820,0.05934555745129881,289
+agregado,1. Resto país,2022,3,Sin clasificar / NsNr,4754,2918820,0.0016287403813869989,15
+agregado,2. NOA-Resto,2022,3,Adm. pública y defensa,205020,428675,0.4782644194319706,886
+agregado,2. NOA-Resto,2022,3,Enseñanza,110275,428675,0.25724616551000173,491
+agregado,2. NOA-Resto,2022,3,Salud y asistencia social,68871,428675,0.16066017379133377,280
+agregado,2. NOA-Resto,2022,3,"Electricidad, gas y agua",1534,428675,0.0035784685367702806,7
+agregado,2. NOA-Resto,2022,3,Transporte,3658,428675,0.008533271126144515,14
+agregado,2. NOA-Resto,2022,3,Finanzas y seguros,3212,428675,0.007492855893159153,12
+agregado,2. NOA-Resto,2022,3,Construcción,5164,428675,0.012046422114655625,22
+agregado,2. NOA-Resto,2022,3,Servicios de seguridad / edificios,12458,428675,0.02906164343616959,44
+agregado,2. NOA-Resto,2022,3,Otros,18150,428675,0.04233976788942672,80
+agregado,2. NOA-Resto,2022,3,Sin clasificar / NsNr,333,428675,7.768122703679944e-4,1
+agregado,3. La Rioja,2022,3,Adm. pública y defensa,36031,69812,0.5161147080731107,291
+agregado,3. La Rioja,2022,3,Enseñanza,17264,69812,0.2472927290437174,144
+agregado,3. La Rioja,2022,3,Salud y asistencia social,10574,69812,0.15146393170228614,78
+agregado,3. La Rioja,2022,3,"Electricidad, gas y agua",333,69812,0.00476995358964075,3
+agregado,3. La Rioja,2022,3,Transporte,440,69812,0.006302641379705495,3
+agregado,3. La Rioja,2022,3,Finanzas y seguros,536,69812,0.007677763135277603,5
+agregado,3. La Rioja,2022,3,Construcción,593,69812,0.008494241677648541,4
+agregado,3. La Rioja,2022,3,Servicios de seguridad / edificios,562,69812,0.008050191944078381,5
+agregado,3. La Rioja,2022,3,Otros,3333,69812,0.04774250845126912,27
+agregado,3. La Rioja,2022,3,Sin clasificar / NsNr,146,69812,0.002091331003265914,2
+agregado,1. Resto país,2023,3,Adm. pública y defensa,1549401,3279115,0.47250584380236743,2704
+agregado,1. Resto país,2023,3,Enseñanza,941379,3279115,0.28708325264591206,1705
+agregado,1. Resto país,2023,3,Salud y asistencia social,372431,3279115,0.11357668151315217,697
+agregado,1. Resto país,2023,3,"Electricidad, gas y agua",28649,3279115,0.008736808559626606,70
+agregado,1. Resto país,2023,3,Transporte,68548,3279115,0.020904420857456966,81
+agregado,1. Resto país,2023,3,Finanzas y seguros,31966,3279115,0.009748361981815215,31
+agregado,1. Resto país,2023,3,Construcción,19931,3279115,0.006078164382767912,62
+agregado,1. Resto país,2023,3,Servicios de seguridad / edificios,28377,3279115,0.008653859349245147,67
+agregado,1. Resto país,2023,3,Otros,231394,3279115,0.07056599112870393,282
+agregado,1. Resto país,2023,3,Sin clasificar / NsNr,7039,3279115,0.002146615778952553,18
+agregado,2. NOA-Resto,2023,3,Adm. pública y defensa,207270,451742,0.4588238419274719,885
+agregado,2. NOA-Resto,2023,3,Enseñanza,118701,451742,0.26276281594361384,492
+agregado,2. NOA-Resto,2023,3,Salud y asistencia social,69053,451742,0.1528593754842366,242
+agregado,2. NOA-Resto,2023,3,"Electricidad, gas y agua",1372,451742,0.0030371318141771187,5
+agregado,2. NOA-Resto,2023,3,Transporte,1981,451742,0.004385246445980227,9
+agregado,2. NOA-Resto,2023,3,Finanzas y seguros,2293,451742,0.00507590615882517,9
+agregado,2. NOA-Resto,2023,3,Construcción,5666,451742,0.012542557477498217,25
+agregado,2. NOA-Resto,2023,3,Servicios de seguridad / edificios,16273,451742,0.03602277406130048,56
+agregado,2. NOA-Resto,2023,3,Otros,28528,451742,0.06315109066679653,109
+agregado,2. NOA-Resto,2023,3,Sin clasificar / NsNr,605,451742,0.0013392600200999687,2
+agregado,3. La Rioja,2023,3,Adm. pública y defensa,42698,73053,0.5844797612692155,337
+agregado,3. La Rioja,2023,3,Enseñanza,15881,73053,0.21739011402680247,131
+agregado,3. La Rioja,2023,3,Salud y asistencia social,8241,73053,0.1128085088908053,60
+agregado,3. La Rioja,2023,3,"Electricidad, gas y agua",593,73053,0.008117394220634334,6
+agregado,3. La Rioja,2023,3,Transporte,511,73053,0.006994921495352689,4
+agregado,3. La Rioja,2023,3,Finanzas y seguros,111,73053,0.0015194447866617388,1
+agregado,3. La Rioja,2023,3,Construcción,1079,73053,0.014770098421693838,5
+agregado,3. La Rioja,2023,3,Servicios de seguridad / edificios,126,73053,0.0017247751632376493,1
+agregado,3. La Rioja,2023,3,Otros,3388,73053,0.04637728772261235,24
+agregado,3. La Rioja,2023,3,Sin clasificar / NsNr,425,73053,0.005817694002984135,4
+agregado,1. Resto país,2024,3,Adm. pública y defensa,1330096,3053197,0.4356404123284544,2382
+agregado,1. Resto país,2024,3,Enseñanza,968450,3053197,0.3171921104337519,1734
+agregado,1. Resto país,2024,3,Salud y asistencia social,399270,3053197,0.13077112285908835,643
+agregado,1. Resto país,2024,3,"Electricidad, gas y agua",37669,3053197,0.012337559613742579,62
+agregado,1. Resto país,2024,3,Transporte,49439,3053197,0.016192535234378917,70
+agregado,1. Resto país,2024,3,Finanzas y seguros,35894,3053197,0.011756201778005152,41
+agregado,1. Resto país,2024,3,Construcción,12406,3053197,0.004063281864878028,48
+agregado,1. Resto país,2024,3,Servicios de seguridad / edificios,33761,3053197,0.011057589798496461,63
+agregado,1. Resto país,2024,3,Otros,176850,3053197,0.0579228919719232,305
+agregado,1. Resto país,2024,3,Sin clasificar / NsNr,9362,3053197,0.0030662941172810007,9
+agregado,2. NOA-Resto,2024,3,Adm. pública y defensa,202790,425658,0.4764153381353105,825
+agregado,2. NOA-Resto,2024,3,Enseñanza,119029,425658,0.2796352940623693,514
+agregado,2. NOA-Resto,2024,3,Salud y asistencia social,65213,425658,0.1532051553124809,227
+agregado,2. NOA-Resto,2024,3,"Electricidad, gas y agua",1874,425658,0.004402595510950106,4
+agregado,2. NOA-Resto,2024,3,Transporte,2914,425658,0.006845871568254326,12
+agregado,2. NOA-Resto,2024,3,Finanzas y seguros,732,425658,0.0017196904557179708,4
+agregado,2. NOA-Resto,2024,3,Construcción,4542,425658,0.010670538319495933,27
+agregado,2. NOA-Resto,2024,3,Servicios de seguridad / edificios,11636,425658,0.027336500194992223,42
+agregado,2. NOA-Resto,2024,3,Otros,16638,425658,0.039087718309065024,70
+agregado,2. NOA-Resto,2024,3,Sin clasificar / NsNr,290,425658,6.81298131363677e-4,1
+agregado,3. La Rioja,2024,3,Adm. pública y defensa,36864,74983,0.4916314364589307,269
+agregado,3. La Rioja,2024,3,Enseñanza,14863,74983,0.19821826280623608,121
+agregado,3. La Rioja,2024,3,Salud y asistencia social,8806,74983,0.11743995305602603,57
+agregado,3. La Rioja,2024,3,"Electricidad, gas y agua",602,74983,0.008028486456930238,5
+agregado,3. La Rioja,2024,3,Transporte,285,74983,0.0038008615286131524,3
+agregado,3. La Rioja,2024,3,Finanzas y seguros,158,74983,0.0021071442860381684,2
+agregado,3. La Rioja,2024,3,Construcción,2891,74983,0.03855540589200219,16
+agregado,3. La Rioja,2024,3,Servicios de seguridad / edificios,1338,74983,0.017844044650120693,10
+agregado,3. La Rioja,2024,3,Otros,7503,74983,0.10006268087433151,47
+agregado,3. La Rioja,2024,3,Sin clasificar / NsNr,1673,74983,0.02231172399077124,11
+agregado,1. Resto país,2025,3,Adm. pública y defensa,1215887,2771856,0.4386544611264077,2054
+agregado,1. Resto país,2025,3,Enseñanza,848640,2771856,0.3061630907233276,1526
+agregado,1. Resto país,2025,3,Salud y asistencia social,376230,2771856,0.13573215924636778,600
+agregado,1. Resto país,2025,3,"Electricidad, gas y agua",25520,2771856,0.009206827483101575,45
+agregado,1. Resto país,2025,3,Transporte,70428,2771856,0.02540824631582593,80
+agregado,1. Resto país,2025,3,Finanzas y seguros,25858,2771856,0.009328767439578391,35
+agregado,1. Resto país,2025,3,Construcción,26327,2771856,0.009497968148417522,61
+agregado,1. Resto país,2025,3,Servicios de seguridad / edificios,23805,2771856,0.008588108473167438,41
+agregado,1. Resto país,2025,3,Otros,149643,2771856,0.053986570730947064,259
+agregado,1. Resto país,2025,3,Sin clasificar / NsNr,9518,2771856,0.003433800312858965,7
+agregado,2. NOA-Resto,2025,3,Adm. pública y defensa,171644,371116,0.46250767953955096,726
+agregado,2. NOA-Resto,2025,3,Enseñanza,110711,371116,0.2983191239396846,476
+agregado,2. NOA-Resto,2025,3,Salud y asistencia social,54151,371116,0.14591394604382457,215
+agregado,2. NOA-Resto,2025,3,"Electricidad, gas y agua",1917,371116,0.005165500813761735,6
+agregado,2. NOA-Resto,2025,3,Transporte,4292,371116,0.011565117106241715,16
+agregado,2. NOA-Resto,2025,3,Finanzas y seguros,1603,371116,0.004319404175513856,8
+agregado,2. NOA-Resto,2025,3,Construcción,4299,371116,0.011583979133209023,25
+agregado,2. NOA-Resto,2025,3,Servicios de seguridad / edificios,10657,371116,0.02871608877008806,38
+agregado,2. NOA-Resto,2025,3,Otros,11298,371116,0.030443311525237392,60
+agregado,2. NOA-Resto,2025,3,Sin clasificar / NsNr,544,371116,0.0014658489528880459,3
+agregado,3. La Rioja,2025,3,Adm. pública y defensa,35325,73064,0.48348023650498195,242
+agregado,3. La Rioja,2025,3,Enseñanza,16904,73064,0.23135880871564657,140
+agregado,3. La Rioja,2025,3,Salud y asistencia social,7803,73064,0.10679678090441257,49
+agregado,3. La Rioja,2025,3,"Electricidad, gas y agua",532,73064,0.007281287638234972,5
+agregado,3. La Rioja,2025,3,Transporte,404,73064,0.005529398883170919,2
+agregado,3. La Rioja,2025,3,Finanzas y seguros,138,73064,0.0018887550640534327,2
+agregado,3. La Rioja,2025,3,Construcción,2139,73064,0.029275703492828205,11
+agregado,3. La Rioja,2025,3,Servicios de seguridad / edificios,3173,73064,0.043427679842330015,21
+agregado,3. La Rioja,2025,3,Otros,5429,73064,0.07430471915033396,35
+agregado,3. La Rioja,2025,3,Sin clasificar / NsNr,1217,73064,0.016656629804007447,8

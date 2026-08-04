@@ -1,0 +1,494 @@
+---
+title: "Monitor socioeconómico — La Rioja"
+subtitle: "Indicadores reproducibles · Fundar"
+author: "Fundar — grupo factor~data"
+date: "`r format(Sys.Date(), '%B %Y')`"
+output:
+  word_document:
+    toc: true
+    toc_depth: 2
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    latex_engine: xelatex
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    theme: flatly
+    df_print: paged
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  out.width = "100%"
+)
+## Regenerar gráficos al knit (FALSE = usa PNG ya guardados en outputs/plots/).
+REGENERAR_PLOTS <- FALSE
+
+## Raíz del repo (carpeta que contiene src/, data/, outputs/).
+root <- {
+  cand <- c(
+    if (requireNamespace("here", quietly = TRUE)) here::here() else NULL,
+    normalizePath("..", winslash = "/", mustWork = FALSE),
+    normalizePath(".", winslash = "/", mustWork = FALSE)
+  )
+  cand <- unique(cand[!is.na(cand) & nzchar(cand)])
+  hit <- cand[file.exists(file.path(cand, "src")) & file.exists(file.path(cand, "outputs"))]
+  if (length(hit) == 0) stop("No se encontró la raíz del repo fundar_la_rioja.")
+  hit[[1]]
+}
+
+mostrar <- function(path_rel) {
+  path <- normalizePath(file.path(root, path_rel), winslash = "/", mustWork = FALSE)
+  if (!file.exists(path)) {
+    cat(sprintf("\n> *Gráfico pendiente: `%s`*\n\n", path_rel))
+    return(invisible(NULL))
+  }
+  knitr::include_graphics(path)
+}
+```
+
+# Cómo usar este informe
+
+Monitor reproducible de coyuntura de La Rioja: gráficos + análisis por indicador.
+Las **fichas metodológicas** (definición, fuente, cálculo) están al final —
+también en el índice de la izquierda. Instrucciones de update: `README.md`.
+
+**Corte territorial:** La Rioja / NOA-Resto / Resto país. Los PNG viven en
+`outputs/plots/`; con `REGENERAR_PLOTS <- TRUE` se re-corren los scripts de viz.
+
+```{r regenerar, eval=REGENERAR_PLOTS}
+## Solo viz (asume CSVs en data/inputs_md/). Para prep completo ver README.
+old <- setwd(root)
+on.exit(setwd(old), add = TRUE)
+scripts_viz <- c(
+  "src/04_desoc.R",
+  "src/10_tasa_empleo.R",
+  "src/09a_informalidad_aportes.R",
+  "src/03_salarios_privados_SIPA.R",
+  "src/03_salarios_privados_SIPA_real.R",
+  "src/03b_salarios_registrados_EPH.R",
+  "src/05_puestos_asalariados_privados.R",
+  "src/06_empleados_publicos.R",
+  "src/06_empleados_publicos_composicion.R",
+  "src/07_cant_empresas.R",
+  "src/12_educ.R",
+  "src/13a_nbi_hogares.R",
+  "src/13b_nbi_poblacion.R",
+  "src/14_exportaciones_subrubros.R",
+  "src/14_exportaciones_indice.R",
+  "src/15_pbg.R",
+  "src/16_recursos_propios.R"
+)
+for (s in scripts_viz) {
+  if (file.exists(s)) source(s, local = new.env())
+}
+```
+
+# Macroeconomía — Crecimiento
+
+## PIB / PBG provincial
+
+**Definición.** Valor agregado bruto (VAB) a precios básicos por jurisdicción,
+en millones de pesos a precios constantes de 2004 (aproxima el PBG provincial).
+
+**Fuente.** CEPAL / Ministerio de Economía —
+[desagregación provincial del VAB base 2004 (Excel 52 sectores)](https://repositorio.cepal.org/server/api/core/bitstreams/539fcce5-8977-4061-a222-fbfd7358a35f/content).
+
+**Raw / scripts.** `data/raw_data/pbg/` · `15_prep_pbg.R` → `15_pbg.R`.
+
+**Cálculo.** Suma de las ~52 ramas CEPAL por provincia y año. Agregados
+regionales = suma de VABs. Índice = \(100 \times VAB_t / VAB_{2004}\) dentro de
+cada grupo.
+
+**Actualización.** Cuando publiquen nueva versión del Excel; reemplazar raw y
+correr prep + viz. Serie actual: 2004–2024.
+
+```{r pbg-evol}
+mostrar("outputs/plots/15_pbg_evolucion.png")
+```
+
+**Lectura (borrador).** La Rioja crece menos que el NOA-Resto en el índice
+2004=100; el salto de 2020 y la caída reciente merecen contraste con empleo y
+exportaciones del mismo período.
+
+## % del PBG industrial
+
+**Definición.** Participación de la industria manufacturera (letra D, CIIU Rev. 3)
+en el PBG regional. Misma fuente PBG.
+
+**Cálculo.** \(VAB_D / VAB_{total}\) por año y región (precios 2004).
+
+```{r pbg-ind}
+mostrar("outputs/plots/15_pbg_pct_industrial.png")
+```
+
+## Estructura productiva
+
+**Definición.** Composición sectorial del PBG. Primero por letra CIIU (último año);
+después agregada en grandes sectores (evolución 2004–2024); y zoom interno de
+Servicios. Misma fuente PBG.
+
+**Agrupación de grandes sectores.** Agro (A+B), Minería (C), Industria (D),
+Construcción (F), Comercio (G), Adm. pública (L), Servicios (resto: E, H–K, M–P).
+
+```{r pbg-est}
+mostrar("outputs/plots/15_pbg_estructura.png")
+mostrar("outputs/plots/15_pbg_sectores_evolucion.png")
+mostrar("outputs/plots/15_pbg_servicios_detalle.png")
+```
+
+## Recursos propios / recursos totales
+
+**Definición.** Recursos tributarios de origen provincial (TOP) sobre la suma de
+TOP + recursos de origen nacional (RON: coparticipación y transferencias
+tributarias nacionales).
+
+**Fuentes / URL.** Ministerio de Economía —
+[TOP](https://www.argentina.gob.ar/sites/default/files/serie_top_1984_2024_1.xlsx),
+[RON](https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.xlsx)
+(los nombres de archivo pueden cambiar de año; verificar en el sitio del Ministerio).
+
+**Raw / scripts.** `data/raw_data/finanzas/` · `16_prep_recursos_propios.R` →
+`16_recursos_propios.R`.
+
+**Cálculo.** \(TOP / (TOP + RON)\). Agregado regional = suma de montos, luego
+ratio. Intersección disponible: 2003–2024.
+
+**Pendiente.** Resultado fiscal (ingreso - gasto): falta fuente de gasto
+provincial.
+
+```{r recursos}
+mostrar("outputs/plots/16_recursos_propios.png")
+```
+
+## Exportaciones
+
+¿Cuánto exporta La Rioja y cómo se compara con el NOA y el resto del país?
+[Ficha metodológica](#ficha-14-exportaciones).
+
+```{r exp-ultimo}
+library(readr)
+library(dplyr)
+idx <- read_csv(
+  file.path(root, "data/inputs_md/14_exportaciones_indice_2015_region.csv"),
+  show_col_types = FALSE
+)
+anio_ult <- max(idx$anio)
+lr <- idx %>% filter(anio == anio_ult, la_rioja_region == "3. La Rioja")
+noa <- idx %>% filter(anio == anio_ult, la_rioja_region == "2. NOA-Resto")
+resto <- idx %>% filter(anio == anio_ult, la_rioja_region == "1. Resto país")
+lr_ant <- idx %>%
+  filter(anio == anio_ult - 1L, la_rioja_region == "3. La Rioja")
+lr_2015 <- idx %>%
+  filter(anio == 2015L, la_rioja_region == "3. La Rioja")
+var_yoy <- if (nrow(lr_ant) == 1) {
+  100 * (lr$exportaciones_millones_usd / lr_ant$exportaciones_millones_usd - 1)
+} else {
+  NA_real_
+}
+fmt_pct <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits)
+}
+frase_yoy <- if (is.na(var_yoy)) {
+  ""
+} else if (abs(var_yoy) < 1) {
+  paste0(
+    "Respecto de ", anio_ult - 1L,
+    ", se mantuvieron casi sin cambios (", fmt_pct(var_yoy), "%)."
+  )
+} else if (var_yoy > 0) {
+  paste0(
+    "Respecto de ", anio_ult - 1L,
+    ", crecieron ", fmt_pct(var_yoy), "%."
+  )
+} else {
+  paste0(
+    "Respecto de ", anio_ult - 1L,
+    ", cayeron ", fmt_pct(abs(var_yoy)), "%."
+  )
+}
+frase_vs_2015 <- if (lr$indice_2015 >= 100) {
+  "quedan por encima del nivel de 2015"
+} else {
+  "quedan por debajo del nivel de 2015"
+}
+```
+
+**Último dato (`r anio_ult`).** La Rioja exportó
+`r format(round(lr$exportaciones_millones_usd), big.mark = ".", decimal.mark = ",")`
+millones de USD
+(`r format(round(lr$share_nacional_pct, 2), decimal.mark = ",")`% de la suma OPEX
+de las 24 jurisdicciones). Índice 2015 = 100:
+La Rioja `r round(lr$indice_2015)`, NOA-Resto `r round(noa$indice_2015)`,
+Resto país `r round(resto$indice_2015)`.
+`r frase_yoy`
+
+### Análisis
+
+En niveles absolutos La Rioja exporta del orden de 150–230 millones de USD; el
+NOA-Resto, miles; el resto del país, decenas de miles. Un gráfico de millones
+con el mismo eje aplasta la serie riojana; paneles con ejes libres muestran
+cada trayectoria pero no permiten comparar si “va mejor o peor”. Por eso el
+monitor usa tres lecturas: **nivel** (millones, ejes libres), **dinámica**
+(índice 2015 = 100) y **peso** (share sobre la suma de las 24 jurisdicciones),
+más treemap/heatmap para **composición**.
+
+```{r exp-nivel}
+mostrar("outputs/plots/14_exportaciones_totales_region.png")
+```
+
+El gráfico de índice pone a los tres grupos en la misma unidad. Por encima de
+100 = más que en 2015; por debajo = menos. Ahí se ve la divergencia reciente:
+NOA-Resto y el resto del país terminan cerca de `r round(noa$indice_2015)` y
+`r round(resto$indice_2015)`, La Rioja cerca de `r round(lr$indice_2015)`.
+
+```{r exp-indice}
+mostrar("outputs/plots/14_exportaciones_indice_2015_region.png")
+```
+
+La participación confirma el mensaje de escala: La Rioja pasó de
+~`r format(round(lr_2015$share_nacional_pct, 2), decimal.mark = ",")`% en 2015
+a ~`r format(round(lr$share_nacional_pct, 2), decimal.mark = ",")`% en
+`r anio_ult`; el NOA-Resto oscila en torno a 5–6%.
+
+```{r exp-share}
+mostrar("outputs/plots/14_exportaciones_share_nacional_region.png")
+```
+
+En `r anio_ult` las exportaciones de La Rioja `r frase_vs_2015` (índice
+`r round(lr$indice_2015)`). El índice resume esa trayectoria frente a una región
+y un país que, en el mismo período, expandieron exportaciones respecto de 2015.
+
+**Composición.** Los treemaps permiten comparar el perfil de productos. La Rioja
+está más concentrada (los tres primeros subrubros ~77% de lo publicado:
+preparados hortifrutícolas, grasas/aceites y papel/cartón) frente a ~35% del
+top 3 en NOA-Resto y resto del país. El resto del país sigue el patrón
+agroexportador/energético; el NOA combina químicos, cereales, oleaginosos y
+minería; La Rioja se apoya en agroindustria elaborada y papel, sin un bloque
+minero desagregado en OPEX (ausencia en la fuente ≠ prueba de cero exportaciones
+mineras; puede ser residual o confidencialidad).
+
+```{r exp-comp}
+mostrar("outputs/plots/14_exportaciones_treemap_subrubros_facet.png")
+mostrar("outputs/plots/14_exportaciones_heatmap_larioja.png")
+```
+
+Para La Rioja la lectura útil no es alcanzar los niveles absolutos de Buenos
+Aires o Santa Fe, sino su propia dinámica (índice y millones), su peso
+(participación) y la concentración por productos.
+
+## Cantidad de empresas
+
+**Definición.** Empresas empleadoras registradas (al menos un trabajador en
+relación de dependencia), por jurisdicción.
+
+**Fuente / URL.** Superintendencia de Riesgos del Trabajo (SRT) — estadísticas de
+empleadores. Verificar publicación vigente en el sitio de la SRT /
+datos abiertos asociados (el CSV tidy del repo se actualiza cuando el equipo
+baja la serie nueva).
+
+**Raw / CSV / scripts.** Serie en `data/inputs_md/07_serie_empresas_por_jurisdiccion.csv` ·
+`07_cant_empresas.R`.
+
+**Actualización.** Según frecuencia de la fuente; reemplazar CSV/raw y correr viz.
+
+```{r emp}
+mostrar("outputs/plots/11_empresas_jurisdiccion.png")
+```
+
+# Trabajo e ingresos
+
+## Tasa de desempleo
+
+**Definición.** Desocupados / PEA × 100 (aglomerados EPH).
+
+**Fuente / URL.** EPH continua (INDEC) —
+[bases de microdatos EPH](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos).
+En el repo la descarga es vía paquete `eph` (`00_descarga_eph.R`).
+
+**Scripts.** `00` → `01` → `02` → `04_desoc.R`.
+
+**Actualización.** Trimestral: `00` (solo trimestres nuevos) → `01` → `02` → viz.
+
+```{r desoc}
+mostrar("outputs/plots/04_desoc.png")
+```
+
+## Tasa de empleo
+
+**Definición.** Ocupados / población × 100 (aglomerados EPH).
+
+**Fuente / URL.** Misma EPH continua —
+[bases de microdatos](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos).
+Script viz: `10_tasa_empleo.R`.
+
+```{r empleo}
+mostrar("outputs/plots/10_tasa_empleo.png")
+```
+
+## Informalidad (aportes)
+
+**Definición.** Asalariados sin aportes a la seguridad social / asalariados × 100.
+
+**Fuente / URL.** Misma EPH continua —
+[bases de microdatos](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos).
+Script viz: `09a_informalidad_aportes.R`.
+
+```{r inf}
+mostrar("outputs/plots/09a_informalidad_aportes.png")
+```
+
+## Salarios formales (privado SIPA)
+
+**Definición.** Remuneración promedio por todo concepto del sector privado
+registrado (SIPA), en pesos corrientes; y la misma serie en precios constantes
+(IPC nacional, base dic-2016) con media móvil 12 meses para leer la tendencia
+(el serrucho de jun/dic es el aguinaldo/SAC).
+
+**Fuente / URL.**
+
+- SIPA / OEDE – Ministerio de Capital Humano: estadísticas de *Trabajo registrado*
+  / remuneraciones provinciales (Excel mensual; el nombre del archivo cambia).
+- IPC: [datos.gob.ar – IPC nivel general base dic-2016](https://infra.datos.gob.ar/catalog/sspm/dataset/145/distribution/145.3/download/indice-precios-al-consumidor-nivel-general-base-diciembre-2016-mensual.csv).
+
+**Raw / scripts.** `data/raw_data/sipa/`, `data/raw_data/ipc/` ·
+`03_prep_salarios_privados_SIPA.R` → `03_salarios_privados_SIPA.R`;
+`03_prep_salarios_privados_SIPA_real.R` → `03_salarios_privados_SIPA_real.R`.
+
+**Actualización.** Mensual: reemplazar Excel SIPA → prep/viz nominal → prep/viz real.
+
+```{r sal}
+mostrar("outputs/plots/03_salarios_privados_SIPA.png")
+mostrar("outputs/plots/03_salarios_privados_SIPA_real.png")
+mostrar("outputs/plots/03_salarios_privados_SIPA_real_ma12.png")
+```
+
+## Puestos asalariados privados
+
+**Definición.** Personas con empleo asalariado privado registrado, en miles
+(SIPA, hoja A.5.2, sin estacionalidad).
+
+**Fuente / URL.** SIPA / OEDE – reporte *Trabajo registrado* (Excel mensual;
+nombre tipo `trabajoregistrado_AAMM_estadisticas.xlsx`). Portal de estadísticas
+laborales del Ministerio de Capital Humano / OEDE.
+
+**Raw / scripts.** `data/raw_data/sipa/` · `05_prep_puestos_asalariados_privados.R` →
+`05_puestos_asalariados_privados.R`.
+
+**Actualización.** Mensual: reemplazar Excel (y `path_raw` si cambió el nombre) →
+prep → viz.
+
+```{r puestos}
+mostrar("outputs/plots/05_puestos_asalariados_privados.png")
+```
+
+## Empleados públicos cada 1.000 habitantes
+
+**Definición.** \(1000 \times\) asalariados públicos ponderados / población
+ponderada (`PONDERA`). Representa población **urbana** (EPH Total Urbano), no el
+total provincial.
+
+**Fuente / URL.** EPH Total Urbano (INDEC) —
+[bases de microdatos / operativos EPH](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos)
+(bases usuarias de personas, 3er trimestre). Raw local:
+`data/raw_data/eph_total_urbano_*/`.
+
+**Scripts.** `06_prep_empleados_publicos_eph_tu.R`, `06_empleados_publicos.R`;
+composición: `06_prep_empleados_publicos_composicion.R`,
+`06_empleados_publicos_composicion.R`.
+
+**Empresas estatales.** Incluidas si el establecimiento es estatal (`PP04A==1`);
+la EPH no separa administración de empresa pública.
+
+**Composición por rama.** Entre asalariados estatales, desagregación con
+`PP04B_COD` (CAES).
+
+**Actualización.** Anual (3T): incorporar carpeta/archivos del nuevo 3T → prep → viz.
+
+```{r emp-pub}
+mostrar("outputs/plots/06_empleados_publicos_cada_1000_hab.png")
+mostrar("outputs/plots/06_empleados_publicos_cada_1000_hab_noa.png")
+mostrar("outputs/plots/06_empleados_publicos_composicion.png")
+mostrar("outputs/plots/06_empleados_publicos_composicion_ultimo.png")
+```
+
+# Desarrollo
+
+## Educación superior (+25)
+
+**Definición.** % de población de 25 años o más con estudios superiores
+completos (aglomerados EPH).
+
+**Fuente / URL.** EPH continua —
+[bases de microdatos](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos).
+Script: `12_educ.R`.
+
+```{r educ}
+mostrar("outputs/plots/12_educ.png")
+```
+
+## Pobreza por NBI (hogares y población)
+
+**Definición.** % de hogares (y de población en esos hogares) con al menos una
+Necesidad Básica Insatisfecha. En el monitor se presenta como **pobreza por NBI**
+(no como pobreza multidimensional / IPM: no es el mismo índice).
+
+**Fuente / URL.** EPH continua —
+[bases de microdatos](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos).
+Scripts: `13a_nbi_hogares.R`, `13b_nbi_poblacion.R`.
+
+```{r nbi}
+mostrar("outputs/plots/13a_nbi_hogares.png")
+mostrar("outputs/plots/13b_nbi_poblacion.png")
+```
+
+# Indicadores pendientes
+
+| Indicador | Estado |
+|---|---|
+| Resultado fiscal (APNF) | CSV/plots listos (`17_*`); falta sección/análisis en RMD |
+| Trayectoria escolar | CSV/plots listos (`18_*`); falta sección/análisis en RMD |
+| PBG per cápita | CSV/plots listos; falta sección en RMD |
+
+# Fichas metodológicas
+
+Bloque de consulta (piloto: solo Exportaciones). El resto de indicadores sigue
+con ficha breve en su sección hasta migrarlos. Detalle operativo de update:
+`README.md`.
+
+## Ficha 14 — Exportaciones {#ficha-14-exportaciones}
+
+- **Qué mide:** Exportaciones de bienes por origen provincial (millones USD);
+  índice 2015 = 100; participación sobre la suma de las 24 jurisdicciones;
+  composición por subrubros.
+- **Fuente / URL:** INDEC – OPEX —
+  [página](https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-2-79). Archivo típico:
+  `sh_opex_principales_grubros_1993_XXXX.xls`.
+- **Raw / scripts / CSV:** `data/raw_data/exportaciones/` ·
+  `14_prep_exportaciones.R`, `14_prep_exportaciones_subrubros.R`,
+  `14_prep_exportaciones_indice.R` → `14_exportaciones_subrubros.R`,
+  `14_exportaciones_indice.R` · `14_exportaciones_*.csv` en `data/inputs_md/`.
+- **Cálculo:** agregación regional = **suma** de millones USD. Índice
+  \(100 \times X_t / X_{2015}\). Share = grupo / suma de totales de las 24
+  jurisdicciones × 100 (no usar la suma de subrubros parciales).
+- **Actualización:** anual. Reemplazar xls (y URL/nombre en el prep si cambió) →
+  tres prep + viz → knit.
+- **Limitaciones:** solo bienes; subrubros publicados no cierran el 100%; años
+  recientes pueden ser provisorios; minería puede no aparecer desagregada para
+  La Rioja. No confundir con SIPA (empleo/remuneraciones).
+
+# Reproducibilidad
+
+Ver el **README** del repositorio para fichas completas de update, qué no
+modificar (corte NOA-Resto, fórmulas, tema) y el orden del pipeline.
+
+```r
+rmarkdown::render("informe/monitor_la_rioja.Rmd")
+```

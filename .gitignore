@@ -1,7 +1,18 @@
 # Files
 
 data/proc_data/
+data/raw_data/
 data/raw_data_eph.rds
+
+# Clone anidado de referencia (otro repo; no versionar aquí)
+finanzas_publicas_provincias/
+
+# Artefactos locales / temporales
+README.html
+Rplots.pdf
+*_tmp*
+para ver empresas.R
+trayectoria educativa/
 
 # Archivos de lock de LibreOffice/OpenOffice (se cuelan al editar los xlsx)
 .~lock.*#

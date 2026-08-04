@@ -15,6 +15,8 @@ source("src/02_indicadores_eph_hogar.R")
 # 5. Indicadores de fuente SIPA (prep -> viz)
 source("src/03_prep_salarios_privados_SIPA.R")       # Salarios sector privado
 source("src/03_salarios_privados_SIPA.R")
+source("src/03_prep_salarios_privados_SIPA_real.R")  # Salarios SIPA deflactados IPC
+source("src/03_salarios_privados_SIPA_real.R")
 source("src/03b_salarios_registrados_EPH.R") # Salarios registrados EPH (público/privado)
 source("src/04_desoc.R")                 # Tasa de desocupación
 
@@ -26,4 +28,22 @@ source("src/10_tasa_empleo.R")           # Tasa de empleo
 source("src/12_educ.R")                  # Educación superior
 source("src/13a_nbi_hogares.R")          # % Hogares con NBI
 source("src/13b_nbi_poblacion.R")        # % Población en hogares con NBI
+
+# 6. Pipelines no-EPH (prep + viz)
+source("src/06_prep_empleados_publicos_eph_tu.R")
+source("src/06_empleados_publicos.R")
+source("src/14_prep_exportaciones_subrubros.R")
+source("src/14_exportaciones_subrubros.R")
+source("src/14_prep_exportaciones_indice.R")
+source("src/14_exportaciones_indice.R")
+source("src/15_prep_pbg.R")
+source("src/15_pbg.R")
+source("src/15_prep_pbg_per_capita.R")
+source("src/15_pbg_per_capita.R")
+source("src/16_prep_recursos_propios.R")
+source("src/16_recursos_propios.R")
+source("src/17_prep_resultado_fiscal.R")
+source("src/17_resultado_fiscal.R")
+source("src/18_prep_trayectoria_escolar.R")
+source("src/18_trayectoria_escolar.R")
 tictoc::toc()

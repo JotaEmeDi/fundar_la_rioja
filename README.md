@@ -568,23 +568,19 @@ Copiar y completar:
 
 #### 03 — Salarios privados registrados (SIPA) + serie real (IPC)
 
-- **Qué mide:** Remuneración promedio por todo concepto del sector privado registrado (pesos corrientes). Complemento: misma serie en precios constantes (IPC nac./reg.) y media móvil 12 meses.
+- **Qué mide:** Remuneración promedio por todo concepto del sector privado registrado. **Nominal:** nivel / ranking provincial. **Tendencia:** se desestacionaliza (la fuente incluye aguinaldo en jun/dic) y se deflacta por IPC; se presenta como índice **ene-2025 = 100**.
 - **Tópico:** Trabajo e ingresos – Salarios e ingresos.
-- **Fuente / organismo:** SIPA / OEDE – serie provincial de remuneraciones mensuales (`provinciales_serie_remuneraciones_mensual_*.xlsx`, hoja **Total**). IPC: INDEC/SSPM base dic-2016.
+- **Fuente / organismo:** SIPA / OEDE – serie **provincial** (`provinciales_serie_remuneraciones_mensual_*.xlsx`, hoja **Total**). IPC: INDEC/SSPM. *(La SA oficial de remuneraciones en `trabajoregistrado_*.xlsx` A.4 es solo total país.)*
 - **Publicación / URL:**
-  - Remuneraciones: mismas estadísticas OEDE / Capital Humano (serie provincial de remuneraciones).
+  - Remuneraciones provinciales: OEDE / Capital Humano.
   - IPC: [datos.gob.ar – IPC nivel general base dic-2016](https://infra.datos.gob.ar/catalog/sspm/dataset/145/distribution/145.3/download/indice-precios-al-consumidor-nivel-general-base-diciembre-2016-mensual.csv)
-- **Frecuencia:** Mensual (SIPA e IPC).
-- **Archivos raw:** `data/raw_data/sipa/provinciales_serie_remuneraciones_mensual_2dig_8.xlsx`; `data/raw_data/ipc/ipc_nacional_base_dic2016_mensual.csv`
-- **CSV tidy:** `data/inputs_md/03_salarios_privados_SIPA.csv`, `data/inputs_md/03_salarios_privados_SIPA_real.csv`
-- **Scripts:** `03_prep_salarios_privados_SIPA.R` → `03_salarios_privados_SIPA.R`; luego `03_prep_salarios_privados_SIPA_real.R` → `03_salarios_privados_SIPA_real.R`
-- **Gráficos:** `03_salarios_privados_SIPA.png`, `03_salarios_privados_SIPA_real.png`, `03_salarios_privados_SIPA_real_ma12.png`
-- **Cómo actualizar:**
-  1. Reemplazar el Excel de remuneraciones en `data/raw_data/sipa/`.
-  2. Correr prep + viz nominal.
-  3. Correr prep real (descarga/actualiza IPC si hace falta) + viz real / MA12.
-  4. Knit del RMD.
-- **Limitaciones:** Solo privado registrado. “Por todo concepto” incluye aguinaldo (SAC) → serrucho en jun/dic; para tendencia usar MA12. El ranking nominal entre provincias en un mismo mes es más robusto que mirar solo la variación nominal en el tiempo.
+- **Frecuencia:** Mensual.
+- **Archivos raw:** `data/raw_data/sipa/provinciales_serie_remuneraciones_mensual_2dig_8.xlsx`; `data/raw_data/ipc/…`
+- **CSV tidy:** `03_salarios_privados_SIPA.csv`; `03_salarios_privados_SIPA_real.csv` (auxiliar); **`03_salarios_privados_SIPA_indice_region.csv`** (monitor).
+- **Scripts:** `03_prep_salarios_privados_SIPA.R` → `03_salarios_privados_SIPA.R`; `03_prep_salarios_privados_SIPA_indice.R` → `03_salarios_privados_SIPA_indice.R` (requiere paquetes `seasonal` + `x13binary`).
+- **Gráficos (monitor):** `03_salarios_privados_SIPA.png`; `03_salarios_privados_SIPA_real_sa_indice.png` (índice real SA).
+- **Cómo actualizar:** reemplazar Excel provincial → prep/viz nominal → prep/viz índice (X-13).
+- **Limitaciones:** Solo privado registrado; incluye SAC (por eso X-13). IPC nacional no captura canasta regional. Series regionales: media simple de provincias.
 
 #### 14 — Exportaciones (OPEX)
 

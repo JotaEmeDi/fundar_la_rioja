@@ -21,7 +21,8 @@ install_project_deps <- function(
     pkgs <- c(
       pkgs,
       "eph", "tidyverse", "lubridate", "tictoc", "readxl",
-      "janitor", "ggrepel", "treemapify", "stringi", "jsonlite"
+      "janitor", "ggrepel", "treemapify", "stringi", "jsonlite",
+      "seasonal", "x13binary"
     )
   }
   if (isTRUE(informe)) {

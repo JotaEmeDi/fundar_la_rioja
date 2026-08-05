@@ -72,7 +72,7 @@ scripts_viz <- c(
   "src/10_tasa_empleo.R",
   "src/09a_informalidad_aportes.R",
   "src/03_salarios_privados_SIPA.R",
-  "src/03_salarios_privados_SIPA_real.R",
+  "src/03_salarios_privados_SIPA_indice.R",
   "src/03b_salarios_registrados_EPH.R",
   "src/05_puestos_asalariados_privados.R",
   "src/06_empleados_publicos.R",
@@ -170,8 +170,14 @@ mostrar("outputs/plots/16_recursos_propios.png")
 
 ## Exportaciones
 
-¿Cuánto exporta La Rioja y cómo se compara con el NOA y el resto del país?
+**¿Cuánto exporta La Rioja?**
 [Ficha metodológica](#ficha-14-exportaciones).
+
+Fuente OPEX–INDEC (millones de USD por origen provincial). Comparamos La Rioja,
+NOA-Resto y Resto país. Tres lecturas: **nivel** (millones), **dinámica**
+(índice **2015 = 100**, se mantiene) y **peso** (share sobre la suma de las 24
+jurisdicciones). El share usa el total provincial OPEX, no la suma de subrubros
+parciales.
 
 ```{r exp-ultimo}
 library(readr)
@@ -199,90 +205,41 @@ fmt_pct <- function(x, digits = 1) {
 frase_yoy <- if (is.na(var_yoy)) {
   ""
 } else if (abs(var_yoy) < 1) {
-  paste0(
-    "Respecto de ", anio_ult - 1L,
-    ", se mantuvieron casi sin cambios (", fmt_pct(var_yoy), "%)."
-  )
+  paste0("Respecto de ", anio_ult - 1L, ", casi sin cambios (", fmt_pct(var_yoy), "%).")
 } else if (var_yoy > 0) {
-  paste0(
-    "Respecto de ", anio_ult - 1L,
-    ", crecieron ", fmt_pct(var_yoy), "%."
-  )
+  paste0("Respecto de ", anio_ult - 1L, ", crecieron ", fmt_pct(var_yoy), "% (La Rioja).")
 } else {
-  paste0(
-    "Respecto de ", anio_ult - 1L,
-    ", cayeron ", fmt_pct(abs(var_yoy)), "%."
-  )
-}
-frase_vs_2015 <- if (lr$indice_2015 >= 100) {
-  "quedan por encima del nivel de 2015"
-} else {
-  "quedan por debajo del nivel de 2015"
+  paste0("Respecto de ", anio_ult - 1L, ", cayeron ", fmt_pct(abs(var_yoy)), "% (La Rioja).")
 }
 ```
 
-**Último dato (`r anio_ult`).** La Rioja exportó
-`r format(round(lr$exportaciones_millones_usd), big.mark = ".", decimal.mark = ",")`
-millones de USD
-(`r format(round(lr$share_nacional_pct, 2), decimal.mark = ",")`% de la suma OPEX
-de las 24 jurisdicciones). Índice 2015 = 100:
-La Rioja `r round(lr$indice_2015)`, NOA-Resto `r round(noa$indice_2015)`,
-Resto país `r round(resto$indice_2015)`.
-`r frase_yoy`
+**Último dato (`r anio_ult`).**
 
-### Análisis
+- La Rioja: `r format(round(lr$exportaciones_millones_usd), big.mark = ".", decimal.mark = ",")` millones de USD (`r format(round(lr$share_nacional_pct, 2), decimal.mark = ",")`% del total OPEX provincial).
+- `r frase_yoy`
+- Índice 2015 = 100: La Rioja `r round(lr$indice_2015)`; NOA-Resto `r round(noa$indice_2015)`; resto país `r round(resto$indice_2015)`.
+- Share: de ~`r format(round(lr_2015$share_nacional_pct, 2), decimal.mark = ",")`% en 2015 a ~`r format(round(lr$share_nacional_pct, 2), decimal.mark = ",")`% en `r anio_ult`.
 
-En niveles absolutos La Rioja exporta del orden de 150–230 millones de USD; el
-NOA-Resto, miles; el resto del país, decenas de miles. Un gráfico de millones
-con el mismo eje aplasta la serie riojana; paneles con ejes libres muestran
-cada trayectoria pero no permiten comparar si “va mejor o peor”. Por eso el
-monitor usa tres lecturas: **nivel** (millones, ejes libres), **dinámica**
-(índice 2015 = 100) y **peso** (share sobre la suma de las 24 jurisdicciones),
-más treemap/heatmap para **composición**.
-
-```{r exp-nivel}
+```{r exp-plots}
 mostrar("outputs/plots/14_exportaciones_totales_region.png")
-```
-
-El gráfico de índice pone a los tres grupos en la misma unidad. Por encima de
-100 = más que en 2015; por debajo = menos. Ahí se ve la divergencia reciente:
-NOA-Resto y el resto del país terminan cerca de `r round(noa$indice_2015)` y
-`r round(resto$indice_2015)`, La Rioja cerca de `r round(lr$indice_2015)`.
-
-```{r exp-indice}
 mostrar("outputs/plots/14_exportaciones_indice_2015_region.png")
-```
-
-La participación confirma el mensaje de escala: La Rioja pasó de
-~`r format(round(lr_2015$share_nacional_pct, 2), decimal.mark = ",")`% en 2015
-a ~`r format(round(lr$share_nacional_pct, 2), decimal.mark = ",")`% en
-`r anio_ult`; el NOA-Resto oscila en torno a 5–6%.
-
-```{r exp-share}
 mostrar("outputs/plots/14_exportaciones_share_nacional_region.png")
 ```
 
-En `r anio_ult` las exportaciones de La Rioja `r frase_vs_2015` (índice
-`r round(lr$indice_2015)`). El índice resume esa trayectoria frente a una región
-y un país que, en el mismo período, expandieron exportaciones respecto de 2015.
-
-**Composición.** Los treemaps permiten comparar el perfil de productos. La Rioja
-está más concentrada (los tres primeros subrubros ~77% de lo publicado:
-preparados hortifrutícolas, grasas/aceites y papel/cartón) frente a ~35% del
-top 3 en NOA-Resto y resto del país. El resto del país sigue el patrón
-agroexportador/energético; el NOA combina químicos, cereales, oleaginosos y
-minería; La Rioja se apoya en agroindustria elaborada y papel, sin un bloque
-minero desagregado en OPEX (ausencia en la fuente ≠ prueba de cero exportaciones
-mineras; puede ser residual o confidencialidad).
+**Composición.** La Rioja está más concentrada que el NOA-Resto y el resto
+del país: el top 3 concentra ~77% (preparados hortifrutícolas, grasas/aceites,
+papel/cartón), frente a ~35% en los otros agregados; eso eleva la exposición
+a shocks de esos eslabones. El perfil también es distinto: el resto del país
+sigue el patrón agroexportador/energético; el NOA-Resto combina químicos,
+cereales, oleaginosos y minería; La Rioja se apoya en agroindustria elaborada,
+aceites y papel/cartón, sin el núcleo cerealero ni el minero-energético.
+Que OPEX no publique un bloque minero desagregado no prueba cero minería
+(puede ser residual o confidencialidad).
 
 ```{r exp-comp}
 mostrar("outputs/plots/14_exportaciones_treemap_subrubros_facet.png")
 mostrar("outputs/plots/14_exportaciones_heatmap_larioja.png")
 ```
-
-Para La Rioja la lectura útil no es alcanzar los niveles absolutos de Buenos
-Aires o Santa Fe, sino su propia dinámica (índice y millones), su peso
-(participación) y la concentración por productos.
 
 ## Cantidad de empresas
 
@@ -347,27 +304,34 @@ mostrar("outputs/plots/09a_informalidad_aportes.png")
 
 ## Salarios formales (privado SIPA)
 
-**Definición.** Remuneración promedio por todo concepto del sector privado
-registrado (SIPA), en pesos corrientes; y la misma serie en precios constantes
-(IPC nacional, base dic-2016) con media móvil 12 meses para leer la tendencia
-(el serrucho de jun/dic es el aguinaldo/SAC).
+**¿Cómo se ubican los salarios formales de La Rioja?**
 
-**Fuente / URL.**
+Usamos SIPA (OEDE): remuneración promedio del sector privado registrado por
+provincia. Se compara La Rioja con el promedio simple del resto del NOA y del
+resto del país.
 
-- SIPA / OEDE – Ministerio de Capital Humano: estadísticas de *Trabajo registrado*
-  / remuneraciones provinciales (Excel mensual; el nombre del archivo cambia).
-- IPC: [datos.gob.ar – IPC nivel general base dic-2016](https://infra.datos.gob.ar/catalog/sspm/dataset/145/distribution/145.3/download/indice-precios-al-consumidor-nivel-general-base-diciembre-2016-mensual.csv).
+**Nominal:** nivel y ranking en un mes (pesos corrientes).
 
-**Raw / scripts.** `data/raw_data/sipa/`, `data/raw_data/ipc/` ·
-`03_prep_salarios_privados_SIPA.R` → `03_salarios_privados_SIPA.R`;
-`03_prep_salarios_privados_SIPA_real.R` → `03_salarios_privados_SIPA_real.R`.
+**Tendencia (poder de compra).** La fuente es “por todo concepto”, así que en
+junio y diciembre entra el aguinaldo (SAC) y la serie mensual tiene forma de
+serrucho. Por eso **desestacionalizamos** (sacamos ese patrón recurrente) y
+después **deflactamos** por el IPC nacional, para leer el salario en términos
+reales. El resultado se presenta como índice con base **ene-2025 = 100**: por
+encima de 100, más poder de compra que en enero 2025; por debajo, menos.
 
-**Actualización.** Mensual: reemplazar Excel SIPA → prep/viz nominal → prep/viz real.
+**Último dato (serie real hasta oct-2025; meses posteriores provisionales).**
+
+- Nivel nominal: La Rioja suele quedar entre las últimas del ranking del privado
+  formal, por debajo del NOA-Resto y del resto del país.
+- En el índice real, si La Rioja queda **por debajo de 100** y/o del resto de
+  regiones, el poder de compra está peor que en ene-2025 (y peor relativo).
+
+**Fuente.** SIPA/OEDE + IPC INDEC/SSPM. Scripts: prep/viz nominal;
+`03_prep_salarios_privados_SIPA_indice.R` → `03_salarios_privados_SIPA_indice.R`.
 
 ```{r sal}
 mostrar("outputs/plots/03_salarios_privados_SIPA.png")
-mostrar("outputs/plots/03_salarios_privados_SIPA_real.png")
-mostrar("outputs/plots/03_salarios_privados_SIPA_real_ma12.png")
+mostrar("outputs/plots/03_salarios_privados_SIPA_real_sa_indice.png")
 ```
 
 ## Puestos asalariados privados

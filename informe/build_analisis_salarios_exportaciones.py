@@ -75,7 +75,7 @@ idx_sal = pd.read_csv(
 )
 exp = pd.read_csv(ROOT / "data/inputs_md/14_exportaciones_indice_2015_region.csv")
 
-# último mes confiable salarios (evitar provisionales que repiten)
+# último mes confiable: ene–mar 2026 repiten oct–dic 2025 y contaminan el X-13
 FECHA_SAL = pd.Timestamp("2025-10-01")
 noa = ["Catamarca", "Jujuy", "Salta", "Santiago del Estero", "Tucumán"]
 
@@ -146,8 +146,9 @@ bullet(
     "Real = remuneración SA / IPC nacional × 100; después índice con base ene-2025 = 100."
 )
 bullet(
-    "Ventana del gráfico de tendencia: 2017–oct-2025. Los meses posteriores del "
-    "Excel provincial repiten valores previos (dato provisorio)."
+    "Ventana del gráfico de tendencia: 2017–oct-2025. En el Excel, "
+    "ene–mar 2026 repiten oct–dic 2025; se excluyen del X-13 para no "
+    "contaminar el final de la serie."
 )
 
 p(f"¿Qué nos dice el último dato nominal (oct-2025)?")
@@ -213,7 +214,8 @@ ficha(
         "No separa sector público (para eso EPH).",
         "IPC nacional no captura canasta regional.",
         "Agregado regional = media simple de provincias.",
-        "Meses posteriores a oct-2025 en el Excel reciente parecen provisionales.",
+        "ene–mar 2026 del Excel provincial repiten oct–dic 2025; se excluyen "
+        "del X-13 (contaminan el final de 2025).",
     ],
 )
 
@@ -326,5 +328,10 @@ ficha(
 )
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
-doc.save(OUT)
-print("OK", OUT)
+try:
+    doc.save(OUT)
+    print("OK", OUT)
+except PermissionError:
+    alt = OUT.with_name(OUT.stem + "_nuevo.docx")
+    doc.save(alt)
+    print("OK (archivo abierto; guardado como)", alt)

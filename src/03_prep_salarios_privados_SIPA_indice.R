@@ -13,7 +13,10 @@ path_sipa <- "./data/inputs_md/03_salarios_privados_SIPA.csv"
 path_ipc  <- "./data/raw_data/ipc/ipc_nacional_base_dic2016_mensual.csv"
 path_out  <- "./data/inputs_md/03_salarios_privados_SIPA_indice_region.csv"
 
-FECHA_BASE <- as.Date("2025-01-01")
+FECHA_BASE  <- as.Date("2025-01-01")
+## ene–mar 2026 del Excel repiten oct–dic 2025; incluirlos contamina el X-13
+## al final de 2025. Cortamos en el último mes confiable antes de desestacionalizar.
+FECHA_HASTA <- as.Date("2025-10-01")
 
 noa <- c("Catamarca", "Jujuy", "Salta", "Santiago del Estero", "Tucumán")
 
@@ -43,6 +46,7 @@ df_reg <- sipa %>%
   summarise(salario_nominal = mean(salario_promedio, na.rm = TRUE), .groups = "drop") %>%
   left_join(ipc, by = "fecha") %>%
   filter(!is.na(ipc_nacional), !is.na(salario_nominal)) %>%
+  filter(fecha <= FECHA_HASTA) %>%
   arrange(la_rioja_region, fecha)
 
 if (!FECHA_BASE %in% df_reg$fecha) {
@@ -140,5 +144,6 @@ message(
   "Listo: ", path_out, "\n",
   "Filas: ", nrow(out),
   " | base: ", FECHA_BASE,
+  " | hasta: ", FECHA_HASTA,
   " | X-13 → real (SA/IPC) → índice (monitor principal)."
 )

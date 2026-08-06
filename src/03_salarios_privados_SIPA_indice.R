@@ -12,7 +12,7 @@ path_out_real <- "./outputs/plots/03_salarios_privados_SIPA_real_sa_indice.png"
 path_out_nom  <- "./outputs/plots/03_salarios_privados_SIPA_indice_ipc.png"
 
 FECHA_DESDE <- as.Date("2017-01-01")
-FECHA_HASTA <- as.Date("2025-10-01")
+FECHA_HASTA <- as.Date("2025-10-01")  # alineado con prep: sin meses que contaminan X-13
 
 df <- read_csv(path_csv, show_col_types = FALSE) %>%
   mutate(
@@ -85,7 +85,8 @@ p_real <- df %>%
       paste0(
         "Fundar, con base en SIPA (Capital Humano) e IPC (INDEC/SSPM). ",
         "Desestacionalizado (saca el efecto del aguinaldo) y en términos reales. ",
-        ">100 = más poder de compra que ene-2025; <100 = menos. Hasta oct-2025."
+        ">100 = más poder de compra que ene-2025; <100 = menos. Hasta oct-2025 ",
+        "(meses posteriores del Excel son repeticiones / contaminan la SA)."
       )
     )
   )

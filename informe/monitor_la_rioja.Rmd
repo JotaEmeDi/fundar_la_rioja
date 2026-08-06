@@ -319,7 +319,7 @@ después **deflactamos** por el IPC nacional, para leer el salario en términos
 reales. El resultado se presenta como índice con base **ene-2025 = 100**: por
 encima de 100, más poder de compra que en enero 2025; por debajo, menos.
 
-**Último dato (serie real hasta oct-2025; meses posteriores provisionales).**
+**Último dato (serie real hasta oct-2025; ene–mar 2026 del Excel repiten meses previos y se excluyen del X-13).**
 
 - Nivel nominal: La Rioja suele quedar entre las últimas del ranking del privado
   formal, por debajo del NOA-Resto y del resto del país.

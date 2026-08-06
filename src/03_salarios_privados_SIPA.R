@@ -8,7 +8,10 @@ source('./style/fundar_monitor_theme.R')
 ## estilo del Monitor (fundar_monitor_theme.R): las tres líneas regionales
 ## superpuestas en un solo panel.
 
-df <- read_csv("./data/inputs_md/03_salarios_privados_SIPA.csv")
+FECHA_HASTA <- as.Date("2025-10-01")  # mismo corte que índice (prep / X-13)
+
+df <- read_csv("./data/inputs_md/03_salarios_privados_SIPA.csv", show_col_types = FALSE) %>%
+  filter(as.Date(fecha) <= FECHA_HASTA)
 
 noa <- c("Catamarca", "Jujuy", "Salta", "Santiago del Estero", "Tucumán", "La Rioja")
 
@@ -16,6 +19,7 @@ mes_es <- c("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","D
 
 df <- df %>%
   mutate(
+    fecha = as.Date(fecha),
     la_rioja_region = case_when(
       jurisdiccion == "La Rioja" ~ "3. La Rioja",
       jurisdiccion %in% noa & jurisdiccion != "La Rioja" ~ "2. NOA-Resto",

@@ -4,13 +4,6 @@ subtitle: "Indicadores reproducibles · Fundar"
 author: "Fundar — grupo factor~data"
 date: "`r format(Sys.Date(), '%B %Y')`"
 output:
-  word_document:
-    toc: true
-    toc_depth: 2
-  pdf_document:
-    toc: true
-    toc_depth: 2
-    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
@@ -18,6 +11,13 @@ output:
     theme: flatly
     df_print: paged
     code_folding: hide
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    latex_engine: xelatex
+  word_document:
+    toc: true
+    toc_depth: 2
 ---
 
 ```{r setup, include=FALSE}
@@ -305,34 +305,152 @@ mostrar("outputs/plots/09a_informalidad_aportes.png")
 ## Salarios formales (privado SIPA)
 
 **¿Cómo se ubican los salarios formales de La Rioja?**
+[Ficha metodológica](#ficha-03-salarios).
 
-Usamos SIPA (OEDE): remuneración promedio del sector privado registrado por
-provincia. Se compara La Rioja con el promedio simple del resto del NOA y del
-resto del país.
+Para mirar salarios formales se puede trabajar con dos fuentes
+complementarias. Por un lado, con el Sistema Integrado Previsional Argentino
+(SIPA) la remuneración promedio del sector privado registrado, con cobertura
+provincial y frecuencia mensual. Por otro lado, la EPH: ingresos de personas
+asalariadas registradas (público y privado), útil para separar sector estatal
+y, con IPC, ver variaciones reales (aunque en la EPH continua el dato de
+La Rioja corresponde al aglomerado).
 
-**Nominal:** nivel y ranking en un mes (pesos corrientes).
+**Metodología.** En esta sección del Monitor se emplean los registros del
+SIPA (OEDE). En primer lugar, se presenta la serie en valores nominales
+(pesos corrientes), lo cual resulta útil para elaborar rankings entre
+provincias en un mismo mes y para comparar a La Rioja con el promedio simple
+del resto del NOA y del país. En segundo lugar, se expone la serie
+deflactada por el IPC, orientada a evaluar la tendencia y la evolución del
+poder de compra a lo largo del tiempo.
 
-**Tendencia (poder de compra).** La fuente es “por todo concepto”, así que en
-junio y diciembre entra el aguinaldo (SAC) y la serie mensual tiene forma de
-serrucho. Por eso **desestacionalizamos** (sacamos ese patrón recurrente) y
-después **deflactamos** por el IPC nacional, para leer el salario en términos
-reales. El resultado se presenta como índice con base **ene-2025 = 100**: por
-encima de 100, más poder de compra que en enero 2025; por debajo, menos.
+Dado que los datos del SIPA se estructuran “por todo concepto”, los meses de
+junio y diciembre incorporan el Sueldo Anual Complementario (SAC), lo que
+imprime un marcado patrón estacional en la serie mensual (en forma de
+serrucho). Para neutralizar este comportamiento recurrente, la serie fue
+desestacionalizada y posteriormente deflactada mediante el IPC nacional,
+permitiendo analizar el salario en términos reales. El resultado se expresa
+como un índice con base en enero de 2025 = 100: los valores superiores a 100
+indican un mayor poder de compra respecto a dicha fecha, mientras que los
+inferiores reflejan una disminución.
 
-**Último dato (serie real hasta oct-2025; ene–mar 2026 del Excel repiten meses previos y se excluyen del X-13).**
+```{r sal-datos}
+library(readr)
+library(dplyr)
+library(lubridate)
 
-- Nivel nominal: La Rioja suele quedar entre las últimas del ranking del privado
-  formal, por debajo del NOA-Resto y del resto del país.
-- En el índice real, si La Rioja queda **por debajo de 100** y/o del resto de
-  regiones, el poder de compra está peor que en ene-2025 (y peor relativo).
+path_sipa <- file.path(root, "data/inputs_md/03_salarios_privados_SIPA.csv")
+path_idx  <- file.path(root, "data/inputs_md/03_salarios_privados_SIPA_indice_region.csv")
+
+idx <- read_csv(path_idx, show_col_types = FALSE) %>%
+  mutate(fecha = as.Date(fecha))
+
+## Último mes = max(fecha) del CSV de índice (lo define FECHA_HASTA en
+## src/03_prep_salarios_privados_SIPA_indice.R; ver encabezado de ese script).
+fecha_ult <- max(idx$fecha)
+fecha_ref <- as.Date("2017-01-01")
+
+mes_es <- c(
+  "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+  "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+)
+label_mes_ult <- paste0(mes_es[month(fecha_ult)], "-", year(fecha_ult))
+
+idx_ult <- idx %>% filter(fecha == fecha_ult)
+sal_lr   <- idx_ult %>% filter(la_rioja_region == "3. La Rioja")
+sal_noa  <- idx_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+sal_resto <- idx_ult %>% filter(la_rioja_region == "1. Resto país")
+
+idx_lr_ref <- idx %>%
+  filter(fecha == fecha_ref, la_rioja_region == "3. La Rioja")
+
+## Ranking provincial (pesos corrientes) en el mismo mes.
+sipa_mes <- read_csv(path_sipa, show_col_types = FALSE) %>%
+  mutate(fecha = as.Date(fecha)) %>%
+  filter(fecha == fecha_ult)
+
+rank_tbl <- sipa_mes %>%
+  arrange(desc(salario_promedio)) %>%
+  mutate(puesto = row_number())
+
+n_prov <- nrow(rank_tbl)
+puesto_lr <- rank_tbl %>% filter(jurisdiccion == "La Rioja") %>% pull(puesto)
+
+fmt_pesos <- function(x) {
+  paste0(
+    "$",
+    format(round(x), big.mark = ".", decimal.mark = ",", scientific = FALSE)
+  )
+}
+fmt_idx <- function(x) format(round(x), big.mark = ".", decimal.mark = ",")
+```
+
+(El rótulo del último mes —hoy **`r label_mes_ult`**— sale de
+`max(fecha)` en el CSV de índice. Ese máximo lo fija `FECHA_HASTA` en
+`src/03_prep_salarios_privados_SIPA_indice.R`. Para pasar a noviembre u otro
+mes: validar el raw, subir ese corte, re-correr prep/viz y knitear.)
+
+**¿Qué nos dice el último dato nominal (`r label_mes_ult`)?**
+
+```{r sal-nominal}
+mostrar("outputs/plots/03_salarios_privados_SIPA.png")
+```
+
+En La Rioja la remuneración promedio del privado registrado fue de
+`r fmt_pesos(sal_lr$salario_nominal)`. Eso la ubica en el puesto
+`r puesto_lr` de las `r n_prov` provincias.
+NOA-Resto ≈ `r fmt_pesos(sal_noa$salario_nominal)`; resto del país ≈
+`r fmt_pesos(sal_resto$salario_nominal)`.
+
+**¿Qué nos dice la serie en términos reales?**
+
+```{r sal-real}
+mostrar("outputs/plots/03_salarios_privados_SIPA_real_sa_indice.png")
+```
+
+Índice real (ene-2025 = 100), `r label_mes_ult`: La Rioja
+`r fmt_idx(sal_lr$indice_salario_real_sa)`; NOA-Resto
+`r fmt_idx(sal_noa$indice_salario_real_sa)`; resto país
+`r fmt_idx(sal_resto$indice_salario_real_sa)`.
+En ene-2017 La Rioja estaba en `r fmt_idx(idx_lr_ref$indice_salario_real_sa)`:
+el poder de compra era mayor que en ene-2025. Tras el piso de 2023–24 hubo
+recuperación; a `r label_mes_ult` La Rioja queda cerca de la base 100 y por
+debajo del NOA-Resto.
 
 **Fuente.** SIPA/OEDE + IPC INDEC/SSPM. Scripts: prep/viz nominal;
 `03_prep_salarios_privados_SIPA_indice.R` → `03_salarios_privados_SIPA_indice.R`.
 
-```{r sal}
-mostrar("outputs/plots/03_salarios_privados_SIPA.png")
-mostrar("outputs/plots/03_salarios_privados_SIPA_real_sa_indice.png")
-```
+### Ficha metodológica {#ficha-03-salarios}
+
+- **¿Qué mide?** La remuneración bruta promedio percibida por el conjunto de
+  trabajadores en relación de dependencia formalizada (con aportes
+  jubilatorios y de seguridad social). En esta sección del Monitor: sector
+  **privado registrado** (SIPA/OEDE).
+- **¿Para qué sirve?** Permite observar el poder adquisitivo de los hogares
+  registrados y la capacidad de consumo del mercado provincial.
+- **¿Qué nos dice?**
+  - *Si sube:* mejora real de poder adquisitivo frente a la inflación,
+    tracción del comercio interno de La Rioja y mejor bienestar de las
+    familias.
+  - *Si baja:* licuación de ingresos por procesos inflacionarios severos,
+    retracción del consumo local y aumento del empleo pobre.
+- **Comportamiento esperado:** actualización escalonada por paritarias y
+  bonos. Presenta “picos” estacionales en los meses de pago de aguinaldos
+  (junio y diciembre).
+- **Unidad de medida:** pesos argentinos corrientes; y, para la lectura de
+  tendencia, índice real (ene-2025 = 100) tras desestacionalizar y deflactar
+  por **IPC nacional** (INDEC/SSPM).
+- **Fórmula de cálculo:** (i) nominal = remuneración promedio SIPA;
+  (ii) real SA = serie desestacionalizada / IPC nacional, indexada en
+  ene-2025 = 100.
+- **Fuente de datos oficial:** SIPA / OEDE (Ministerio de Capital Humano) —
+  remuneraciones del sector privado registrado. IPC nacional para el índice
+  real.
+- **Frecuencia de actualización:** mensual (SIPA).
+- **Limitaciones:** al basarse en registros administrativos formales (SIPA),
+  esta métrica no captura ingresos de cuentapropistas informales,
+  trabajadores de cooperativas ni asalariados no registrados. No confundir
+  con la EPH (aglomerado en la continua) ni con liquidaciones del sector
+  público.
 
 ## Puestos asalariados privados
 
@@ -423,9 +541,15 @@ mostrar("outputs/plots/13b_nbi_poblacion.png")
 
 # Fichas metodológicas
 
-Bloque de consulta (piloto: solo Exportaciones). El resto de indicadores sigue
+Bloque de consulta. Piloto: Exportaciones (ficha al final) y Salarios
+(ficha debajo de su sección; ancla `#ficha-03-salarios`). El resto sigue
 con ficha breve en su sección hasta migrarlos. Detalle operativo de update:
 `README.md`.
+
+## Ficha 03 — Salarios formales (privado SIPA)
+
+Ver [Ficha metodológica de salarios](#ficha-03-salarios) (debajo de la
+sección correspondiente, como en el Word de análisis).
 
 ## Ficha 14 — Exportaciones {#ficha-14-exportaciones}
 

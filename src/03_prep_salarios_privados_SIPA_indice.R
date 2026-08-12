@@ -4,6 +4,21 @@
 ##
 ## Assumptions: seasonal + x13binary instalados; serie mensual continua.
 ## Fails if: falta SIPA/IPC, mes base ausente, o seas() no converge.
+##
+## Corte FECHA_HASTA (lectura operativa)
+## ------------------------------------
+## El RMD del monitor NO define el último mes: toma max(fecha) del CSV de
+## salida de este prep. Ese máximo = FECHA_HASTA acá.
+##
+## Por qué hoy es 2025-10-01: en el Excel SIPA, ene–mar 2026 duplicaban
+## oct–dic 2025; meterlos en el X-13 contaminaba el tramo final de 2025.
+##
+## Para que el monitor pase a noviembre (u otro mes):
+##   1) Verificar que el raw tenga ese mes con valor real (no duplicado).
+##   2) Subir FECHA_HASTA acá (y el mismo valor en
+##      03_salarios_privados_SIPA.R y 03_salarios_privados_SIPA_indice.R).
+##   3) Re-correr este prep + viz → knitear el RMD.
+## El rótulo "Nov-2025" (etc.) lo arma el RMD solo a partir del CSV.
 
 library(tidyverse)
 library(lubridate)
@@ -14,8 +29,7 @@ path_ipc  <- "./data/raw_data/ipc/ipc_nacional_base_dic2016_mensual.csv"
 path_out  <- "./data/inputs_md/03_salarios_privados_SIPA_indice_region.csv"
 
 FECHA_BASE  <- as.Date("2025-01-01")
-## ene–mar 2026 del Excel repiten oct–dic 2025; incluirlos contamina el X-13
-## al final de 2025. Cortamos en el último mes confiable antes de desestacionalizar.
+## Ver bloque "Corte FECHA_HASTA" del encabezado.
 FECHA_HASTA <- as.Date("2025-10-01")
 
 noa <- c("Catamarca", "Jujuy", "Salta", "Santiago del Estero", "Tucumán")

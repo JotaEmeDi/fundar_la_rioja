@@ -405,6 +405,10 @@ source("src/14_exportaciones_indice.R")
 source("src/03_prep_salarios_privados_SIPA_real.R")
 source("src/03_salarios_privados_SIPA_real.R")
 
+# Empresas (SRT)
+source("src/07_prep_cant_empresas.R")
+source("src/07_cant_empresas.R")
+
 # PBG / estructura / % industrial (CEPAL)
 source("src/15_prep_pbg.R")
 source("src/15_pbg.R")
@@ -423,7 +427,7 @@ source("src/16_recursos_propios.R")
 | EPH continua | 04, 09a, 10, 12, 13a, 13b, 03b | Trimestral | `00` → `01` → `02` → scripts viz |
 | EPH Total Urbano | 06 | Anual (3T) | Reemplazar raw TU → `06_prep` → `06` viz |
 | SIPA | 03, 05 | Mensual | Reemplazar xlsx en `data/raw_data/sipa/` → prep → viz |
-| SRT empresas | 07 | Según fuente | Actualizar CSV/raw → `07_cant_empresas.R` |
+| SRT empresas | 07 | Mensual | Borrar xlsx en `data/raw_data/srt/` (o dejar que descargue si no está) → `07_prep_cant_empresas.R` → `07_cant_empresas.R` |
 | OPEX INDEC | 14 | Anual | Descargar xls OPEX → `14_prep*` → viz |
 | CEPAL VAB 52 sectores | 15 | Cuando publiquen | Borrar/reemplazar Excel en `data/raw_data/pbg/` → `15_prep` → `15_pbg` |
 | TOP / RON Min. Economía | 16 | Anual | Reemplazar xlsx en `data/raw_data/finanzas/` → `16_prep` → viz |
@@ -666,9 +670,10 @@ Copiar y completar:
 #### 07 — Cantidad de empresas
 
 - **Qué mide:** Empresas empleadoras registradas por jurisdicción.
-- **Fuente / URL:** SRT (Superintendencia de Riesgos del Trabajo) — estadísticas de empleadores (verificar portal SRT / datos abiertos vigentes).
-- **CSV / script / plot:** `07_serie_empresas_por_jurisdiccion.csv` · `07_cant_empresas.R` · `11_empresas_jurisdiccion.png`.
-- **Cómo actualizar:** reemplazar serie tidy/raw → viz.
+- **Fuente / URL:** SRT — [serie histórica por jurisdicción (ubicación de la persona trabajadora)](https://www.srt.gob.ar/estadisticas/series/co/up/Serie_historica_Segun_Jurisdiccion%20-%20Ubicacion%20Persona%20Trabajadora%20-%20UP.xlsx) (hoja Cuadro 6.2).
+- **Raw / CSV / scripts:** `data/raw_data/srt/` · `07_prep_cant_empresas.R` → `07_serie_empresas_por_jurisdiccion.csv` · `07_cant_empresas.R`.
+- **Plot:** `11_empresas_jurisdiccion.png`.
+- **Cómo actualizar:** borrar el xlsx en `data/raw_data/srt/` → prep → viz.
 
 #### 15 — PBG / % industrial / estructura
 

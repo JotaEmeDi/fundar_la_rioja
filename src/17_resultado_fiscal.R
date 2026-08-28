@@ -13,13 +13,20 @@ df <- read_csv(
 ) %>%
   mutate(la_rioja_region = factor(la_rioja_region))
 
-fuente <- fuente_fundar(
-  paste(
-    "Fundar, con base en Ministerio de Economía",
-    "(Ejecuciones presupuestarias provinciales — APNF).",
-    "Resultado financiero = ingresos totales − gastos totales.",
-    "Serie en % de ingresos totales (valores nominales; sin deflactar)."
-  )
+fuente_texto <- paste(
+  "Fundar, con base en Ministerio de Economía",
+  "(Ejecuciones presupuestarias provinciales — APNF).",
+  "Resultado financiero = ingresos totales − gastos totales.",
+  "Serie en % de ingresos totales (valores nominales; sin deflactar)."
+)
+fuente <- paste0(
+  "Fuente: ",
+  stringr::str_wrap(fuente_texto, width = 88, exdent = 7)
+)
+
+theme_fuente <- theme(
+  plot.margin = margin(16, 20, 40, 16),
+  plot.caption = element_text(lineheight = 1.15, hjust = 0, margin = margin(t = 12))
 )
 
 ## -------- 1) Resultado financiero / ingresos --------
@@ -53,6 +60,7 @@ ggplot(
     expand = expansion(mult = c(0.08, 0.18))
   ) +
   theme_monitor() +
+  theme_fuente +
   labs(
     title = "Resultado fiscal (APNF)",
     subtitle = "Resultado financiero / ingresos totales · valores nominales",
@@ -62,7 +70,7 @@ ggplot(
   ) +
   facet_wrap(~la_rioja_region, scales = "free_y")
 
-ggsave("./outputs/plots/17_resultado_fiscal.png", width = 12, height = 7)
+ggsave("./outputs/plots/17_resultado_fiscal.png", width = 12, height = 7.5)
 
 ## -------- 2) Resultado primario / ingresos --------
 key_rp <- puntos_etiqueta(df, anio, primario_sobre_ingresos, la_rioja_region) %>%
@@ -95,6 +103,7 @@ ggplot(
     expand = expansion(mult = c(0.08, 0.18))
   ) +
   theme_monitor() +
+  theme_fuente +
   labs(
     title = "Resultado primario (APNF)",
     subtitle = "Resultado primario / ingresos totales · sin intereses · valores nominales",
@@ -104,6 +113,6 @@ ggplot(
   ) +
   facet_wrap(~la_rioja_region, scales = "free_y")
 
-ggsave("./outputs/plots/17_resultado_fiscal_primario.png", width = 12, height = 7)
+ggsave("./outputs/plots/17_resultado_fiscal_primario.png", width = 12, height = 7.5)
 
 message("OK 17_resultado_fiscal viz → outputs/plots/17_resultado_fiscal*.png")

@@ -104,27 +104,27 @@ ggplot(
 
 ggsave("./outputs/plots/15_pbg_per_capita_indice.png", width = 12, height = 7)
 
-## -------- 3) Último año: relativo a media nacional --------
+## -------- 3) Último año: relativo a media nacional (índice 100) --------
 ult <- prov %>%
   filter(anio == anio_ult) %>%
   mutate(
-    provincia = fct_reorder(provincia, pbg_pc_relativo_nac),
+    indice_media_nac = 100 * pbg_pc_relativo_nac,
+    provincia = fct_reorder(provincia, indice_media_nac),
     es_lr = provincia == "La Rioja"
   )
 
-ggplot(ult, aes(pbg_pc_relativo_nac, provincia, fill = es_lr)) +
+ggplot(ult, aes(indice_media_nac, provincia, fill = es_lr)) +
   geom_col(width = 0.75, show.legend = FALSE) +
-  geom_vline(xintercept = 1, linetype = "dashed", color = "grey40") +
+  geom_vline(xintercept = 100, linetype = "dashed", color = "grey40") +
   scale_fill_manual(values = c(`FALSE` = "#9CA3AF", `TRUE` = "#E4572E")) +
   scale_x_continuous(
-    labels = scales::percent_format(accuracy = 1),
     expand = expansion(mult = c(0, 0.05))
   ) +
   theme_monitor() +
   labs(
     title = paste0("PBG per cápita relativo a la media nacional · ", anio_ult),
-    subtitle = "1 = promedio simple de las 24 jurisdicciones",
-    x = "PBG pc / media nacional",
+    subtitle = "100 = PBG per cápita nacional (suma VAB / suma población)",
+    x = "Índice (100 = media nacional ponderada)",
     y = NULL,
     caption = fuente
   )

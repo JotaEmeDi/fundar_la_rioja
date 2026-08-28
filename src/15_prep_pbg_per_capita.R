@@ -130,10 +130,16 @@ pbg_pc_region <- pbg_pc_region %>%
   ungroup() %>%
   arrange(anio, la_rioja_region)
 
-## Relativo a la media nacional (promedio simple de las 24) en cada año.
+## Relativo a la media nacional ponderada (VAB total / población total).
 media_nac <- pbg_pc_prov %>%
   group_by(anio) %>%
-  summarise(pbg_pc_media_nac = mean(pbg_per_capita), .groups = "drop")
+  summarise(
+    vab_millones_2004 = sum(vab_millones_2004),
+    poblacion = sum(poblacion),
+    pbg_pc_media_nac = (vab_millones_2004 * 1e6) / poblacion,
+    .groups = "drop"
+  ) %>%
+  select(anio, pbg_pc_media_nac)
 
 pbg_pc_prov <- pbg_pc_prov %>%
   left_join(media_nac, by = "anio") %>%

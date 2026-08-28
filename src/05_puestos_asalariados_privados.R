@@ -18,7 +18,7 @@ df <- df %>%
 
 df_agg <- df %>%
   group_by(fecha, la_rioja_region) %>%
-  summarise(puestos_miles = mean(puestos_miles), .groups = "drop")
+  summarise(puestos_miles = sum(puestos_miles), .groups = "drop")
 
 # Puntos clave por serie: máximo, mínimo y último (helper de style/fundar_monitor_theme.R)
 key_pts <- puntos_etiqueta(df_agg, fecha, puestos_miles, la_rioja_region) %>%

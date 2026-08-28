@@ -1,6 +1,7 @@
 library(tidyverse)
 source('./style/fundar_monitor_theme.R')
 
+## CSV generado por src/07_prep_cant_empresas.R (SRT, Cuadro 6.2).
 df <- read_csv("./data/inputs_md/07_serie_empresas_por_jurisdiccion.csv")
 
 noa <- c("Catamarca", "Jujuy", "Salta","Santiago del Estero", "Tucumán", "La Rioja")
@@ -18,7 +19,7 @@ df <- df %>%
 
 df_agg <- df %>%
   group_by(fecha, noa_region, la_rioja_region) %>%
-  summarise(empresas = mean(empresas), .groups = "drop")
+  summarise(empresas = sum(empresas), .groups = "drop")
 
 # Puntos clave por serie: máximo, mínimo y último
 key_pts <- df_agg %>%

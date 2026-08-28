@@ -123,13 +123,13 @@ theme_monitor <- function(base_size = 12,
         margin = margin(b = 12)
       ),
       plot.caption       = element_text(
-        size   = base_size * 0.72,
+        size   = base_size * 0.95,
         color  = FUNDAR_GRIS,
         hjust  = 0,
         margin = margin(t = 10)
       ),
       plot.caption.position = "plot",
-      plot.margin        = margin(16, 20, 12, 16),
+      plot.margin        = margin(16, 20, 20, 16),
       plot.title.position   = "plot"
     )
 }

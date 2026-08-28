@@ -1,0 +1,314 @@
+/* Monitor La Rioja — separación visual entre bloques e indicadores */
+
+/* ---- Portada / metadatos del documento ---- */
+.toc-content #header {
+  margin: 0.5rem 0 3rem 0;
+  padding: 1.75rem 0 2.25rem 0;
+  border-bottom: 2px solid #d9e2e6;
+}
+
+.toc-content #header h1.title {
+  font-size: 2.55rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2;
+  color: #1a3d47;
+  margin: 0 0 1rem 0 !important;
+}
+
+.toc-content #header h3.subtitle {
+  font-size: 1.65rem !important;
+  font-weight: 500 !important;
+  line-height: 1.45;
+  color: #3a5f6b;
+  margin: 0 0 1.1rem 0 !important;
+}
+
+.toc-content #header h4.author,
+.toc-content #header h4.date {
+  font-size: 1.3rem !important;
+  font-weight: 500 !important;
+  line-height: 1.4;
+  color: #5a707a;
+  margin: 0.35rem 0 0 0 !important;
+}
+
+.toc-content #header h4.date {
+  margin-top: 0.5rem !important;
+  color: #6b828c;
+}
+
+/* Solo el cuerpo del informe (no el índice flotante de la izquierda) */
+.main-container {
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* Bloques temáticos (# Macroeconomía, # Desarrollo, # Trabajo…) */
+#macroeconomia,
+#desarrollo,
+#trabajo-e-ingresos,
+#introduccion,
+#fichas-metodologicas,
+#fichas-metodológicas,
+#reproducibilidad {
+  scroll-margin-top: 1rem;
+}
+
+/* ---- Bloques temáticos (h1) ---- */
+.main-container h1 {
+  margin-top: 4.5rem !important;
+  margin-bottom: 2.25rem !important;
+  padding: 1.15rem 0 1.1rem 1rem;
+  border-left: 5px solid #2C5F6E;
+  border-bottom: 1px solid #d9e2e6;
+  background: linear-gradient(90deg, #f4f8f9 0%, transparent 70%);
+  font-size: 2.05rem !important;
+  font-weight: 700 !important;
+}
+
+.main-container h1:first-of-type {
+  margin-top: 2rem !important;
+}
+
+.main-container h1 + p,
+.main-container h1 + ul,
+.main-container h1 + ol {
+  margin-bottom: 1.75rem;
+}
+
+.main-container h1 + h2,
+.main-container h1 + p + h2 {
+  margin-top: 2.75rem !important;
+}
+
+/* ---- Indicadores (h2): título principal del bloque ---- */
+.main-container h2 {
+  margin-top: 4.25rem !important;
+  margin-bottom: 1.35rem !important;
+  padding-top: 2.25rem;
+  border-top: 4px solid #2C5F6E;
+  font-size: 23px !important;
+  font-weight: 700 !important;
+  color: #1a3d47;
+  line-height: 1.3;
+}
+
+/* Pregunta guía (más chica que el nombre del indicador) */
+.main-container h2 + p {
+  margin-top: 0.4rem;
+  margin-bottom: 2rem !important;
+  padding-bottom: 0.25rem;
+  font-size: 17px !important;
+  line-height: 1.55;
+  color: #3a5f6b;
+}
+
+.main-container h2 + p strong {
+  display: block;
+  font-size: 18px !important;
+  font-weight: 650;
+  line-height: 1.4;
+  margin-bottom: 0.45rem;
+  color: #2a4a55;
+}
+
+/* Enlace «Ficha metodológica» — un poco más chico que la pregunta */
+.main-container h2 + p a[href^="#ficha-"] {
+  font-size: 15px !important;
+  font-weight: 600;
+  color: #5a7a86;
+  text-decoration: none;
+  border-bottom: 1px solid #c5d4da;
+}
+
+.main-container h2 + p a[href^="#ficha-"]:hover {
+  color: #1a3d47;
+  border-bottom-color: #2C5F6E;
+}
+
+/* Enlaces a ficha en otros contextos (índice al final, etc.) */
+.main-container a[href^="#ficha-"] {
+  font-weight: 600;
+  color: #2C5F6E;
+  text-decoration: none;
+  border-bottom: 1px solid #a8c4cc;
+}
+
+.main-container a[href^="#ficha-"]:hover {
+  color: #1a3d47;
+  border-bottom-color: #2C5F6E;
+}
+
+/* Subsecciones analíticas (h3 que no son ficha) */
+.main-container h3 {
+  margin-top: 2.25rem !important;
+  margin-bottom: 0.85rem !important;
+  padding-top: 0.5rem;
+  color: #3a5f6b;
+  font-size: 1.3rem !important;
+  font-weight: 650 !important;
+}
+
+/* ---- Ficha metodológica inline (h3 con id ficha-*) ---- */
+.main-container h3[id^="ficha-"] {
+  margin-top: 3.5rem !important;
+  margin-bottom: 1.35rem !important;
+  padding-top: 2rem;
+  border-top: 3px solid #2C5F6E;
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  color: #1a3d47;
+}
+
+.main-container h3[id^="ficha-"] + ul {
+  font-size: 1.06rem;
+  line-height: 1.68;
+  margin-bottom: 2.5rem !important;
+  padding: 1.15rem 1.35rem 1.2rem 1.5rem;
+  background: #f8fafb;
+  border-left: 4px solid #d9e2e6;
+  border-radius: 0 4px 4px 0;
+}
+
+.main-container h3[id^="ficha-"] + ul li {
+  margin-bottom: 0.55rem;
+}
+
+.main-container h3[id^="ficha-"] + ul li strong {
+  font-size: 1.08rem;
+  color: #1a3d47;
+}
+
+.main-container h4 {
+  margin-top: 1.75rem !important;
+  margin-bottom: 0.65rem !important;
+  font-size: 1.15rem !important;
+  font-weight: 650 !important;
+  color: #3a5f6b;
+}
+
+.main-container p {
+  margin-bottom: 0.95rem;
+}
+
+.main-container ul,
+.main-container ol {
+  margin-bottom: 1.35rem;
+  padding-left: 1.35rem;
+}
+
+.main-container li {
+  margin-bottom: 0.45rem;
+}
+
+.main-container img {
+  margin-top: 0.85rem;
+  margin-bottom: 1.35rem;
+  border-radius: 2px;
+}
+
+/* Índice de fichas al final (# Fichas metodológicas) */
+#fichas-metodologicas + p,
+#fichas-metodologicas ~ p {
+  margin-bottom: 1.25rem;
+}
+
+#fichas-metodologicas ~ h2 {
+  margin-top: 2.5rem !important;
+  padding-top: 1.5rem;
+  font-size: 1.35rem !important;
+  border-top: 2px solid #d9e2e6;
+}
+
+/* ---- Índice lateral (TOC) ---- */
+#TOC.tocify {
+  font-size: 16.5px;
+  line-height: 1.45;
+}
+
+#TOC.tocify::before {
+  content: "Monitor socioeconómico";
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: #1a3d47;
+  line-height: 1.35;
+  margin: 0.2rem 0 0.85rem 0.35rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 2px solid #2C5F6E;
+}
+
+#TOC.tocify .tocify-item {
+  font-size: 1em;
+}
+
+/* Agrupamientos temáticos de indicadores (h1: Macroeconomía, Desarrollo, Trabajo…) */
+#TOC.tocify .tocify-item[data-unique="Macroeconomía"],
+#TOC.tocify .tocify-item[data-unique="Desarrollo"],
+#TOC.tocify .tocify-item[data-unique="Trabajo_e_ingresos"] {
+  font-weight: 700 !important;
+  color: #1a3d47 !important;
+  font-size: 1.05em;
+}
+
+/* Introducción: visible pero no es bloque de indicadores */
+#TOC.tocify .tocify-item[data-unique="Introducción"] {
+  font-weight: 600;
+  color: #2a4a55;
+}
+
+/* Indicadores (h2): peso normal, un poco más chicos que los agrupamientos */
+#TOC.tocify .tocify-subheader .tocify-item {
+  font-weight: 400 !important;
+  color: #4a6570 !important;
+  font-size: 0.96em !important;
+}
+
+/* Línea de corte: fin del monitor → fichas + reproducibilidad */
+#TOC.tocify .tocify-item[data-unique="Fichas_metodológicas"] {
+  margin-top: 1.35rem !important;
+  padding-top: 1rem !important;
+  border-top: 3px solid #2C5F6E !important;
+  font-weight: 600 !important;
+  color: #3a5f6b !important;
+  background: #f8fafb;
+}
+
+/* Sub-ítems de fichas (h2 bajo Fichas metodológicas) */
+#TOC.tocify .tocify-item[data-unique="Fichas_metodológicas"] + .tocify-subheader {
+  margin-top: 0;
+  padding: 0.15rem 0 0.35rem 0.5rem;
+  border-left: 3px solid #d9e2e6;
+  background: #f8fafb;
+  border-radius: 0 0 4px 0;
+}
+
+#TOC.tocify .tocify-item[data-unique="Fichas_metodológicas"] + .tocify-subheader .tocify-item {
+  font-size: 0.94em !important;
+  color: #5a707a !important;
+}
+
+/* Reproducibilidad: mismo bloque «anexo», no parte de los indicadores */
+#TOC.tocify .tocify-item[data-unique="Reproducibilidad"] {
+  margin-top: 0.35rem !important;
+  padding: 0.45rem 0 0.55rem 0.5rem !important;
+  border-top: none !important;
+  font-weight: 600 !important;
+  font-size: 0.98em !important;
+  color: #5a707a !important;
+  background: #f8fafb;
+  border-left: 3px solid #d9e2e6;
+  border-radius: 0 0 4px 0;
+}
+
+.tocify .tocify-item.active {
+  border-left: 3px solid #2C5F6E;
+}
+
+.list-group-item.active,
+.tocify-item.active {
+  background-color: #eef4f6 !important;
+  color: #1f4a56 !important;
+}

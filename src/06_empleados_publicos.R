@@ -6,8 +6,25 @@ source("./style/fundar_monitor_theme.R")
 
 csv_path <- "./data/inputs_md/06_empleados_publicos_cada_1000_hab.csv"
 csv_alt  <- "./data/inputs_md/06_empleados_publicos_cada_1000_hab_actualizado.csv"
-if (file.exists(csv_alt) && file.info(csv_alt)$mtime > file.info(csv_path)$mtime) {
-  csv_path <- csv_alt
+
+tiene_tipo <- function(path) {
+  if (!file.exists(path)) return(FALSE)
+  "tipo" %in% names(read_csv(path, n_max = 0, show_col_types = FALSE))
+}
+
+if (!tiene_tipo(csv_path)) {
+  if (tiene_tipo(csv_alt)) {
+    warning(
+      "CSV principal sin columna 'tipo'; usando ", csv_alt,
+      ". Cerrar Excel y correr src/06_prep_empleados_publicos_eph_tu.R."
+    )
+    csv_path <- csv_alt
+  } else {
+    stop(
+      "No hay CSV de empleados públicos con columna 'tipo'. ",
+      "Correr src/06_prep_empleados_publicos_eph_tu.R."
+    )
+  }
 }
 
 df <- read_csv(csv_path, show_col_types = FALSE)

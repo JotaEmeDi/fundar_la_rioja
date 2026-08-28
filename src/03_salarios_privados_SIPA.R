@@ -8,7 +8,7 @@ source('./style/fundar_monitor_theme.R')
 ## estilo del Monitor (fundar_monitor_theme.R): las tres líneas regionales
 ## superpuestas en un solo panel.
 
-FECHA_HASTA <- as.Date("2025-10-01")  # mismo corte que 03_prep_salarios_privados_SIPA_indice.R
+FECHA_HASTA <- as.Date("2025-09-01")  # mismo corte que 03_prep_salarios_privados_SIPA_indice.R
 
 
 df <- read_csv("./data/inputs_md/03_salarios_privados_SIPA.csv", show_col_types = FALSE) %>%

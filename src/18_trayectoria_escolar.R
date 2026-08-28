@@ -21,53 +21,83 @@ coh <- read_csv(
   show_col_types = FALSE
 )
 
-fuente <- fuente_fundar(
-  paste(
-    "Fundar, con base en Relevamiento Anual (Unidad de Información y",
-    "Estadística Educativa — La Rioja).",
-    "Trayectoria = matrícula 5° año / matrícula 1° grado de la cohorte teórica.",
-    "No es egreso formal."
-  )
+fuente_texto <- paste(
+  "Fundar, con base en Relevamiento Anual (Unidad de Información y",
+  "Estadística Educativa — La Rioja).",
+  "Trayectoria = matrícula 5° año / matrícula 1° grado de la cohorte teórica.",
+  "No es egreso formal."
+)
+fuente <- paste0(
+  "Fuente: ",
+  stringr::str_wrap(fuente_texto, width = 88, exdent = 7)
+)
+
+fuente_waffle <- fuente_fundar(
+  "Fundar, con base en Relevamiento Anual (La Rioja). No es egreso formal."
 )
 
 anio_ini <- coh$anio_inicio[[1]]
 anio_fin <- coh$anio_fin[[1]]
 tasa <- coh$trayectoria[[1]]
 
-## -------- 1) KPI cohorte --------
-kpi <- tibble(
-  indicador = "Trayectoria escolar",
-  valor = tasa,
-  label = scales::percent(tasa, accuracy = 0.1)
-)
+## -------- 1) KPI cohorte — waffle (77 de cada 100) --------
+n_pintados <- as.integer(round(100 * tasa))
+waffle <- tidyr::expand_grid(col = 1:10, row = 10:1) %>%
+  arrange(desc(row), col) %>%
+  mutate(
+    id = dplyr::row_number(),
+    llega = id <= n_pintados
+  )
 
-ggplot(kpi, aes(indicador, valor)) +
-  geom_col(width = 0.45, fill = "#2D6E6E") +
-  geom_text(
-    aes(label = label),
-    vjust = -0.4,
-    fontface = "bold",
-    size = 6
+ggplot(waffle, aes(col, row)) +
+  geom_point(
+    aes(color = llega),
+    size = 9,
+    shape = 16
   ) +
-  scale_y_continuous(
-    limits = c(0, 1),
-    labels = scales::percent_format(accuracy = 1),
-    expand = expansion(mult = c(0, 0.12))
+  scale_color_manual(
+    values = c(`TRUE` = "#2D6E6E", `FALSE` = "#D5DEE3"),
+    guide = "none"
+  ) +
+  coord_equal() +
+  annotate(
+    "text",
+    x = 5.5,
+    y = -0.85,
+    label = paste0(
+      scales::percent(tasa, accuracy = 0.1),
+      " · ", n_pintados, " de cada 100"
+    ),
+    fontface = "bold",
+    size = 5.5,
+    color = "#1a3d47"
   ) +
   theme_monitor() +
+  theme(
+    axis.text = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    axis.line = element_blank(),
+    panel.grid = element_blank(),
+    panel.border = element_blank(),
+    plot.margin = margin(10, 14, 28, 14)
+  ) +
   labs(
     title = "Trayectoria escolar — La Rioja",
     subtitle = paste0(
-      "Cohorte ", anio_ini, "–", anio_fin,
-      ": matrícula 5° año / matrícula 1° grado"
+      "Cohorte ", anio_ini, "–", anio_fin, "\n",
+      "De cada 100 que empezaron 1° grado, ", n_pintados, " llegan a 5° año"
     ),
     x = NULL,
-    y = "Tasa de trayectoria",
-    caption = fuente
+    y = NULL,
+    caption = fuente_waffle
   ) +
-  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+  scale_x_continuous(breaks = NULL, expand = expansion(mult = c(0.06, 0.06))) +
+  scale_y_continuous(breaks = NULL, expand = expansion(mult = c(0.22, 0.08))) +
+  theme(plot.subtitle = element_text(lineheight = 1.15, margin = margin(b = 14)))
 
-ggsave("./outputs/plots/18_trayectoria_escolar.png", width = 8, height = 6)
+ggsave("./outputs/plots/18_trayectoria_escolar.png", width = 9, height = 7.5)
 
 ## -------- 2) Embudo / desgranamiento --------
 ggplot(mat, aes(etiqueta, matricula_total)) +
@@ -83,6 +113,10 @@ ggplot(mat, aes(etiqueta, matricula_total)) +
     expand = expansion(mult = c(0, 0.12))
   ) +
   theme_monitor() +
+  theme(
+    plot.margin = margin(16, 20, 40, 16),
+    plot.caption = element_text(lineheight = 1.15, hjust = 0, margin = margin(t = 12))
+  ) +
   labs(
     title = "Matrícula a lo largo de la cohorte — La Rioja",
     subtitle = paste0(
@@ -139,6 +173,10 @@ if (nrow(desag) > 0) {
       expand = expansion(mult = c(0, 0.08))
     ) +
     theme_monitor() +
+    theme(
+      plot.margin = margin(16, 20, 40, 16),
+      plot.caption = element_text(lineheight = 1.15, hjust = 0, margin = margin(t = 12))
+    ) +
     labs(
       title = "Trayectoria escolar por sexo y sector — La Rioja",
       subtitle = paste0("Misma cohorte ", anio_ini, "–", anio_fin),
@@ -150,7 +188,7 @@ if (nrow(desag) > 0) {
   ggsave(
     "./outputs/plots/18_trayectoria_escolar_desagregada.png",
     width = 9,
-    height = 6
+    height = 6.5
   )
 }
 

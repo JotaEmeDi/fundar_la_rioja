@@ -10,15 +10,16 @@
 ## El RMD del monitor NO define el último mes: toma max(fecha) del CSV de
 ## salida de este prep. Ese máximo = FECHA_HASTA acá.
 ##
-## Por qué hoy es 2025-10-01: en el Excel SIPA, ene–mar 2026 duplicaban
-## oct–dic 2025; meterlos en el X-13 contaminaba el tramo final de 2025.
+## Por qué hoy es 2025-09-01: oct-2025 del Excel muestra un salto nominal
+## atípico (y nov lo revierte, sobre todo en La Rioja); ene–mar 2026
+## duplican oct–dic 2025. Incluir ese tramo en el X-13 contamina el extremo.
 ##
-## Para que el monitor pase a noviembre (u otro mes):
-##   1) Verificar que el raw tenga ese mes con valor real (no duplicado).
+## Para extender el monitor a oct/nov u otro mes:
+##   1) Verificar que el raw tenga ese mes con valor real (no duplicado / no raro).
 ##   2) Subir FECHA_HASTA acá (y el mismo valor en
 ##      03_salarios_privados_SIPA.R y 03_salarios_privados_SIPA_indice.R).
 ##   3) Re-correr este prep + viz → knitear el RMD.
-## El rótulo "Nov-2025" (etc.) lo arma el RMD solo a partir del CSV.
+## El rótulo del último mes lo arma el RMD solo a partir del CSV.
 
 library(tidyverse)
 library(lubridate)
@@ -30,7 +31,7 @@ path_out  <- "./data/inputs_md/03_salarios_privados_SIPA_indice_region.csv"
 
 FECHA_BASE  <- as.Date("2025-01-01")
 ## Ver bloque "Corte FECHA_HASTA" del encabezado.
-FECHA_HASTA <- as.Date("2025-10-01")
+FECHA_HASTA <- as.Date("2025-09-01")
 
 noa <- c("Catamarca", "Jujuy", "Salta", "Santiago del Estero", "Tucumán")
 

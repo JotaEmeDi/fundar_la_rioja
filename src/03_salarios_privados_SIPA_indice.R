@@ -12,7 +12,7 @@ path_out_real <- "./outputs/plots/03_salarios_privados_SIPA_real_sa_indice.png"
 path_out_nom  <- "./outputs/plots/03_salarios_privados_SIPA_indice_ipc.png"
 
 FECHA_DESDE <- as.Date("2017-01-01")
-FECHA_HASTA <- as.Date("2025-10-01")  # mismo corte que 03_prep_salarios_privados_SIPA_indice.R
+FECHA_HASTA <- as.Date("2025-09-01")  # mismo corte que 03_prep_salarios_privados_SIPA_indice.R
 
 
 df <- read_csv(path_csv, show_col_types = FALSE) %>%
@@ -35,6 +35,22 @@ label_base <- paste0(
 )
 
 dir.create("./outputs/plots", showWarnings = FALSE, recursive = TRUE)
+
+theme_fuente <- theme(
+  plot.margin = margin(16, 20, 40, 16),
+  plot.caption = element_text(lineheight = 1.15, hjust = 0, margin = margin(t = 12))
+)
+
+fuente_real_texto <- paste(
+  "Fundar, con base en SIPA (Capital Humano) e IPC (INDEC/SSPM).",
+  "Desestacionalizado (saca el efecto del aguinaldo) y en términos reales.",
+  ">100 = más poder de compra que ene-2025; <100 = menos.",
+  "Hasta sep-2025 (oct+ del Excel: salto atípico / 2026 duplica meses y contamina la SA)."
+)
+fuente_real <- paste0(
+  "Fuente: ",
+  stringr::str_wrap(fuente_real_texto, width = 88, exdent = 7)
+)
 
 ## ---- Principal: poder de compra (real SA) ----
 key_real <- puntos_etiqueta(df, fecha, indice_salario_real_sa, la_rioja_region) %>%
@@ -73,6 +89,7 @@ p_real <- df %>%
   scale_x_date(date_labels = "%m-%Y", date_breaks = "12 month") +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.18))) +
   theme_monitor() +
+  theme_fuente +
   theme(axis.text.x = element_text(size = 8, angle = 45, hjust = 1)) +
   labs(
     title = "Remuneración privada registrada en términos reales",
@@ -82,17 +99,10 @@ p_real <- df %>%
     ),
     x = "Fecha",
     y = paste0("Índice real (", label_base, ")"),
-    caption = fuente_fundar(
-      paste0(
-        "Fundar, con base en SIPA (Capital Humano) e IPC (INDEC/SSPM). ",
-        "Desestacionalizado (saca el efecto del aguinaldo) y en términos reales. ",
-        ">100 = más poder de compra que ene-2025; <100 = menos. Hasta oct-2025 ",
-        "(meses posteriores del Excel son repeticiones / contaminan la SA)."
-      )
-    )
+    caption = fuente_real
   )
 
-ggsave(path_out_real, p_real, width = 12, height = 7)
+ggsave(path_out_real, p_real, width = 12, height = 7.5)
 message("OK viz principal → ", path_out_real)
 
 ## ---- Auxiliar: nominal SA vs IPC (pedido índice + línea precios) ----

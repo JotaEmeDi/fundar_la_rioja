@@ -679,8 +679,8 @@ Copiar y completar:
 
 - **Qué mide:** VAB provincial precios 2004; share industrial; estructura sectorial.
 - **Fuente / URL:** [Excel CEPAL 52 sectores](https://repositorio.cepal.org/server/api/core/bitstreams/539fcce5-8977-4061-a222-fbfd7358a35f/content).
-- **Scripts:** `15_prep_pbg.R` → `15_pbg.R`.
-- **Plots:** `15_pbg_*.png`.
+- **Scripts:** `15_prep_pbg.R` → `15_pbg.R`; per cápita: `15_prep_pbg_per_capita.R` → `15_pbg_per_capita.R`; ranking provincial (bump chart): `15_pbg_ranking_percapita.R`.
+- **Plots:** `15_pbg_*.png` (incluye `15_pbg_ranking_percapita.png`).
 - **Cómo actualizar:** reemplazar Excel en `data/raw_data/pbg/` → prep → viz.
 
 #### 16 — Recursos propios / totales

@@ -66,7 +66,7 @@ ggplot(
     y = "$ 2004 / hab.",
     caption = fuente
   ) +
-  facet_wrap(~la_rioja_region, scales = "free_y")
+  facet_wrap(~la_rioja_region, scales = "fixed")
 
 ggsave("./outputs/plots/15_pbg_per_capita.png", width = 12, height = 7)
 
@@ -100,7 +100,7 @@ ggplot(
     y = paste0("Índice (", anio_base, " = 100)"),
     caption = fuente
   ) +
-  facet_wrap(~la_rioja_region, scales = "free_y")
+  facet_wrap(~la_rioja_region, scales = "fixed")
 
 ggsave("./outputs/plots/15_pbg_per_capita_indice.png", width = 12, height = 7)
 

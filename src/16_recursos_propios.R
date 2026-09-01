@@ -47,7 +47,7 @@ ggplot(df, aes(anio, pct_propios, color = la_rioja_region, group = la_rioja_regi
     y = "% recursos propios",
     caption = fuente
   ) +
-  facet_wrap(~la_rioja_region, scales = "free_y")
+  facet_wrap(~la_rioja_region, scales = "fixed")
 
 ggsave("./outputs/plots/16_recursos_propios.png", width = 12, height = 7)
 

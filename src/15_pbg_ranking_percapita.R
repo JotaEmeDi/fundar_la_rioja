@@ -29,16 +29,17 @@ anio_max <- max(prov$anio)
 noa_resto <- c("Catamarca", "Jujuy", "Salta", "Santiago del Estero", "Tucumán")
 destacadas <- c("La Rioja", sort(noa_resto))
 
-## Paleta: La Rioja en el naranja de énfasis ya usado en 15_pbg_per_capita.R;
-## cada provincia del NOA-Resto con un color propio y distinguible; el resto
-## (18 jurisdicciones) en gris de fondo.
+## Paleta: todas las destacadas en tonos de verde (distinguibles entre sí por
+## matiz, no solo por luminosidad), el resto (18 jurisdicciones) en gris de
+## fondo. La Rioja queda en el verde más oscuro para que siga siendo la más
+## fácil de ubicar de un vistazo.
 pal_destacadas <- c(
-  "La Rioja"             = "#E4572E", # naranja de énfasis (igual que ranking de barras)
-  "Catamarca"            = "#2D6E6E", # verde azulado oscuro
-  "Jujuy"                = "#9B8BC4", # violeta
-  "Salta"                = "#4E7FBF", # azul
-  "Santiago del Estero"  = "#C8A83A", # mostaza
-  "Tucumán"              = "#7A9D54", # verde oliva
+  "La Rioja"             = "#1B4332", # verde bosque muy oscuro (foco)
+  "Catamarca"            = "#2D6E6E", # verde azulado (ya usado en el repo)
+  "Jujuy"                = "#40916C", # verde medio
+  "Salta"                = "#588157", # verde oliva
+  "Santiago del Estero"  = "#74A892", # verde salvia
+  "Tucumán"              = "#95B46A", # verde oliva claro
   "Resto"                = "#9CA3AF"  # gris de fondo (18 provincias restantes)
 )
 

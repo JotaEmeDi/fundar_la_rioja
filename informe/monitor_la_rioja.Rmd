@@ -118,7 +118,9 @@ Este bloque mira el **tamaño y la dinámica** de la economía provincial y cóm
 se **financian y cierran** las cuentas públicas: el PBG (crecimiento del valor
 agregado) y las finanzas provinciales (peso de la recaudación tributaria
 directa frente a la coparticipación y otras transferencias, y resultado fiscal
-de la APNF), comparando La Rioja con el NOA y el resto del país.
+de la APNF), comparando La Rioja con el NOA y el resto del país. El resultado
+fiscal se publicará en versión definitiva como **% del PBG nominal**; mientras
+tanto la lectura sobre ingresos es **provisoria** (ver sección correspondiente).
 
 *Esta agrupación sigue la línea de
 [Argendata — Macroeconomía](https://argendata.fund.ar/categorias/macroeconomia/)
@@ -170,6 +172,12 @@ fmt_pct_chg <- function(x, digits = 1) {
     "%"
   )
 }
+fmt_pct_mag <- function(x, digits = 1) {
+  paste0(
+    format(round(abs(x), digits), decimal.mark = ",", nsmall = digits),
+    "%"
+  )
+}
 
 idx_en <- function(reg, anio) {
   pbg %>%
@@ -215,7 +223,7 @@ frase_reciente_yoy <- paste0(
   } else if (crec_lr_yoy > 0) {
     paste0("creció ", fmt_pct_chg(crec_lr_yoy))
   } else {
-    paste0("cayó ", fmt_pct_chg(abs(crec_lr_yoy)))
+    paste0("cayó ", fmt_pct_mag(crec_lr_yoy))
   },
   " (NOA-Resto ",
   if (abs(crec_noa_yoy) < 0.05) "casi sin cambio" else fmt_pct_chg(crec_noa_yoy),
@@ -236,7 +244,7 @@ frase_reciente_2019 <- paste0(
   } else if (crec_lr_rec > 0) {
     paste0("creció ", fmt_pct_chg(crec_lr_rec))
   } else {
-    paste0("retrocedió ", fmt_pct_chg(abs(crec_lr_rec)))
+    paste0("retrocedió ", fmt_pct_mag(crec_lr_rec))
   },
   "; el NOA-Resto ",
   if (abs(crec_noa_rec) < 0.05) {
@@ -244,7 +252,7 @@ frase_reciente_2019 <- paste0(
   } else if (crec_noa_rec > 0) {
     paste0("creció ", fmt_pct_chg(crec_noa_rec))
   } else {
-    paste0("retrocedió ", fmt_pct_chg(abs(crec_noa_rec)))
+    paste0("retrocedió ", fmt_pct_mag(crec_noa_rec))
   },
   " y el resto del país ",
   if (abs(crec_resto_rec) < 0.05) {
@@ -252,7 +260,7 @@ frase_reciente_2019 <- paste0(
   } else if (crec_resto_rec > 0) {
     paste0("creció ", fmt_pct_chg(crec_resto_rec))
   } else {
-    paste0("retrocedió ", fmt_pct_chg(abs(crec_resto_rec)))
+    paste0("retrocedió ", fmt_pct_mag(crec_resto_rec))
   },
   "."
 )
@@ -334,7 +342,7 @@ frase_pc_largo_plazo <- paste0(
   } else if (crec_pc_lr_lp > 0) {
     paste0("creció ", fmt_pct_chg(crec_pc_lr_lp))
   } else {
-    paste0("cayó ", fmt_pct_chg(abs(crec_pc_lr_lp)))
+    paste0("cayó ", fmt_pct_mag(crec_pc_lr_lp))
   },
   ". En el mismo período, el NOA-Resto ",
   if (abs(crec_pc_noa_lp) < 0.05) {
@@ -342,7 +350,7 @@ frase_pc_largo_plazo <- paste0(
   } else if (crec_pc_noa_lp > 0) {
     paste0("creció ", fmt_pct_chg(crec_pc_noa_lp))
   } else {
-    paste0("cayó ", fmt_pct_chg(abs(crec_pc_noa_lp)))
+    paste0("cayó ", fmt_pct_mag(crec_pc_noa_lp))
   },
   " y el resto del país ",
   if (abs(crec_pc_resto_lp) < 0.05) {
@@ -350,7 +358,7 @@ frase_pc_largo_plazo <- paste0(
   } else if (crec_pc_resto_lp > 0) {
     paste0("creció ", fmt_pct_chg(crec_pc_resto_lp))
   } else {
-    paste0("cayó ", fmt_pct_chg(abs(crec_pc_resto_lp)))
+    paste0("cayó ", fmt_pct_mag(crec_pc_resto_lp))
   },
   "."
 )
@@ -380,7 +388,7 @@ frase_pc_reciente_yoy <- paste0(
   } else if (crec_pc_lr_yoy > 0) {
     paste0("creció ", fmt_pct_chg(crec_pc_lr_yoy))
   } else {
-    paste0("cayó ", fmt_pct_chg(abs(crec_pc_lr_yoy)))
+    paste0("cayó ", fmt_pct_mag(crec_pc_lr_yoy))
   },
   " (NOA-Resto ",
   if (abs(crec_pc_noa_yoy) < 0.05) "casi sin cambio" else fmt_pct_chg(crec_pc_noa_yoy),
@@ -400,7 +408,7 @@ frase_pc_reciente_2019 <- paste0(
   } else if (crec_pc_lr_rec > 0) {
     paste0("creció ", fmt_pct_chg(crec_pc_lr_rec))
   } else {
-    paste0("retrocedió ", fmt_pct_chg(abs(crec_pc_lr_rec)))
+    paste0("retrocedió ", fmt_pct_mag(crec_pc_lr_rec))
   },
   "; el NOA-Resto ",
   if (abs(crec_pc_noa_rec) < 0.05) {
@@ -408,7 +416,7 @@ frase_pc_reciente_2019 <- paste0(
   } else if (crec_pc_noa_rec > 0) {
     paste0("creció ", fmt_pct_chg(crec_pc_noa_rec))
   } else {
-    paste0("retrocedió ", fmt_pct_chg(abs(crec_pc_noa_rec)))
+    paste0("retrocedió ", fmt_pct_mag(crec_pc_noa_rec))
   },
   " y el resto del país ",
   if (abs(crec_pc_resto_rec) < 0.05) {
@@ -416,7 +424,7 @@ frase_pc_reciente_2019 <- paste0(
   } else if (crec_pc_resto_rec > 0) {
     paste0("creció ", fmt_pct_chg(crec_pc_resto_rec))
   } else {
-    paste0("retrocedió ", fmt_pct_chg(abs(crec_pc_resto_rec)))
+    paste0("retrocedió ", fmt_pct_mag(crec_pc_resto_rec))
   },
   "."
 )
@@ -638,10 +646,29 @@ mostrar("outputs/plots/16_recursos_propios.png")
 **¿Los ingresos cubren los gastos en la provincia?**
 [Ficha metodológica](#ficha-17-fiscal).
 
+::: {.callout-note}
+## Versión provisoria
+
+El indicador **objetivo** del Monitor es expresar el resultado financiero y el
+primario como **porcentaje del PBG nominal provincial** (resultado / PBG
+nominal), para comparar el cierre fiscal con el tamaño de la economía en pesos
+corrientes.
+
+**Hoy** mostramos una versión **provisoria** sobre **ingresos totales APNF**
+(resultado / ingresos), porque:
+
+- las **ejecuciones presupuestarias** están publicadas (Ministerio de Economía);
+- la **serie de PBG nominal de La Rioja** está **en consulta con la provincia**;
+- el PBG del Monitor (CEPAL, precios constantes 2004) **no sirve** como
+  denominador de este indicador.
+
+Los gráficos y números de esta sección son **ilustrativos** hasta contar con
+PBG nominal compatible.
+:::
+
 Complemento del indicador anterior: no solo de dónde vienen los recursos, sino
 si las cuentas de la Administración Pública No Financiera (APNF) provincial
-cierran. Se expresa el resultado como porcentaje de los ingresos totales para
-comparar en el tiempo sin deflactar series nominales.
+cierran.
 
 Hay **dos lecturas** en la misma fuente (ejecuciones presupuestarias APNF):
 
@@ -656,9 +683,11 @@ Hay **dos lecturas** en la misma fuente (ejecuciones presupuestarias APNF):
 Por eso pueden diverger: a veces el primario es menos negativo (o positivo) y
 el financiero es más negativo, porque los intereses pesan en el total.
 
-**Metodología.** Ambos ratios se calculan sobre ingresos totales. Agregado
-regional = suma de ingresos y de gastos (totales o primarios, según el
-indicador), luego el ratio. Fuente: Ministerio de Economía.
+**Metodología (versión provisoria).** Ambos ratios se calculan sobre ingresos
+totales. Agregado regional = suma de ingresos y de gastos (totales o primarios,
+según el indicador), luego el ratio. Fuente: Ministerio de Economía. **Versión
+definitiva prevista:** mismo numerador (resultado), denominador = PBG nominal
+provincial.
 
 ```{r fiscal-datos}
 library(readr)
@@ -689,7 +718,7 @@ signo_txt <- function(x) {
 }
 
 frase_nivel <- paste0(
-  "En ", anio_ult, ", La Rioja cerró con ",
+  "En ", anio_ult, " (versión provisoria sobre ingresos), La Rioja cerró con ",
   signo_txt(fis_lr$resultado_sobre_ingresos), " financiero equivalente al ",
   fmt_pct(abs(fis_lr$resultado_sobre_ingresos)), "% de sus ingresos totales."
 )
@@ -735,12 +764,15 @@ mostrar("outputs/plots/17_resultado_fiscal_primario.png")
 
 ### Ficha metodológica {#ficha-17-fiscal}
 
-- **¿Qué mide?** Dos saldos de la APNF provincial, ambos como % de los ingresos
-  totales:
+- **Estado:** versión **provisoria**. Objetivo del Monitor: resultado / **PBG
+  nominal** provincial. Lectura actual: resultado / **ingresos totales APNF**.
+- **¿Qué mide?** Dos saldos de la APNF provincial:
   - *Financiero:* ingresos − gastos totales (**con** intereses).
   - *Primario:* ingresos − gastos primarios (**sin** intereses).
+  En la versión provisoria, ambos se expresan como % de los ingresos totales.
 - **¿Para qué sirve?** Ver si las cuentas cierran y separar el efecto del
-  servicio de la deuda (intereses) del resto del gasto.
+  servicio de la deuda (intereses) del resto del gasto. La versión definitiva
+  permitirá comparar ese cierre con el **tamaño nominal del producto**.
 - **¿Qué nos dice?**
   - *Ratio positivo:* superávit (ingresos > gastos en esa definición).
   - *Ratio negativo:* déficit.
@@ -748,18 +780,22 @@ mostrar("outputs/plots/17_resultado_fiscal_primario.png")
     deterioro del resultado total.
 - **Comportamiento esperado:** serie anual; valores nominales (no deflactados).
   Fluctúa con el ciclo y la ejecución presupuestaria.
-- **Unidad de medida:** porcentaje (%) de los ingresos totales (ratio
-  adimensional).
-- **Fórmula de cálculo:** resultado financiero / ingresos totales; resultado
-  primario / ingresos totales. Agregado regional = suma de ingresos y de gastos,
-  luego ratio. Sin deflactar (todo nominal).
+- **Unidad de medida:** porcentaje (%). Provisorio: % de ingresos totales.
+  Definitivo (previsto): % del PBG nominal provincial.
+- **Fórmula de cálculo (provisoria):** resultado financiero / ingresos totales;
+  resultado primario / ingresos totales. Agregado regional = suma de ingresos y
+  de gastos, luego ratio. **Fórmula objetivo:** resultado / PBG nominal
+  provincial (pendiente serie provincial).
 - **Fuente de datos oficial:** Ministerio de Economía — ejecuciones
   presupuestarias provinciales (APNF). Scripts: `17_prep_resultado_fiscal.R`,
-  `17_resultado_fiscal.R`.
+  `17_resultado_fiscal.R`. **Pendiente:** PBG nominal La Rioja (consulta a la
+  provincia).
 - **Frecuencia de actualización:** anual.
 - **Limitaciones:** APNF no es todo el sector público consolidado. El ratio no
   sustituye un análisis de deuda, caja ni calidad del gasto. No confundir con
-  TOP/RON (recursos tributarios).
+  TOP/RON (recursos tributarios). **No usar** el PBG CEPAL (2004 constante) como
+  denominador. La versión sobre ingresos **no sustituye** la versión sobre PBG
+  nominal.
 
 # Desarrollo
 

@@ -693,11 +693,12 @@ Copiar y completar:
 
 #### 17 — Resultado fiscal (APNF)
 
-- **Qué mide:** Resultado financiero / ingresos totales (y complemento primario / ingresos). APNF = Administración Pública No Financiera.
+- **Estado:** versión **provisoria** (resultado / ingresos). **Objetivo:** resultado / **PBG nominal** provincial (consulta a La Rioja en curso).
+- **Qué mide (provisorio):** Resultado financiero / ingresos totales (y complemento primario / ingresos). APNF = Administración Pública No Financiera.
 - **Fuente / URL:** [Ejecuciones presupuestarias](https://www.argentina.gob.ar/economia/sechacienda/coordinacion-fiscal-provincial/ejecucion-presupuestaria-provincial/ejecuciones) · `serie_aif-apnf-2025.xlsx`.
 - **Scripts:** `17_prep_resultado_fiscal.R` → `17_resultado_fiscal.R`.
-- **Plots:** `17_resultado_fiscal.png`, `17_resultado_fiscal_primario.png`.
-- **Nota:** valores nominales; no se deflacta (se usa el ratio). RMD pendiente.
+- **Plots:** `17_resultado_fiscal.png`, `17_resultado_fiscal_primario.png` (subtítulo: versión provisoria).
+- **Nota:** valores nominales; no usar PBG CEPAL (2004) como denominador. Pendiente PBG nominal provincial para versión definitiva.
 
 #### 18 — Trayectoria escolar (cohorte primaria → secundaria)
 

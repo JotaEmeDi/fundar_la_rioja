@@ -55,7 +55,7 @@ ggplot(pbg, aes(anio, indice_2004, color = la_rioja_region, group = la_rioja_reg
     y = "Índice (2004 = 100)",
     caption = fuente
   ) +
-  facet_wrap(~la_rioja_region, scales = "free_y")
+  facet_wrap(~la_rioja_region, scales = "fixed")
 
 ggsave("./outputs/plots/15_pbg_evolucion.png", width = 12, height = 7)
 
@@ -91,7 +91,7 @@ ggplot(
     y = "% del PBG",
     caption = fuente
   ) +
-  facet_wrap(~la_rioja_region, scales = "free_y")
+  facet_wrap(~la_rioja_region, scales = "fixed")
 
 ggsave("./outputs/plots/15_pbg_pct_industrial.png", width = 12, height = 7)
 

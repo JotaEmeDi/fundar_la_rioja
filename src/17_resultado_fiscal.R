@@ -70,7 +70,7 @@ ggplot(
     y = "% de los ingresos totales",
     caption = fuente
   ) +
-  facet_wrap(~la_rioja_region, scales = "free_y")
+  facet_wrap(~la_rioja_region, scales = "fixed")
 
 ggsave("./outputs/plots/17_resultado_fiscal.png", width = 12, height = 7.5)
 
@@ -113,7 +113,7 @@ ggplot(
     y = "% de los ingresos totales",
     caption = fuente
   ) +
-  facet_wrap(~la_rioja_region, scales = "free_y")
+  facet_wrap(~la_rioja_region, scales = "fixed")
 
 ggsave("./outputs/plots/17_resultado_fiscal_primario.png", width = 12, height = 7.5)
 

@@ -103,6 +103,7 @@ scripts_viz <- c(
   "src/14_exportaciones_indice.R",
   "src/15_pbg.R",
   "src/15_pbg_per_capita.R",
+  "src/15_pbg_ranking_percapita.R",
   "src/16_recursos_propios.R",
   "src/17_resultado_fiscal.R",
   "src/18_trayectoria_escolar.R"
@@ -486,6 +487,18 @@ mostrar("outputs/plots/15_pbg_per_capita_relativo.png")
 - `r frase_pc_reciente_yoy`
 - `r frase_pc_reciente_2019`
 `r if (nzchar(frase_pc_reciente_lectura)) paste0("\n- ", frase_pc_reciente_lectura) else ""`
+
+#### Ranking provincial
+
+**¿La Rioja ganó o perdió posiciones frente a las otras 23 jurisdicciones?**
+Además del nivel y la variación, interesa la posición relativa: el siguiente
+bump chart ordena a las 24 provincias por PBG per cápita (pesos constantes de
+2004) en cada año de la serie 2010-`r anio_ult` y sigue el recorrido de cada
+una. La Rioja se destaca en naranja; el resto, en gris.
+
+```{r pbg-ranking}
+mostrar("outputs/plots/15_pbg_ranking_percapita.png")
+```
 
 ### Ficha metodológica {#ficha-15-pbg}
 

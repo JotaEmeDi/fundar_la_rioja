@@ -41,6 +41,7 @@ source("src/15_prep_pbg.R")
 source("src/15_pbg.R")
 source("src/15_prep_pbg_per_capita.R")
 source("src/15_pbg_per_capita.R")
+source("src/15_pbg_ranking_percapita.R")  # Bump chart: ranking PBG per cápita provincial
 source("src/16_prep_recursos_propios.R")
 source("src/16_recursos_propios.R")
 source("src/17_prep_resultado_fiscal.R")

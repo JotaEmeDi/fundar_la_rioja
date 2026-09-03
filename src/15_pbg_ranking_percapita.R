@@ -62,13 +62,18 @@ rank_df <- prov %>%
 etq_izq <- rank_df %>% filter(anio == anio_min)
 etq_der <- rank_df %>% filter(anio == anio_max)
 
-fuente <- fuente_fundar(
-  paste(
-    "Fundar, con base en CEPAL / Ministerio de Economía",
-    "(VAB provincial a precios de 2004) y DNAP (proyecciones de población).",
-    "Destacadas: La Rioja y NOA-Resto (Catamarca, Jujuy, Salta,",
-    "Santiago del Estero, Tucumán)."
-  )
+fuente_texto <- paste(
+  "Fundar, con base en CEPAL / Ministerio de Economía",
+  "(VAB provincial a precios de 2004) y DNAP (proyecciones de población).",
+  "Destacadas: La Rioja y NOA-Resto (Catamarca, Jujuy, Salta,",
+  "Santiago del Estero, Tucumán)."
+)
+## Caption largo: se envuelve en varias líneas (mismo criterio que
+## 17_resultado_fiscal.R / 18_trayectoria_escolar.R) para que no se corte en
+## el borde derecho del gráfico.
+fuente <- paste0(
+  "Fuente: ",
+  stringr::str_wrap(fuente_texto, width = 88, exdent = 7)
 )
 
 ggplot(rank_df, aes(anio, ranking, group = provincia, color = grupo)) +
@@ -107,7 +112,8 @@ ggplot(rank_df, aes(anio, ranking, group = provincia, color = grupo)) +
     panel.grid.major.x = element_line(color = FUNDAR_GRILLA, linewidth = 0.2),
     axis.text.x = element_text(size = 8, angle = 45, hjust = 1),
     axis.text.y = element_text(size = 7),
-    plot.margin = margin(16, 90, 16, 90)
+    plot.caption = element_text(lineheight = 1.15, hjust = 0, margin = margin(t = 12)),
+    plot.margin = margin(16, 90, 40, 90)
   ) +
   labs(
     title = "Ranking del PBG per cápita provincial",

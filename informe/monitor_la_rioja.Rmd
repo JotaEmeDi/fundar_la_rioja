@@ -494,7 +494,8 @@ mostrar("outputs/plots/15_pbg_per_capita_relativo.png")
 Además del nivel y la variación, interesa la posición relativa: el siguiente
 bump chart ordena a las 24 provincias por PBG per cápita (pesos constantes de
 2004) en cada año de la serie 2010-`r anio_ult` y sigue el recorrido de cada
-una. La Rioja se destaca en naranja; el resto, en gris.
+una. La Rioja y las provincias del NOA-Resto se destacan en tonos de verde
+(La Rioja, en el más oscuro); el resto, en gris.
 
 ```{r pbg-ranking}
 mostrar("outputs/plots/15_pbg_ranking_percapita.png")

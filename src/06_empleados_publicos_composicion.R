@@ -37,15 +37,15 @@ fuente <- fuente_fundar(
 )
 
 pal_ramas <- c(
-  "Adm. pública y defensa" = "#2D6E6E",
-  "Enseñanza" = "#9B8BC4",
-  "Salud y asistencia social" = "#7A6FA0",
-  "Electricidad, gas y agua" = "#52C8A0",
-  "Transporte" = "#A8DCC8",
-  "Finanzas y seguros" = "#C8C87A",
-  "Construcción" = "#E0B070",
-  "Servicios de seguridad / edificios" = "#F4877A",
-  "Otros" = "#D4A0A0",
+  "Adm. pública y defensa" = "#607D7C",
+  "Enseñanza" = "#AEA0D1",
+  "Salud y asistencia social" = "#736C86",
+  "Electricidad, gas y agua" = "#6CA992",
+  "Transporte" = "#C9EBDE",
+  "Finanzas y seguros" = "#DAD993",
+  "Construcción" = "#D2A05C",
+  "Servicios de seguridad / edificios" = "#F58577",
+  "Otros" = "#E3ACAC",
   "Sin clasificar / NsNr" = "#888888"
 )
 

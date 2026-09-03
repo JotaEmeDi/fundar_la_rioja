@@ -121,10 +121,24 @@ df_est <- estructura %>%
   mutate(letra_desc = factor(letra_desc, levels = orden_letras))
 
 ## Paleta divergente Bienes (fríos) / Servicios (cálidos), 16 tonos.
+## Nombrada (en vez de posicional) para no depender del orden de orden_letras.
 pal_letras <- c(
-  "#2D6E6E", "#3D8B8B", "#52C8A0", "#7BC9A6", "#A8DCC8", "#C8C87A",
-  "#E0B070", "#F4877A", "#E89B7A", "#D4A0A0", "#9B8BC4", "#7A6FA0",
-  "#5C6B8A", "#4A5A78", "#6B7C8A", "#888888"
+  "Agro" = "#2D6E6E",
+  "Pesca" = "#3C9684",
+  "Petróleo y minería" = "#51C49F",
+  "Industria manufacturera" = "#7CBEB1",
+  "Electricidad, gas y agua" = "#B8DCB6",
+  "Construcción" = "#C4C686",
+  "Comercio" = "#DEB371",
+  "Hotelería y restaurantes" = "#ED9B70",
+  "Transporte y comunicaciones" = "#E78E89",
+  "Finanzas" = "#D395AA",
+  "Serv. inmobiliarios y profesionales" = "#B08ABB",
+  "Adm. pública y defensa" = "#7074A1",
+  "Enseñanza" = "#567384",
+  "Salud" = "#4A5278",
+  "Serv. comunitarios, sociales y personales" = "#6A7A8E",
+  "Servicio doméstico" = "#8A8D83"
 )
 
 ggplot(df_est, aes(la_rioja_region, share, fill = letra_desc)) +

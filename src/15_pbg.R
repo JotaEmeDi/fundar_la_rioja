@@ -142,7 +142,7 @@ pal_letras <- c(
 )
 
 ggplot(df_est, aes(la_rioja_region, share, fill = letra_desc)) +
-  geom_col(width = 0.72, color = "white", linewidth = 0.2) +
+  geom_col(width = 0.72, color = NA) +
   scale_fill_manual(values = pal_letras, name = NULL, drop = FALSE) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
   theme_monitor(legend_position = "bottom") +

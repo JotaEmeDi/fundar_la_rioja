@@ -1,6 +1,7 @@
-## 17. Resultado fiscal APNF:
+## 17. Resultado fiscal APNF (versión provisoria):
 ##   - resultado financiero / ingresos totales
 ##   - resultado primario / ingresos totales (complemento)
+##   Objetivo del Monitor: resultado / PBG nominal (pendiente serie provincial).
 
 library(tidyverse)
 source("./style/fundar_monitor_theme.R")
@@ -16,8 +17,9 @@ df <- read_csv(
 fuente_texto <- paste(
   "Fundar, con base en Ministerio de Economía",
   "(Ejecuciones presupuestarias provinciales — APNF).",
-  "Resultado financiero = ingresos totales − gastos totales.",
-  "Serie en % de ingresos totales (valores nominales; sin deflactar)."
+  "Versión provisoria: resultado / ingresos totales.",
+  "Indicador objetivo: resultado / PBG nominal provincial (pendiente serie La Rioja).",
+  "Valores nominales; sin deflactar."
 )
 fuente <- paste0(
   "Fuente: ",
@@ -63,7 +65,7 @@ ggplot(
   theme_fuente +
   labs(
     title = "Resultado fiscal (APNF)",
-    subtitle = "Resultado financiero / ingresos totales · valores nominales",
+    subtitle = "Versión provisoria · resultado financiero / ingresos totales",
     x = "Año",
     y = "% de los ingresos totales",
     caption = fuente
@@ -106,7 +108,7 @@ ggplot(
   theme_fuente +
   labs(
     title = "Resultado primario (APNF)",
-    subtitle = "Resultado primario / ingresos totales · sin intereses · valores nominales",
+    subtitle = "Versión provisoria · resultado primario / ingresos totales · sin intereses",
     x = "Año",
     y = "% de los ingresos totales",
     caption = fuente

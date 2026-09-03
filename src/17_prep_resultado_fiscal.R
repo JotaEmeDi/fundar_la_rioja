@@ -1,12 +1,17 @@
 ## 17 (prep). Resultado fiscal APNF (Administración Pública No Financiera).
 ##
-## Definición:
+## Estado: versión PROVISORIA en el Monitor.
+##   Objetivo del indicador = resultado / PBG nominal provincial.
+##   Lectura actual     = resultado / ingresos totales APNF
+##   (pendiente serie de PBG nominal de La Rioja).
+##
+## Definición (numerador):
 ##   Resultado financiero = Ingresos totales (VI) - Gastos totales (VII)
-##   (fila VIII del Excel). Indicador de lectura:
+##   (fila VIII del Excel). Indicador de lectura provisoria:
 ##   resultado_sobre_ingresos = resultado_financiero / ingresos_totales
 ##
-## No se deflacta: todo es nominal; el ratio evita que la inflación distorsione
-## la comparación temporal.
+## No se deflacta: todo es nominal. El PBG CEPAL (2004 constante) no sirve
+## como denominador de este indicador.
 ##
 ## Fuente:
 ##   Min. Economía – Ejecuciones presupuestarias provinciales APNF

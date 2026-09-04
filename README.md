@@ -40,7 +40,8 @@ fundar_la_rioja/
 ├── outputs/plots/                # PNG estáticos del monitor
 ├── informe/
 │   ├── monitor_la_rioja.Rmd      # Informe knit-able (coyuntura + fichas al final)
-│   └── monitor_la_rioja_tufte.Rmd # Misma info, salida estilo Tufte (HTML)
+│   ├── monitor_la_rioja_tufte.Rmd # Misma info, salida estilo Tufte (HTML)
+│   └── monitor_la_rioja_tufte_fundar.Rmd # Ídem, con paleta/estilo Fundar
 ├── dashboard/                    # App Shiny + sitio Quarto
 ├── style/                        # Temas ggplot (activo: fundar_monitor_theme.R)
 └── fundar_larioja.Rproj
@@ -127,6 +128,24 @@ el formato de salida. El informe canónico sigue siendo `monitor_la_rioja.Rmd`.
 # Knit → Knit to HTML, o:
 rmarkdown::render("informe/monitor_la_rioja_tufte.Rmd")
 # → informe/monitor_la_rioja_tufte.html
+```
+
+#### Variante Tufte + Fundar (HTML, opcional)
+
+`informe/monitor_la_rioja_tufte_fundar.Rmd` es una **copia** de la variante
+Tufte anterior, con la paleta tipográfica del informe (teal/slate de
+`monitor_estilo.css`) en vez del blanco y negro clásico de Tufte: encabezados,
+enlaces y fichas metodológicas quedan con identidad Fundar; el fondo se
+mantiene crema (así calzan sin recuadro los PNG con fondo blanco de
+`style/fundar_monitor_theme.R`). Estilos en
+`informe/monitor_estilo_tufte_fundar.css`.
+
+```r
+# Dependencias: las del HTML (source("src/000_install_deps.R"), incluye tufte)
+
+# Knit → Knit to HTML, o:
+rmarkdown::render("informe/monitor_la_rioja_tufte_fundar.Rmd")
+# → informe/monitor_la_rioja_tufte_fundar.html
 ```
 
 El RMD inserta los PNG de `outputs/plots/` (no re-descarga datos). Ver

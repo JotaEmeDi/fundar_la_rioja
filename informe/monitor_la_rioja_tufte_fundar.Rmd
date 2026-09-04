@@ -1,0 +1,2995 @@
+---
+title: "Monitor socioeconómico — La Rioja"
+subtitle: "Prototipo de monitoreo de indicadores · Fundar"
+author: "Fundar"
+date: "`r format(Sys.Date(), '%B %Y')`"
+output:
+  tufte::tufte_html:
+    toc: true
+    toc_depth: 2
+    self_contained: true
+    css: monitor_estilo_tufte_fundar.css
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  fig.fullwidth = TRUE,
+  out.width = "100%"
+)
+## Regenerar gráficos al knit (FALSE = usa PNG ya guardados en outputs/plots/).
+REGENERAR_PLOTS <- FALSE
+
+## Raíz del repo (carpeta que contiene src/, data/, outputs/).
+root <- {
+  cand <- c(
+    if (requireNamespace("here", quietly = TRUE)) here::here() else NULL,
+    normalizePath("..", winslash = "/", mustWork = FALSE),
+    normalizePath(".", winslash = "/", mustWork = FALSE)
+  )
+  cand <- unique(cand[!is.na(cand) & nzchar(cand)])
+  hit <- cand[file.exists(file.path(cand, "src")) & file.exists(file.path(cand, "outputs"))]
+  if (length(hit) == 0) stop("No se encontró la raíz del repo fundar_la_rioja.")
+  hit[[1]]
+}
+
+mostrar <- function(path_rel) {
+  path <- normalizePath(file.path(root, path_rel), winslash = "/", mustWork = FALSE)
+  if (!file.exists(path)) {
+    cat(sprintf("\n> *Gráfico pendiente: `%s`*\n\n", path_rel))
+    return(invisible(NULL))
+  }
+  knitr::include_graphics(path)
+}
+```
+
+# Introducción
+
+`r tufte::newthought("Este documento es")` el **prototipo de monitor socioeconómico** elaborado en el
+marco de la consultoría de fortalecimiento de capacidades de la Secretaría de
+Comunicación y Planificación Pública del Gobierno de La Rioja (Dirección
+General de Planificación y Monitoreo de Políticas Públicas). Su finalidad es
+apoyar el **análisis, la interpretación y la comunicación** de información
+basada en datos para la toma de decisiones y la comunicación institucional.
+
+El monitor reúne indicadores de interés provincial, con gráficos comparativos y
+textos de lectura. Se construyó de forma conjunta entre el equipo provincial y
+Fundar, tomando como referencia metodológica y de fuentes a
+[Argendata](https://argendata.fund.ar/).
+
+**Cómo está organizado.** Tres bloques temáticos —**Macroeconomía**,
+**Desarrollo** y **Trabajo e ingresos**—. En cada indicador: pregunta guía,
+análisis, gráficos y una **ficha metodológica** (definición, fuente, cálculo y
+limitaciones), también listada al final y en el índice.
+
+**Corte territorial.** Salvo donde se aclare lo contrario, las series comparan
+**La Rioja**, **NOA-Resto** y **Resto país**.`r tufte::margin_note("La excepción son los indicadores construidos con la <strong>EPH continua</strong>, que cubre solo el aglomerado capital de La Rioja y no el interior provincial.")`
+
+**Actualización.** El código y las instrucciones para actualizar datos y
+gráficos están en el repositorio (`README.md`).
+
+```{r regenerar, eval=REGENERAR_PLOTS}
+## Solo viz (asume CSVs en data/inputs_md/). Para prep completo ver README.
+old <- setwd(root)
+on.exit(setwd(old), add = TRUE)
+scripts_viz <- c(
+  "src/04_desoc.R",
+  "src/10_tasa_empleo.R",
+  "src/09a_informalidad_aportes.R",
+  "src/03_salarios_privados_SIPA.R",
+  "src/03_salarios_privados_SIPA_indice.R",
+  "src/03b_salarios_registrados_EPH.R",
+  "src/05_puestos_asalariados_privados.R",
+  "src/06_empleados_publicos.R",
+  "src/06_empleados_publicos_composicion.R",
+  "src/07_cant_empresas.R",
+  "src/12_educ.R",
+  "src/13a_nbi_hogares.R",
+  "src/13b_nbi_poblacion.R",
+  "src/14_exportaciones_subrubros.R",
+  "src/14_exportaciones_indice.R",
+  "src/15_pbg.R",
+  "src/15_pbg_per_capita.R",
+  "src/15_pbg_ranking_percapita.R",
+  "src/16_recursos_propios.R",
+  "src/17_resultado_fiscal.R",
+  "src/18_trayectoria_escolar.R"
+)
+for (s in scripts_viz) {
+  if (file.exists(s)) source(s, local = new.env())
+}
+```
+
+# Macroeconomía
+
+`r tufte::newthought("Este bloque mira")` el **tamaño y la dinámica** de la economía provincial y cómo
+se **financian y cierran** las cuentas públicas: el PBG (crecimiento del valor
+agregado) y las finanzas provinciales (peso de la recaudación tributaria
+directa frente a la coparticipación y otras transferencias, y resultado fiscal
+de la APNF), comparando La Rioja con el NOA y el resto del país. El resultado
+fiscal se publicará en versión definitiva como **% del PBG nominal**; mientras
+tanto la lectura sobre ingresos es **provisoria** (ver sección correspondiente).
+
+*Esta agrupación sigue la línea de
+[Argendata — Macroeconomía](https://argendata.fund.ar/categorias/macroeconomia/)
+(crecimiento, sistema tributario y gasto público).*
+
+## PIB / PBG provincial
+
+**¿Cómo evolucionó el producto bruto de La Rioja?**
+[Ficha metodológica](#ficha-15-pbg).
+
+El crecimiento económico de una provincia se aproxima con la evolución de su
+producto: más actividad suele ir de la mano de más empleo, ingresos y capacidad
+fiscal para sostener servicios públicos
+([Argendata — Crecimiento](https://argendata.fund.ar/topico/crecimiento/)).
+Argentina concentra buena parte de la producción en pocas jurisdicciones; mirar
+el PBG provincial sirve para ver si La Rioja se mueve al ritmo del NOA y del
+resto del país o se despega.
+
+Acá usamos el **VAB provincial a precios constantes de 2004** (CEPAL /
+Ministerio de Economía), que aproxima el PBG. Cada serie se expresa como
+**índice 2004 = 100**: 100 es el nivel de 2004; un valor de 127,7 en 2024
+significa que el producto real creció ~28% en ese lapso. Sirve para comparar
+**dinámicas**, no el tamaño absoluto del producto. El peso industrial se trata en
+la sección siguiente.
+
+```{r pbg-datos}
+library(readr)
+library(dplyr)
+
+pbg <- read_csv(
+  file.path(root, "data/inputs_md/15_pbg_region.csv"),
+  show_col_types = FALSE
+)
+anio_ult <- max(pbg$anio)
+anio_base <- 2004L
+anio_ant <- anio_ult - 1L
+anio_reciente <- 2019L
+
+fmt_n <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits, big.mark = ".")
+}
+fmt_pct <- function(x, digits = 1) {
+  format(round(100 * x, digits), decimal.mark = ",", nsmall = digits)
+}
+fmt_pct_chg <- function(x, digits = 1) {
+  paste0(
+    if (x >= 0) "+" else "",
+    format(round(x, digits), decimal.mark = ",", nsmall = digits),
+    "%"
+  )
+}
+fmt_pct_mag <- function(x, digits = 1) {
+  paste0(
+    format(round(abs(x), digits), decimal.mark = ",", nsmall = digits),
+    "%"
+  )
+}
+
+idx_en <- function(reg, anio) {
+  pbg %>%
+    filter(la_rioja_region == reg, anio == !!anio) %>%
+    pull(indice_2004)
+}
+
+pct_desde <- function(reg, anio_desde, anio_hasta = anio_ult) {
+  100 * (idx_en(reg, anio_hasta) / idx_en(reg, anio_desde) - 1)
+}
+
+pbg_ult <- pbg %>% filter(anio == anio_ult)
+pbg_lr <- pbg_ult %>% filter(la_rioja_region == "3. La Rioja")
+pbg_noa <- pbg_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+pbg_resto <- pbg_ult %>% filter(la_rioja_region == "1. Resto país")
+
+crec_lr_lp <- pct_desde("3. La Rioja", anio_base)
+crec_noa_lp <- pct_desde("2. NOA-Resto", anio_base)
+crec_resto_lp <- pct_desde("1. Resto país", anio_base)
+
+frase_largo_plazo <- paste0(
+  "Entre ", anio_base, " y ", anio_ult, ", el producto real de La Rioja creció ",
+  fmt_pct_chg(crec_lr_lp), ". En el mismo período, el NOA-Resto creció ",
+  fmt_pct_chg(crec_noa_lp), " y el resto del país ",
+  fmt_pct_chg(crec_resto_lp), "."
+)
+
+frase_indice_soporte <- paste0(
+  "En otras palabras: partiendo de la misma base (índice 2004 = 100), en ",
+  anio_ult, " La Rioja llegó a ", fmt_n(pbg_lr$indice_2004),
+  ", el NOA-Resto a ", fmt_n(pbg_noa$indice_2004),
+  " y el resto del país a ", fmt_n(pbg_resto$indice_2004), "."
+)
+
+crec_lr_yoy <- pct_desde("3. La Rioja", anio_ant, anio_ult)
+crec_noa_yoy <- pct_desde("2. NOA-Resto", anio_ant, anio_ult)
+crec_resto_yoy <- pct_desde("1. Resto país", anio_ant, anio_ult)
+
+frase_reciente_yoy <- paste0(
+  "En el último año disponible (", anio_ant, "→", anio_ult, "), La Rioja ",
+  if (abs(crec_lr_yoy) < 0.05) {
+    "casi no cambió"
+  } else if (crec_lr_yoy > 0) {
+    paste0("creció ", fmt_pct_chg(crec_lr_yoy))
+  } else {
+    paste0("cayó ", fmt_pct_mag(crec_lr_yoy))
+  },
+  " (NOA-Resto ",
+  if (abs(crec_noa_yoy) < 0.05) "casi sin cambio" else fmt_pct_chg(crec_noa_yoy),
+  "; resto del país ",
+  if (abs(crec_resto_yoy) < 0.05) "casi sin cambio" else fmt_pct_chg(crec_resto_yoy),
+  ")."
+)
+
+crec_lr_rec <- pct_desde("3. La Rioja", anio_reciente)
+crec_noa_rec <- pct_desde("2. NOA-Resto", anio_reciente)
+crec_resto_rec <- pct_desde("1. Resto país", anio_reciente)
+
+frase_reciente_2019 <- paste0(
+  "Mirando un tramo más reciente (desde ", anio_reciente, ", previo a la pandemia), ",
+  "La Rioja ",
+  if (abs(crec_lr_rec) < 0.05) {
+    "casi no cambió"
+  } else if (crec_lr_rec > 0) {
+    paste0("creció ", fmt_pct_chg(crec_lr_rec))
+  } else {
+    paste0("retrocedió ", fmt_pct_mag(crec_lr_rec))
+  },
+  "; el NOA-Resto ",
+  if (abs(crec_noa_rec) < 0.05) {
+    "casi no cambió"
+  } else if (crec_noa_rec > 0) {
+    paste0("creció ", fmt_pct_chg(crec_noa_rec))
+  } else {
+    paste0("retrocedió ", fmt_pct_mag(crec_noa_rec))
+  },
+  " y el resto del país ",
+  if (abs(crec_resto_rec) < 0.05) {
+    "casi no cambió"
+  } else if (crec_resto_rec > 0) {
+    paste0("creció ", fmt_pct_chg(crec_resto_rec))
+  } else {
+    paste0("retrocedió ", fmt_pct_mag(crec_resto_rec))
+  },
+  "."
+)
+
+frase_reciente_lectura <- if (crec_lr_yoy < crec_noa_yoy - 0.5 && crec_lr_yoy < crec_resto_yoy - 0.5) {
+  paste0(
+    "La caída interanual de ", anio_ult, " fue más marcada en La Rioja que en los ",
+    "agregados de comparación."
+  )
+} else if (crec_lr_rec < crec_resto_rec - 0.5 && crec_lr_rec <= crec_noa_rec + 0.5) {
+  paste0(
+    "En el tramo reciente, La Rioja se movió en línea con el NOA-Resto pero ",
+    "por debajo del resto del país."
+  )
+} else if (crec_lr_lp < crec_noa_lp - 0.5) {
+  paste0(
+    "En el largo plazo La Rioja quedó por debajo del NOA-Resto; en el tramo ",
+    "reciente conviene mirar el gráfico por la volatilidad post-pandemia."
+  )
+} else {
+  ""
+}
+
+pc <- read_csv(
+  file.path(root, "data/inputs_md/15_pbg_per_capita_por_provincia.csv"),
+  show_col_types = FALSE
+)
+pc_reg <- read_csv(
+  file.path(root, "data/inputs_md/15_pbg_per_capita_region.csv"),
+  show_col_types = FALSE
+)
+anio_pc_base <- min(pc_reg$anio, na.rm = TRUE)
+
+pc_lr <- pc %>% filter(anio == anio_ult, provincia == "La Rioja")
+pc_reg_ult <- pc_reg %>% filter(anio == anio_ult)
+pc_lr_reg <- pc_reg_ult %>% filter(la_rioja_region == "3. La Rioja")
+pc_noa_reg <- pc_reg_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+pc_resto_reg <- pc_reg_ult %>% filter(la_rioja_region == "1. Resto país")
+pc_lr_base <- pc %>% filter(anio == anio_pc_base, provincia == "La Rioja")
+
+fmt_n0 <- function(x) {
+  format(round(x, 0), big.mark = ".", decimal.mark = ",", scientific = FALSE)
+}
+fmt_idx100 <- function(x, digits = 0) {
+  format(round(100 * x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+pc_en <- function(reg, anio) {
+  pc_reg %>%
+    filter(la_rioja_region == reg, anio == !!anio) %>%
+    pull(pbg_per_capita)
+}
+
+pc_idx_en <- function(reg, anio) {
+  pc_reg %>%
+    filter(la_rioja_region == reg, anio == !!anio) %>%
+    pull(indice_base)
+}
+
+pc_pct_desde <- function(reg, anio_desde, anio_hasta = anio_ult) {
+  100 * (pc_en(reg, anio_hasta) / pc_en(reg, anio_desde) - 1)
+}
+
+frase_pc_nivel <- paste0(
+  "En ", anio_ult, ", el PBG por habitante de La Rioja fue ",
+  fmt_n0(pc_lr$pbg_per_capita), " pesos de 2004 por persona (NOA-Resto ",
+  fmt_n0(pc_noa_reg$pbg_per_capita), "; resto del país ",
+  fmt_n0(pc_resto_reg$pbg_per_capita), ")."
+)
+
+crec_pc_lr_lp <- pc_pct_desde("3. La Rioja", anio_pc_base)
+crec_pc_noa_lp <- pc_pct_desde("2. NOA-Resto", anio_pc_base)
+crec_pc_resto_lp <- pc_pct_desde("1. Resto país", anio_pc_base)
+
+frase_pc_largo_plazo <- paste0(
+  "Entre ", anio_pc_base, " y ", anio_ult, ", el PBG per cápita real de La Rioja ",
+  if (abs(crec_pc_lr_lp) < 0.05) {
+    "casi no cambió"
+  } else if (crec_pc_lr_lp > 0) {
+    paste0("creció ", fmt_pct_chg(crec_pc_lr_lp))
+  } else {
+    paste0("cayó ", fmt_pct_mag(crec_pc_lr_lp))
+  },
+  ". En el mismo período, el NOA-Resto ",
+  if (abs(crec_pc_noa_lp) < 0.05) {
+    "casi no cambió"
+  } else if (crec_pc_noa_lp > 0) {
+    paste0("creció ", fmt_pct_chg(crec_pc_noa_lp))
+  } else {
+    paste0("cayó ", fmt_pct_mag(crec_pc_noa_lp))
+  },
+  " y el resto del país ",
+  if (abs(crec_pc_resto_lp) < 0.05) {
+    "casi no cambió"
+  } else if (crec_pc_resto_lp > 0) {
+    paste0("creció ", fmt_pct_chg(crec_pc_resto_lp))
+  } else {
+    paste0("cayó ", fmt_pct_mag(crec_pc_resto_lp))
+  },
+  "."
+)
+
+frase_pc_indice_soporte <- paste0(
+  "La serie per cápita arranca en ", anio_pc_base,
+  " (índice ", anio_pc_base, " = 100). En ", anio_ult,
+  ", La Rioja está en ", fmt_n(pc_idx_en("3. La Rioja", anio_ult)),
+  ", el NOA-Resto en ", fmt_n(pc_idx_en("2. NOA-Resto", anio_ult)),
+  " y el resto del país en ", fmt_n(pc_idx_en("1. Resto país", anio_ult)), "."
+)
+
+frase_pc_relativo <- paste0(
+  "Respecto del PBG per cápita nacional (índice 100, ponderado por población), ",
+  "La Rioja se ubica en ", fmt_idx100(pc_lr$pbg_pc_relativo_nac),
+  " (en ", anio_pc_base, " era ", fmt_idx100(pc_lr_base$pbg_pc_relativo_nac), ")."
+)
+
+crec_pc_lr_yoy <- pc_pct_desde("3. La Rioja", anio_ant, anio_ult)
+crec_pc_noa_yoy <- pc_pct_desde("2. NOA-Resto", anio_ant, anio_ult)
+crec_pc_resto_yoy <- pc_pct_desde("1. Resto país", anio_ant, anio_ult)
+
+frase_pc_reciente_yoy <- paste0(
+  "En el último año (", anio_ant, "→", anio_ult, "), el PBG per cápita de La Rioja ",
+  if (abs(crec_pc_lr_yoy) < 0.05) {
+    "casi no cambió"
+  } else if (crec_pc_lr_yoy > 0) {
+    paste0("creció ", fmt_pct_chg(crec_pc_lr_yoy))
+  } else {
+    paste0("cayó ", fmt_pct_mag(crec_pc_lr_yoy))
+  },
+  " (NOA-Resto ",
+  if (abs(crec_pc_noa_yoy) < 0.05) "casi sin cambio" else fmt_pct_chg(crec_pc_noa_yoy),
+  "; resto del país ",
+  if (abs(crec_pc_resto_yoy) < 0.05) "casi sin cambio" else fmt_pct_chg(crec_pc_resto_yoy),
+  ")."
+)
+
+crec_pc_lr_rec <- pc_pct_desde("3. La Rioja", anio_reciente)
+crec_pc_noa_rec <- pc_pct_desde("2. NOA-Resto", anio_reciente)
+crec_pc_resto_rec <- pc_pct_desde("1. Resto país", anio_reciente)
+
+frase_pc_reciente_2019 <- paste0(
+  "Desde ", anio_reciente, " (previo a la pandemia), La Rioja ",
+  if (abs(crec_pc_lr_rec) < 0.05) {
+    "casi no cambió"
+  } else if (crec_pc_lr_rec > 0) {
+    paste0("creció ", fmt_pct_chg(crec_pc_lr_rec))
+  } else {
+    paste0("retrocedió ", fmt_pct_mag(crec_pc_lr_rec))
+  },
+  "; el NOA-Resto ",
+  if (abs(crec_pc_noa_rec) < 0.05) {
+    "casi no cambió"
+  } else if (crec_pc_noa_rec > 0) {
+    paste0("creció ", fmt_pct_chg(crec_pc_noa_rec))
+  } else {
+    paste0("retrocedió ", fmt_pct_mag(crec_pc_noa_rec))
+  },
+  " y el resto del país ",
+  if (abs(crec_pc_resto_rec) < 0.05) {
+    "casi no cambió"
+  } else if (crec_pc_resto_rec > 0) {
+    paste0("creció ", fmt_pct_chg(crec_pc_resto_rec))
+  } else {
+    paste0("retrocedió ", fmt_pct_mag(crec_pc_resto_rec))
+  },
+  "."
+)
+
+frase_pc_reciente_lectura <- if (crec_pc_lr_yoy < crec_pc_noa_yoy - 0.5 && crec_pc_lr_yoy < crec_pc_resto_yoy - 0.5) {
+  paste0(
+    "La caída interanual del PBG per cápita fue más fuerte en La Rioja que en ",
+    "los agregados de comparación."
+  )
+} else if (crec_pc_lr_lp < crec_pc_resto_lp - 0.5 && pc_lr$pbg_pc_relativo_nac < pc_lr_base$pbg_pc_relativo_nac - 0.01) {
+  paste0(
+    "En el largo plazo, La Rioja perdió terreno respecto del promedio nacional ",
+    "ponderado por población."
+  )
+} else {
+  ""
+}
+```
+
+```{r pbg-evol}
+mostrar("outputs/plots/15_pbg_evolucion.png")
+```
+
+**Lectura de largo plazo**
+
+- `r frase_largo_plazo`
+- `r frase_indice_soporte`
+
+**Lectura reciente**
+
+- `r frase_reciente_yoy`
+- `r frase_reciente_2019`
+`r if (nzchar(frase_reciente_lectura)) paste0("\n- ", frase_reciente_lectura) else ""`
+
+#### PBG per cápita
+
+Además de la **dinámica del producto total**, el VAB **por habitante** permite
+ver si La Rioja gana o pierde terreno frente al NOA y al resto del país cuando
+cambia la población. Son **pesos constantes de 2004** por persona (volumen
+real). La serie comparable arranca en **2010** (limitación de la proyección
+poblacional usada), con índice 2010 = 100.
+
+```{r pbg-pc-rel}
+mostrar("outputs/plots/15_pbg_per_capita_relativo.png")
+```
+
+**Nivel (`r anio_ult`)**
+
+- `r frase_pc_nivel`
+- `r frase_pc_relativo`
+
+**Lectura de largo plazo (`r anio_pc_base`→`r anio_ult`)**
+
+- `r frase_pc_largo_plazo`
+- `r frase_pc_indice_soporte`
+
+**Lectura reciente**
+
+- `r frase_pc_reciente_yoy`
+- `r frase_pc_reciente_2019`
+`r if (nzchar(frase_pc_reciente_lectura)) paste0("\n- ", frase_pc_reciente_lectura) else ""`
+
+#### Ranking provincial
+
+**¿La Rioja ganó o perdió posiciones frente a las otras 23 jurisdicciones?**
+Además del nivel y la variación, interesa la posición relativa: el siguiente
+bump chart ordena a las 24 provincias por PBG per cápita (pesos constantes de
+2004) en cada año de la serie 2010-`r anio_ult` y sigue el recorrido de cada
+una. La Rioja y las provincias del NOA-Resto se destacan en tonos de verde
+(La Rioja, en el más oscuro); el resto, en gris.
+
+```{r pbg-ranking}
+mostrar("outputs/plots/15_pbg_ranking_percapita.png")
+```
+
+### Ficha metodológica {#ficha-15-pbg}
+
+- **¿Qué mide?** Valor agregado bruto provincial (VAB) a precios básicos y
+  constantes de 2004, que aproxima el Producto Bruto Geográfico (PBG) de La
+  Rioja.
+- **¿Para qué sirve?** Seguir la dinámica de la economía provincial frente al
+  NOA-Resto y al resto del país. Permite comparar crecimiento real sin efecto
+  de la inflación.
+- **¿Qué nos dice?**
+  - *Si sube:* mayor actividad / producto en la jurisdicción (a precios de 2004).
+  - *Si baja:* contracción del VAB real.
+- **Comportamiento esperado:** indicador macro anual, cíclico; sensible a shocks
+  macro, sectoriales y demográficos.
+- **Unidad de medida:** millones de pesos constantes de 2004; índice 2004 = 100
+  (dinámica relativa).
+- **Fórmula de cálculo:** PBG ≈ suma del VAB por ramas (52 sectores CEPAL).
+  Agregados regionales = suma de VAB provincial.
+  Índice \(100 \times VAB_t / VAB_{2004}\) (dentro de cada grupo).
+- **Fuente de datos oficial:** CEPAL / Ministerio de Economía —
+  [Desagregación provincial del VAB, base 2004](https://repositorio.cepal.org/server/api/core/bitstreams/539fcce5-8977-4061-a222-fbfd7358a35f/content).
+  Scripts: `15_prep_pbg.R`, `15_pbg.R`.
+- **Frecuencia de actualización:** anual (cuando publiquen nueva versión del
+  Excel; serie 2004–2024 en el raw actual).
+- **Limitaciones:** VAB a precios básicos (no PIB a precios de mercado). El
+  índice compara dinámicas, no tamaño absoluto. Estimaciones CEPAL homogéneas
+  para comparar provincias; no sustituyen el PBG de la estadística provincial.
+  NOA-Resto y resto país son sumas; La Rioja es una sola jurisdicción.
+
+## Recursos propios / recursos totales
+
+**¿Qué parte del financiamiento tributario de La Rioja recauda la provincia de
+manera directa?**
+[Ficha metodológica](#ficha-16-recursos).
+
+Argentina es un país federal: Nación, provincias y municipios **comparten**
+facultades y recursos tributarios. Las provincias suelen ejecutar una porción
+del gasto mayor a la que recaudan de forma directa; la coparticipación federal
+y otras transferencias cubren gran parte de esa brecha. Importa precisar el
+lenguaje: los recursos coparticipables **son de las provincias** en el esquema
+federal; lo que distingue al indicador no es la “propiedad” del recurso, sino
+**quién lo recauda de manera directa**.
+
+El indicador no juzga por sí solo la “calidad” de la gestión: aproxima el peso
+de la **recaudación tributaria directa** de la provincia dentro del
+financiamiento tributario considerado (TOP + RON).
+
+**Metodología.** TOP = recursos tributarios de origen provincial (los que la
+provincia recauda de manera directa). RON = recursos de origen nacional
+(coparticipación y transferencias tributarias que la provincia no recauda
+directamente). Indicador = TOP / (TOP + RON). Agregado regional = suma de
+montos y luego el ratio. Fuente: Ministerio de Economía.
+
+```{r recursos-datos}
+library(readr)
+library(dplyr)
+
+rec <- read_csv(
+  file.path(root, "data/inputs_md/16_recursos_propios_region.csv"),
+  show_col_types = FALSE
+)
+
+anio_ult <- max(rec$anio)
+anio_ant <- anio_ult - 1L
+anio_ini <- min(rec$anio)
+
+fmt_pct <- function(x, digits = 1) {
+  format(round(100 * x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+rec_ult <- rec %>% filter(anio == anio_ult)
+rec_lr <- rec_ult %>% filter(la_rioja_region == "3. La Rioja")
+rec_noa <- rec_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+rec_resto <- rec_ult %>% filter(la_rioja_region == "1. Resto país")
+
+rec_lr_ant <- rec %>%
+  filter(anio == anio_ant, la_rioja_region == "3. La Rioja")
+rec_lr_ini <- rec %>%
+  filter(anio == anio_ini, la_rioja_region == "3. La Rioja")
+
+frase_nivel <- paste0(
+  "En ", anio_ult, ", La Rioja recaudó de manera directa el ",
+  fmt_pct(rec_lr$pct_propios),
+  "% del financiamiento tributario considerado (suma TOP + RON)."
+)
+
+frase_comp <- paste0(
+  "Ese nivel quedó por debajo del NOA-Resto (",
+  fmt_pct(rec_noa$pct_propios), "%) y del resto del país (",
+  fmt_pct(rec_resto$pct_propios),
+  "%): mayor peso relativo de la coparticipación y transferencias ",
+  "(recursos que la provincia no recauda de forma directa)."
+)
+
+frase_evo <- ""
+if (nrow(rec_lr_ant) == 1) {
+  delta_pp <- 100 * (rec_lr$pct_propios - rec_lr_ant$pct_propios)
+  frase_evo <- paste0(
+    "Respecto de ", anio_ant, " (",
+    fmt_pct(rec_lr_ant$pct_propios), "%), el indicador ",
+    if (abs(delta_pp) < 0.15) {
+      paste0("casi no cambió (", format(round(delta_pp, 1), decimal.mark = ","),
+             " puntos porcentuales).")
+    } else if (delta_pp > 0) {
+      paste0("subió ", format(round(delta_pp, 1), decimal.mark = ","),
+             " puntos porcentuales.")
+    } else {
+      paste0("bajó ", format(round(abs(delta_pp), 1), decimal.mark = ","),
+             " puntos porcentuales.")
+    }
+  )
+}
+
+frase_ini <- paste0(
+  "Al inicio de la serie comparable (", anio_ini, ") era ",
+  fmt_pct(rec_lr_ini$pct_propios), "%."
+)
+```
+
+```{r recursos}
+mostrar("outputs/plots/16_recursos_propios.png")
+```
+
+- `r frase_nivel`
+- `r frase_comp`
+- `r frase_evo` `r frase_ini`
+
+### Ficha metodológica {#ficha-16-recursos}
+
+- **¿Qué mide?** La participación de los recursos tributarios que la provincia
+  **recauda de manera directa** (TOP) sobre la suma de TOP y recursos de origen
+  nacional (RON: coparticipación y transferencias tributarias). “Propios” se
+  usa acá como sinónimo operativo de recaudación directa, no como juicio sobre
+  la titularidad federal del recurso: los recursos coparticipables son de las
+  provincias; lo que no hacen es recaudarlos directamente.
+- **¿Para qué sirve?** Aproxima el peso de la recaudación tributaria directa
+  en el financiamiento tributario considerado (TOP + RON).
+- **¿Qué nos dice?**
+  - *Si sube:* mayor peso de lo recaudado de forma directa por la provincia.
+  - *Si baja:* mayor peso relativo de RON (coparticipación y transferencias).
+- **Comportamiento esperado:** indicador estructural; cambios graduales salvo
+  reformas fiscales o shocks en transferencias.
+- **Unidad de medida:** porcentaje (%).
+- **Fórmula de cálculo:** TOP / (TOP + RON) × 100. Agregado regional = suma de
+  montos, luego ratio. *(El cálculo no cambia; solo se precisa el wording.)*
+- **Fuente de datos oficial:** Ministerio de Economía —
+  [TOP](https://www.argentina.gob.ar/sites/default/files/serie_top_1984_2024_1.xlsx),
+  [RON](https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.xlsx).
+  Scripts: `16_prep_recursos_propios.R`, `16_recursos_propios.R`.
+- **Frecuencia de actualización:** anual (intersección disponible ~2003–2024).
+- **Limitaciones:** solo recursos tributarios TOP + RON; no cubre
+  endeudamiento ni otros ingresos. Un ratio bajo no implica por sí solo mala
+  gestión: refleja también el diseño del federalismo fiscal y la estructura
+  productiva provincial. No es equivalente a ingresos totales APNF.
+
+## Resultado fiscal (APNF)
+
+**¿Los ingresos cubren los gastos en la provincia?**
+[Ficha metodológica](#ficha-17-fiscal).
+
+::: {.callout-note}
+## Versión provisoria
+
+El indicador **objetivo** del Monitor es expresar el resultado financiero y el
+primario como **porcentaje del PBG nominal provincial** (resultado / PBG
+nominal), para comparar el cierre fiscal con el tamaño de la economía en pesos
+corrientes.
+
+**Hoy** mostramos una versión **provisoria** sobre **ingresos totales APNF**
+(resultado / ingresos), porque:
+
+- las **ejecuciones presupuestarias** están publicadas (Ministerio de Economía);
+- la **serie de PBG nominal de La Rioja** está **en consulta con la provincia**;
+- el PBG del Monitor (CEPAL, precios constantes 2004) **no sirve** como
+  denominador de este indicador.
+
+Los gráficos y números de esta sección son **ilustrativos** hasta contar con
+PBG nominal compatible.
+:::
+
+Complemento del indicador anterior: no solo de dónde vienen los recursos, sino
+si las cuentas de la Administración Pública No Financiera (APNF) provincial
+cierran.
+
+Hay **dos lecturas** en la misma fuente (ejecuciones presupuestarias APNF):
+
+- **Resultado financiero** = ingresos totales − gastos totales. Los gastos
+  totales **incluyen el pago de intereses** de la deuda. Es el cierre “completo”
+  de las cuentas en esa definición.
+- **Resultado primario** = ingresos totales − gastos primarios. Los gastos
+  primarios son el gasto **sin intereses**. Muestra si la provincia cubre su
+  gasto de funcionamiento y política pública **antes** de pagar el servicio de
+  la deuda.
+
+Por eso pueden diverger: a veces el primario es menos negativo (o positivo) y
+el financiero es más negativo, porque los intereses pesan en el total.
+
+**Metodología (versión provisoria).** Ambos ratios se calculan sobre ingresos
+totales. Agregado regional = suma de ingresos y de gastos (totales o primarios,
+según el indicador), luego el ratio. Fuente: Ministerio de Economía. **Versión
+definitiva prevista:** mismo numerador (resultado), denominador = PBG nominal
+provincial.
+
+```{r fiscal-datos}
+library(readr)
+library(dplyr)
+
+fis <- read_csv(
+  file.path(root, "data/inputs_md/17_resultado_fiscal_region.csv"),
+  show_col_types = FALSE
+)
+
+anio_ult <- max(fis$anio)
+anio_ant <- anio_ult - 1L
+
+fmt_pct <- function(x, digits = 1) {
+  format(round(100 * x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+fis_ult <- fis %>% filter(anio == anio_ult)
+fis_lr <- fis_ult %>% filter(la_rioja_region == "3. La Rioja")
+fis_noa <- fis_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+fis_resto <- fis_ult %>% filter(la_rioja_region == "1. Resto país")
+
+fis_lr_ant <- fis %>%
+  filter(anio == anio_ant, la_rioja_region == "3. La Rioja")
+
+signo_txt <- function(x) {
+  if (x > 0.0005) "superávit" else if (x < -0.0005) "déficit" else "equilibrio"
+}
+
+frase_nivel <- paste0(
+  "En ", anio_ult, " (versión provisoria sobre ingresos), La Rioja cerró con ",
+  signo_txt(fis_lr$resultado_sobre_ingresos), " financiero equivalente al ",
+  fmt_pct(abs(fis_lr$resultado_sobre_ingresos)), "% de sus ingresos totales."
+)
+
+frase_comp <- paste0(
+  "En el mismo año, el NOA-Resto registró ",
+  signo_txt(fis_noa$resultado_sobre_ingresos), " (",
+  fmt_pct(abs(fis_noa$resultado_sobre_ingresos)),
+  "% de ingresos) y el resto del país ",
+  signo_txt(fis_resto$resultado_sobre_ingresos), " (",
+  fmt_pct(abs(fis_resto$resultado_sobre_ingresos)), "%)."
+)
+
+frase_yoy <- ""
+if (nrow(fis_lr_ant) == 1) {
+  frase_yoy <- paste0(
+    "Un año antes (", anio_ant, "), La Rioja había cerrado con ",
+    signo_txt(fis_lr_ant$resultado_sobre_ingresos), " del ",
+    fmt_pct(abs(fis_lr_ant$resultado_sobre_ingresos)), "% de ingresos."
+  )
+}
+
+frase_prim <- paste0(
+  "Mirando el resultado primario (gasto sin intereses), La Rioja registró ",
+  signo_txt(fis_lr$primario_sobre_ingresos), " del ",
+  fmt_pct(abs(fis_lr$primario_sobre_ingresos)),
+  "% de los ingresos: permite ver el cierre antes del pago de intereses."
+)
+```
+
+```{r fiscal}
+mostrar("outputs/plots/17_resultado_fiscal.png")
+```
+
+- `r frase_nivel`
+- `r frase_comp`
+- `r frase_yoy`
+- `r frase_prim`
+
+```{r fiscal-primario}
+mostrar("outputs/plots/17_resultado_fiscal_primario.png")
+```
+
+### Ficha metodológica {#ficha-17-fiscal}
+
+- **Estado:** versión **provisoria**. Objetivo del Monitor: resultado / **PBG
+  nominal** provincial. Lectura actual: resultado / **ingresos totales APNF**.
+- **¿Qué mide?** Dos saldos de la APNF provincial:
+  - *Financiero:* ingresos − gastos totales (**con** intereses).
+  - *Primario:* ingresos − gastos primarios (**sin** intereses).
+  En la versión provisoria, ambos se expresan como % de los ingresos totales.
+- **¿Para qué sirve?** Ver si las cuentas cierran y separar el efecto del
+  servicio de la deuda (intereses) del resto del gasto. La versión definitiva
+  permitirá comparar ese cierre con el **tamaño nominal del producto**.
+- **¿Qué nos dice?**
+  - *Ratio positivo:* superávit (ingresos > gastos en esa definición).
+  - *Ratio negativo:* déficit.
+  - *Primario mejor que financiero:* los intereses explican parte del
+    deterioro del resultado total.
+- **Comportamiento esperado:** serie anual; valores nominales (no deflactados).
+  Fluctúa con el ciclo y la ejecución presupuestaria.
+- **Unidad de medida:** porcentaje (%). Provisorio: % de ingresos totales.
+  Definitivo (previsto): % del PBG nominal provincial.
+- **Fórmula de cálculo (provisoria):** resultado financiero / ingresos totales;
+  resultado primario / ingresos totales. Agregado regional = suma de ingresos y
+  de gastos, luego ratio. **Fórmula objetivo:** resultado / PBG nominal
+  provincial (pendiente serie provincial).
+- **Fuente de datos oficial:** Ministerio de Economía — ejecuciones
+  presupuestarias provinciales (APNF). Scripts: `17_prep_resultado_fiscal.R`,
+  `17_resultado_fiscal.R`. **Pendiente:** PBG nominal La Rioja (consulta a la
+  provincia).
+- **Frecuencia de actualización:** anual.
+- **Limitaciones:** APNF no es todo el sector público consolidado. El ratio no
+  sustituye un análisis de deuda, caja ni calidad del gasto. No confundir con
+  TOP/RON (recursos tributarios). **No usar** el PBG CEPAL (2004 constante) como
+  denominador. La versión sobre ingresos **no sustituye** la versión sobre PBG
+  nominal.
+
+# Desarrollo
+
+`r tufte::newthought("Más allá del crecimiento")` del producto, este bloque mira **cómo se produce**,
+cómo se **inserta** la provincia y qué pasa con el **bienestar**: composición
+del PBG (industria y rubros), exportaciones, cantidad de empresas formales,
+nivel educativo y trayectoria escolar, y pobreza por NBI.
+
+*Esta agrupación sigue la línea de
+[Argendata — Desarrollo](https://argendata.fund.ar/categorias/desarrollo/)
+(estructura productiva, comercio exterior, educación / desarrollo humano y
+pobreza).*
+
+## % del PBG industrial
+
+**¿Qué peso tiene la industria en el PBG?**
+[Ficha metodológica](#ficha-15-industrial).
+
+En Argentina la industria manufacturera es el principal componente de los
+bienes dentro del PIB nacional (del orden del 19% del PIB en la lectura de
+Argendata). A escala provincial el peso cambia mucho: en el centro suele ser
+más alto; en el norte, en promedio, más bajo. El indicador siguiente mide la
+participación de la industria (letra D, CIIU Rev. 3) en el VAB regional a
+precios de 2004 —misma fuente que el PBG del Monitor— para ver dónde se ubica
+La Rioja frente al NOA-Resto y al resto del país.
+
+```{r pbg-ind-datos}
+library(readr)
+library(dplyr)
+ind <- read_csv(
+  file.path(root, "data/inputs_md/15_pbg_pct_industrial_region.csv"),
+  show_col_types = FALSE
+)
+anio_ult <- max(ind$anio)
+fmt_pct <- function(x, digits = 1) {
+  format(round(100 * x, digits), decimal.mark = ",", nsmall = digits)
+}
+ind_ult <- ind %>% filter(anio == anio_ult)
+ind_lr <- ind_ult %>% filter(la_rioja_region == "3. La Rioja")
+ind_noa <- ind_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+ind_resto <- ind_ult %>% filter(la_rioja_region == "1. Resto país")
+```
+
+```{r pbg-ind}
+mostrar("outputs/plots/15_pbg_pct_industrial.png")
+```
+
+- En `r anio_ult`, la industria representó el
+  `r fmt_pct(ind_lr$pct_industrial)`% del PBG de La Rioja
+  (`r fmt_pct(ind_noa$pct_industrial)`% en NOA-Resto;
+  `r fmt_pct(ind_resto$pct_industrial)`% en el resto del país).
+
+### Ficha metodológica {#ficha-15-industrial}
+
+- **¿Qué mide?** Participación de la industria manufacturera (letra D, CIIU
+  Rev. 3) en el VAB / PBG regional a precios de 2004.
+- **¿Para qué sirve?** Ver si la economía provincial se industrializa, se
+  estabiliza o se tertiariza.
+- **¿Qué nos dice?**
+  - *Si sube:* mayor peso industrial en el producto (relativo a otros sectores).
+  - *Si baja:* menor peso industrial (puede ser caída industrial o mayor
+    crecimiento de otros sectores).
+- **Comportamiento esperado:** indicador estructural; cambios graduales,
+  también afectado por ciclos sectoriales.
+- **Unidad de medida:** porcentaje (%) del VAB provincial (precios constantes
+  de 2004).
+- **Fórmula de cálculo:** peso industrial = (VAB industria manufacturera /
+  VAB total) × 100.
+- **Fuente de datos oficial:** CEPAL / Ministerio de Economía (misma fuente
+  PBG). Scripts: `15_prep_pbg.R`, `15_pbg.R`.
+- **Frecuencia de actualización:** anual.
+- **Limitaciones:** share ≠ nivel absoluto de industria. No desagrega ramas
+  industriales. Precios constantes 2004. No confundir caída del share con
+  caída absoluta del VAB industrial: puede bajar el peso porque otros sectores
+  crecieron más.
+
+### ¿Cómo se compone el PBG por rubro?
+
+*Complemento analítico* (misma fuente CEPAL): participación sectorial del PBG
+a precios de 2004 en el último año disponible. Permite ver qué rubros explican
+el producto provincial, al estilo de la lectura estructural de
+[Argendata](https://argendata.fund.ar/topico/estructura-productiva/).
+
+```{r pbg-est-datos}
+library(readr)
+library(dplyr)
+est <- read_csv(
+  file.path(root, "data/inputs_md/15_pbg_estructura_region.csv"),
+  show_col_types = FALSE
+)
+anio_est <- max(est$anio)
+est_lr <- est %>%
+  filter(anio == anio_est, la_rioja_region == "3. La Rioja", share > 0) %>%
+  arrange(desc(share))
+fmt_pct_est <- function(x, digits = 1) {
+  format(round(100 * x, digits), decimal.mark = ",", nsmall = digits)
+}
+top_rubros <- est_lr %>%
+  slice_head(n = 4) %>%
+  mutate(txt = paste0(letra_desc, " (", fmt_pct_est(share), "%)")) %>%
+  pull(txt)
+frase_rubros <- paste0(
+  "En ", anio_est, ", los cuatro rubros con mayor peso en La Rioja fueron: ",
+  paste(top_rubros, collapse = "; "), "."
+)
+```
+
+```{r pbg-est}
+mostrar("outputs/plots/15_pbg_estructura.png")
+```
+
+- `r frase_rubros`
+
+## Exportaciones
+
+**¿Cuánto exporta La Rioja?**
+[Ficha metodológica](#ficha-14-exportaciones).
+
+Durante los últimos 150 años, el mundo vivió un proceso de integración económica
+cada vez más profundo. Los países comenzaron a comerciar más entre sí, en un
+contexto de creciente interconexión global. Esta expansión del comercio
+internacional transformó la forma en que se distribuyen bienes y servicios, y
+marcó uno de los grandes cambios de la historia moderna. Aunque en los últimos
+años esa interconexión parece haber llegado a un límite, el proceso de apertura
+y vinculación económica internacional sigue siendo, en perspectiva histórica,
+una de las fuerzas más importantes que moldearon —y siguen moldeando— la
+economía mundial.
+
+Argentina tuvo momentos en los que pudo acoplarse virtuosamente a esta
+tendencia y otros en los que no. Las exportaciones argentinas crecieron
+notablemente hasta la década de 1910. Pero desde entonces, y particularmente
+desde mediados del siglo XX, el país viene perdiendo participación en las
+exportaciones mundiales.
+
+**Metodología.** El indicador mide las exportaciones de la provincia,
+entendidas como su capacidad para vender bienes al resto del mundo. La fuente
+es Origen Provincial de las Exportaciones (OPEX–INDEC), en millones de dólares.
+Los montos se agregan por **suma** (no promedio) en tres grupos: La Rioja, el
+resto del NOA (Catamarca, Jujuy, Salta, Santiago del Estero y Tucumán) y el
+resto del país. Los períodos recientes pueden ser provisionales.
+
+Para evitar distorsiones por escala: en valores absolutos La Rioja exporta en
+el orden de los cientos de millones de USD; el resto del NOA, miles de
+millones; el resto del país, decenas de miles de millones. Un gráfico en
+millones con eje compartido aplasta la serie riojana; paneles con ejes libres
+muestran cada trayectoria pero no si la provincia evoluciona por encima o por
+debajo de la región. Por eso se usa un **índice 2015 = 100** (dinámica
+relativa), complementado con la **participación** sobre la suma OPEX de las 24
+jurisdicciones y con la **composición** por subrubros (treemap).
+
+```{r exp-ultimo}
+library(readr)
+library(dplyr)
+library(stringr)
+
+idx <- read_csv(
+  file.path(root, "data/inputs_md/14_exportaciones_indice_2015_region.csv"),
+  show_col_types = FALSE
+)
+prov <- read_csv(
+  file.path(root, "data/inputs_md/14_exportaciones_por_provincia.csv"),
+  show_col_types = FALSE
+)
+sub <- read_csv(
+  file.path(root, "data/inputs_md/14_exportaciones_subrubros_region.csv"),
+  show_col_types = FALSE
+)
+
+anio_ult <- max(idx$anio)
+anio_base <- 2015L
+
+lr <- idx %>% filter(anio == anio_ult, la_rioja_region == "3. La Rioja")
+noa <- idx %>% filter(anio == anio_ult, la_rioja_region == "2. NOA-Resto")
+resto <- idx %>% filter(anio == anio_ult, la_rioja_region == "1. Resto país")
+lr_ant <- idx %>%
+  filter(anio == anio_ult - 1L, la_rioja_region == "3. La Rioja")
+lr_2015 <- idx %>%
+  filter(anio == anio_base, la_rioja_region == "3. La Rioja")
+noa_2015 <- idx %>%
+  filter(anio == anio_base, la_rioja_region == "2. NOA-Resto")
+
+var_yoy <- if (nrow(lr_ant) == 1) {
+  100 * (lr$exportaciones_millones_usd / lr_ant$exportaciones_millones_usd - 1)
+} else {
+  NA_real_
+}
+var_vs_2015 <- 100 * (lr$indice_2015 / 100 - 1)
+crec_noa_vs_2015 <- noa$indice_2015 - 100
+crec_resto_vs_2015 <- resto$indice_2015 - 100
+
+fmt_pct <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits)
+}
+fmt_usd <- function(x, digits = 0) {
+  format(round(x, digits), big.mark = ".", decimal.mark = ",",
+         nsmall = digits, scientific = FALSE)
+}
+fmt_share <- function(x, digits = 2) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+## Ranking provincial (último año).
+rank_df <- prov %>%
+  filter(anio == anio_ult) %>%
+  arrange(desc(exportaciones_millones_usd)) %>%
+  mutate(puesto = row_number())
+rank_lr <- rank_df %>% filter(jurisdiccion == "La Rioja")
+n_prov <- nrow(rank_df)
+
+frase_yoy <- if (is.na(var_yoy)) {
+  ""
+} else if (abs(var_yoy) < 1) {
+  paste0(
+    "Respecto de ", anio_ult - 1L, " (",
+    fmt_usd(lr_ant$exportaciones_millones_usd),
+    " millones de USD), casi sin cambios (", fmt_pct(var_yoy), "%)."
+  )
+} else if (var_yoy > 0) {
+  paste0(
+    "Respecto de ", anio_ult - 1L, " (",
+    fmt_usd(lr_ant$exportaciones_millones_usd),
+    " millones de USD), crecieron ", fmt_pct(var_yoy), "%."
+  )
+} else {
+  paste0(
+    "Respecto de ", anio_ult - 1L, " (",
+    fmt_usd(lr_ant$exportaciones_millones_usd),
+    " millones de USD), cayeron ", fmt_pct(abs(var_yoy)), "%."
+  )
+}
+
+frase_indice <- paste0(
+  "Con índice 2015 = 100, al cierre de ", anio_ult, " La Rioja se ubicó en ",
+  round(lr$indice_2015), " (caída de cerca de ",
+  fmt_pct(abs(var_vs_2015)), "% respecto de 2015), frente a ",
+  round(noa$indice_2015), " en el NOA-Resto y ",
+  round(resto$indice_2015), " en el resto del país (crecimiento cercano al ",
+  fmt_pct((crec_noa_vs_2015 + crec_resto_vs_2015) / 2),
+  "% respecto de 2015 en esos agregados)."
+)
+
+frase_share <- paste0(
+  "La participación de La Rioja sobre la suma OPEX de las 24 jurisdicciones ",
+  "pasó de ", fmt_share(lr_2015$share_nacional_pct), "% en ", anio_base,
+  " a ", fmt_share(lr$share_nacional_pct), "% en ", anio_ult,
+  ". En el mismo tramo, el resto del NOA se mantuvo en torno al ",
+  fmt_share(noa$share_nacional_pct, 1), "% (",
+  fmt_share(noa_2015$share_nacional_pct, 1), "% en ", anio_base, ")."
+)
+
+## Top 3 subrubros (último año) — concentración.
+acortar_rubro_txt <- function(x) {
+  x %>%
+    str_replace(
+      "^Preparados de hortalizas, legumbres y frutas$",
+      "preparados de hortalizas y frutas"
+    ) %>%
+    str_replace("^Grasas y aceites$", "grasas/aceites") %>%
+    str_replace(
+      "^Papel, cartón, impresos y publicaciones$",
+      "papel/cartón"
+    ) %>%
+    str_replace("^Productos químicos y conexos$", "productos químicos") %>%
+    str_replace("^Semillas y frutos oleaginosos$", "oleaginosas") %>%
+    str_replace(
+      "^Residuos y desperdicios de la industria alimentaria$",
+      "residuos de industrias alimentarias"
+    )
+}
+
+top3 <- sub %>%
+  filter(anio == anio_ult) %>%
+  group_by(la_rioja_region) %>%
+  slice_max(share_pct, n = 3, with_ties = FALSE) %>%
+  summarise(
+    top3_pct = sum(share_pct),
+    labels = paste(acortar_rubro_txt(subrubro), collapse = ", "),
+    .groups = "drop"
+  )
+top3_lr <- top3 %>% filter(la_rioja_region == "3. La Rioja")
+top3_noa <- top3 %>% filter(la_rioja_region == "2. NOA-Resto")
+top3_resto <- top3 %>% filter(la_rioja_region == "1. Resto país")
+## Referencia “demás agregados” del Word (~35%): media NOA / resto país.
+top3_otros_pct <- mean(c(top3_noa$top3_pct, top3_resto$top3_pct))
+```
+
+**¿Qué nos dice el último dato (`r anio_ult`)?**
+
+- Durante `r anio_ult`, La Rioja registró exportaciones por
+  `r fmt_usd(lr$exportaciones_millones_usd)` millones de USD, el
+  `r fmt_share(lr$share_nacional_pct)`% de la suma nacional OPEX
+  (aproximadamente `r fmt_usd(lr$total_nacional_millones_usd)` millones de USD).
+- `r frase_yoy` Ese resultado ubica a La Rioja en el puesto
+  `r rank_lr$puesto` de las `r n_prov` jurisdicciones.
+- `r frase_indice`
+- `r frase_share`
+
+```{r exp-plots}
+mostrar("outputs/plots/14_exportaciones_totales_region.png")
+mostrar("outputs/plots/14_exportaciones_indice_2015_region.png")
+mostrar("outputs/plots/14_exportaciones_share_nacional_region.png")
+```
+
+El gráfico de índice homologa la unidad de medida para los tres grupos (2015 =
+100). Un valor mayor a 100 indica un nivel de exportaciones superior al de
+2015; uno menor, una contracción. Al cierre de `r anio_ult`: La Rioja
+(`r round(lr$indice_2015)`), NOA-Resto (`r round(noa$indice_2015)`) y resto del
+país (`r round(resto$indice_2015)`).
+
+**¿En qué se concentra lo que exporta La Rioja?**
+
+### Estructura y perfil de la canasta exportadora
+
+La Rioja presenta una mayor concentración exportadora en comparación con el
+resto del NOA y el resto del país: sus tres principales rubros
+(`r top3_lr$labels`) concentran aproximadamente el
+`r fmt_pct(top3_lr$top3_pct, 0)`% del total publicado, frente a un ~
+`r fmt_pct(top3_otros_pct, 0)`% registrado en los demás agregados
+territoriales. Esta elevada concentración incrementa la exposición de la
+provincia a impactos o fluctuaciones específicas en dichos sectores.
+
+La estructura del perfil exportador exhibe marcadas diferencias regionales.
+El resto de las provincias del NOA integra productos químicos, cereales,
+oleaginosas y minería, complementados por hortalizas y tabaco. El resto del
+país responde al patrón clásico agroexportador y energético, encabezado por
+cereales, residuos de las industrias alimentarias, grasas y aceites, material
+de transporte y petróleo.
+
+La Rioja se fundamenta en la agroindustria elaborada, aceites y papel/cartón,
+destacándose por la casi nula participación de los sectores cerealero y
+minero-energético en lo publicado. Que OPEX no publique un bloque minero
+desagregado no prueba cero minería (puede ser residual o confidencialidad).
+
+```{r exp-comp}
+mostrar("outputs/plots/14_exportaciones_treemap_subrubros_facet.png")
+```
+
+La etiqueta “No desagregado” del treemap es la diferencia entre el total
+provincial OPEX del grupo y la suma de los subrubros que sí vienen con monto
+(no es un rubro publicado por OPEX; puede incluir confidencialidad u otros
+ítems no publicados). Ítems con participación menor al 4% se agrupan en
+“Otros”.
+
+### Ficha metodológica {#ficha-14-exportaciones}
+
+- **¿Qué mide?** El valor de los bienes con origen provincial despachados al
+  exterior (millones de USD FOB en OPEX). En el Monitor: nivel, índice
+  2015 = 100, participación sobre las 24 jurisdicciones y composición por
+  subrubros.
+- **¿Para qué sirve?** Aproxima la inserción internacional de la economía
+  provincial y el peso relativo de sus complejos exportadores.
+- **¿Qué nos dice?**
+  - *Si sube:* mayor venta externa (demanda, precios, volumen o mix de
+    productos).
+  - *Si baja:* menor inserción medida por OPEX (competitividad, precios,
+    clima, o reasignación de origen en el registro).
+- **Comportamiento esperado:** sensible a cotizaciones internacionales y a la
+  estacionalidad agrícola; la serie anual suaviza parte de esa estacionalidad.
+- **Unidad de medida:** millones de USD. El índice es adimensional (2015 = 100);
+  el share es %.
+- **Fórmula de cálculo:** agregación regional = **suma** de millones USD.
+  Índice \(100 \times X_t / X_{2015}\). Share = grupo / suma de totales de las
+  24 jurisdicciones × 100 (no usar la suma de subrubros parciales).
+- **Fuente:** INDEC – OPEX —
+  [página](https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-2-79). Archivo
+  típico: `sh_opex_principales_grubros_1993_XXXX.xls`. Scripts:
+  `14_prep_exportaciones.R`, `14_prep_exportaciones_subrubros.R`,
+  `14_prep_exportaciones_indice.R`, `14_exportaciones_*.R`.
+- **Frecuencia:** anual (años recientes pueden ser provisorios).
+- **Limitaciones:** solo bienes. Subrubros publicados no siempre cierran el
+  100%. Minería puede no aparecer desagregada para La Rioja. Hay subregistro
+  posible si PyMEs consolidan o venden a exportadores de otras provincias: OPEX
+  puede atribuir el origen según aduana o casa matriz. No confundir con SIPA.
+
+## Cantidad de empresas
+
+**¿Cuántas empresas hay en La Rioja?**
+[Ficha metodológica](#ficha-07-empresas).
+
+Las empresas están en el centro de la vida económica: generan empleo, ingresos
+y capacidades productivas. Desde la década de 1990 hasta la actualidad, la
+creación y destrucción de empresas estuvo fuertemente ligada a los ciclos
+económicos del país. El Monitor permite medir este impacto para diseñar
+herramientas de contención local.
+
+Para el Gobierno de La Rioja, las empresas son un eje del desarrollo
+provincial: generan empleo, inversión y capacidades locales, y contribuyen a
+diversificar una estructura económica históricamente desigual. En este marco,
+el Estado asume un rol activo, tanto acompañando al sector privado como
+interviniendo mediante empresas públicas en áreas estratégicas como energía,
+alimentos, conectividad, transporte y servicios esenciales. Esta estrategia se
+complementa con políticas de apoyo al sector privado —financiamiento a PyMEs,
+promoción industrial, beneficios fiscales e infraestructura—. En un contexto
+nacional de retracción económica, la política provincial también busca
+sostener el entramado productivo, preservar el empleo y promover nuevas
+inversiones, articulando iniciativa pública y privada.
+
+**Metodología.** Evolución de la cantidad de empresas en la provincia de La
+Rioja a partir de la Superintendencia de Riesgos del Trabajo (SRT), que
+contempla empresas públicas y privadas. La fuente considera empresa a cualquier
+persona física o jurídica con al menos un empleado registrado en relación de
+dependencia (se excluye personal doméstico / casas particulares). Serie por
+jurisdicción según ubicación de la persona trabajadora (UP), Cuadro 6.2. En
+los gráficos comparativos, NOA-Resto y Resto país son **suma** de empresas de
+las provincias del grupo (no promedio).
+
+```{r empresas-datos}
+library(readr)
+library(dplyr)
+library(stringr)
+
+emp_j <- read_csv(
+  file.path(root, "data/inputs_md/07_serie_empresas_por_jurisdiccion.csv"),
+  show_col_types = FALSE
+) %>%
+  mutate(fecha = as.Date(fecha))
+
+mes_es_low <- c(
+  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+)
+label_mes <- function(f) {
+  paste(mes_es_low[as.integer(format(f, "%m"))], format(f, "%Y"))
+}
+fmt_n <- function(x) {
+  format(as.integer(round(x)), big.mark = ".", scientific = FALSE)
+}
+fmt_pp <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits)
+}
+fmt_pct <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+fecha_ult <- max(emp_j$fecha)
+fecha_ant_mes <- seq(fecha_ult, by = "-1 month", length.out = 2)[2]
+fecha_ant_anio <- seq(fecha_ult, by = "-1 year", length.out = 2)[2]
+## Referencia del Word de análisis (asunción del gobierno nacional).
+fecha_ref_nac <- as.Date("2023-11-01")
+
+lr <- emp_j %>%
+  filter(jurisdiccion == "La Rioja") %>%
+  arrange(fecha)
+
+lr_ult <- lr %>% filter(fecha == fecha_ult)
+lr_mes <- lr %>% filter(fecha == fecha_ant_mes)
+lr_anio <- lr %>% filter(fecha == fecha_ant_anio)
+lr_ref <- lr %>% filter(fecha == fecha_ref_nac)
+lr_pico <- lr %>% slice_max(empresas, n = 1, with_ties = FALSE)
+
+n_ult <- lr_ult$empresas
+delta_mes <- n_ult - lr_mes$empresas
+pct_mes <- 100 * delta_mes / lr_mes$empresas
+delta_anio <- n_ult - lr_anio$empresas
+pct_anio <- 100 * delta_anio / lr_anio$empresas
+delta_ref <- n_ult - lr_ref$empresas
+pct_ref <- 100 * delta_ref / lr_ref$empresas
+delta_pico <- n_ult - lr_pico$empresas
+pct_pico <- 100 * delta_pico / lr_pico$empresas
+meses_desde_pico <- (as.integer(format(fecha_ult, "%Y")) -
+  as.integer(format(lr_pico$fecha, "%Y"))) * 12L +
+  (as.integer(format(fecha_ult, "%m")) -
+    as.integer(format(lr_pico$fecha, "%m")))
+
+## Rachas de caída mensual e interanual en La Rioja.
+d_mes <- diff(lr$empresas)
+racha_mes <- 0L
+for (i in rev(seq_along(d_mes))) {
+  if (d_mes[i] < 0) racha_mes <- racha_mes + 1L else break
+}
+d_yoy <- lr$empresas - dplyr::lag(lr$empresas, 12)
+racha_yoy <- 0L
+for (i in rev(seq_along(d_yoy))) {
+  v <- d_yoy[i]
+  if (!is.na(v) && v < 0) racha_yoy <- racha_yoy + 1L else break
+}
+
+## Conteo de provincias (24 jurisdicciones) en caída / alza.
+wide_ult <- emp_j %>% filter(fecha == fecha_ult) %>%
+  select(jurisdiccion, n_ult = empresas)
+wide_mes <- emp_j %>% filter(fecha == fecha_ant_mes) %>%
+  select(jurisdiccion, n_mes = empresas)
+wide_anio <- emp_j %>% filter(fecha == fecha_ant_anio) %>%
+  select(jurisdiccion, n_anio = empresas)
+wide_ref <- emp_j %>% filter(fecha == fecha_ref_nac) %>%
+  select(jurisdiccion, n_ref = empresas)
+
+comp <- wide_ult %>%
+  left_join(wide_mes, by = "jurisdiccion") %>%
+  left_join(wide_anio, by = "jurisdiccion") %>%
+  left_join(wide_ref, by = "jurisdiccion") %>%
+  mutate(
+    mom = n_ult - n_mes,
+    yoy = n_ult - n_anio,
+    desde_ref = n_ult - n_ref
+  )
+
+n_prov <- nrow(comp)
+n_mom_baja <- sum(comp$mom < 0, na.rm = TRUE)
+n_mom_sube <- sum(comp$mom > 0, na.rm = TRUE)
+n_yoy_baja <- sum(comp$yoy < 0, na.rm = TRUE)
+n_ref_baja <- sum(comp$desde_ref < 0, na.rm = TRUE)
+
+frase_nivel <- paste0(
+  "En La Rioja hay actualmente ", fmt_n(n_ult),
+  " empresas formales (", label_mes(fecha_ult),
+  "). Es decir, unidades productivas registradas que emplean al menos a un ",
+  "trabajador asalariado."
+)
+
+frase_pico <- if (delta_pico < 0) {
+  paste0(
+    "Esta cifra marca una caída respecto al pico alcanzado en ",
+    label_mes(lr_pico$fecha), ", cuando había ", fmt_n(lr_pico$empresas),
+    " empresas."
+  )
+} else {
+  paste0(
+    "El máximo de la serie es el nivel actual (", label_mes(fecha_ult), ", ",
+    fmt_n(n_ult), " empresas)."
+  )
+}
+
+if (delta_mes < 0) {
+  frase_mom <- paste0(
+    "El indicador registra una contracción mensual de ",
+    fmt_pct(abs(pct_mes)), "% (", fmt_n(abs(delta_mes)),
+    " empresas menos respecto de ", label_mes(fecha_ant_mes), ")"
+  )
+  if (racha_mes > 1L) {
+    frase_mom <- paste0(
+      frase_mom, " y arrastra ", racha_mes,
+      " meses consecutivos de caída mensual."
+    )
+  } else {
+    frase_mom <- paste0(frase_mom, ".")
+  }
+} else if (delta_mes > 0) {
+  frase_mom <- paste0(
+    "El indicador registra un aumento mensual de ",
+    fmt_pct(pct_mes), "% (", fmt_n(delta_mes),
+    " empresas más respecto de ", label_mes(fecha_ant_mes), ")."
+  )
+} else {
+  frase_mom <- paste0(
+    "Respecto de ", label_mes(fecha_ant_mes),
+    ", la cantidad de empresas no cambió."
+  )
+}
+
+if (delta_anio < 0) {
+  frase_yoy <- paste0(
+    "Con respecto a ", label_mes(fecha_ant_anio), ", se registraron ",
+    fmt_n(abs(delta_anio)), " empresas menos (baja de ",
+    fmt_pct(abs(pct_anio)), "%)."
+  )
+  if (racha_yoy > 1L) {
+    frase_yoy <- paste0(
+      frase_yoy, " Con esta se acumulan ", racha_yoy,
+      " caídas interanuales consecutivas."
+    )
+  }
+} else if (delta_anio > 0) {
+  frase_yoy <- paste0(
+    "Con respecto a ", label_mes(fecha_ant_anio), ", hay ",
+    fmt_n(delta_anio), " empresas más (alza de ",
+    fmt_pct(pct_anio), "%)."
+  )
+} else {
+  frase_yoy <- paste0(
+    "Respecto de ", label_mes(fecha_ant_anio),
+    ", la cantidad de empresas no cambió."
+  )
+}
+
+if (delta_ref < 0) {
+  frase_ref <- paste0(
+    "Desde noviembre de 2023 (asunción del gobierno nacional) se perdieron ",
+    fmt_n(abs(delta_ref)), " empresas, un ", fmt_pct(abs(pct_ref)),
+    "% del total."
+  )
+} else if (delta_ref > 0) {
+  frase_ref <- paste0(
+    "Desde noviembre de 2023 (asunción del gobierno nacional) se sumaron ",
+    fmt_n(delta_ref), " empresas, un ", fmt_pct(pct_ref), "% del total."
+  )
+} else {
+  frase_ref <- paste0(
+    "Desde noviembre de 2023 (asunción del gobierno nacional) la cantidad ",
+    "de empresas no cambió."
+  )
+}
+
+if (delta_pico < 0) {
+  frase_desde_pico <- paste0(
+    "Al pasar de ", fmt_n(lr_pico$empresas), " empresas (",
+    label_mes(lr_pico$fecha), ") a ", fmt_n(n_ult), " empresas (",
+    label_mes(fecha_ult), "), la provincia registró una pérdida neta de ",
+    fmt_n(abs(delta_pico)), " empresas. Esto representa una reducción del ",
+    fmt_pct(abs(pct_pico)), "% de su tejido empresarial formal en un período de ",
+    meses_desde_pico, " meses."
+  )
+} else if (delta_pico == 0) {
+  frase_desde_pico <- paste0(
+    "El nivel actual (", label_mes(fecha_ult), ", ", fmt_n(n_ult),
+    " empresas) coincide con el máximo de la serie."
+  )
+} else {
+  frase_desde_pico <- paste0(
+    "El nivel actual supera el máximo previo de la serie."
+  )
+}
+```
+
+```{r emp}
+mostrar("outputs/plots/11_empresas_jurisdiccion.png")
+```
+
+- `r frase_nivel`
+- `r frase_pico`
+- `r frase_mom`
+- `r frase_yoy`
+- `r frase_ref`
+- `r frase_desde_pico`
+
+**¿Y en las provincias?**
+
+Hay dos factores clave que explican la distribución geográfica de las empresas
+en Argentina: la población y la riqueza. En líneas generales, las
+jurisdicciones más pobladas (como Buenos Aires, Córdoba, Santa Fe y CABA)
+concentran también la mayor cantidad de empresas.
+
+- `r n_mom_baja` de las `r n_prov` provincias muestran una caída intermensual.
+- `r n_yoy_baja` de las `r n_prov` provincias muestran una caída interanual.
+- `r n_ref_baja` de las `r n_prov` provincias muestran una caída desde
+  noviembre de 2023.
+- En el último mes, crecieron `r n_mom_sube` provincias.
+
+### Ficha metodológica {#ficha-07-empresas}
+
+- **¿Qué mide?** La cantidad total de firmas, empresas, sociedades o personas
+  físicas formalmente registradas ante la seguridad social que declaran tener
+  al menos un trabajador en relación de dependencia en la provincia de La
+  Rioja.
+- **¿Para qué sirve?** Indicador del dinamismo del tejido productivo formal.
+  Permite monitorear la evolución de la actividad empresarial, evaluar el
+  impacto de programas de promoción económica y analizar la capacidad del
+  sector privado para generar empleo formal.
+- **¿Qué nos dice?**
+  - *Si sube:* mayor dinamismo empresarial, creación de unidades productivas,
+    formalización, potencial aumento de oportunidades de empleo.
+  - *Si baja:* reducción del tejido empresarial formal, cierre de
+    establecimientos, posible desplazamiento hacia actividades no registradas.
+- **Comportamiento esperado:** indicador estructural, con cambios graduales.
+  Su evolución está asociada al contexto macroeconómico, el financiamiento,
+  las expectativas de inversión y el clima de negocios.
+- **Unidad de medida:** cantidad de empresas empleadoras registradas.
+- **Fórmula de cálculo:** cantidad de empresas = suma de CUIT empleadores
+  activos (según definición SRT). Agregado regional = suma de empresas de las
+  provincias del grupo.
+- **Fuente:** Superintendencia de Riesgos del Trabajo (SRT), serie histórica
+  según jurisdicción — ubicación de la persona trabajadora (UP). Excel
+  [Cuadro 6.2](https://www.srt.gob.ar/estadisticas/series/co/up/Serie_historica_Segun_Jurisdiccion%20-%20Ubicacion%20Persona%20Trabajadora%20-%20UP.xlsx).
+  Scripts: `07_prep_cant_empresas.R`, `07_cant_empresas.R`.
+- **Frecuencia:** mensual (el Excel SRT se actualiza con rezago; el prep puede
+  cortar en `FECHA_HASTA`).
+- **Limitaciones:** solo contempla empresas con al menos un trabajador
+  asalariado registrado. No incluye autónomos, monotributistas sin empleados
+  ni actividades informales. No informa tamaño de las empresas ni el empleo
+  que generan.
+- **Actualización:** borrar el xlsx en `data/raw_data/srt/`, correr el prep y
+  el viz, knitear el RMD.
+
+## Educación superior (+25)
+
+**¿Cuánto estudian los riojanos?**
+[Ficha metodológica](#ficha-12-educ).
+
+La educación es un tema clave para el desarrollo. A nivel individual mejora
+las capacidades, facilita el acceso a empleos de mayor calidad y ayuda a
+reducir desigualdades. A nivel colectivo, una población más educada impulsa
+la productividad, la innovación y la participación democrática.
+
+Desde fines del siglo XIX la educación argentina ocupó un lugar destacado en
+la agenda pública. La Ley 1420 de 1884 expandió la escuela primaria pública,
+gratuita y laica; la Reforma Universitaria de 1918 sentó las bases del sistema
+universitario público; en 1949 se estableció la gratuidad universitaria; y en
+2006 se declaró obligatoria la secundaria.
+
+Para el Gobierno de La Rioja, la educación es un derecho fundamental y una
+herramienta de inclusión, igualdad de oportunidades y movilidad social. Es,
+además, una política pública estratégica para construir una provincia con
+desarrollo, justicia social y futuro. En esa dirección, la Provincia impulsa
+políticas de ampliación y mejora de la infraestructura escolar, conectividad
+y acceso a herramientas tecnológicas, acompañamiento de trayectorias,
+fortalecimiento de la educación técnica y la formación profesional, y
+transformación de la escuela secundaria. El objetivo es ampliar las
+oportunidades educativas en todo el territorio y generar las condiciones para
+que cada vez más riojanos puedan completar sus estudios y continuar su
+formación.
+
+**Metodología.** El indicador es el porcentaje de población con estudios
+superiores completos (terciario o universitario) entre quienes tienen más de
+25 años. No mide calidad educativa ni competencias. Se estima con EPH continua
+(INDEC) para el aglomerado La Rioja, y se compara con NOA-Resto y resto del
+país.
+
+La Encuesta Permanente de Hogares (EPH) releva información de manera continua
+en los 31 aglomerados urbanos del país. En este informe, las estimaciones
+corresponden al aglomerado La Rioja y las cantidades absolutas se obtienen
+aplicando los factores de expansión provistos por el INDEC a los microdatos
+de la encuesta. Por lo tanto, representan una estimación de la población
+residente en el aglomerado y no de la totalidad de la provincia de La Rioja.
+
+```{r educ-datos}
+library(readr)
+library(dplyr)
+library(stringr)
+
+educ <- read_csv(
+  file.path(root, "data/inputs_md/12_mayor_25_superior.csv"),
+  show_col_types = FALSE
+)
+
+## fecha tipo "2025-Q4" (orden lexicográfico = cronológico).
+fecha_ult <- max(educ$fecha)
+anio_ult <- as.integer(str_sub(fecha_ult, 1, 4))
+fecha_ini <- min(educ$fecha)
+anios_serie <- anio_ult - as.integer(str_sub(fecha_ini, 1, 4))
+
+label_trim <- function(f) {
+  paste0(
+    c("primer", "segundo", "tercer", "cuarto")[as.integer(str_sub(f, 7, 7))],
+    " trimestre de ", str_sub(f, 1, 4)
+  )
+}
+
+fmt_pp <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+educ_ult <- educ %>% filter(fecha == fecha_ult)
+educ_lr    <- educ_ult %>% filter(la_rioja_region == "3. La Rioja")
+educ_noa   <- educ_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+educ_resto <- educ_ult %>% filter(la_rioja_region == "1. Resto país")
+
+educ_lr_ini <- educ %>%
+  filter(fecha == fecha_ini, la_rioja_region == "3. La Rioja")
+
+frase_nivel <- paste0(
+  "En ", label_trim(fecha_ini), ", el ",
+  fmt_pp(educ_lr_ini$porc_mayor_25_superior),
+  "% de los adultos de la Ciudad de La Rioja contaba con estudios superiores ",
+  "completos. Al ", label_trim(fecha_ult), " esa cifra trepó al ",
+  fmt_pp(educ_lr$porc_mayor_25_superior), "%."
+)
+
+frase_comp <- paste0(
+  "Al ", label_trim(fecha_ult), ", la Ciudad de La Rioja (",
+  fmt_pp(educ_lr$porc_mayor_25_superior), "%) "
+)
+if (educ_lr$porc_mayor_25_superior > educ_resto$porc_mayor_25_superior &&
+    educ_lr$porc_mayor_25_superior > educ_noa$porc_mayor_25_superior) {
+  frase_comp <- paste0(
+    frase_comp,
+    "superó el promedio de los aglomerados del resto del país (",
+    fmt_pp(educ_resto$porc_mayor_25_superior),
+    "%) y se ubicó por encima de la media de los aglomerados del NOA (",
+    fmt_pp(educ_noa$porc_mayor_25_superior), "%)."
+  )
+} else {
+  frase_comp <- paste0(
+    frase_comp,
+    "se compara con ", fmt_pp(educ_resto$porc_mayor_25_superior),
+    "% en el resto del país y ", fmt_pp(educ_noa$porc_mayor_25_superior),
+    "% en el NOA."
+  )
+}
+```
+
+En los últimos `r anios_serie` años, la población mayor de 25 años con
+estudios superiores completos en la Ciudad de La Rioja aumentó notoriamente.
+
+```{r educ}
+mostrar("outputs/plots/12_educ.png")
+```
+
+- `r frase_nivel`
+- Casi una cuarta parte de la población adulta en la Ciudad de La Rioja tiene
+  títulos superiores.
+- `r frase_comp`
+- En `r str_sub(fecha_ini, 1, 4)`: 1 de cada 8 adultos de la Ciudad de La
+  Rioja tenía estudios superiores (`r fmt_pp(educ_lr_ini$porc_mayor_25_superior)`%);
+  al `r label_trim(fecha_ult)`: casi 1 de cada 4 (`r fmt_pp(educ_lr$porc_mayor_25_superior)`%).
+
+El aumento de la población mayor de 25 años con estudios superiores completos
+en la Ciudad de La Rioja es consistente con la mayor difusión de la educación
+media y superior durante el período. A modo de ejemplo, de acuerdo con los
+Censos Nacionales de Población y Vivienda de 1991 y 2022, el porcentaje de la
+población argentina mayor a 25 años con al menos secundario completo pasó del
+24% al 47%. Debe tenerse en cuenta que se trata de un indicador meramente
+cuantitativo, y que no considera la calidad educativa. A su vez, este
+indicador no diferencia entre quienes recibieron escolarización a doble
+jornada y quienes lo hicieron con jornada simple.
+
+### Ficha metodológica {#ficha-12-educ}
+
+- **¿Qué mide?** El porcentaje de la población de 25 años o más que finalizó
+  estudios de nivel superior (terciario o universitario completo).
+- **¿Para qué sirve?** Permite aproximar el nivel de capital humano disponible.
+- **¿Qué nos dice?**
+  - *Si sube:* más retención de egresados, acceso efectivo a la educación
+    superior y mayor empleabilidad calificada.
+  - *Si baja:* más deserción en estudios superiores, dificultades de acceso o
+    finalización, o emigración de personas con título.
+- **Comportamiento esperado:** indicador estructural, con cambios lentos.
+- **Unidad de medida:** % de población de más de 25 años con estudios
+  superiores completos.
+- **Fórmula de cálculo:** población de +25 años con estudios superiores
+  completos / población total de +25 años × 100.
+- **Fuente:** EPH continua (INDEC). Scripts: `01_limpieza_eph.R`,
+  `02_indicadores_eph_individuo.R`, `12_educ.R`.
+- **Frecuencia:** trimestral.
+- **Limitaciones:** el corte en mayores de 25 años puede omitir graduación
+  temprana. No mide calidad educativa ni competencias. La EPH continua cubre
+  el **aglomerado** La Rioja, no toda la provincia. En el CSV actual el
+  denominador es la población EPH ponderada (todas las edades), no solo 25+.
+
+## Trayectoria escolar
+
+**¿Qué proporción de la cohorte llega a 5° año del secundario?**
+[Ficha metodológica](#ficha-18-trayectoria).
+
+Indicador acordado con Educación provincial: relación entre la matrícula de
+**5° año** al final de la cohorte teórica y la matrícula de **1° grado** al
+inicio. Mide llegada a 5° respecto del stock inicial; **no** es egreso con
+título ni seguimiento nominal de los mismos alumnos (migración, repitencia y
+reingresos afectan la lectura). Fuente: Relevamiento Anual (La Rioja).
+
+```{r tray-datos}
+library(readr)
+library(dplyr)
+
+coh <- read_csv(
+  file.path(root, "data/inputs_md/18_trayectoria_escolar_cohorte.csv"),
+  show_col_types = FALSE
+)
+
+fmt_pct <- function(x, digits = 1) {
+  format(round(100 * x, digits), decimal.mark = ",", nsmall = digits)
+}
+fmt_n <- function(x) {
+  format(as.integer(round(x)), big.mark = ".", scientific = FALSE)
+}
+
+anio_ini <- coh$anio_inicio[[1]]
+anio_fin <- coh$anio_fin[[1]]
+tasa <- coh$trayectoria[[1]]
+mat_ini <- coh$matricula_inicio[[1]]
+mat_fin <- coh$matricula_fin[[1]]
+```
+
+```{r tray-kpi}
+mostrar("outputs/plots/18_trayectoria_escolar.png")
+```
+
+- En la cohorte `r anio_ini`–`r anio_fin`, **de cada 100** que empezaron
+  1° grado, **`r as.integer(round(100 * tasa))`** llegan a 5° año
+  (trayectoria `r fmt_pct(tasa)`%: de `r fmt_n(mat_ini)` a
+  `r fmt_n(mat_fin)` alumnos).
+- Por sexo: varones `r fmt_pct(coh$trayectoria_varones[[1]])`%; mujeres
+  `r fmt_pct(coh$trayectoria_mujeres[[1]])`%.
+- Por sector: estatal `r fmt_pct(coh$trayectoria_estatal[[1]])`%; privado
+  `r fmt_pct(coh$trayectoria_privado[[1]])`% (el privado puede superar 100%
+  por ingresos netos a esa rama a lo largo de la cohorte).
+
+```{r tray-mat}
+mostrar("outputs/plots/18_trayectoria_escolar_matricula.png")
+mostrar("outputs/plots/18_trayectoria_escolar_desagregada.png")
+```
+
+### Ficha metodológica {#ficha-18-trayectoria}
+
+- **¿Qué mide?** Matrícula de 5° año / matrícula de 1° grado de la cohorte
+  teórica.
+- **Qué no mide:** egreso formal; panel nominal de los mismos alumnos;
+  cobertura escolar; trayectoria desde el nivel inicial.
+- **Fuente:** Relevamiento Anual (Unidad de Información y Estadística
+  Educativa — La Rioja). Scripts: `18_prep_trayectoria_escolar.R`,
+  `18_trayectoria_escolar.R`.
+- **Cobertura:** solo La Rioja (no hay corte NOA/resto en esta fuente).
+- **Frecuencia:** según actualización del Excel provincial.
+- **Limitaciones:** migración, repitencia y reingresos afectan el ratio.
+  Privado > 100% no implica “más egreso”, sino cambios de stock entre
+  sectores.
+
+## Pobreza por NBI (hogares y población)
+
+**¿Cuántos hogares y personas tienen necesidades básicas insatisfechas (NBI)
+en la Ciudad de La Rioja?**
+[Ficha metodológica](#ficha-13-nbi).
+
+En este Monitor la aproximación a pobreza estructural es por Necesidades
+Básicas Insatisfechas (NBI), no por pobreza por ingresos. Un hogar tiene NBI
+total si presenta al menos una privación en hacinamiento, vivienda,
+saneamiento, escolaridad o capacidad de subsistencia. En el monitor se
+presenta como **pobreza por NBI** (no como pobreza multidimensional / IPM: no
+es el mismo índice).
+
+**Metodología.** Se estiman el % de hogares con NBI y el % de población en
+hogares con NBI, con EPH continua (INDEC), para el aglomerado La Rioja. Se
+compara con el NOA-Resto y resto del país. La lectura central es el NBI total;
+las subdimensiones muestran el tipo de privación dominante.
+
+La Encuesta Permanente de Hogares (EPH) releva información de manera continua
+en los 31 aglomerados urbanos del país. En este informe, las estimaciones
+corresponden al aglomerado La Rioja y las cantidades absolutas se obtienen
+aplicando los factores de expansión provistos por el INDEC a los microdatos
+de la encuesta. Por lo tanto, representan una estimación de la población
+residente en el aglomerado y no de la totalidad de la provincia de La Rioja.
+
+```{r nbi-datos}
+library(readr)
+library(dplyr)
+library(stringr)
+
+nbi_h <- read_csv(
+  file.path(root, "data/inputs_md/13a_nbi_hogares.csv"),
+  show_col_types = FALSE
+) %>%
+  mutate(fecha = as.character(fecha))
+
+nbi_p <- read_csv(
+  file.path(root, "data/inputs_md/13b_nbi_poblacion.csv"),
+  show_col_types = FALSE
+) %>%
+  mutate(fecha = as.character(fecha))
+
+fecha_ult <- max(nbi_h$fecha)
+anio_ult <- as.integer(str_sub(fecha_ult, 1, 4))
+trim_ult <- as.integer(str_sub(fecha_ult, 7, 7))
+fecha_ant <- sprintf("%d-Q%d", anio_ult - 1L, trim_ult)
+
+label_trim <- function(f) {
+  paste0(
+    c("primer", "segundo", "tercer", "cuarto")[as.integer(str_sub(f, 7, 7))],
+    " trimestre de ", str_sub(f, 1, 4)
+  )
+}
+
+fmt_pp <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+h_ult <- nbi_h %>% filter(fecha == fecha_ult)
+h_lr    <- h_ult %>% filter(la_rioja_region == "3. La Rioja")
+h_noa   <- h_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+h_resto <- h_ult %>% filter(la_rioja_region == "1. Resto país")
+h_lr_ant <- nbi_h %>%
+  filter(fecha == fecha_ant, la_rioja_region == "3. La Rioja")
+
+p_ult <- nbi_p %>% filter(fecha == fecha_ult)
+p_lr    <- p_ult %>% filter(la_rioja_region == "3. La Rioja")
+p_noa   <- p_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+p_resto <- p_ult %>% filter(la_rioja_region == "1. Resto país")
+
+serie_h_lr <- nbi_h %>%
+  filter(la_rioja_region == "3. La Rioja", as.integer(str_sub(fecha, 1, 4)) >= 2016L)
+
+## Banda “habitual” de los últimos años (p25–p75 redondeados), no min/max.
+anio_desde_rec <- max(2016L, anio_ult - 4L)
+serie_h_rec <- nbi_h %>%
+  filter(
+    la_rioja_region == "3. La Rioja",
+    as.integer(str_sub(fecha, 1, 4)) >= anio_desde_rec
+  )
+
+frase_hog <- paste0(
+  "Al ", label_trim(fecha_ult),
+  ", el ", fmt_pp(h_lr$pct_hogares_NBI_TOT),
+  "% de los hogares del aglomerado La Rioja tenía al menos una NBI. Ese valor está por debajo del NOA-Resto (",
+  fmt_pp(h_noa$pct_hogares_NBI_TOT),
+  "%) y levemente por debajo del resto del país (",
+  fmt_pp(h_resto$pct_hogares_NBI_TOT), "%)."
+)
+
+frase_hog_yoy <- ""
+if (nrow(h_lr_ant) == 1) {
+  delta <- h_lr$pct_hogares_NBI_TOT - h_lr_ant$pct_hogares_NBI_TOT
+  if (abs(delta) < 0.05) {
+    frase_hog_yoy <- paste0(
+      "Comparación interanual (respecto al ", label_trim(fecha_ant),
+      ", con ", fmt_pp(h_lr_ant$pct_hogares_NBI_TOT),
+      "% de hogares con NBI): la incidencia casi no cambió (",
+      fmt_pp(delta), " puntos porcentuales)."
+    )
+  } else if (delta < 0) {
+    frase_hog_yoy <- paste0(
+      "Comparación interanual (respecto al ", label_trim(fecha_ant),
+      ", con ", fmt_pp(h_lr_ant$pct_hogares_NBI_TOT),
+      "% de hogares con NBI): la incidencia bajó ",
+      fmt_pp(abs(delta)), " puntos porcentuales."
+    )
+  } else {
+    frase_hog_yoy <- paste0(
+      "Comparación interanual (respecto al ", label_trim(fecha_ant),
+      ", con ", fmt_pp(h_lr_ant$pct_hogares_NBI_TOT),
+      "% de hogares con NBI): la incidencia subió ",
+      fmt_pp(delta), " puntos porcentuales."
+    )
+  }
+}
+
+frase_hog_rango <- ""
+if (nrow(serie_h_rec) > 0) {
+  lo <- as.integer(round(quantile(serie_h_rec$pct_hogares_NBI_TOT, 0.25, names = FALSE)))
+  hi <- as.integer(round(quantile(serie_h_rec$pct_hogares_NBI_TOT, 0.75, names = FALSE)))
+  if (hi < lo) {
+    tmp <- lo
+    lo <- hi
+    hi <- tmp
+  }
+  if (lo == hi) {
+    frase_hog_rango <- paste0(
+      "En los últimos años (", anio_desde_rec, "–", anio_ult,
+      ") el NBI de hogares oscila en torno a ",
+      lo, "%: es un indicador estructural, no un termómetro mes a mes."
+    )
+  } else {
+    frase_hog_rango <- paste0(
+      "En los últimos años (", anio_desde_rec, "–", anio_ult,
+      ") el NBI de hogares oscila en torno a ",
+      lo, "–", hi,
+      "%: es un indicador estructural, no un termómetro mes a mes."
+    )
+  }
+}
+
+frase_pob <- paste0(
+  "En población, el ", fmt_pp(p_lr$pct_pob_NBI_TOT),
+  "% de las personas vive en hogares con NBI (",
+  fmt_pp(p_noa$pct_pob_NBI_TOT), "% en NOA-Resto; ",
+  fmt_pp(p_resto$pct_pob_NBI_TOT), "% en el resto del país)."
+)
+```
+
+```{r nbi-hogares}
+mostrar("outputs/plots/13a_nbi_hogares.png")
+```
+
+- `r frase_hog`
+- `r frase_hog_yoy`
+- El NBI de hogares en la Ciudad de La Rioja está por debajo del NOA y en
+  línea o por debajo del resto del país.
+- `r frase_hog_rango`
+
+```{r nbi-poblacion}
+mostrar("outputs/plots/13b_nbi_poblacion.png")
+```
+
+- `r frase_pob`
+
+### Ficha metodológica {#ficha-13-nbi}
+
+- **¿Qué mide?** % de hogares y de población en hogares con al menos una
+  Necesidad Básica Insatisfecha (NBI): privaciones estructurales en vivienda,
+  saneamiento, hacinamiento, escolaridad y/o capacidad de subsistencia. Va más
+  allá de la falta de ingreso monetario puntual.
+- **¿Para qué sirve?** Ver si persisten carencias de infraestructura y
+  condiciones de vida (baño, tipo de vivienda, hacinamiento, asistencia
+  escolar, etc.) que un bono o un alza salarial de corto plazo no resuelven.
+- **¿Qué nos dice?**
+  - *Si sube:* más hogares/población con al menos una privación NBI.
+  - *Si baja:* menos hogares/población con NBI (los cambios suelen ser lentos).
+- **Comportamiento esperado:** indicador estructural. A diferencia de la
+  pobreza por ingresos, no se mueve con un bono de fin de año o la inflación
+  mensual.
+- **Unidad de medida:** % de hogares (13a) o de población en hogares con NBI
+  (13b).
+- **Fórmula de cálculo:** hogares (o población) con al menos 1 NBI / total de
+  hogares (o población) × 100.
+- **Fuente:** EPH continua (INDEC). Scripts: `13a_nbi_hogares.R`,
+  `13b_nbi_poblacion.R`.
+- **Frecuencia:** trimestral.
+- **Limitaciones:** la EPH continua solo cubre el aglomerado capital. No
+  refleja el interior provincial ni zonas rurales. Conserva dimensiones
+  críticas de privación, pero **no** es pobreza multidimensional / IPM.
+
+# Trabajo e ingresos
+
+`r tufte::newthought("El trabajo es la principal fuente")` de ingreso de los hogares. Acá se siguen el
+**desempleo**, el **empleo**, la **informalidad**, los **salarios** formales
+privados, los **puestos** asalariados privados y el **empleo público** por
+habitante: cantidad, calidad y remuneración del empleo en La Rioja frente al
+NOA y al resto del país.
+
+*Esta agrupación sigue la línea de
+[Argendata — Trabajo e ingresos](https://argendata.fund.ar/categorias/trabajo-e-ingresos/)
+(salarios e ingresos, participación laboral, informalidad y desempleo).*
+
+## Tasa de desempleo
+
+**¿Cómo evolucionó el desempleo en la Ciudad de La Rioja?**
+[Ficha metodológica](#ficha-04-desempleo).
+
+**Metodología.** La tasa de desempleo indica el porcentaje de la población
+económicamente activa (PEA) que busca trabajo y no lo encuentra. Es un
+indicador de corto plazo del mercado laboral: conviene leerlo junto con la
+tasa de empleo y la informalidad.
+
+La Encuesta Permanente de Hogares (EPH) releva información de manera continua
+en los 31 aglomerados urbanos del país. En este informe, las estimaciones
+corresponden al aglomerado La Rioja y las cantidades absolutas se obtienen
+aplicando los factores de expansión provistos por el INDEC a los microdatos
+de la encuesta. Por lo tanto, representan una estimación de la población
+residente en el aglomerado y no de la totalidad de la provincia de La Rioja.
+
+```{r desoc-datos}
+library(readr)
+library(dplyr)
+library(stringr)
+
+des <- read_csv(
+  file.path(root, "data/inputs_md/04_tasa_desoc.csv"),
+  show_col_types = FALSE
+)
+
+fecha_ult <- max(des$fecha)
+anio_ult <- as.integer(str_sub(fecha_ult, 1, 4))
+trim_ult <- as.integer(str_sub(fecha_ult, 7, 7))
+fecha_ant <- sprintf("%d-Q%d", anio_ult - 1L, trim_ult)
+
+label_trim <- function(f) {
+  paste0(
+    c("primer", "segundo", "tercer", "cuarto")[as.integer(str_sub(f, 7, 7))],
+    " trimestre de ", str_sub(f, 1, 4)
+  )
+}
+
+fmt_pp <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+fmt_abs <- function(x) {
+  format(round(x), big.mark = ".", decimal.mark = ",", scientific = FALSE)
+}
+
+fmt_pea_mil <- function(x) {
+  paste0("unos ", format(round(x / 1000), big.mark = ".", decimal.mark = ","), " mil")
+}
+
+des_ult <- des %>% filter(fecha == fecha_ult)
+des_lr    <- des_ult %>% filter(la_rioja_region == "3. La Rioja")
+des_noa   <- des_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+des_resto <- des_ult %>% filter(la_rioja_region == "1. Resto país")
+
+des_lr_ant <- des %>%
+  filter(fecha == fecha_ant, la_rioja_region == "3. La Rioja")
+
+serie_lr <- des %>% filter(la_rioja_region == "3. La Rioja")
+## Pico "reciente" (desde 2015): el máximo de toda la serie es anterior a la pandemia.
+serie_reciente <- serie_lr %>%
+  filter(as.integer(str_sub(fecha, 1, 4)) >= 2015L)
+fila_max <- serie_reciente %>% slice_max(tasa_desoc, n = 1, with_ties = FALSE)
+## Referencia reciente pre-último (mismo año, trimestre anterior si existe).
+fecha_prev_trim <- if (trim_ult == 1L) {
+  sprintf("%d-Q4", anio_ult - 1L)
+} else {
+  sprintf("%d-Q%d", anio_ult, trim_ult - 1L)
+}
+des_lr_prev <- des %>%
+  filter(fecha == fecha_prev_trim, la_rioja_region == "3. La Rioja")
+
+frase_nivel <- paste0(
+  "Al ", label_trim(fecha_ult),
+  ", la tasa de desocupación del aglomerado La Rioja fue de ",
+  fmt_pp(des_lr$tasa_desoc), "%."
+)
+
+frase_abs <- paste0(
+  "En términos absolutos se estiman cerca de ",
+  format(round(des_lr$desoc, -3), big.mark = ".", decimal.mark = ",",
+         scientific = FALSE),
+  " personas desocupadas sobre una PEA de ",
+  fmt_pea_mil(des_lr$pea), "."
+)
+
+frase_yoy <- ""
+if (nrow(des_lr_ant) == 1) {
+  delta_pp <- des_lr$tasa_desoc - des_lr_ant$tasa_desoc
+  if (abs(delta_pp) < 0.05) {
+    frase_yoy <- paste0(
+      "Comparación interanual (respecto al ", label_trim(fecha_ant),
+      ", con ", fmt_pp(des_lr_ant$tasa_desoc),
+      "%): la desocupación casi no cambió (", fmt_pp(delta_pp),
+      " puntos porcentuales)."
+    )
+  } else if (delta_pp < 0) {
+    frase_yoy <- paste0(
+      "Comparación interanual (respecto al ", label_trim(fecha_ant),
+      ", con ", fmt_pp(des_lr_ant$tasa_desoc),
+      "%): la desocupación bajó ", fmt_pp(abs(delta_pp)),
+      " puntos porcentuales."
+    )
+  } else {
+    frase_yoy <- paste0(
+      "Comparación interanual (respecto al ", label_trim(fecha_ant),
+      ", con ", fmt_pp(des_lr_ant$tasa_desoc),
+      "%): la desocupación subió ", fmt_pp(delta_pp),
+      " puntos porcentuales."
+    )
+  }
+}
+
+frase_pico <- paste0(
+  "El pico de la serie reciente (desde 2015) fue el ", label_trim(fila_max$fecha),
+  " (", fmt_pp(fila_max$tasa_desoc), "%)."
+)
+if (nrow(des_lr_prev) == 1 && fecha_prev_trim != fecha_ult) {
+  frase_pico <- paste0(
+    frase_pico,
+    " Desde entonces el nivel volvió a valores más bajos (por ejemplo ",
+    fmt_pp(des_lr_prev$tasa_desoc), "% en el ",
+    label_trim(fecha_prev_trim), " y ",
+    fmt_pp(des_lr$tasa_desoc), "% en el ",
+    label_trim(fecha_ult), ")."
+  )
+}
+
+frase_comp <- paste0(
+  "Al ", label_trim(fecha_ult),
+  ", la tasa de desocupación del aglomerado La Rioja fue de ",
+  fmt_pp(des_lr$tasa_desoc), "%. Se ubicó por debajo del NOA-Resto (",
+  fmt_pp(des_noa$tasa_desoc), "%) y, sobre todo, del resto del país (",
+  fmt_pp(des_resto$tasa_desoc), "%)."
+)
+```
+
+```{r desoc}
+mostrar("outputs/plots/04_desoc.png")
+```
+
+- `r frase_nivel`
+- `r frase_abs`
+- `r frase_yoy`
+- `r frase_pico`
+
+**¿Y en otros aglomerados?**
+
+- La tasa de desempleo es menor en la Ciudad de La Rioja que en el resto del
+  país.
+- `r frase_comp`
+- Con EPH continua la comparación es entre aglomerados. El patrón reciente
+  muestra a La Rioja por debajo del NOA y del resto del país. Para rankings de
+  cobertura urbana más amplia se usa la EPH Total Urbano.
+
+### Ficha metodológica {#ficha-04-desempleo}
+
+- **¿Qué mide?** El porcentaje de personas de la Población Económicamente
+  Activa (PEA) que no tienen trabajo pero lo buscan activamente y están
+  disponibles para comenzar a trabajar.
+- **¿Para qué sirve?** Es el principal indicador de presión de la oferta
+  laboral. Permite medir la incapacidad transitoria de la economía para
+  absorber a la población que desea trabajar.
+- **¿Qué nos dice?**
+  - *Si sube:* pérdida de puestos de trabajo, cierre de empresas, o mayor
+    necesidad de miembros del hogar de salir al mercado a buscar ingresos.
+  - *Si baja:* mayor dinamismo económico (creación de empleo) u
+    “ocultamiento” de una crisis si la gente se cansa de buscar y pasa a ser
+    inactiva.
+- **Comportamiento esperado:** depende del crecimiento del PBG, la inversión
+  privada, la cantidad de empresas y el dinamismo de los sectores productivos.
+- **Unidad de medida:** porcentaje (%) respecto de la PEA.
+- **Fórmula de cálculo:** tasa de desempleo = población desocupada / PEA × 100.
+- **Fuente de datos oficial:** EPH continua (INDEC). En el repo:
+  `00_descarga_eph.R` → `01` → `02` → `04_desoc.R`.
+- **Frecuencia de actualización:** trimestral.
+- **Limitaciones:** mide el aglomerado capital, no el interior provincial. Una
+  tasa baja puede coexistir con subocupación horaria elevada; conviene leerla
+  junto con empleo e informalidad.
+
+## Tasa de empleo
+
+**¿Cómo evolucionó el empleo en la Ciudad de La Rioja?**
+[Ficha metodológica](#ficha-10-empleo).
+
+Al analizar el mercado laboral, una variable clave es la tasa de empleo, que
+indica el porcentaje de la población ocupada en el mercado.
+
+Para el Gobierno de La Rioja, el empleo es un objetivo central de la política
+económica y social, entendido no solo como ingreso sino como derecho e
+instrumento de inclusión y desarrollo. En una provincia con fuerte presencia
+del Estado y menor peso relativo del sector privado, sostener altos niveles
+de ocupación es especialmente relevante.
+
+La política provincial apunta a mantener el empleo existente y ampliar
+oportunidades mediante apoyo al sector privado, financiamiento a PyMEs y
+emprendimientos, capacitación laboral y programas de inserción. El objetivo
+no es solo más empleo, sino empleo más sostenible, formal y de mejor calidad,
+fortaleciendo la capacidad del sector privado para generar puestos de trabajo.
+
+```{r empleo-datos}
+library(readr)
+library(dplyr)
+library(stringr)
+
+emp <- read_csv(
+  file.path(root, "data/inputs_md/10_tasa_empleo.csv"),
+  show_col_types = FALSE
+)
+
+## fecha tipo "2025-Q4" (orden lexicográfico = cronológico).
+fecha_ult <- max(emp$fecha)
+anio_ult <- as.integer(str_sub(fecha_ult, 1, 4))
+trim_ult <- as.integer(str_sub(fecha_ult, 7, 7))
+fecha_ant <- sprintf("%d-Q%d", anio_ult - 1L, trim_ult)
+fecha_ini <- min(emp$fecha)
+
+label_trim <- function(f) {
+  paste0(
+    c("primer", "segundo", "tercer", "cuarto")[as.integer(str_sub(f, 7, 7))],
+    " trimestre de ", str_sub(f, 1, 4)
+  )
+}
+
+fmt_pp <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+emp_ult <- emp %>% filter(fecha == fecha_ult)
+emp_lr    <- emp_ult %>% filter(la_rioja_region == "3. La Rioja")
+emp_noa   <- emp_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+emp_resto <- emp_ult %>% filter(la_rioja_region == "1. Resto país")
+
+emp_lr_ant <- emp %>%
+  filter(fecha == fecha_ant, la_rioja_region == "3. La Rioja")
+emp_lr_ini <- emp %>%
+  filter(fecha == fecha_ini, la_rioja_region == "3. La Rioja")
+
+serie_lr <- emp %>% filter(la_rioja_region == "3. La Rioja")
+es_max_serie <- abs(emp_lr$tasa_empleo - max(serie_lr$tasa_empleo, na.rm = TRUE)) < 1e-9
+
+frase_nivel <- paste0(
+  "Al ", label_trim(fecha_ult),
+  ", la tasa de empleo en la Ciudad de La Rioja alcanzó el ",
+  fmt_pp(emp_lr$tasa_empleo), "%"
+)
+if (es_max_serie) {
+  frase_nivel <- paste0(
+    frase_nivel,
+    ", consolidando el registro más alto de toda la serie desde el inicio del 2007 (cuando se ubicaba en el ",
+    fmt_pp(emp_lr_ini$tasa_empleo), "%)."
+  )
+} else {
+  frase_nivel <- paste0(
+    frase_nivel,
+    " (al inicio de la serie, ", label_trim(fecha_ini), ", era ",
+    fmt_pp(emp_lr_ini$tasa_empleo), "%)."
+  )
+}
+
+frase_yoy <- ""
+if (nrow(emp_lr_ant) == 1) {
+  delta_pp <- emp_lr$tasa_empleo - emp_lr_ant$tasa_empleo
+  if (abs(delta_pp) < 0.05) {
+    frase_yoy <- paste0(
+      "Al contrastar el dato con el mismo período del año anterior (",
+      label_trim(fecha_ant), ", con ", fmt_pp(emp_lr_ant$tasa_empleo),
+      "%), la tasa de empleo casi no cambió (", fmt_pp(delta_pp),
+      " puntos porcentuales)."
+    )
+  } else if (delta_pp > 0) {
+    frase_yoy <- paste0(
+      "Al contrastar el dato con el mismo período del año anterior (",
+      label_trim(fecha_ant), ", con ", fmt_pp(emp_lr_ant$tasa_empleo),
+      "%), la tasa de empleo creció ", fmt_pp(delta_pp),
+      " puntos porcentuales."
+    )
+  } else {
+    frase_yoy <- paste0(
+      "Al contrastar el dato con el mismo período del año anterior (",
+      label_trim(fecha_ant), ", con ", fmt_pp(emp_lr_ant$tasa_empleo),
+      "%), la tasa de empleo cayó ", fmt_pp(abs(delta_pp)),
+      " puntos porcentuales."
+    )
+  }
+}
+```
+
+```{r empleo}
+mostrar("outputs/plots/10_tasa_empleo.png")
+```
+
+La tasa de empleo es mayor en la Ciudad de La Rioja y menor en los aglomerados
+del NOA.
+
+- `r frase_nivel`
+- La Ciudad de La Rioja se posicionó significativamente por encima de la media
+  de los aglomerados del resto del país (`r fmt_pp(emp_resto$tasa_empleo)`%) y
+  superó el promedio de la región del NOA (`r fmt_pp(emp_noa$tasa_empleo)`%).
+- `r frase_yoy`
+
+### Ficha metodológica {#ficha-10-empleo}
+
+- **¿Qué mide?** El porcentaje de personas ocupadas respecto del total de la
+  población.
+- **¿Para qué sirve?** Permite evaluar la capacidad de la economía para
+  generar empleo.
+- **¿Qué nos dice?**
+  - *Si sube:* una mayor proporción de la población se encuentra ocupada, lo
+    que puede reflejar una mejora en el nivel de actividad económica o una
+    mayor participación laboral.
+  - *Si baja:* una menor proporción de la población tiene un empleo, lo que
+    puede estar asociado a una desaceleración económica, una menor demanda
+    de trabajo o cambios en la participación laboral.
+- **Comportamiento esperado:** depende del crecimiento económico, la actividad
+  y la participación laboral.
+- **Unidad de medida:** porcentaje (%) de personas ocupadas sobre el total de
+  la población (ocupados cada 100 habitantes).
+- **Fórmula de cálculo:** tasa de empleo = población ocupada / población
+  total × 100.
+- **Fuente de datos oficial:** EPH continua (INDEC). En el repo: descarga vía
+  paquete `eph` (`00_descarga_eph.R`) → `01` → `02` → `10_tasa_empleo.R`.
+- **Frecuencia de actualización:** trimestral.
+- **Limitaciones:** la tasa de empleo no refleja la calidad del empleo
+  (formalidad, ingresos, estabilidad o horas). Debe analizarse junto con
+  actividad y desocupación. En la EPH continua, La Rioja es el **aglomerado**
+  capital, no toda la provincia.
+
+## Informalidad (aportes)
+
+**¿Qué tan informal es el empleo en la Ciudad de La Rioja?**
+[Ficha metodológica](#ficha-09a-informalidad).
+
+La informalidad laboral es uno de los grandes problemas del mercado de trabajo
+argentino. Suele estar asociada a malas condiciones laborales, bajos salarios
+y falta de derechos básicos.
+
+Para el Gobierno de La Rioja, el trabajo constituye un derecho y uno de los
+pilares centrales de la política de desarrollo provincial. Desde esta
+perspectiva, el desafío no se limita a generar oportunidades laborales, sino
+también a avanzar hacia empleos con derechos, estabilidad, protección social
+e ingresos que permitan mejorar las condiciones de vida. La formalización
+laboral adquiere así una importancia estratégica, en tanto amplía el acceso a
+la seguridad social y fortalece trayectorias laborales de mayor calidad.
+
+En esa línea, la Provincia implementa políticas de formación, capacitación,
+apoyo a emprendimientos, financiamiento y articulación con el sector productivo
+orientadas a facilitar la inserción laboral y el sostenimiento del empleo.
+
+**Metodología.** La definición de informalidad refiere a la situación de
+quienes trabajan sin un contrato formal ni acceso a la protección social,
+como la seguridad social o el seguro de salud. En el caso de los asalariados,
+una forma histórica de medirla es verificar si su empleador realiza o no los
+aportes a la seguridad social. Si no lo hace, ese trabajador no tendrá derecho,
+por ejemplo, a una jubilación en el futuro.`r tufte::margin_note("Estos datos refieren únicamente a los <strong>asalariados</strong>: excluyen a los trabajadores independientes (cuentapropistas y patrones).")`
+
+La Encuesta Permanente de Hogares (EPH) releva información de manera continua
+en los 31 aglomerados urbanos del país. En este informe, las estimaciones
+corresponden al aglomerado La Rioja y las cantidades absolutas se obtienen
+aplicando los factores de expansión provistos por el INDEC a los microdatos
+de la encuesta. Por lo tanto, representan una estimación de la población
+residente en el aglomerado y no de la totalidad de la provincia de La Rioja.
+
+```{r inf-datos}
+library(readr)
+library(dplyr)
+library(stringr)
+
+inf <- read_csv(
+  file.path(root, "data/inputs_md/09a_tasa_informalidad_aportes.csv"),
+  show_col_types = FALSE
+) %>%
+  mutate(
+    informales = asalariados - formales,
+    fecha = as.character(fecha)
+  )
+
+fecha_ult <- max(inf$fecha)
+anio_ult <- as.integer(str_sub(fecha_ult, 1, 4))
+trim_ult <- as.integer(str_sub(fecha_ult, 7, 7))
+fecha_ant <- sprintf("%d-Q%d", anio_ult - 1L, trim_ult)
+
+label_trim <- function(f) {
+  paste0(
+    c("primer", "segundo", "tercer", "cuarto")[as.integer(str_sub(f, 7, 7))],
+    " trimestre de ", str_sub(f, 1, 4)
+  )
+}
+
+fmt_pp <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+fmt_n <- function(x) {
+  format(round(x), big.mark = ".", decimal.mark = ",", scientific = FALSE)
+}
+
+inf_ult <- inf %>% filter(fecha == fecha_ult)
+inf_lr    <- inf_ult %>% filter(la_rioja_region == "3. La Rioja")
+inf_noa   <- inf_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+inf_resto <- inf_ult %>% filter(la_rioja_region == "1. Resto país")
+
+inf_lr_ant <- inf %>%
+  filter(fecha == fecha_ant, la_rioja_region == "3. La Rioja")
+
+## Referencia de largo plazo (mitad de 2007), como en el Word / Argendata.
+inf_lr_2007 <- inf %>%
+  filter(fecha == "2007-Q2", la_rioja_region == "3. La Rioja")
+if (nrow(inf_lr_2007) == 0) {
+  inf_lr_2007 <- inf %>%
+    filter(str_starts(fecha, "2007"), la_rioja_region == "3. La Rioja") %>%
+    slice_min(fecha, n = 1)
+}
+
+frase_nivel <- paste0(
+  "En la Ciudad de La Rioja, se estima que ",
+  fmt_n(inf_lr$informales),
+  " personas asalariadas trabajan en la informalidad. Sobre un total estimado de ",
+  fmt_n(inf_lr$asalariados),
+  " trabajadores asalariados, esto equivale al ",
+  fmt_pp(inf_lr$tasa_inf_aportes),
+  "%. Es decir, aproximadamente uno de cada tres asalariados no recibe aportes a la seguridad social por parte de su empleador."
+)
+
+frase_yoy <- ""
+if (nrow(inf_lr_ant) == 1) {
+  delta_pp <- inf_lr$tasa_inf_aportes - inf_lr_ant$tasa_inf_aportes
+  if (abs(delta_pp) < 0.05) {
+    frase_yoy <- paste0(
+      "Comparación interanual (respecto al ", label_trim(fecha_ant),
+      "): la tasa casi no cambió (", fmt_pp(delta_pp),
+      " puntos porcentuales; era ", fmt_pp(inf_lr_ant$tasa_inf_aportes),
+      "%, con ", fmt_n(inf_lr_ant$informales), " asalariados informales)."
+    )
+  } else if (delta_pp > 0) {
+    frase_yoy <- paste0(
+      "Comparación interanual (respecto al ", label_trim(fecha_ant),
+      "): se observó un incremento de ", fmt_pp(delta_pp),
+      " puntos porcentuales, ya que en el mismo trimestre del año anterior la tasa se situaba en un ",
+      fmt_pp(inf_lr_ant$tasa_inf_aportes), "% (con ",
+      fmt_n(inf_lr_ant$informales), " asalariados informales)."
+    )
+  } else {
+    frase_yoy <- paste0(
+      "Comparación interanual (respecto al ", label_trim(fecha_ant),
+      "): se observó una caída de ", fmt_pp(abs(delta_pp)),
+      " puntos porcentuales, ya que en el mismo trimestre del año anterior la tasa se situaba en un ",
+      fmt_pp(inf_lr_ant$tasa_inf_aportes), "% (con ",
+      fmt_n(inf_lr_ant$informales), " asalariados informales)."
+    )
+  }
+}
+
+frase_regiones <- paste0(
+  "La informalidad en la Ciudad de La Rioja es menor que en los aglomerados ",
+  "de las provincias del norte pero mayor que en los aglomerados del resto del país."
+)
+
+frase_largo <- ""
+if (nrow(inf_lr_2007) == 1) {
+  delta_07 <- inf_lr$tasa_inf_aportes - inf_lr_2007$tasa_inf_aportes
+  anios <- anio_ult - as.integer(str_sub(inf_lr_2007$fecha, 1, 4))
+  frase_largo <- paste0(
+    "La informalidad en la Ciudad de La Rioja es hoy más baja que hace ",
+    anios, " años. En ", anio_ult, ", la informalidad entre asalariados fue del ",
+    fmt_pp(inf_lr$tasa_inf_aportes), "%, ",
+    if (delta_07 < 0) {
+      paste0(
+        fmt_pp(abs(delta_07)), " puntos menos que a mediados de ",
+        str_sub(inf_lr_2007$fecha, 1, 4), " (",
+        fmt_pp(inf_lr_2007$tasa_inf_aportes), "%)."
+      )
+    } else {
+      paste0(
+        fmt_pp(delta_07), " puntos más que a mediados de ",
+        str_sub(inf_lr_2007$fecha, 1, 4), " (",
+        fmt_pp(inf_lr_2007$tasa_inf_aportes), "%)."
+      )
+    }
+  )
+}
+```
+
+```{r inf}
+mostrar("outputs/plots/09a_informalidad_aportes.png")
+```
+
+- `r frase_nivel`
+- `r frase_yoy`
+- `r frase_largo`
+
+**¿Cómo se compara con otras regiones?**
+
+`r frase_regiones`
+
+- En la Ciudad de La Rioja, el `r fmt_pp(inf_lr$tasa_inf_aportes)`% de los
+  asalariados y asalariadas trabaja de manera informal.
+- En el resto de los aglomerados de las provincias del NOA el
+  `r fmt_pp(inf_noa$tasa_inf_aportes)`% de los asalariados trabaja de manera
+  informal.
+- En el resto de los aglomerados del país el
+  `r fmt_pp(inf_resto$tasa_inf_aportes)`% de los asalariados trabaja de manera
+  informal.
+
+### Ficha metodológica {#ficha-09a-informalidad}
+
+- **¿Qué mide?** La proporción de trabajadores asalariados que no realizan
+  aportes jubilatorios a través de su empleo principal.
+- **¿Para qué sirve?** Permite monitorear la calidad del empleo, identificar
+  situaciones de precariedad laboral y orientar políticas de formalización
+  del trabajo.
+- **¿Qué nos dice?**
+  - *Si sube:* mayor precarización laboral, menor acceso a derechos laborales
+    y protección social, menor cobertura previsional futura.
+  - *Si baja:* mayor formalización del empleo, incremento de la protección
+    social de los trabajadores.
+- **Comportamiento esperado:** suele presentar cambios graduales; está
+  influenciado por el ciclo económico, la dinámica del mercado laboral y las
+  políticas de fiscalización y formalización.
+- **Unidad de medida:** porcentaje (%) de asalariados sin descuento
+  jubilatorio sobre el total de asalariados.
+- **Fórmula de cálculo:** tasa de informalidad = (asalariados sin descuento
+  jubilatorio / total de asalariados) × 100.
+- **Fuente de datos oficial:** Encuesta Permanente de Hogares (INDEC). En el
+  repo: `00` → `01` → `02` → `09a_informalidad_aportes.R`.
+- **Frecuencia de actualización:** trimestral.
+- **Limitaciones:** con EPH continua, la información representa al
+  **aglomerado** La Rioja y no a toda la provincia. Solo asalariados (excluye
+  independientes). Un ranking por provincia urbana ampliada requeriría EPH
+  Total Urbano.
+
+## Salarios formales (privado SIPA)
+
+**¿Cómo se ubican los salarios formales de La Rioja?**
+[Ficha metodológica](#ficha-03-salarios).
+
+Para mirar salarios formales se puede trabajar con dos fuentes
+complementarias. Por un lado, con el Sistema Integrado Previsional Argentino
+(SIPA) la remuneración promedio del sector privado registrado, con cobertura
+provincial y frecuencia mensual. Por otro lado, la EPH: ingresos de personas
+asalariadas registradas (público y privado), útil para separar sector estatal
+y, con IPC, ver variaciones reales.`r tufte::margin_note("En la EPH continua el dato de La Rioja corresponde al <em>aglomerado</em> capital, no a la provincia completa.")`
+
+**Metodología.** En esta sección del Monitor se emplean los registros del
+SIPA (OEDE). En primer lugar, se presenta la serie en valores nominales
+(pesos corrientes), lo cual resulta útil para elaborar rankings entre
+provincias en un mismo mes y para comparar a La Rioja con el promedio simple
+del resto del NOA y del país. En segundo lugar, se expone la serie
+deflactada por el IPC, orientada a evaluar la tendencia y la evolución del
+poder de compra a lo largo del tiempo.
+
+Dado que los datos del SIPA se estructuran “por todo concepto”, los meses de
+junio y diciembre incorporan el Sueldo Anual Complementario (SAC), lo que
+imprime un marcado patrón estacional en la serie mensual (en forma de
+serrucho). Para neutralizar este comportamiento recurrente, la serie fue
+desestacionalizada y posteriormente deflactada mediante el IPC nacional,
+permitiendo analizar el salario en términos reales. El resultado se expresa
+como un índice con base en enero de 2025 = 100: los valores superiores a 100
+indican un mayor poder de compra respecto a dicha fecha, mientras que los
+inferiores reflejan una disminución.
+
+```{r sal-datos}
+library(readr)
+library(dplyr)
+library(lubridate)
+
+path_sipa <- file.path(root, "data/inputs_md/03_salarios_privados_SIPA.csv")
+path_idx  <- file.path(root, "data/inputs_md/03_salarios_privados_SIPA_indice_region.csv")
+
+idx <- read_csv(path_idx, show_col_types = FALSE) %>%
+  mutate(fecha = as.Date(fecha))
+
+## Último mes = max(fecha) del CSV de índice (lo define FECHA_HASTA en
+## src/03_prep_salarios_privados_SIPA_indice.R; ver encabezado de ese script).
+fecha_ult <- max(idx$fecha)
+fecha_ref <- as.Date("2017-01-01")
+
+mes_es <- c(
+  "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+  "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+)
+label_mes_ult <- paste0(mes_es[month(fecha_ult)], "-", year(fecha_ult))
+
+idx_ult <- idx %>% filter(fecha == fecha_ult)
+sal_lr   <- idx_ult %>% filter(la_rioja_region == "3. La Rioja")
+sal_noa  <- idx_ult %>% filter(la_rioja_region == "2. NOA-Resto")
+sal_resto <- idx_ult %>% filter(la_rioja_region == "1. Resto país")
+
+idx_lr_ref <- idx %>%
+  filter(fecha == fecha_ref, la_rioja_region == "3. La Rioja")
+
+## Ranking provincial (pesos corrientes) en el mismo mes.
+sipa_mes <- read_csv(path_sipa, show_col_types = FALSE) %>%
+  mutate(fecha = as.Date(fecha)) %>%
+  filter(fecha == fecha_ult)
+
+rank_tbl <- sipa_mes %>%
+  arrange(desc(salario_promedio)) %>%
+  mutate(puesto = row_number())
+
+n_prov <- nrow(rank_tbl)
+puesto_lr <- rank_tbl %>% filter(jurisdiccion == "La Rioja") %>% pull(puesto)
+
+fmt_pesos <- function(x) {
+  paste0(
+    "$",
+    format(round(x), big.mark = ".", decimal.mark = ",", scientific = FALSE)
+  )
+}
+fmt_idx <- function(x) format(round(x), big.mark = ".", decimal.mark = ",")
+```
+
+(El rótulo del último mes —hoy **`r label_mes_ult`**— sale de
+`max(fecha)` en el CSV de índice. Ese máximo lo fija `FECHA_HASTA` en
+`src/03_prep_salarios_privados_SIPA_indice.R` (hoy sep-2025: oct+ del Excel
+SIPA muestra un salto atípico y 2026 duplica meses). Para extender el corte:
+validar el raw, subir `FECHA_HASTA`, re-correr prep/viz y knitear.)
+
+**¿Qué nos dice el último dato nominal (`r label_mes_ult`)?**
+
+```{r sal-nominal}
+mostrar("outputs/plots/03_salarios_privados_SIPA.png")
+```
+
+- En La Rioja la remuneración promedio del privado registrado fue de
+  `r fmt_pesos(sal_lr$salario_nominal)`.
+- Eso la ubica en el puesto `r puesto_lr` de las `r n_prov` provincias.
+- NOA-Resto ≈ `r fmt_pesos(sal_noa$salario_nominal)`; resto del país ≈
+  `r fmt_pesos(sal_resto$salario_nominal)`.
+
+**¿Qué nos dice la serie en términos reales?**
+
+```{r sal-real}
+mostrar("outputs/plots/03_salarios_privados_SIPA_real_sa_indice.png")
+```
+
+- Índice real (ene-2025 = 100), `r label_mes_ult`: La Rioja
+  `r fmt_idx(sal_lr$indice_salario_real_sa)`; NOA-Resto
+  `r fmt_idx(sal_noa$indice_salario_real_sa)`; resto país
+  `r fmt_idx(sal_resto$indice_salario_real_sa)`.
+- En ene-2017 La Rioja estaba en `r fmt_idx(idx_lr_ref$indice_salario_real_sa)`:
+  el poder de compra era mayor que en ene-2025.
+- Tras el piso de 2023–24 hubo recuperación; a `r label_mes_ult` La Rioja
+  queda cerca de la base 100, por encima del NOA-Resto y en línea con el
+  resto del país.
+
+**Fuente.** SIPA/OEDE + IPC INDEC/SSPM. Scripts: prep/viz nominal;
+`03_prep_salarios_privados_SIPA_indice.R` → `03_salarios_privados_SIPA_indice.R`.
+
+### Ficha metodológica {#ficha-03-salarios}
+
+- **¿Qué mide?** La remuneración bruta promedio percibida por el conjunto de
+  trabajadores en relación de dependencia formalizada (con aportes
+  jubilatorios y de seguridad social). En esta sección del Monitor: sector
+  **privado registrado** (SIPA/OEDE).
+- **¿Para qué sirve?** Permite observar el poder adquisitivo de los hogares
+  registrados y la capacidad de consumo del mercado provincial.
+- **¿Qué nos dice?**
+  - *Si sube:* mejora real de poder adquisitivo frente a la inflación,
+    tracción del comercio interno de La Rioja y mejor bienestar de las
+    familias.
+  - *Si baja:* licuación de ingresos por procesos inflacionarios severos,
+    retracción del consumo local y aumento del empleo pobre.
+- **Comportamiento esperado:** actualización escalonada por paritarias y
+  bonos. Presenta “picos” estacionales en los meses de pago de aguinaldos
+  (junio y diciembre).
+- **Unidad de medida:** pesos argentinos corrientes; y, para la lectura de
+  tendencia, índice real (ene-2025 = 100) tras desestacionalizar y deflactar
+  por **IPC nacional** (INDEC/SSPM).
+- **Fórmula de cálculo:** (i) nominal = remuneración promedio SIPA;
+  (ii) real SA = serie desestacionalizada / IPC nacional, indexada en
+  ene-2025 = 100.
+- **Fuente de datos oficial:** SIPA / OEDE (Ministerio de Capital Humano) —
+  remuneraciones del sector privado registrado. IPC nacional para el índice
+  real.
+- **Frecuencia de actualización:** mensual (SIPA).
+- **Limitaciones:** al basarse en registros administrativos formales (SIPA),
+  esta métrica no captura ingresos de cuentapropistas informales,
+  trabajadores de cooperativas ni asalariados no registrados. No confundir
+  con la EPH (aglomerado en la continua) ni con liquidaciones del sector
+  público.
+
+## Puestos asalariados privados
+
+**¿Cómo evolucionó el empleo privado registrado en La Rioja?**
+[Ficha metodológica](#ficha-05-puestos).
+
+Los puestos asalariados privados registrados (SIPA / OEDE) miden el empleo
+formal privado declarado. Es un indicador de coyuntura del mercado de trabajo
+privado, distinto del empleo público (EPH) y de la cantidad de empresas (SRT).
+
+**Metodología.** Serie mensual en miles de puestos, sin estacionalidad (hoja
+A.5.2 del reporte de trabajo registrado). Se compara La Rioja con la **suma**
+de puestos de las provincias del NOA-Resto y del resto del país.
+
+```{r puestos-datos}
+library(readr)
+library(dplyr)
+
+pues <- read_csv(
+  file.path(root, "data/inputs_md/05_puestos_asalariados_privados.csv"),
+  show_col_types = FALSE
+) %>%
+  mutate(fecha = as.Date(fecha))
+
+noa <- c("Catamarca", "Jujuy", "Salta", "Santiago del Estero", "Tucumán", "La Rioja")
+mes_es <- c(
+  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+)
+label_mes <- function(f) {
+  paste(mes_es[as.integer(format(f, "%m"))], format(f, "%Y"))
+}
+fmt_n <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits, big.mark = ".")
+}
+fmt_pct <- function(x, digits = 1) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+pues <- pues %>%
+  mutate(
+    la_rioja_region = case_when(
+      jurisdiccion == "La Rioja" ~ "3. La Rioja",
+      jurisdiccion %in% noa & jurisdiccion != "La Rioja" ~ "2. NOA-Resto",
+      TRUE ~ "1. Resto país"
+    )
+  )
+
+## Misma agregación que el gráfico (suma de provincias del grupo).
+agg <- pues %>%
+  group_by(fecha, la_rioja_region) %>%
+  summarise(puestos_miles = sum(puestos_miles), .groups = "drop")
+
+fecha_ult <- max(agg$fecha)
+fecha_ant <- seq(fecha_ult, by = "-1 year", length.out = 2)[2]
+
+ult <- agg %>% filter(fecha == fecha_ult)
+lr <- ult %>% filter(la_rioja_region == "3. La Rioja")
+noa_r <- ult %>% filter(la_rioja_region == "2. NOA-Resto")
+resto <- ult %>% filter(la_rioja_region == "1. Resto país")
+lr_ant <- agg %>%
+  filter(fecha == fecha_ant, la_rioja_region == "3. La Rioja")
+
+var_yoy <- if (nrow(lr_ant) == 1) {
+  100 * (lr$puestos_miles / lr_ant$puestos_miles - 1)
+} else {
+  NA_real_
+}
+
+frase_nivel <- paste0(
+  "En ", label_mes(fecha_ult), ", La Rioja tenía ",
+  fmt_n(lr$puestos_miles), " mil puestos asalariados privados registrados."
+)
+frase_comp <- paste0(
+  "En el mismo mes, el NOA-Resto sumaba ",
+  fmt_n(noa_r$puestos_miles), " mil puestos y el resto del país ",
+  fmt_n(resto$puestos_miles), " mil (suma de provincias de cada grupo)."
+)
+frase_yoy <- if (is.na(var_yoy)) {
+  ""
+} else if (abs(var_yoy) < 0.2) {
+  paste0(
+    "Respecto de ", label_mes(fecha_ant), " (",
+    fmt_n(lr_ant$puestos_miles), " mil), casi sin cambios (",
+    fmt_pct(var_yoy), "%)."
+  )
+} else if (var_yoy > 0) {
+  paste0(
+    "Respecto de ", label_mes(fecha_ant), " (",
+    fmt_n(lr_ant$puestos_miles), " mil), creció ",
+    fmt_pct(var_yoy), "%."
+  )
+} else {
+  paste0(
+    "Respecto de ", label_mes(fecha_ant), " (",
+    fmt_n(lr_ant$puestos_miles), " mil), cayó ",
+    fmt_pct(abs(var_yoy)), "%."
+  )
+}
+```
+
+```{r puestos}
+mostrar("outputs/plots/05_puestos_asalariados_privados.png")
+```
+
+- `r frase_nivel`
+- `r frase_comp`
+- `r frase_yoy`
+
+### Ficha metodológica {#ficha-05-puestos}
+
+- **¿Qué mide?** Puestos de trabajo asalariados privados registrados (miles).
+- **Fórmula de cálculo:** miles de puestos por provincia (SIPA A.5.2). Agregado
+  regional = **suma** de puestos de las provincias del grupo.
+- **Fuente:** SIPA / OEDE — reporte de trabajo registrado (hoja A.5.2, sin
+  estacionalidad). Scripts: `05_prep_puestos_asalariados_privados.R`,
+  `05_puestos_asalariados_privados.R`.
+- **Frecuencia:** mensual.
+- **Limitaciones:** solo privado registrado (no incluye no registrados ni
+  monotributo puro). La suma provincial puede diferir levemente del total
+  nacional por el método de desestacionalización (nota SIPA). En el gráfico,
+  el agregado regional es la **suma** de puestos de las provincias del grupo.
+
+## Empleados públicos cada 1.000 habitantes
+
+**¿Cuánto empleo público hay en La Rioja?**
+[Ficha metodológica](#ficha-06-empleo-publico).
+
+El empleo público atraviesa todo el país y los tres niveles de gobierno:
+Nación, provincias y municipios. Según el INDEC, en 2024 en Argentina había
+3,8 millones de puestos en el sector público, lo que equivale al 17% del
+empleo total.
+
+¿De qué hablamos cuando hablamos de empleo público? Nos referimos a las
+personas que trabajan como asalariadas en una institución del Estado —
+nacional, provincial o municipal—, en cualquiera de sus poderes. En la
+práctica, gran parte de ese empleo se concentra en administración pública y
+defensa, enseñanza y salud.
+
+En La Rioja, el empleo público tiene una relevancia particular dentro de la
+estructura económica provincial. Por su peso relativo, es uno de los
+principales sostenes del ingreso de los hogares y de la demanda interna, ya
+que los salarios del sector estatal se destinan mayoritariamente al consumo
+local y dinamizan el comercio y los servicios. De este modo, no sólo garantiza
+el funcionamiento del Estado y la prestación de servicios esenciales, sino que
+también cumple un rol relevante en el circuito económico provincial.
+
+Esta situación se explica en el marco de una estructura productiva con
+asimetrías regionales y un sector privado que aún no alcanza la escala
+suficiente para absorber toda la demanda laboral. En este contexto, el Estado
+cumple una doble función: sostiene el empleo y los servicios públicos en todo
+el territorio y, al mismo tiempo, impulsa políticas para diversificar la
+economía y fortalecer el sector privado mediante promoción industrial,
+financiamiento, infraestructura y apoyo a PyMEs. El desafío es ampliar el
+empleo privado sin debilitar el rol económico y social del empleo público.
+
+**Metodología.** Empleados públicos cada 1.000 habitantes: cantidad de
+asalariados ocupados del sector estatal por cada 1.000 habitantes de la
+población urbana. Se elabora con la EPH Total Urbano (INDEC), relevada en el
+tercer trimestre de cada año. El numerador corresponde a ocupados asalariados
+del sector público y el denominador a la población urbana total de la muestra,
+ambos ponderados. En el monitor lo estimamos así: asalariados ocupados cuyo
+establecimiento es estatal (`PP04A`). El indicador representa a la población
+**urbana** y no equivale a un padrón administrativo de planta.
+
+```{r emp-pub-datos}
+library(readr)
+library(dplyr)
+library(stringr)
+
+ep <- read_csv(
+  file.path(root, "data/inputs_md/06_empleados_publicos_cada_1000_hab.csv"),
+  show_col_types = FALSE
+) %>%
+  mutate(fecha = as.character(fecha)) %>%
+  filter(tipo == "agregado")
+
+ep_prov <- read_csv(
+  file.path(root, "data/inputs_md/06_empleados_publicos_cada_1000_hab_provincia.csv"),
+  show_col_types = FALSE
+) %>%
+  mutate(fecha = as.character(fecha))
+
+ep_comp <- read_csv(
+  file.path(root, "data/inputs_md/06_empleados_publicos_composicion_region.csv"),
+  show_col_types = FALSE
+)
+
+fecha_ult <- max(ep$fecha)
+anio_ult <- as.integer(str_sub(fecha_ult, 1, 4))
+
+fmt_pp <- function(x, digits = 0) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits, big.mark = ".")
+}
+
+fmt_pct <- function(x, digits = 1) {
+  format(round(100 * x, digits), decimal.mark = ",", nsmall = digits)
+}
+
+ep_ult <- ep %>% filter(fecha == fecha_ult)
+ep_lr    <- ep_ult %>% filter(serie == "3. La Rioja")
+ep_noa   <- ep_ult %>% filter(serie == "2. NOA-Resto")
+ep_resto <- ep_ult %>% filter(serie == "1. Resto país")
+
+serie_lr <- ep %>% filter(serie == "3. La Rioja")
+ep_ini <- serie_lr %>% slice_min(fecha, n = 1, with_ties = FALSE)
+ep_max <- serie_lr %>% slice_max(empleados_publicos_cada_1000, n = 1, with_ties = FALSE)
+
+noa_prov <- c(
+  "La Rioja", "Catamarca", "Jujuy", "Santiago del Estero", "Tucumán", "Salta"
+)
+rank_noa <- ep_prov %>%
+  filter(fecha == fecha_ult, provincia %in% noa_prov) %>%
+  arrange(desc(empleados_publicos_cada_1000)) %>%
+  mutate(puesto = row_number())
+
+frase_nivel <- paste0(
+  "La Rioja muestra de manera persistente un nivel de empleo público urbano superior al del resto de las provincias del NOA y al del resto del país. En ",
+  anio_ult,
+  " se estiman unos ",
+  fmt_pp(ep_lr$empleados_publicos_cada_1000, 0),
+  " empleados públicos cada 1.000 habitantes en la población urbana de La Rioja, frente a ",
+  fmt_pp(ep_noa$empleados_publicos_cada_1000, 0),
+  " en el NOA-Resto y ",
+  fmt_pp(ep_resto$empleados_publicos_cada_1000, 0),
+  " en el resto del país."
+)
+
+frase_evo <- paste0(
+  "Entre ", str_sub(ep_ini$fecha, 1, 4), " y ",
+  str_sub(ep_max$fecha, 1, 4),
+  " la serie de La Rioja tiende al alza (de aproximadamente ",
+  fmt_pp(ep_ini$empleados_publicos_cada_1000, 0),
+  " a un máximo cercano a ",
+  fmt_pp(ep_max$empleados_publicos_cada_1000, 0),
+  "), con ",
+  if (ep_lr$empleados_publicos_cada_1000 < ep_max$empleados_publicos_cada_1000) {
+    paste0(
+      "una baja en ", anio_ult, " (",
+      fmt_pp(ep_lr$empleados_publicos_cada_1000, 0), ")."
+    )
+  } else {
+    paste0("el último dato en el máximo de la serie.")
+  },
+  " En el mismo período, NOA-Resto y resto del país se mantienen en niveles mucho más bajos y relativamente estables."
+)
+
+frase_rank <- ""
+if (nrow(rank_noa) >= 2) {
+  frase_rank <- paste0(
+    "Dentro del NOA, La Rioja también lidera el ranking provincial: en ",
+    anio_ult, " la sigue ",
+    rank_noa$provincia[2], " (~",
+    fmt_pp(rank_noa$empleados_publicos_cada_1000[2], 0),
+    "), luego ",
+    rank_noa$provincia[3], " (~",
+    fmt_pp(rank_noa$empleados_publicos_cada_1000[3], 0),
+    "), y más abajo ",
+    paste(rank_noa$provincia[4:nrow(rank_noa)], collapse = ", "),
+    ". Esto refuerza que el fenómeno no es solo “regional”, sino particularmente marcado en La Rioja."
+  )
+}
+
+comp_lr <- ep_comp %>%
+  filter(
+    tipo == "agregado",
+    serie == "3. La Rioja",
+    ANO4 == anio_ult,
+    TRIMESTRE == 3L
+  ) %>%
+  arrange(desc(share))
+
+frase_comp <- ""
+if (nrow(comp_lr) >= 3) {
+  frase_comp <- paste0(
+    "Por rama (asalariados estatales, ", anio_ult,
+    "): ", comp_lr$rama[1], " (", fmt_pct(comp_lr$share[1]),
+    "%), ", comp_lr$rama[2], " (", fmt_pct(comp_lr$share[2]),
+    "%) y ", comp_lr$rama[3], " (", fmt_pct(comp_lr$share[3]), "%)."
+  )
+}
+```
+
+```{r emp-pub-region}
+mostrar("outputs/plots/06_empleados_publicos_cada_1000_hab.png")
+```
+
+- `r frase_nivel`
+- `r frase_evo`
+
+**¿Y en las provincias del NOA?**
+
+```{r emp-pub-noa}
+mostrar("outputs/plots/06_empleados_publicos_cada_1000_hab_noa.png")
+```
+
+- `r frase_rank`
+
+El indicador no evalúa por sí solo si el empleo público es “alto” o “bajo” en
+términos normativos: su valor está en contextualizar la magnitud del sector
+estatal frente a otras jurisdicciones y en el tiempo. Una lectura
+complementaria útil es cruzarlo con empleo privado formal, salarios y
+estructura productiva.
+
+**Composición por rama**
+
+```{r emp-pub-comp}
+mostrar("outputs/plots/06_empleados_publicos_composicion.png")
+mostrar("outputs/plots/06_empleados_publicos_composicion_ultimo.png")
+```
+
+- `r frase_comp`
+
+### Ficha metodológica {#ficha-06-empleo-publico}
+
+- **¿Qué mide?** Asalariados ocupados del sector estatal por cada 1.000
+  habitantes de la población urbana.
+- **¿Para qué sirve?** Observar el peso relativo del empleo público y
+  compararlo con el NOA y el resto del país; discutir tamaño del sector
+  público y su evolución.
+- **Unidad de medida:** empleados públicos cada 1.000 habitantes (población
+  urbana EPH Total Urbano).
+- **Fórmula de cálculo:** \(1000 \times\) asalariados públicos ponderados /
+  población ponderada (`PONDERA`). Establecimiento estatal (`PP04A`).
+- **Fuente:** EPH Total Urbano (INDEC), 3er trimestre. Raw:
+  `data/raw_data/eph_total_urbano_*/`. Scripts: `06_prep_empleados_publicos_eph_tu.R`,
+  `06_empleados_publicos.R`; composición: `06_prep_empleados_publicos_composicion.R`.
+- **Frecuencia:** anual (3T).
+- **Limitaciones:** representa población **urbana**, no un padrón de planta.
+  Incluye empresas estatales si el establecimiento es estatal; la EPH no
+  separa administración de empresa pública. No es, por sí solo, un juicio
+  normativo sobre el “tamaño” del Estado.
+
+# Fichas metodológicas
+
+Bloque de consulta. Cada ficha está debajo de su indicador en el cuerpo del
+informe, en el mismo orden que aparece arriba.
+Texto de referencia para talleres y Words:
+`informe/analisis_indicadores_provincia/fichas_Indicadores.pptx`.
+Detalle operativo de update: `README.md`.
+
+## PIB / PBG provincial
+
+Ver [ficha metodológica](#ficha-15-pbg).
+
+## Recursos propios / recursos totales
+
+Ver [ficha metodológica](#ficha-16-recursos).
+
+## Resultado fiscal (APNF)
+
+Ver [ficha metodológica](#ficha-17-fiscal).
+
+## % del PBG industrial
+
+Ver [ficha metodológica](#ficha-15-industrial).
+
+## Exportaciones
+
+Ver [ficha metodológica](#ficha-14-exportaciones).
+
+## Cantidad de empresas
+
+Ver [ficha metodológica](#ficha-07-empresas).
+
+## Educación superior (+25)
+
+Ver [ficha metodológica](#ficha-12-educ).
+
+## Trayectoria escolar
+
+Ver [ficha metodológica](#ficha-18-trayectoria).
+
+## Pobreza por NBI (hogares y población)
+
+Ver [ficha metodológica](#ficha-13-nbi).
+
+## Tasa de desempleo
+
+Ver [ficha metodológica](#ficha-04-desempleo).
+
+## Tasa de empleo
+
+Ver [ficha metodológica](#ficha-10-empleo).
+
+## Informalidad (aportes)
+
+Ver [ficha metodológica](#ficha-09a-informalidad).
+
+## Salarios formales (privado SIPA)
+
+Ver [ficha metodológica](#ficha-03-salarios).
+
+## Puestos asalariados privados
+
+Ver [ficha metodológica](#ficha-05-puestos).
+
+## Empleados públicos cada 1.000 habitantes
+
+Ver [ficha metodológica](#ficha-06-empleo-publico).
+
+# Reproducibilidad
+
+Ver el **README** del repositorio para fichas completas de update, qué no
+modificar (corte NOA-Resto, fórmulas, tema) y el orden del pipeline.
+
+```r
+rmarkdown::render("informe/monitor_la_rioja_tufte_fundar.Rmd")
+```

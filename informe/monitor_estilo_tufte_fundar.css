@@ -1,0 +1,272 @@
+/* ============================================================================
+   monitor_estilo_tufte_fundar.css
+   Capa de identidad Fundar sobre tufte::tufte_html.
+
+   Se carga DESPUÉS de las dependencias del paquete tufte
+   (tufte-fonts.css → tufte.css → tufte-background.css → tufte-italics.css),
+   por lo que alcanza con especificidad normal para pisar `color`.
+
+   NO se toca: familia tipográfica (et-book), anchos de columna, el mecanismo
+   de sidenotes/marginnotes, small-caps de .newthought, ni tamaños de h1/h2.
+
+   Paleta: la MISMA de informe/monitor_estilo.css (paleta tipográfica del
+   informe). NO se usa ningún color de style/fundar_monitor_theme.R: esos
+   colores codifican series de datos y no tienen contraste de texto.
+
+     #1a3d47  teal muy oscuro  h1, h1.title, fichas, hover     11.60:1  AAA
+     #2a4a55  slate oscuro     h2, índice, code inline          9.47:1  AAA
+     #2C5F6E  teal Fundar      enlaces, filetes, acentos        7.04:1  AAA
+     #3a5f6b  teal medio       h3, h4, subtítulo, notas         6.90:1  AAA
+     #5a707a  gris-teal        autor/fecha, enlaces a ficha     5.18:1  AA
+     #a8c4cc  teal claro       filetes decorativos              1.83:1  (no texto)
+     #fffff8  crema Tufte      fondo (se mantiene: ver README)
+   ========================================================================== */
+
+
+/* --- 1. Lienzo -------------------------------------------------------------
+   Se mantiene la crema de Tufte. Explícito para no depender de que
+   `tufte_features` incluya "background". El texto del cuerpo NO se toca:
+   el #111 de tufte.css da 18.80:1. Fondo blanco de los gráficos (ver
+   style/fundar_monitor_theme.R) se funde con este fondo (1.004:1); sobre un
+   beige quedaría un rectángulo blanco duro en cada gráfico. */
+body {
+  background-color: #fffff8;
+}
+
+
+/* --- 2. Portada -----------------------------------------------------------
+   h1.title queda cubierto por la regla de h1 (sección 3). */
+h3.subtitle {
+  color: #3a5f6b;
+}
+
+h4.author,
+h4.date {
+  color: #5a707a;
+}
+
+
+/* --- 3. Bloques temáticos (h1) --------------------------------------------
+   Color de marca + barra corta de 6rem sobre cada h1, que reemplaza al
+   `border-left: 5px solid #2C5F6E` del informe canónico. Es el equivalente
+   Tufte de un separador de sección: el documento no usa ningún `---`, y un
+   filete a todo el ancho invadiría la columna de márgenes.
+   Tamaño, peso y cursiva vienen de tufte.css/tufte-italics.css, sin tocar. */
+h1 {
+  color: #1a3d47;
+}
+
+h1:not(.title) {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+h1:not(.title)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6rem;
+  height: 3px;
+  background-color: #2C5F6E;
+}
+
+
+/* --- 4. Indicadores (h2) ---------------------------------------------------
+   Un escalón más claro que h1. La jerarquía real la sigue haciendo el tamaño
+   y la cursiva de tufte-italics.css. */
+h2 {
+  color: #2a4a55;
+}
+
+
+/* --- 5. h3 / h4 -----------------------------------------------------------
+   Corrección estructural, no sólo color: tufte.css NO define ningún h3/h4 de
+   cuerpo (sólo h3.subtitle y h4.author/h4.date). Sin estas reglas, los 17 h3
+   y los 2 h4 heredan el default del navegador y quedan MÁS CHICOS que el
+   texto corrido. Si se quiere un recoloreo puro, borrar las propiedades de
+   tamaño y margen, y dejar sólo `color`. */
+h3:not(.subtitle) {
+  color: #3a5f6b;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.15;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+h4:not(.author):not(.date) {
+  color: #3a5f6b;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.8rem;
+  margin-bottom: 0;
+}
+
+
+/* --- 6. Fichas metodológicas ----------------------------------------------
+   El id va en el DIV, no en el h3: con section_divs=TRUE (default de
+   rmarkdown::html_document) pandoc emite
+     <div id="ficha-15-pbg" class="section level3"><h3>Ficha metodológica</h3><ul>
+   Filete a 55% = ancho de la columna de texto, para no invadir el margen.
+   El listado se ensancha de 45% (default de tufte.css para ol/ul) a 55%:
+   las fichas tienen listas con sub-bullets y a 45% quedan apretadas. */
+div[id^="ficha-"] > h3 {
+  color: #1a3d47;
+  font-weight: 600;
+  width: 55%;
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid #a8c4cc;
+}
+
+div[id^="ficha-"] > ul {
+  width: 55%;
+  color: #2a4a55;
+}
+
+@media screen and (max-width: 760px) {
+  div[id^="ficha-"] > h3,
+  div[id^="ficha-"] > ul {
+    width: 90%;
+  }
+}
+
+
+/* --- 7. Enlaces ------------------------------------------------------------
+   tufte.css NO usa currentColor para el subrayado: lo fija en
+   `linear-gradient(#333, #333)`. Por eso hay que pisar background-image
+   además de color, o el subrayado queda gris bajo texto teal.
+   Se pisa SÓLO background-image (no el shorthand `background`) para conservar
+   background-size / -repeat / -position del original. */
+a:link,
+a:visited {
+  color: #2C5F6E;
+}
+
+a:link {
+  background-image:
+    linear-gradient(#fffff8, #fffff8),
+    linear-gradient(#fffff8, #fffff8),
+    linear-gradient(#2C5F6E, #2C5F6E);
+}
+
+a:hover {
+  color: #1a3d47;
+  background-image:
+    linear-gradient(#fffff8, #fffff8),
+    linear-gradient(#fffff8, #fffff8),
+    linear-gradient(#1a3d47, #1a3d47);
+}
+
+
+/* --- 8. Enlaces a ficha metodológica ---------------------------------------
+   30 ocurrencias. Son referencia interna al aparato del informe, no salidas
+   del documento (Argendata, CEPAL, INDEC). Se distinguen por color más
+   apagado y subrayado más claro, conservando el subrayado Tufte: replica la
+   intención de monitor_estilo.css en el informe canónico.
+   Especificidad (0,2,1) > a:link y > a:hover, por eso el hover propio. */
+a[href^="#ficha-"]:link,
+a[href^="#ficha-"]:visited {
+  color: #5a707a;
+}
+
+a[href^="#ficha-"]:link {
+  background-image:
+    linear-gradient(#fffff8, #fffff8),
+    linear-gradient(#fffff8, #fffff8),
+    linear-gradient(#a8c4cc, #a8c4cc);
+}
+
+a[href^="#ficha-"]:hover {
+  color: #1a3d47;
+  background-image:
+    linear-gradient(#fffff8, #fffff8),
+    linear-gradient(#fffff8, #fffff8),
+    linear-gradient(#2C5F6E, #2C5F6E);
+}
+
+
+/* --- 9. Aparato de márgenes -----------------------------------------------
+   Sólo color, sin bordes ni fondos: el margen de Tufte funciona por aire, y
+   un borde izquierdo se repetiría en cada nota y ensuciaría la columna.
+   El ⊕ (label.margin-toggle sin .sidenote-number) sólo se ve a ≤760px; se
+   pinta con el teal de marca para que se lea como affordance. No hay
+   footnotes en el documento, pero .sidenote queda cubierto a futuro. */
+.marginnote,
+.sidenote {
+  color: #3a5f6b;
+}
+
+.sidenote-number,
+label.margin-toggle:not(.sidenote-number) {
+  color: #2C5F6E;
+}
+
+
+/* --- 10. .newthought — SIN regla de color ---------------------------------
+   Decisión deliberada: los 4 newthought abren sección inmediatamente debajo
+   de un h1 ya teñido de #1a3d47. Teñirlos competiría con ese h1 y rompería
+   el efecto Tufte, que es un cambio de CAJA tipográfica (versalitas), no de
+   color. Heredan el #111 del cuerpo. */
+
+
+/* --- 11. Filetes ----------------------------------------------------------
+   El documento no usa ningún `---` hoy (la separación entre bloques la da
+   ::before de h1, sección 3). Se deja la regla para que cualquier <hr> que
+   se agregue salga en la paleta y no en el gris default de tufte.css. */
+hr {
+  border-top: 1px solid #a8c4cc;
+}
+
+
+/* --- 12. Citas ------------------------------------------------------------
+   No hay blockquotes en la prosa, pero mostrar() emite
+   `> *Gráfico pendiente: ...*` cuando falta un PNG en outputs/plots/.
+   Esto hace que ese aviso se lea como nota del sistema y no como cita. */
+blockquote {
+  margin-left: 0;
+  padding-left: 1.2rem;
+  border-left: 3px solid #a8c4cc;
+  color: #5a707a;
+}
+
+
+/* --- 13. Código ------------------------------------------------------------
+   Tiñe el `code` inline (nombres de script en las fichas: `15_prep_pbg.R`).
+   pre code vuelve a #111 para no pelearse con highlight.js en los chunks;
+   a code hereda el color del enlace. */
+code {
+  color: #2a4a55;
+}
+
+pre code {
+  color: #111111;
+}
+
+a code {
+  color: inherit;
+}
+
+
+/* --- 14. Índice (toc: true) ------------------------------------------------
+   Con theme=NULL no hay tocify: el TOC es un <div id="TOC"> (o <nav id="TOC">
+   en pandoc 3) al inicio del cuerpo. Son ~56 entradas; con el subrayado y el
+   teal de enlace sería un muro. Se neutraliza el subrayado y se jerarquiza:
+   bloques temáticos (h1) en #1a3d47 semibold, indicadores (h2) en #2a4a55. */
+#TOC a:link,
+#TOC a:visited {
+  color: #2a4a55;
+  background-image: none;
+  text-shadow: none;
+}
+
+#TOC a:hover {
+  color: #2C5F6E;
+}
+
+#TOC > ul > li > a:link,
+#TOC > ul > li > a:visited {
+  color: #1a3d47;
+  font-weight: 600;
+}

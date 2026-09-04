@@ -39,7 +39,8 @@ fundar_la_rioja/
 │   └── inputs_md/                # CSVs tidy listos para graficar / informe
 ├── outputs/plots/                # PNG estáticos del monitor
 ├── informe/
-│   └── monitor_la_rioja.Rmd      # Informe knit-able (coyuntura + fichas al final)
+│   ├── monitor_la_rioja.Rmd      # Informe knit-able (coyuntura + fichas al final)
+│   └── monitor_la_rioja_tufte.Rmd # Misma info, salida estilo Tufte (HTML)
 ├── dashboard/                    # App Shiny + sitio Quarto
 ├── style/                        # Temas ggplot (activo: fundar_monitor_theme.R)
 └── fundar_larioja.Rproj
@@ -111,6 +112,21 @@ rmarkdown::render(
   output_format = "word_document"
 )
 # → informe/monitor_la_rioja.docx
+```
+
+#### Variante Tufte (HTML, opcional)
+
+`informe/monitor_la_rioja_tufte.Rmd` es una **copia** del informe con estilo
+[Tufte](https://rstudio.github.io/tufte/) (blanco y negro, tipografía ET Book,
+notas al margen). Mismo contenido, mismos PNG de `outputs/plots/`; cambia solo
+el formato de salida. El informe canónico sigue siendo `monitor_la_rioja.Rmd`.
+
+```r
+# Dependencias: las del HTML (source("src/000_install_deps.R"), incluye tufte)
+
+# Knit → Knit to HTML, o:
+rmarkdown::render("informe/monitor_la_rioja_tufte.Rmd")
+# → informe/monitor_la_rioja_tufte.html
 ```
 
 El RMD inserta los PNG de `outputs/plots/` (no re-descarga datos). Ver

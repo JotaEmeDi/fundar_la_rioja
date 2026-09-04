@@ -26,7 +26,7 @@ install_project_deps <- function(
     )
   }
   if (isTRUE(informe)) {
-    pkgs <- c(pkgs, "rmarkdown", "knitr", "here", "readr", "dplyr")
+    pkgs <- c(pkgs, "rmarkdown", "knitr", "here", "readr", "dplyr", "tufte")
   }
   if (isTRUE(dashboard)) {
     pkgs <- c(pkgs, "shiny", "bslib", "bsicons", "plotly", "rsconnect")

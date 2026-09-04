@@ -14,6 +14,9 @@ Rplots.pdf
 para ver empresas.R
 trayectoria educativa/
 
+# Variante Tufte del informe: se genera con rmarkdown::render(), no se versiona
+informe/monitor_la_rioja_tufte.html
+
 # Archivos de lock de LibreOffice/OpenOffice (se cuelan al editar los xlsx)
 .~lock.*#
 

@@ -18,6 +18,12 @@ trayectoria educativa/
 informe/monitor_la_rioja_tufte.html
 informe/monitor_la_rioja_tufte_fundar.html
 
+# Documentos de trabajo de marco conceptual y taxonomía: no se versionan
+informe/marco_conceptual_y_taxonomia.md
+informe/marco_conceptual_y_taxonomia.html
+informe/v0_marco_conceptual_y_taxonomia.html
+informe/taxonomia_monitor.md
+
 # Archivos de lock de LibreOffice/OpenOffice (se cuelan al editar los xlsx)
 .~lock.*#
 

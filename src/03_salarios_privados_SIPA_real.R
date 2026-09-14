@@ -2,10 +2,9 @@ library(tidyverse)
 library(ggrepel)
 source("./style/fundar_monitor_theme.R")
 
-## 03 (viz, real). Remuneración SIPA privada en pesos constantes (IPC nac.).
-## Genera dos gráficos:
-## 1) serie mensual (muestra el “serrucho” del SAC en jun/dic)
-## 2) media móvil 12 meses (lectura de tendencia del poder de compra)
+## 03 (viz, real). Remuneración SIPA privada en precios constantes (IPC nac.).
+## Gráfico de tendencia: media móvil 12 meses del real (suaviza el SAC).
+## La serie mensual “con serrucho” no se publica en el monitor; queda en el CSV.
 
 path_csv <- "./data/inputs_md/03_salarios_privados_SIPA_real.csv"
 path_csv_tmp <- "./data/inputs_md/03_salarios_privados_SIPA_real_tmp.csv"
@@ -16,6 +15,24 @@ if (file.exists(path_csv_tmp)) {
 
 df <- read_csv(path_csv, show_col_types = FALSE) %>%
   mutate(fecha = as.Date(fecha))
+
+## Si el CSV viejo no trae MA12, se recalcula acá.
+if (!"salario_real_nac_ma12" %in% names(df)) {
+  df <- df %>%
+    arrange(jurisdiccion, fecha) %>%
+    group_by(jurisdiccion) %>%
+    mutate(
+      salario_real_nac_ma12 = {
+        x <- salario_real_nac
+        out <- rep(NA_real_, length(x))
+        if (length(x) >= 12L) {
+          for (i in 12:length(x)) out[i] <- mean(x[(i - 11L):i])
+        }
+        out
+      }
+    ) %>%
+    ungroup()
+}
 
 noa <- c("Catamarca", "Jujuy", "Salta", "Santiago del Estero", "Tucumán", "La Rioja")
 
@@ -94,16 +111,8 @@ plot_serie <- function(data, y_col, title, subtitle, outfile) {
 
 plot_serie(
   df,
-  "salario_real_nac",
-  "Remuneración promedio del sector privado registrado (precios constantes)",
-  "Deflactado por IPC nacional (base dic-2016 = 100). Serie mensual: el “serrucho” refleja el SAC (aguinaldo) en jun/dic.",
-  "./outputs/plots/03_salarios_privados_SIPA_real.png"
-)
-
-plot_serie(
-  df,
   "salario_real_nac_ma12",
   "Remuneración privada registrada en precios constantes (media móvil 12 meses)",
-  "Misma serie deflactada por IPC nacional, suavizada con promedio móvil de 12 meses para leer la tendencia.",
+  "SIPA provincial / IPC nacional (dic-2016 = 100). MA12: tendencia del poder de compra (suaviza el SAC). Trabajo publica SA solo a nivel nacional.",
   "./outputs/plots/03_salarios_privados_SIPA_real_ma12.png"
 )

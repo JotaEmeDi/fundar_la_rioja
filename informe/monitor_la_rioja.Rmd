@@ -928,21 +928,15 @@ mostrar("outputs/plots/15_pbg_estructura.png")
 **¿Cuánto exporta La Rioja?**
 [Ficha metodológica](#ficha-14-exportaciones).
 
-Durante los últimos 150 años, el mundo vivió un proceso de integración económica
-cada vez más profundo. Los países comenzaron a comerciar más entre sí, en un
-contexto de creciente interconexión global. Esta expansión del comercio
-internacional transformó la forma en que se distribuyen bienes y servicios, y
-marcó uno de los grandes cambios de la historia moderna. Aunque en los últimos
-años esa interconexión parece haber llegado a un límite, el proceso de apertura
-y vinculación económica internacional sigue siendo, en perspectiva histórica,
-una de las fuerzas más importantes que moldearon —y siguen moldeando— la
-economía mundial.
-
-Argentina tuvo momentos en los que pudo acoplarse virtuosamente a esta
-tendencia y otros en los que no. Las exportaciones argentinas crecieron
-notablemente hasta la década de 1910. Pero desde entonces, y particularmente
-desde mediados del siglo XX, el país viene perdiendo participación en las
-exportaciones mundiales.
+Las exportaciones de bienes son un canal clave de inserción externa, pero su
+peso y su composición varían mucho entre provincias. A escala nacional, la
+canasta argentina se concentra en productos agropecuarios y derivados de
+recursos naturales; a escala provincial, esa inserción es heterogénea. En el
+NOA, por ejemplo, jurisdicciones con fuerte peso minero o cerealero contrastan
+con perfiles más manufactureros o agroindustriales, en parte ligados a
+trayectorias de promoción industrial (como en La Rioja). El indicador que
+sigue permite leer cuánto exporta la provincia, cómo evoluciona frente a la
+región y el país, y en qué se concentra esa canasta.
 
 **Metodología.** El indicador mide las exportaciones de la provincia,
 entendidas como su capacidad para vender bienes al resto del mundo. La fuente

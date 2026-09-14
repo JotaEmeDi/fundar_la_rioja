@@ -1,29 +1,24 @@
-## 17 (prep). Resultado fiscal APNF (Administración Pública No Financiera).
+## 17 (prep). Resultado fiscal APNF / PBG nominal — La Rioja.
 ##
-## Estado: versión PROVISORIA en el Monitor.
-##   Objetivo del indicador = resultado / PBG nominal provincial.
-##   Lectura actual     = resultado / ingresos totales APNF
-##   (pendiente serie de PBG nominal de La Rioja).
+## Indicador del Monitor: resultado financiero y primario como % del PBG
+## nominal provincial (valores corrientes a precios básicos).
 ##
-## Definición (numerador):
-##   Resultado financiero = Ingresos totales (VI) - Gastos totales (VII)
-##   (fila VIII del Excel). Indicador de lectura provisoria:
-##   resultado_sobre_ingresos = resultado_financiero / ingresos_totales
+## Numerador: ejecuciones APNF (Min. Economía) — La Rioja.
+## Denominador: PBG nominal La Rioja (Dirección General de Estadísticas y
+## Censos de la provincia).
+##   Excel: data/raw_data/pbg/PBG_cuadros_generales_sectoreales_final_sept_2026.xlsx
+##   Hoja Corrientes, fila Total, unidad miles de $ → se expresa en millones.
 ##
-## No se deflacta: todo es nominal. El PBG CEPAL (2004 constante) no sirve
-## como denominador de este indicador.
+## Alcance: solo La Rioja. No hay comparación NOA-Resto / resto país porque
+## no se dispone de PBG nominal homogéneo para las demás provincias.
+## La serie se limita a la intersección de años APNF ∩ PBG nominal.
 ##
-## Fuente:
-##   Min. Economía – Ejecuciones presupuestarias provinciales APNF
-##   https://www.argentina.gob.ar/sites/default/files/serie_aif-apnf-2025.xlsx
-##   Página:
-##   https://www.argentina.gob.ar/economia/sechacienda/coordinacion-fiscal-provincial/ejecucion-presupuestaria-provincial/ejecuciones
-##
-## Agregación regional: suma de ingresos y de gastos; luego resultado y ratio.
+## El PBG CEPAL (constantes 2004) no se usa como denominador.
 ##
 ## Outputs:
-##   data/inputs_md/17_resultado_fiscal_por_provincia.csv
-##   data/inputs_md/17_resultado_fiscal_region.csv
+##   data/inputs_md/17_resultado_fiscal_la_rioja.csv
+##   data/inputs_md/17_resultado_fiscal_por_provincia.csv  (APNF completo, referencia)
+##   data/inputs_md/15_pbg_nominal_la_rioja.csv
 
 library(tidyverse)
 library(readxl)
@@ -31,6 +26,10 @@ library(stringi)
 
 url_apnf <- "https://www.argentina.gob.ar/sites/default/files/serie_aif-apnf-2025.xlsx"
 path_apnf <- "./data/raw_data/finanzas/serie_aif-apnf-2025.xlsx"
+path_pbg_xlsx <- paste0(
+  "./data/raw_data/pbg/",
+  "PBG_cuadros_generales_sectoreales_final_sept_2026.xlsx"
+)
 path_geo <- "https://raw.githubusercontent.com/argendatafundar/geonomencladores/main/geonomenclador.json"
 
 dir.create(dirname(path_apnf), showWarnings = FALSE, recursive = TRUE)
@@ -38,6 +37,12 @@ dir.create("./data/inputs_md", showWarnings = FALSE, recursive = TRUE)
 
 if (!file.exists(path_apnf)) {
   download.file(url_apnf, destfile = path_apnf, mode = "wb")
+}
+if (!file.exists(path_pbg_xlsx)) {
+  stop(
+    "Falta PBG nominal provincial: ", path_pbg_xlsx,
+    ". Colocar el Excel aportado por la provincia en data/raw_data/pbg/."
+  )
 }
 
 noa <- c("Catamarca", "Jujuy", "Salta", "Santiago del Estero", "Tucumán")
@@ -62,7 +67,6 @@ map_sheet_to_prov <- function(sheet) {
   )
 }
 
-## Conceptos a extraer (match por texto normalizado).
 conceptos_clave <- tribble(
   ~clave,                 ~needle,
   "ingresos_totales",     "vi. ingresos totales",
@@ -78,22 +82,13 @@ leer_hoja_apnf <- function(path, sheet) {
   if (is.na(header_row)) {
     stop("No se encontró fila CONCEPTO en hoja: ", sheet)
   }
-
-  years <- suppressWarnings(as.integer(parse_number(as.character(unlist(raw[header_row, -1])))))
-  keep <- which(!is.na(years))
-  years <- years[keep]
-
-  body <- raw[(header_row + 1):nrow(raw), , drop = FALSE]
-  concepto <- as.character(body[[1]])
-  vals <- body[, keep + 1, drop = FALSE]
-  names(vals) <- as.character(years)
-
-  tibble(concepto = concepto) %>%
-    bind_cols(vals) %>%
-    filter(!is.na(concepto), nzchar(str_squish(concepto))) %>%
+  years <- suppressWarnings(as.integer(unlist(raw[header_row, -1])))
+  body <- raw[-(1:header_row), ]
+  names(body) <- c("concepto", as.character(years))
+  body %>%
     mutate(concepto_norm = norm_txt(concepto)) %>%
     pivot_longer(
-      cols = all_of(as.character(years)),
+      cols = -c(concepto, concepto_norm),
       names_to = "anio",
       values_to = "valor"
     ) %>%
@@ -108,20 +103,19 @@ extraer_conceptos <- function(long_df) {
   map_dfr(seq_len(nrow(conceptos_clave)), function(i) {
     needle <- conceptos_clave$needle[[i]]
     clave <- conceptos_clave$clave[[i]]
-    hit <- long_df %>%
+    long_df %>%
       filter(str_starts(concepto_norm, needle) | str_detect(concepto_norm, fixed(needle))) %>%
-      ## Preferir la fila más corta / más específica (evita subtítulos raros).
       mutate(n_chr = nchar(concepto_norm)) %>%
       group_by(anio) %>%
       slice_min(n_chr, n = 1, with_ties = FALSE) %>%
       ungroup() %>%
       transmute(anio, clave = clave, valor)
-    hit
   }) %>%
     distinct(anio, clave, .keep_all = TRUE) %>%
     pivot_wider(names_from = clave, values_from = valor)
 }
 
+## -------- APNF (todas las provincias; CSV de referencia) --------
 sheets <- setdiff(excel_sheets(path_apnf), "Consolidado")
 
 fiscal_prov <- map_dfr(sheets, function(sheet) {
@@ -154,20 +148,6 @@ if (any(is.na(fiscal_prov[req]))) {
   stop("Faltan conceptos APNF en alguna provincia/año.")
 }
 
-## Consistencia: VIII ≈ VI - VII
-fiscal_prov <- fiscal_prov %>%
-  mutate(
-    resultado_calc = ingresos_totales - gastos_totales,
-    diff_abs = abs(resultado_financiero - resultado_calc)
-  )
-
-if (max(fiscal_prov$diff_abs, na.rm = TRUE) > 1) {
-  warning(
-    "Hay diferencias > 1 millón entre VIII y VI-VII; max=",
-    max(fiscal_prov$diff_abs, na.rm = TRUE)
-  )
-}
-
 fiscal_prov <- fiscal_prov %>%
   transmute(
     anio,
@@ -187,26 +167,51 @@ fiscal_prov <- fiscal_prov %>%
   ) %>%
   arrange(anio, provincia)
 
-fiscal_region <- fiscal_prov %>%
-  group_by(anio, la_rioja_region) %>%
-  summarise(
-    ingresos_totales = sum(ingresos_totales),
-    gastos_totales = sum(gastos_totales),
-    resultado_financiero = sum(resultado_financiero),
-    resultado_primario = sum(resultado_primario),
-    .groups = "drop"
+## -------- PBG nominal La Rioja (hoja Corrientes, fila Total) --------
+leer_pbg_nominal_lr <- function(path) {
+  raw <- read_excel(path, sheet = "Corrientes", col_names = FALSE, .name_repair = "unique_quiet")
+  ## Fila de años y fila Total (estructura del Excel provincial).
+  fila_anios <- which(norm_txt(raw[[1]]) == "sectores")[1]
+  fila_total <- which(norm_txt(raw[[1]]) == "total")[1]
+  if (is.na(fila_anios) || is.na(fila_total)) {
+    stop("No se encontraron filas Sectores/Total en hoja Corrientes.")
+  }
+  tibble(
+    anio = as.integer(unlist(raw[fila_anios, -1])),
+    pbg_miles = as.numeric(unlist(raw[fila_total, -1]))
   ) %>%
+    filter(!is.na(anio), !is.na(pbg_miles)) %>%
+    mutate(
+      pbg_millones = pbg_miles / 1000,
+      provincia = "La Rioja"
+    )
+}
+
+pbg_lr <- leer_pbg_nominal_lr(path_pbg_xlsx)
+write_csv(pbg_lr, "./data/inputs_md/15_pbg_nominal_la_rioja.csv")
+
+## -------- Indicador Monitor: solo La Rioja, % del PBG --------
+## APNF en millones de $; PBG (miles) / 1000 = millones.
+fiscal_lr <- fiscal_prov %>%
+  filter(provincia == "La Rioja") %>%
+  inner_join(pbg_lr %>% select(anio, pbg_miles, pbg_millones), by = "anio") %>%
   mutate(
-    resultado_sobre_ingresos = resultado_financiero / ingresos_totales,
-    primario_sobre_ingresos = resultado_primario / ingresos_totales
+    resultado_sobre_pbg = resultado_financiero / pbg_millones,
+    primario_sobre_pbg = resultado_primario / pbg_millones
   ) %>%
-  arrange(anio, la_rioja_region)
+  arrange(anio)
+
+if (nrow(fiscal_lr) == 0) {
+  stop("Join APNF–PBG nominal vacío para La Rioja. Revisar años/unidades.")
+}
 
 write_csv(fiscal_prov, "./data/inputs_md/17_resultado_fiscal_por_provincia.csv")
-write_csv(fiscal_region, "./data/inputs_md/17_resultado_fiscal_region.csv")
+write_csv(fiscal_lr, "./data/inputs_md/17_resultado_fiscal_la_rioja.csv")
 
 message(
-  "OK 17_prep_resultado_fiscal: ",
-  min(fiscal_region$anio), "-", max(fiscal_region$anio),
-  " | n_prov_anio=", nrow(fiscal_prov)
+  "OK 17_prep_resultado_fiscal: La Rioja ",
+  min(fiscal_lr$anio), "-", max(fiscal_lr$anio),
+  " | n=", nrow(fiscal_lr),
+  " | PBG nominal hasta ", max(pbg_lr$anio),
+  " | APNF provincias n=", nrow(fiscal_prov)
 )

@@ -24,8 +24,8 @@ Generar un pipeline replicable que permita calcular y visualizar una serie de in
 | 14 | Exportaciones | Macroeconomía – Crecimiento | OPEX-INDEC | ✓ |
 | 15 | PIB / PBG provincial y % industrial / estructura | Macroeconomía – Crecimiento | CEPAL / Min. Economía | ✓ |
 | 16 | Recursos propios sobre recursos totales | Macroeconomía – Crecimiento | Min. Economía (TOP + RON) | ✓ |
-| 17 | Resultado fiscal APNF (ingreso − gasto) | Macroeconomía – Crecimiento | Min. Economía (ejecuciones APNF) | ✓ (CSV/plots; RMD pendiente) |
-| 18 | Trayectoria escolar (cohorte primaria→secundaria) | Desarrollo – Educación | Relevamiento Anual (provincia) | ✓ (CSV/plots; RMD pendiente) |
+| 17 | Resultado fiscal APNF / PBG nominal (La Rioja) | Macroeconomía – Crecimiento | APNF Min. Economía + PBG nominal (DGEyC La Rioja) | ✓ |
+| 18 | Trayectoria escolar (cohorte primaria→secundaria) | Desarrollo – Educación | Relevamiento Anual (provincia) | ✓ |
 
 ## Estructura del repositorio
 
@@ -101,8 +101,8 @@ rmarkdown::render(
 
 #### Word (opcional)
 
-Misma base de paquetes que el HTML (sin LaTeX). Útil para editar texto o mandar
-un `.docx`. Sin TOC flotante ni layout web.
+Misma base de paquetes que el HTML (sin LaTeX). Útil para editar texto o
+entregar un `.docx`. Sin TOC flotante ni layout web.
 
 ```r
 # Dependencias: las del HTML (source("src/000_install_deps.R"))
@@ -151,7 +151,17 @@ rmarkdown::render("informe/monitor_la_rioja_tufte_fundar.Rmd")
 El RMD inserta los PNG de `outputs/plots/` (no re-descarga datos). Ver
 **Qué actualizar / qué no tocar** más abajo.
 
-> Los archivos en `data/raw_data/` y `data/proc_data/` están excluidos del control de versiones (`.gitignore`). Los CSVs en `data/inputs_md/` sí están versionados.
+> **Raw vs CSV.** La carpeta `data/raw_data/` (y `data/proc_data/`) está en
+> `.gitignore`: los Excel/crudos **no se versionan** en Git (pesan, se
+> regeneran o los aporta la provincia). Los CSV en `data/inputs_md/` **sí**
+> están versionados y alcanzan para knitear el Monitor.
+>
+> **Implicación para la provincia:** cuando actualicen un indicador cuyo raw no
+> se descarga solo de internet (p. ej. **PBG nominal DGEyC** o **trayectoria
+> escolar**), deben **colocar el Excel en la ruta indicada** en su copia local
+> del proyecto y correr prep → viz → knit. El repositorio entrega el pipeline y
+> los CSV vigentes; el archivo crudo lo mantienen ellos (o lo reciben por
+> carpeta compartida la primera vez).
 
 ## Pipeline de datos (EPH)
 
@@ -213,11 +223,11 @@ y agrupan por `fecha` y `la_rioja_region`, guardando cada indicador como CSV en 
 > **Salarios EPH (03b) — ponderación y quiebre 2015/2016.** El salario es un promedio
 > ponderado `sum(P21*w)/sum(w)` de asalariados registrados. El peso `w` es `PONDIIO`
 > (ponderador de ingreso, que corrige la no-respuesta) cuando existe, y `PONDERA`
-> (ponderador poblacional) como fallback en las ondas viejas (~pre-2016), donde la EPH
-> imputaba los ingresos y no publica `PONDIIO`. La serie arranca en 2007; como en 2015/2016
+> (ponderador poblacional) como alternativa en las ondas anteriores (~pre-2016), donde la EPH
+> imputaba los ingresos y no publica `PONDIIO`. La serie comienza en 2007; en 2015/2016
 > cambió el método de imputación de ingresos (y la EPH estuvo interrumpida entre 2015-T3 y
-> 2016-T1), los niveles a ambos lados del quiebre no son estrictamente comparables — el
-> gráfico lo marca con una línea vertical punteada.
+> 2016-T1), por lo que los niveles a ambos lados del quiebre no son estrictamente comparables —
+> el gráfico lo indica con una línea vertical punteada.
 
 ### 4. Visualización
 
@@ -253,7 +263,7 @@ El indicador de salarios sale de otro archivo SIPA
 hoja **"Total"**: *"Remuneración promedio de los trabajadores registrados del sector
 privado. Remuneración por todo concepto por provincia, a valores corrientes. En pesos"* —
 serie mensual por provincia. **Alcance:** la fuente cubre solo el **sector privado
-registrado** (el sector público queda pendiente por falta de fuente).
+registrado** (no incluye remuneraciones del sector público).
 
 - **`03_prep_salarios_privados_SIPA.R`**: la hoja viene **traspuesta** respecto de A.5.2
   (provincias en filas, meses en columnas, encabezado en la fila 5). El prep pivotea a
@@ -261,7 +271,7 @@ registrado** (el sector público queda pendiente por falta de fuente).
   `mmm-yy`, normalizado a primer día de mes), homologa los nombres de provincia a los
   canónicos de `05`/`07` (tomando `CAPITAL FEDERAL`→`C.A.B.A.` y `BUENOS AIRES`→`Buenos
   Aires`, y descartando `GRAN BUENOS AIRES` y el `Total` nacional), y **recorta desde
-  2015** (en pesos corrientes la historia previa queda aplastada por la inflación; el raw
+  2015** (en pesos corrientes, la historia previa queda distorsionada por la inflación; el raw
   conserva 1995+). Escribe `data/inputs_md/03_salarios_privados_SIPA.csv`:
 
   | Columna | Descripción |
@@ -467,7 +477,8 @@ source("src/16_recursos_propios.R")
 | CEPAL VAB 52 sectores | 15 | Cuando publiquen | Borrar/reemplazar Excel en `data/raw_data/pbg/` → `15_prep` → `15_pbg` |
 | TOP / RON Min. Economía | 16 | Anual | Reemplazar xlsx en `data/raw_data/finanzas/` → `16_prep` → viz |
 | Ejecuciones APNF Min. Economía | 17 | Anual | Reemplazar `serie_aif-apnf-*.xlsx` → `17_prep` → viz |
-| Relevamiento Anual (educación) | 18 Trayectoria | Anual | **Tarea provincia:** actualizar Excel de cohorte → prep → viz (ficha 18) |
+| PBG nominal La Rioja (DGEyC provincia) | 17 | Anual | **Tarea provincia:** colocar/actualizar el Excel en `data/raw_data/pbg/` (raw no va en Git) → `17_prep` → viz |
+| Relevamiento Anual (educación) | 18 Trayectoria | Anual | **Tarea provincia:** colocar/actualizar Excel en `data/raw_data/educacion/` (raw no va en Git) → prep → viz (ficha 18) |
 
 Después de regenerar PNG: `rmarkdown::render("informe/monitor_la_rioja.Rmd")`.
 
@@ -482,17 +493,20 @@ Después de regenerar PNG: `rmarkdown::render("informe/monitor_la_rioja.Rmd")`.
 
 ## Continuidad para el equipo provincial
 
-La idea del monitor es que **alguien del equipo de la provincia pueda actualizarlo** sin rearmar el análisis desde cero.
+El Monitor está pensado para que el equipo provincial pueda **actualizarlo**
+sin reconstruir el análisis desde cero.
 
 **Tres entregables (separados):**
 
 1. **Fichas metodológicas** (PPT / HTML) — qué mide cada indicador, fuente, fórmula.
-2. **RMD de coyuntura** (`informe/monitor_la_rioja.Rmd`) — gráficos + análisis; sin el manual de proyecto adentro.
-3. **Este README** — cómo instalar, actualizar y mantener.
+2. **RMD de coyuntura** (`informe/monitor_la_rioja.Rmd`) — gráficos y análisis;
+   no incluye el manual técnico del proyecto.
+3. **Este README** — instalación, actualización y mantenimiento.
 
 ### Plantilla de sección del RMD (para quien edita el monitor)
 
-Cada indicador en el RMD sigue este orden (no meter acá el PPT de fichas ni este README):
+Cada indicador en el RMD sigue este orden (las fichas en PPT y este README
+quedan fuera del cuerpo del informe):
 
 1. Título (`##`)
 2. Pregunta guía
@@ -500,9 +514,9 @@ Cada indicador en el RMD sigue este orden (no meter acá el PPT de fichas ni est
 4. Fuente / URL
 5. Raw / scripts / CSV
 6. Cálculo / limitaciones
-7. Actualización (breve; detalle en la ficha de abajo)
+7. Actualización (breve; detalle en la ficha correspondiente más abajo)
 8. Gráficos (`mostrar(...)`)
-9. Análisis (texto de *Análisis indicadores*), con último dato preferentemente desde CSV
+9. Análisis, con el último dato preferentemente leído desde CSV
 
 Esqueleto:
 
@@ -527,37 +541,38 @@ mostrar("outputs/plots/XX.png")
 Hay dos piezas técnicas de mantenimiento:
 
 1. **Este README** — manual de fuentes y pasos de actualización (fichas abajo).
-2. **`informe/monitor_la_rioja.Rmd`** — informe reproducible: al actualizar datos y re-correr el pipeline, los **gráficos cambian**; el texto fijo explica cómo leer (no debe congelar para siempre el “último número”).
+2. **`informe/monitor_la_rioja.Rmd`** — informe reproducible: al actualizar datos
+   y reejecutar el pipeline, los **gráficos se actualizan**; el texto fijo
+   orienta la lectura (no debe congelar de forma permanente el “último número”).
 
-Flujo habitual cuando sale dato nuevo:
+Flujo habitual cuando se publica un dato nuevo:
 
 ```text
-1. Bajar / reemplazar el raw en data/raw_data/...
-2. Correr prep → viz del indicador (o source("src/999_run_pipeline.R"))
+1. Descargar / reemplazar el raw en data/raw_data/...
+2. Ejecutar prep → viz del indicador (o source("src/999_run_pipeline.R"))
 3. Revisar PNG en outputs/plots/
 4. Knit: rmarkdown::render("informe/monitor_la_rioja.Rmd")
 ```
 
 ### Inventario rápido (estado de entrega)
 
-| Indicador | CSV / plots | Texto talleres | En RMD | Notas |
-|---|---|---|---|---|
-| 04 Desempleo | ✓ | ✓ (borrador) | Básico | Completar lectura dinámica en RMD |
-| 10 Empleo | ✓ | ✓ (doc principal) | Básico | |
-| 09a Informalidad | ✓ | ✓ | Básico | |
-| 05 Puestos SIPA | ✓ | ✓ | Básico | Ficha README modelo ↓ |
-| 03 Salarios SIPA (+ real) | ✓ | ✓ | Parcial | Falta meter real/MA12 al RMD |
-| 03b Salarios EPH | ✓ | Pendiente gráfico en análisis | Parcial | |
-| 06 Empleo público | ✓ | ✓ | ✓ | |
-| 07 Empresas | ✓ | ✓ | Básico | |
-| 12 Educ. superior | ✓ | ✓ | Básico | |
-| 13 NBI (pobreza por NBI) | ✓ | ✓ | Básico | No es IPM / pobreza multidimensional |
-| 14 Exportaciones | ✓ | ✓ | Piloto (plantilla + análisis + último dato CSV) | |
-| 15 PBG | ✓ | Borrador PBI en doc | ✓ | |
-| 16 Recursos propios | ✓ | — | ✓ | |
-| 17 Resultado fiscal APNF | ✓ | — | Pendiente | Ratio resultado/ingresos; RMD después |
-| 15 PBG per cápita | ✓ | — | Pendiente | Extensión del 15; RMD después |
-| 18 Trayectoria escolar | ✓ | Notas reuniones | Pendiente | Update RA = tarea provincia |
+| Indicador | CSV / plots | En RMD | Notas |
+|---|---|---|---|
+| 04 Desempleo | ✓ | ✓ | |
+| 10 Empleo | ✓ | ✓ | |
+| 09a Informalidad | ✓ | ✓ | |
+| 05 Puestos SIPA | ✓ | ✓ | |
+| 03 Salarios SIPA (+ índice real) | ✓ | ✓ | Corte de serie: ver `FECHA_HASTA` en prep |
+| 03b Salarios EPH | ✓ | Parcial | CSV/plots; la lectura principal de salarios en el Monitor es SIPA |
+| 06 Empleo público | ✓ | ✓ | |
+| 07 Empresas | ✓ | ✓ | |
+| 12 Educ. superior | ✓ | ✓ | |
+| 13 NBI | ✓ | ✓ | Pobreza por NBI (no IPM) |
+| 14 Exportaciones | ✓ | ✓ | |
+| 15 PBG / industria / estructura | ✓ | ✓ | Incluye per cápita y ranking |
+| 16 Recursos propios | ✓ | ✓ | |
+| 17 Resultado fiscal APNF | ✓ | ✓ | Solo La Rioja; % PBG nominal (DGEyC) |
+| 18 Trayectoria escolar | ✓ | ✓ | Actualización del RA: tarea provincia |
 
 ### Plantilla de ficha (usar para cada indicador)
 
@@ -579,8 +594,8 @@ Copiar y completar:
   1. …
   2. …
   3. …
-- **Último dato esperado tras update:** el PNG y, en el RMD, la serie deben
-  reflejar el nuevo período (subas/bajas incluidas).
+- **Último dato esperado tras la actualización:** el PNG y, en el RMD, la serie deben
+  reflejar el nuevo período (variaciones incluidas).
 - **No confundir / limitaciones:** …
 ```
 
@@ -726,14 +741,35 @@ Copiar y completar:
 - **Plot:** `16_recursos_propios.png`.
 - **Relacionado:** resultado fiscal APNF (17) — cuenta completa, no solo tributario.
 
-#### 17 — Resultado fiscal (APNF)
+#### 17 — Resultado fiscal (APNF / PBG nominal) — solo La Rioja
 
-- **Estado:** versión **provisoria** (resultado / ingresos). **Objetivo:** resultado / **PBG nominal** provincial (consulta a La Rioja en curso).
-- **Qué mide (provisorio):** Resultado financiero / ingresos totales (y complemento primario / ingresos). APNF = Administración Pública No Financiera.
-- **Fuente / URL:** [Ejecuciones presupuestarias](https://www.argentina.gob.ar/economia/sechacienda/coordinacion-fiscal-provincial/ejecucion-presupuestaria-provincial/ejecuciones) · `serie_aif-apnf-2025.xlsx`.
+- **Qué mide:** Resultado financiero y primario de la APNF de La Rioja como
+  **% del PBG nominal** provincial (valores corrientes a precios básicos).
+- **Por qué solo La Rioja:** no se dispone de una serie de PBG nominal homogénea
+  para el resto de las provincias; por eso **no** se replica la comparación
+  NOA-Resto / resto país en este indicador.
+- **Fuentes:**
+  - Numerador: [Ejecuciones presupuestarias APNF](https://www.argentina.gob.ar/economia/sechacienda/coordinacion-fiscal-provincial/ejecucion-presupuestaria-provincial/ejecuciones) · `data/raw_data/finanzas/serie_aif-apnf-2025.xlsx`.
+  - Denominador: PBG nominal La Rioja — **Dirección General de Estadísticas y
+    Censos de la provincia de La Rioja** ·
+    `data/raw_data/pbg/PBG_cuadros_generales_sectoreales_final_sept_2026.xlsx`
+    (hoja `Corrientes`, fila Total; miles de $ → millones / 1000).
+- **Actualización:** el Excel de PBG nominal lo aporta y actualiza la
+  **Dirección General de Estadísticas y Censos** de la provincia. Como
+  `data/raw_data/` no se versiona en Git, ese Excel **no viaja en el repo**: hay
+  que copiarlo a
+  `data/raw_data/pbg/PBG_cuadros_generales_sectoreales_final_sept_2026.xlsx`
+  (o el nombre vigente) en la máquina local y luego correr
+  `17_prep` → `17_resultado_fiscal.R` → knit. El APNF se reemplaza cuando
+  publica el Ministerio de Economía (mismo esquema: raw local → prep).
+  Los CSV en `inputs_md/` sí quedan en el repositorio para poder knitear sin
+  recalcular.
 - **Scripts:** `17_prep_resultado_fiscal.R` → `17_resultado_fiscal.R`.
-- **Plots:** `17_resultado_fiscal.png`, `17_resultado_fiscal_primario.png` (subtítulo: versión provisoria).
-- **Nota:** valores nominales; no usar PBG CEPAL (2004) como denominador. Pendiente PBG nominal provincial para versión definitiva.
+- **CSV:** `17_resultado_fiscal_la_rioja.csv`, `15_pbg_nominal_la_rioja.csv`
+  (y `17_resultado_fiscal_por_provincia.csv` como referencia APNF).
+- **Plots:** `17_resultado_fiscal.png`, `17_resultado_fiscal_primario.png`.
+- **Nota:** valores nominales; **no** usar PBG CEPAL (constantes 2004) como
+  denominador. La serie se limita a la intersección de años APNF ∩ PBG nominal.
 
 #### 18 — Trayectoria escolar (cohorte primaria → secundaria)
 
@@ -754,16 +790,19 @@ Copiar y completar:
 - **Qué NO mide:** egreso con título; panel nominal de los mismos alumnos; cobertura escolar; trayectoria desde inicial.
 - **Limitaciones:** aproximación de stock de matrícula entre dos puntas de cohorte (migración, repitencia y reingresos afectan la lectura). Mejora futura: excluir repitentes de 1° grado del denominador; comparar cohortes sucesivas; NOA vía anuarios nacionales.
 - **Frecuencia:** Anual (cuando cierra el RA / anuario).
-- **Archivo raw:** `data/raw_data/educacion/trayectoria_2014_2025_la_rioja.xlsx` (copia operativa del Excel provincial).
+- **Archivo raw:** `data/raw_data/educacion/trayectoria_2014_2025_la_rioja.xlsx`
+  (Excel del Relevamiento Anual / provincia). Misma lógica que el PBG nominal:
+  la actualización del crudo es **tarea provincial**; se coloca en esa ruta y
+  se corre prep → viz → knit. `data/raw_data/` no se versiona en Git; los CSV
+  tidy en `inputs_md/` sí permiten knitear el Monitor con la serie vigente.
 - **CSV tidy:** `18_trayectoria_escolar_matricula.csv`, `18_trayectoria_escolar_cohorte.csv`.
 - **Scripts:** `18_prep_trayectoria_escolar.R` → `18_trayectoria_escolar.R`.
 - **Gráficos:** `18_trayectoria_escolar.png`, `18_trayectoria_escolar_matricula.png`, `18_trayectoria_escolar_desagregada.png`.
 - **Cómo actualizar (tarea de la provincia):**
   1. Cuando cierre el Relevamiento Anual del año nuevo, armar/actualizar la tabla de cohorte (mismo formato: nivel, año calendario, año de estudio, matrícula total, y si se puede sexo y sector).
   2. Para la cohorte “a término” de 12 años: 1° grado en \(t\) y 5° año en \(t+11\) (con primaria de 7 años).
-  3. Reemplazar el Excel en `data/raw_data/educacion/` (mantener el nombre o ajustar `path_raw` en el prep).
-  4. `source("src/18_prep_trayectoria_escolar.R")` → `source("src/18_trayectoria_escolar.R")` → knit del monitor (cuando esté en el RMD).
-  5. Validar el número con el equipo de Educación antes de publicar.
+  3. Colocar/reemplazar el Excel en `data/raw_data/educacion/` (mantener el nombre o ajustar `path_raw` en el prep). El raw no viaja en Git: lo mantienen en su copia local del proyecto.
+  4. `source("src/18_prep_trayectoria_escolar.R")` → `source("src/18_trayectoria_escolar.R")` → knit del monitor.  5. Validar el número con el equipo de Educación antes de publicar.
 - **Responsable de la serie de matrícula:** cartera educativa provincial (RA). Fundar deja el pipeline reproducible; la provincia sostiene la actualización del input.
 
 #### 03b — Salarios registrados EPH (público/privado)

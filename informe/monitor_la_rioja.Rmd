@@ -69,17 +69,34 @@ textos de lectura. Se construyó de forma conjunta entre el equipo provincial y
 Fundar, tomando como referencia metodológica y de fuentes a
 [Argendata](https://argendata.fund.ar/).
 
-**Cómo está organizado.** Tres bloques temáticos —**Macroeconomía**,
-**Desarrollo** y **Trabajo e ingresos**—. En cada indicador: pregunta guía,
-análisis, gráficos y una **ficha metodológica** (definición, fuente, cálculo y
-limitaciones), también listada al final y en el índice.
+### Organización
 
-**Corte territorial.** Salvo donde se aclare lo contrario (por ejemplo, EPH
-continua = aglomerado capital), las series comparan **La Rioja**, **NOA-Resto**
-y **Resto país**.
+El Monitor se estructura en tres bloques temáticos:
+**Macroeconomía**, **Desarrollo** y **Trabajo e ingresos**. Cada indicador
+incluye una pregunta guía, un análisis, gráficos y una **ficha metodológica**
+(definición, fuente, cálculo y limitaciones). Dichas fichas se listan asimismo
+al final del documento y en el índice. La organización temática es consistente
+con las categorías de
+[Argendata](https://argendata.fund.ar/)
+correspondientes a esos tres bloques.
 
-**Actualización.** El código y las instrucciones para actualizar datos y
-gráficos están en el repositorio (`README.md`).
+### Corte territorial
+
+Con excepción de los casos en que se indique lo contrario (por ejemplo, cuando
+la fuente es la EPH continua y el dato corresponde al aglomerado capital), las
+series se elaboran para tres agregados:
+
+- **La Rioja:** la provincia (o el aglomerado capital, cuando la fuente es EPH
+  continua).
+- **NOA-Resto:** Catamarca, Jujuy, Salta, Santiago del Estero y Tucumán
+  (NOA sin La Rioja).
+- **Resto país:** las demás jurisdicciones del país (excluye La Rioja y el
+  NOA-Resto).
+
+### Actualización
+
+El código y las instrucciones para la actualización de
+datos y gráficos se encuentran disponibles en el repositorio (`README.md`).
 
 ```{r regenerar, eval=REGENERAR_PLOTS}
 ## Solo viz (asume CSVs en data/inputs_md/). Para prep completo ver README.
@@ -115,17 +132,14 @@ for (s in scripts_viz) {
 
 # Macroeconomía
 
-Este bloque mira el **tamaño y la dinámica** de la economía provincial y cómo
-se **financian y cierran** las cuentas públicas: el PBG (crecimiento del valor
-agregado) y las finanzas provinciales (peso de la recaudación tributaria
-directa frente a la coparticipación y otras transferencias, y resultado fiscal
-de la APNF), comparando La Rioja con el NOA y el resto del país. El resultado
-fiscal se publicará en versión definitiva como **% del PBG nominal**; mientras
-tanto la lectura sobre ingresos es **provisoria** (ver sección correspondiente).
-
-*Esta agrupación sigue la línea de
-[Argendata — Macroeconomía](https://argendata.fund.ar/categorias/macroeconomia/)
-(crecimiento, sistema tributario y gasto público).*
+Este bloque analiza el **tamaño y la dinámica** de la economía provincial y el
+**financiamiento y cierre** de las cuentas públicas. Incluye el PBG
+(crecimiento del valor agregado) y las finanzas provinciales (peso de la
+recaudación tributaria directa frente a la coparticipación y otras
+transferencias, y resultado fiscal de la APNF). El resultado fiscal de La Rioja
+se expresa como **% del PBG nominal** provincial; no se construye comparación
+regional en ese indicador por ausencia de PBG nominal homogéneo para el resto
+de las provincias.
 
 ## PIB / PBG provincial
 
@@ -133,19 +147,20 @@ tanto la lectura sobre ingresos es **provisoria** (ver sección correspondiente)
 [Ficha metodológica](#ficha-15-pbg).
 
 El crecimiento económico de una provincia se aproxima con la evolución de su
-producto: más actividad suele ir de la mano de más empleo, ingresos y capacidad
+producto: mayor actividad suele asociarse a más empleo, ingresos y capacidad
 fiscal para sostener servicios públicos
 ([Argendata — Crecimiento](https://argendata.fund.ar/topico/crecimiento/)).
-Argentina concentra buena parte de la producción en pocas jurisdicciones; mirar
-el PBG provincial sirve para ver si La Rioja se mueve al ritmo del NOA y del
-resto del país o se despega.
+En Argentina, una proporción elevada de la producción se concentra en pocas
+jurisdicciones; el seguimiento del PBG provincial es útil para evaluar si
+La Rioja evoluciona en sintonía con el NOA-Resto y el resto del país, o si su
+dinámica se diferencia de esos agregados.
 
-Acá usamos el **VAB provincial a precios constantes de 2004** (CEPAL /
-Ministerio de Economía), que aproxima el PBG. Cada serie se expresa como
-**índice 2004 = 100**: 100 es el nivel de 2004; un valor de 127,7 en 2024
-significa que el producto real creció ~28% en ese lapso. Sirve para comparar
-**dinámicas**, no el tamaño absoluto del producto. El peso industrial se trata en
-la sección siguiente.
+**Metodología.** En el Monitor se utiliza el **VAB provincial a precios
+constantes de 2004** (CEPAL / Ministerio de Economía), que aproxima el PBG.
+Cada serie se expresa como **índice 2004 = 100**: 100 es el nivel de 2004; un
+valor de 127,7 en 2024 indica que el producto real creció aproximadamente 28%
+en ese lapso. El índice permite comparar **dinámicas**, no el tamaño absoluto
+del producto. El peso industrial se analiza en la sección siguiente.
 
 ```{r pbg-datos}
 library(readr)
@@ -365,17 +380,18 @@ frase_pc_largo_plazo <- paste0(
 )
 
 frase_pc_indice_soporte <- paste0(
-  "La serie per cápita arranca en ", anio_pc_base,
+  "La serie per cápita comienza en ", anio_pc_base,
   " (índice ", anio_pc_base, " = 100). En ", anio_ult,
-  ", La Rioja está en ", fmt_n(pc_idx_en("3. La Rioja", anio_ult)),
-  ", el NOA-Resto en ", fmt_n(pc_idx_en("2. NOA-Resto", anio_ult)),
-  " y el resto del país en ", fmt_n(pc_idx_en("1. Resto país", anio_ult)), "."
+  ", La Rioja registra un índice de ", fmt_n(pc_idx_en("3. La Rioja", anio_ult)),
+  "; el NOA-Resto, de ", fmt_n(pc_idx_en("2. NOA-Resto", anio_ult)),
+  "; y el resto del país, de ", fmt_n(pc_idx_en("1. Resto país", anio_ult)), "."
 )
 
 frase_pc_relativo <- paste0(
   "Respecto del PBG per cápita nacional (índice 100, ponderado por población), ",
-  "La Rioja se ubica en ", fmt_idx100(pc_lr$pbg_pc_relativo_nac),
-  " (en ", anio_pc_base, " era ", fmt_idx100(pc_lr_base$pbg_pc_relativo_nac), ")."
+  "La Rioja registra un índice de ", fmt_idx100(pc_lr$pbg_pc_relativo_nac),
+  " (en ", anio_pc_base, " el índice era ",
+  fmt_idx100(pc_lr_base$pbg_pc_relativo_nac), ")."
 )
 
 crec_pc_lr_yoy <- pc_pct_desde("3. La Rioja", anio_ant, anio_ult)
@@ -463,10 +479,10 @@ mostrar("outputs/plots/15_pbg_evolucion.png")
 #### PBG per cápita
 
 Además de la **dinámica del producto total**, el VAB **por habitante** permite
-ver si La Rioja gana o pierde terreno frente al NOA y al resto del país cuando
-cambia la población. Son **pesos constantes de 2004** por persona (volumen
-real). La serie comparable arranca en **2010** (limitación de la proyección
-poblacional usada), con índice 2010 = 100.
+evaluar la posición relativa de La Rioja frente al NOA-Resto y al resto del
+país cuando cambia la población. Se expresa en **pesos constantes de 2004**
+por persona (volumen real). La serie comparable comienza en **2010**
+(limitación de la proyección poblacional utilizada), con índice 2010 = 100.
 
 ```{r pbg-pc-rel}
 mostrar("outputs/plots/15_pbg_per_capita_relativo.png")
@@ -490,12 +506,12 @@ mostrar("outputs/plots/15_pbg_per_capita_relativo.png")
 
 #### Ranking provincial
 
-**¿La Rioja ganó o perdió posiciones frente a las otras 23 jurisdicciones?**
-Además del nivel y la variación, interesa la posición relativa: el siguiente
-bump chart ordena a las 24 provincias por PBG per cápita (pesos constantes de
-2004) en cada año de la serie 2010-`r anio_ult` y sigue el recorrido de cada
-una. La Rioja y las provincias del NOA-Resto se destacan en tonos de verde
-(La Rioja, en el más oscuro); el resto, en gris.
+**¿Cómo evolucionó la posición relativa de La Rioja entre las 24 jurisdicciones?**
+Además del nivel y la variación, interesa el ordenamiento provincial: el
+siguiente bump chart ordena a las 24 provincias por PBG per cápita (pesos
+constantes de 2004) en cada año de la serie 2010-`r anio_ult` y muestra el
+recorrido de cada una. La Rioja y las provincias del NOA-Resto se destacan en
+tonos de verde (La Rioja, en el más oscuro); el resto, en gris.
 
 ```{r pbg-ranking}
 mostrar("outputs/plots/15_pbg_ranking_percapita.png")
@@ -538,20 +554,21 @@ manera directa?**
 Argentina es un país federal: Nación, provincias y municipios **comparten**
 facultades y recursos tributarios. Las provincias suelen ejecutar una porción
 del gasto mayor a la que recaudan de forma directa; la coparticipación federal
-y otras transferencias cubren gran parte de esa brecha. Importa precisar el
-lenguaje: los recursos coparticipables **son de las provincias** en el esquema
-federal; lo que distingue al indicador no es la “propiedad” del recurso, sino
-**quién lo recauda de manera directa**.
+y otras transferencias cubren gran parte de esa brecha. Conviene precisar el
+alcance del indicador: los recursos coparticipables **son de las provincias**
+en el esquema federal; lo que distingue a esta métrica no es la “propiedad”
+del recurso, sino **quién lo recauda de manera directa**.
 
-El indicador no juzga por sí solo la “calidad” de la gestión: aproxima el peso
-de la **recaudación tributaria directa** de la provincia dentro del
-financiamiento tributario considerado (TOP + RON).
+El indicador no constituye, por sí solo, un juicio sobre la “calidad” de la
+gestión: aproxima el peso de la **recaudación tributaria directa** de la
+provincia dentro del financiamiento tributario considerado (TOP + RON).
 
-**Metodología.** TOP = recursos tributarios de origen provincial (los que la
-provincia recauda de manera directa). RON = recursos de origen nacional
-(coparticipación y transferencias tributarias que la provincia no recauda
-directamente). Indicador = TOP / (TOP + RON). Agregado regional = suma de
-montos y luego el ratio. Fuente: Ministerio de Economía.
+**Metodología.** Se define TOP como los recursos tributarios de origen
+provincial (los que la provincia recauda de manera directa) y RON como los
+recursos de origen nacional (coparticipación y transferencias tributarias que
+la provincia no recauda directamente). El indicador se calcula como
+TOP / (TOP + RON). El agregado regional se obtiene sumando montos y calculando
+luego el ratio. Fuente: Ministerio de Economía.
 
 ```{r recursos-datos}
 library(readr)
@@ -632,7 +649,7 @@ mostrar("outputs/plots/16_recursos_propios.png")
 - **¿Qué mide?** La participación de los recursos tributarios que la provincia
   **recauda de manera directa** (TOP) sobre la suma de TOP y recursos de origen
   nacional (RON: coparticipación y transferencias tributarias). “Propios” se
-  usa acá como sinónimo operativo de recaudación directa, no como juicio sobre
+  usa en este Monitor como sinónimo operativo de recaudación directa, no como juicio sobre
   la titularidad federal del recurso: los recursos coparticipables son de las
   provincias; lo que no hacen es recaudarlos directamente.
 - **¿Para qué sirve?** Aproxima el peso de la recaudación tributaria directa
@@ -660,106 +677,85 @@ mostrar("outputs/plots/16_recursos_propios.png")
 **¿Los ingresos cubren los gastos en la provincia?**
 [Ficha metodológica](#ficha-17-fiscal).
 
-::: {.callout-note}
-## Versión provisoria
+Este indicador **complementa** el de recursos propios: no se limita a
+identificar el origen de los recursos, sino que permite evaluar si las cuentas
+de la Administración Pública No Financiera (APNF) provincial cierran,
+comparando el resultado con el **tamaño de la economía** (PBG nominal).
 
-El indicador **objetivo** del Monitor es expresar el resultado financiero y el
-primario como **porcentaje del PBG nominal provincial** (resultado / PBG
-nominal), para comparar el cierre fiscal con el tamaño de la economía en pesos
-corrientes.
-
-**Hoy** mostramos una versión **provisoria** sobre **ingresos totales APNF**
-(resultado / ingresos), porque:
-
-- las **ejecuciones presupuestarias** están publicadas (Ministerio de Economía);
-- la **serie de PBG nominal de La Rioja** está **en consulta con la provincia**;
-- el PBG del Monitor (CEPAL, precios constantes 2004) **no sirve** como
-  denominador de este indicador.
-
-Los gráficos y números de esta sección son **ilustrativos** hasta contar con
-PBG nominal compatible.
-:::
-
-Complemento del indicador anterior: no solo de dónde vienen los recursos, sino
-si las cuentas de la Administración Pública No Financiera (APNF) provincial
-cierran.
-
-Hay **dos lecturas** en la misma fuente (ejecuciones presupuestarias APNF):
+En la misma fuente (ejecuciones presupuestarias de la APNF) se distinguen
+**dos lecturas**:
 
 - **Resultado financiero** = ingresos totales − gastos totales. Los gastos
-  totales **incluyen el pago de intereses** de la deuda. Es el cierre “completo”
-  de las cuentas en esa definición.
+  totales **incluyen el pago de intereses** de la deuda. Constituye el cierre
+  “completo” de las cuentas en esa definición.
 - **Resultado primario** = ingresos totales − gastos primarios. Los gastos
-  primarios son el gasto **sin intereses**. Muestra si la provincia cubre su
-  gasto de funcionamiento y política pública **antes** de pagar el servicio de
-  la deuda.
+  primarios corresponden al gasto **sin intereses**. Permite observar si la
+  provincia cubre su gasto de funcionamiento y de política pública **antes**
+  de afrontar el servicio de la deuda.
 
-Por eso pueden diverger: a veces el primario es menos negativo (o positivo) y
-el financiero es más negativo, porque los intereses pesan en el total.
+Por esa razón, ambos resultados **pueden diferir**: en ocasiones el primario
+resulta menos negativo (o positivo) y el financiero más negativo, debido a que
+los intereses inciden en el total.
 
-**Metodología (versión provisoria).** Ambos ratios se calculan sobre ingresos
-totales. Agregado regional = suma de ingresos y de gastos (totales o primarios,
-según el indicador), luego el ratio. Fuente: Ministerio de Economía. **Versión
-definitiva prevista:** mismo numerador (resultado), denominador = PBG nominal
-provincial.
+**Metodología.** Ambos ratios se calculan como resultado / **PBG nominal** de
+La Rioja (valores corrientes a precios básicos; fuente: Dirección General de
+Estadísticas y Censos de la provincia). El
+numerador proviene de las ejecuciones APNF (Ministerio de Economía). La serie
+cubre la intersección de años disponibles en ambas fuentes. **No se presenta
+comparación con NOA-Resto ni con el resto del país** en este indicador: no se
+dispone de una serie de PBG nominal homogénea para las demás provincias. El
+PBG del Monitor a precios constantes de 2004 (CEPAL) **no** se utiliza como
+denominador.
 
 ```{r fiscal-datos}
 library(readr)
 library(dplyr)
 
 fis <- read_csv(
-  file.path(root, "data/inputs_md/17_resultado_fiscal_region.csv"),
+  file.path(root, "data/inputs_md/17_resultado_fiscal_la_rioja.csv"),
   show_col_types = FALSE
 )
 
 anio_ult <- max(fis$anio)
 anio_ant <- anio_ult - 1L
+anio_ini <- min(fis$anio)
 
 fmt_pct <- function(x, digits = 1) {
   format(round(100 * x, digits), decimal.mark = ",", nsmall = digits)
 }
 
 fis_ult <- fis %>% filter(anio == anio_ult)
-fis_lr <- fis_ult %>% filter(la_rioja_region == "3. La Rioja")
-fis_noa <- fis_ult %>% filter(la_rioja_region == "2. NOA-Resto")
-fis_resto <- fis_ult %>% filter(la_rioja_region == "1. Resto país")
-
-fis_lr_ant <- fis %>%
-  filter(anio == anio_ant, la_rioja_region == "3. La Rioja")
+fis_ant <- fis %>% filter(anio == anio_ant)
 
 signo_txt <- function(x) {
   if (x > 0.0005) "superávit" else if (x < -0.0005) "déficit" else "equilibrio"
 }
 
 frase_nivel <- paste0(
-  "En ", anio_ult, " (versión provisoria sobre ingresos), La Rioja cerró con ",
-  signo_txt(fis_lr$resultado_sobre_ingresos), " financiero equivalente al ",
-  fmt_pct(abs(fis_lr$resultado_sobre_ingresos)), "% de sus ingresos totales."
-)
-
-frase_comp <- paste0(
-  "En el mismo año, el NOA-Resto registró ",
-  signo_txt(fis_noa$resultado_sobre_ingresos), " (",
-  fmt_pct(abs(fis_noa$resultado_sobre_ingresos)),
-  "% de ingresos) y el resto del país ",
-  signo_txt(fis_resto$resultado_sobre_ingresos), " (",
-  fmt_pct(abs(fis_resto$resultado_sobre_ingresos)), "%)."
+  "En ", anio_ult, ", La Rioja cerró con ",
+  signo_txt(fis_ult$resultado_sobre_pbg), " financiero equivalente al ",
+  fmt_pct(abs(fis_ult$resultado_sobre_pbg)), "% del PBG nominal."
 )
 
 frase_yoy <- ""
-if (nrow(fis_lr_ant) == 1) {
+if (nrow(fis_ant) == 1) {
   frase_yoy <- paste0(
-    "Un año antes (", anio_ant, "), La Rioja había cerrado con ",
-    signo_txt(fis_lr_ant$resultado_sobre_ingresos), " del ",
-    fmt_pct(abs(fis_lr_ant$resultado_sobre_ingresos)), "% de ingresos."
+    "Un año antes (", anio_ant, "), había cerrado con ",
+    signo_txt(fis_ant$resultado_sobre_pbg), " del ",
+    fmt_pct(abs(fis_ant$resultado_sobre_pbg)), "% del PBG nominal."
   )
 }
 
 frase_prim <- paste0(
-  "Mirando el resultado primario (gasto sin intereses), La Rioja registró ",
-  signo_txt(fis_lr$primario_sobre_ingresos), " del ",
-  fmt_pct(abs(fis_lr$primario_sobre_ingresos)),
-  "% de los ingresos: permite ver el cierre antes del pago de intereses."
+  "El resultado primario (gasto sin intereses) registró ",
+  signo_txt(fis_ult$primario_sobre_pbg), " del ",
+  fmt_pct(abs(fis_ult$primario_sobre_pbg)),
+  "% del PBG nominal: permite ver el cierre antes del pago de intereses."
+)
+
+frase_cobertura <- paste0(
+  "La serie publicada corresponde a ", anio_ini, "–", anio_ult,
+  " (intersección entre ejecuciones APNF y PBG nominal provincial)."
 )
 ```
 
@@ -768,9 +764,9 @@ mostrar("outputs/plots/17_resultado_fiscal.png")
 ```
 
 - `r frase_nivel`
-- `r frase_comp`
 - `r frase_yoy`
 - `r frase_prim`
+- `r frase_cobertura`
 
 ```{r fiscal-primario}
 mostrar("outputs/plots/17_resultado_fiscal_primario.png")
@@ -778,50 +774,52 @@ mostrar("outputs/plots/17_resultado_fiscal_primario.png")
 
 ### Ficha metodológica {#ficha-17-fiscal}
 
-- **Estado:** versión **provisoria**. Objetivo del Monitor: resultado / **PBG
-  nominal** provincial. Lectura actual: resultado / **ingresos totales APNF**.
-- **¿Qué mide?** Dos saldos de la APNF provincial:
-  - *Financiero:* ingresos − gastos totales (**con** intereses).
-  - *Primario:* ingresos − gastos primarios (**sin** intereses).
-  En la versión provisoria, ambos se expresan como % de los ingresos totales.
-- **¿Para qué sirve?** Ver si las cuentas cierran y separar el efecto del
-  servicio de la deuda (intereses) del resto del gasto. La versión definitiva
-  permitirá comparar ese cierre con el **tamaño nominal del producto**.
+- **¿Qué mide?** Dos saldos de la Administración Pública No Financiera (APNF)
+  de La Rioja, expresados como porcentaje del **PBG nominal** provincial:
+  - *Financiero:* ingresos totales − gastos totales (**incluye** el pago de
+    intereses).
+  - *Primario:* ingresos totales − gastos primarios (**excluye** intereses).
+- **¿Para qué sirve?** Permite evaluar el resultado fiscal en relación con el
+  tamaño de la economía provincial y distinguir el efecto del servicio de la
+  deuda.
 - **¿Qué nos dice?**
-  - *Ratio positivo:* superávit (ingresos > gastos en esa definición).
-  - *Ratio negativo:* déficit.
-  - *Primario mejor que financiero:* los intereses explican parte del
-    deterioro del resultado total.
-- **Comportamiento esperado:** serie anual; valores nominales (no deflactados).
-  Fluctúa con el ciclo y la ejecución presupuestaria.
-- **Unidad de medida:** porcentaje (%). Provisorio: % de ingresos totales.
-  Definitivo (previsto): % del PBG nominal provincial.
-- **Fórmula de cálculo (provisoria):** resultado financiero / ingresos totales;
-  resultado primario / ingresos totales. Agregado regional = suma de ingresos y
-  de gastos, luego ratio. **Fórmula objetivo:** resultado / PBG nominal
-  provincial (pendiente serie provincial).
-- **Fuente de datos oficial:** Ministerio de Economía — ejecuciones
-  presupuestarias provinciales (APNF). Scripts: `17_prep_resultado_fiscal.R`,
-  `17_resultado_fiscal.R`. **Pendiente:** PBG nominal La Rioja (consulta a la
-  provincia).
-- **Frecuencia de actualización:** anual.
-- **Limitaciones:** APNF no es todo el sector público consolidado. El ratio no
-  sustituye un análisis de deuda, caja ni calidad del gasto. No confundir con
-  TOP/RON (recursos tributarios). **No usar** el PBG CEPAL (2004 constante) como
-  denominador. La versión sobre ingresos **no sustituye** la versión sobre PBG
-  nominal.
+  - *Ratio positivo:* superávit en la definición correspondiente.
+  - *Ratio negativo:* déficit en la definición correspondiente.
+  - *Primario superior al financiero:* parte de la diferencia se explica por
+    el pago de intereses.
+- **Comportamiento esperado:** serie anual en valores nominales (sin
+  deflactar). Varía con el ciclo económico y la ejecución presupuestaria.
+- **Unidad de medida:** porcentaje del PBG nominal (%).
+- **Fórmula de cálculo:** resultado financiero / PBG nominal;
+  resultado primario / PBG nominal. PBG en millones de $ = Total de la hoja
+  Corrientes (miles de $) / 1000.
+- **Fuente de datos oficial:** numerador — Ministerio de Economía (ejecuciones
+  presupuestarias APNF). Denominador — PBG nominal de La Rioja (valores
+  corrientes a precios básicos; **Dirección General de Estadísticas y Censos
+  de la provincia de La Rioja**;
+  `data/raw_data/pbg/PBG_cuadros_generales_sectoreales_final_sept_2026.xlsx`).
+  Scripts: `17_prep_resultado_fiscal.R`, `17_resultado_fiscal.R`.
+- **Frecuencia de actualización:** anual. La actualización del PBG nominal
+  corresponde a la Dirección General de Estadísticas y Censos de la provincia;
+  la del APNF, al Excel del Ministerio de Economía.
+- **Limitaciones:** la APNF no representa al sector público consolidado en su
+  totalidad. El ratio no sustituye un análisis de deuda, de caja ni de calidad
+  del gasto. No debe confundirse con TOP/RON (recursos tributarios). **No
+  utilizar** el PBG CEPAL (precios constantes de 2004) como denominador.
+  **Solo La Rioja:** no se presenta comparación con NOA-Resto ni con el resto
+  del país ante la ausencia de PBG nominal homogéneo para las demás
+  provincias. La serie se limita al último año con ambas fuentes disponibles.
 
 # Desarrollo
 
-Más allá del crecimiento del producto, este bloque mira **cómo se produce**,
-cómo se **inserta** la provincia y qué pasa con el **bienestar**: composición
-del PBG (industria y rubros), exportaciones, cantidad de empresas formales,
-nivel educativo y trayectoria escolar, y pobreza por NBI.
-
-*Esta agrupación sigue la línea de
-[Argendata — Desarrollo](https://argendata.fund.ar/categorias/desarrollo/)
-(estructura productiva, comercio exterior, educación / desarrollo humano y
-pobreza).*
+Este bloque analiza la **estructura productiva**, la **inserción** de la
+provincia en el comercio exterior y dimensiones del **bienestar**. La
+estructura productiva comprende el entramado de actividades que generan bienes
+y servicios en un territorio, e incide en las posibilidades de crecimiento y
+diversificación económica. En el Monitor se abordan, a escala provincial y
+comparada, la composición del PBG (industria y rubros), las exportaciones, la
+cantidad de empresas formales, el nivel educativo y la trayectoria escolar, y
+la pobreza por NBI.
 
 ## % del PBG industrial
 
@@ -831,10 +829,12 @@ pobreza).*
 En Argentina la industria manufacturera es el principal componente de los
 bienes dentro del PIB nacional (del orden del 19% del PIB en la lectura de
 Argendata). A escala provincial el peso cambia mucho: en el centro suele ser
-más alto; en el norte, en promedio, más bajo. El indicador siguiente mide la
-participación de la industria (letra D, CIIU Rev. 3) en el VAB regional a
-precios de 2004 —misma fuente que el PBG del Monitor— para ver dónde se ubica
-La Rioja frente al NOA-Resto y al resto del país.
+más alto; en el norte, en promedio, más bajo.
+
+**Metodología.** El indicador mide la participación de la industria
+manufacturera (letra D, CIIU Rev. 3) en el VAB regional a precios de 2004 —
+misma fuente que el PBG del Monitor— para situar a La Rioja frente al
+NOA-Resto y al resto del país.
 
 ```{r pbg-ind-datos}
 library(readr)
@@ -886,7 +886,7 @@ mostrar("outputs/plots/15_pbg_pct_industrial.png")
   caída absoluta del VAB industrial: puede bajar el peso porque otros sectores
   crecieron más.
 
-### ¿Cómo se compone el PBG por rubro?
+## ¿Cómo se compone el PBG por rubro?
 
 *Complemento analítico* (misma fuente CEPAL): participación sectorial del PBG
 a precios de 2004 en el último año disponible. Permite ver qué rubros explican
@@ -951,14 +951,16 @@ Los montos se agregan por **suma** (no promedio) en tres grupos: La Rioja, el
 resto del NOA (Catamarca, Jujuy, Salta, Santiago del Estero y Tucumán) y el
 resto del país. Los períodos recientes pueden ser provisionales.
 
-Para evitar distorsiones por escala: en valores absolutos La Rioja exporta en
-el orden de los cientos de millones de USD; el resto del NOA, miles de
-millones; el resto del país, decenas de miles de millones. Un gráfico en
-millones con eje compartido aplasta la serie riojana; paneles con ejes libres
-muestran cada trayectoria pero no si la provincia evoluciona por encima o por
-debajo de la región. Por eso se usa un **índice 2015 = 100** (dinámica
-relativa), complementado con la **participación** sobre la suma OPEX de las 24
-jurisdicciones y con la **composición** por subrubros (treemap).
+A fin de evitar distorsiones de escala: en valores absolutos, La Rioja exporta
+en el orden de los cientos de millones de dólares; el resto del NOA, miles de
+millones; y el resto del país, decenas de miles de millones. Un gráfico en
+millones de dólares con eje compartido **reduce visualmente** la serie riojana
+hasta tornar difícil su lectura; los paneles con ejes libres muestran cada
+trayectoria, pero no permiten evaluar con claridad si la provincia evoluciona
+por encima o por debajo de la región. Por ello se utiliza un **índice
+2015 = 100** (dinámica relativa), complementado con la **participación** sobre
+la suma OPEX de las 24 jurisdicciones y con la **composición** por subrubros
+(treemap).
 
 ```{r exp-ultimo}
 library(readr)
@@ -1119,9 +1121,7 @@ El gráfico de índice homologa la unidad de medida para los tres grupos (2015 =
 (`r round(lr$indice_2015)`), NOA-Resto (`r round(noa$indice_2015)`) y resto del
 país (`r round(resto$indice_2015)`).
 
-**¿En qué se concentra lo que exporta La Rioja?**
-
-### Estructura y perfil de la canasta exportadora
+## ¿En qué se concentra lo que exporta La Rioja?
 
 La Rioja presenta una mayor concentración exportadora en comparación con el
 resto del NOA y el resto del país: sus tres principales rubros
@@ -1147,11 +1147,11 @@ desagregado no prueba cero minería (puede ser residual o confidencialidad).
 mostrar("outputs/plots/14_exportaciones_treemap_subrubros_facet.png")
 ```
 
-La etiqueta “No desagregado” del treemap es la diferencia entre el total
-provincial OPEX del grupo y la suma de los subrubros que sí vienen con monto
-(no es un rubro publicado por OPEX; puede incluir confidencialidad u otros
-ítems no publicados). Ítems con participación menor al 4% se agrupan en
-“Otros”.
+La etiqueta **“No desagregado”** del treemap corresponde a la diferencia entre
+el total provincial OPEX del grupo y la suma de los subrubros que sí reportan
+monto. No constituye un rubro publicado por OPEX; puede incluir ítems sujetos
+a confidencialidad u otras partidas no divulgadas. Los ítems con participación
+inferior al 4% se agrupan en **“Otros”**.
 
 ### Ficha metodológica {#ficha-14-exportaciones}
 
@@ -1190,22 +1190,20 @@ provincial OPEX del grupo y la suma de los subrubros que sí vienen con monto
 [Ficha metodológica](#ficha-07-empresas).
 
 Las empresas están en el centro de la vida económica: generan empleo, ingresos
-y capacidades productivas. Desde la década de 1990 hasta la actualidad, la
-creación y destrucción de empresas estuvo fuertemente ligada a los ciclos
-económicos del país. El Monitor permite medir este impacto para diseñar
-herramientas de contención local.
+y capacidades productivas. La creación y destrucción de empresas está ligada a
+los ciclos económicos; el Monitor permite medir esa dinámica a escala local
+para orientar herramientas de contención y promoción.
 
 Para el Gobierno de La Rioja, las empresas son un eje del desarrollo
 provincial: generan empleo, inversión y capacidades locales, y contribuyen a
-diversificar una estructura económica históricamente desigual. En este marco,
-el Estado asume un rol activo, tanto acompañando al sector privado como
-interviniendo mediante empresas públicas en áreas estratégicas como energía,
-alimentos, conectividad, transporte y servicios esenciales. Esta estrategia se
-complementa con políticas de apoyo al sector privado —financiamiento a PyMEs,
-promoción industrial, beneficios fiscales e infraestructura—. En un contexto
-nacional de retracción económica, la política provincial también busca
-sostener el entramado productivo, preservar el empleo y promover nuevas
-inversiones, articulando iniciativa pública y privada.
+diversificar la estructura económica. En este marco, el Estado asume un rol
+activo, tanto acompañando al sector privado como interviniendo mediante
+empresas públicas en áreas estratégicas. Esta estrategia se complementa con
+políticas de apoyo al sector privado —financiamiento a PyMEs, promoción
+industrial, beneficios fiscales e infraestructura—. En un contexto nacional de
+retracción económica, la política provincial también busca sostener el
+entramado productivo, preservar el empleo y promover nuevas inversiones,
+articulando iniciativa pública y privada.
 
 **Metodología.** Evolución de la cantidad de empresas en la provincia de La
 Rioja a partir de la Superintendencia de Riesgos del Trabajo (SRT), que
@@ -1435,16 +1433,17 @@ mostrar("outputs/plots/11_empresas_jurisdiccion.png")
 - `r frase_ref`
 - `r frase_desde_pico`
 
-**¿Y en las provincias?**
+**Distribución geográfica.** Dos factores resultan centrales para explicar la
+localización de las empresas en Argentina: la población y el nivel de actividad
+económica. En líneas generales, las jurisdicciones más pobladas (como Buenos
+Aires, Córdoba, Santa Fe y CABA) concentran también la mayor cantidad de
+empresas.
 
-Hay dos factores clave que explican la distribución geográfica de las empresas
-en Argentina: la población y la riqueza. En líneas generales, las
-jurisdicciones más pobladas (como Buenos Aires, Córdoba, Santa Fe y CABA)
-concentran también la mayor cantidad de empresas.
+**Evolución reciente**
 
-- `r n_mom_baja` de las `r n_prov` provincias muestran una caída intermensual.
-- `r n_yoy_baja` de las `r n_prov` provincias muestran una caída interanual.
-- `r n_ref_baja` de las `r n_prov` provincias muestran una caída desde
+- `r n_mom_baja` de las `r n_prov` provincias registran una caída intermensual.
+- `r n_yoy_baja` de las `r n_prov` provincias registran una caída interanual.
+- `r n_ref_baja` de las `r n_prov` provincias registran una caída desde
   noviembre de 2023.
 - En el último mes, crecieron `r n_mom_sube` provincias.
 
@@ -1485,31 +1484,34 @@ concentran también la mayor cantidad de empresas.
 
 ## Educación superior (+25)
 
-**¿Cuánto estudian los riojanos?**
+**¿Qué proporción de la población de 25 años o más tiene estudios superiores
+completos?**
 [Ficha metodológica](#ficha-12-educ).
 
-La educación es un tema clave para el desarrollo. A nivel individual mejora
-las capacidades, facilita el acceso a empleos de mayor calidad y ayuda a
-reducir desigualdades. A nivel colectivo, una población más educada impulsa
-la productividad, la innovación y la participación democrática.
+La educación constituye un determinante central del desarrollo. A nivel
+individual, amplía capacidades, facilita el acceso a empleos de mayor calidad
+y contribuye a reducir desigualdades. A nivel colectivo, una población con
+mayores niveles educativos se asocia a mayores niveles de productividad,
+innovación y participación democrática.
 
-Desde fines del siglo XIX la educación argentina ocupó un lugar destacado en
-la agenda pública. La Ley 1420 de 1884 expandió la escuela primaria pública,
-gratuita y laica; la Reforma Universitaria de 1918 sentó las bases del sistema
-universitario público; en 1949 se estableció la gratuidad universitaria; y en
-2006 se declaró obligatoria la secundaria.
+Desde fines del siglo XIX, la educación argentina ocupó un lugar destacado en
+la agenda pública. La Ley 1420 de 1884 impulsó la expansión de la escuela
+primaria pública, gratuita y laica; la Reforma Universitaria de 1918 sentó las
+bases del sistema universitario público; en 1949 se estableció la gratuidad
+universitaria; y en 2006 se declaró la obligatoriedad de la educación
+secundaria.
 
-Para el Gobierno de La Rioja, la educación es un derecho fundamental y una
-herramienta de inclusión, igualdad de oportunidades y movilidad social. Es,
-además, una política pública estratégica para construir una provincia con
-desarrollo, justicia social y futuro. En esa dirección, la Provincia impulsa
-políticas de ampliación y mejora de la infraestructura escolar, conectividad
-y acceso a herramientas tecnológicas, acompañamiento de trayectorias,
-fortalecimiento de la educación técnica y la formación profesional, y
-transformación de la escuela secundaria. El objetivo es ampliar las
-oportunidades educativas en todo el territorio y generar las condiciones para
-que cada vez más riojanos puedan completar sus estudios y continuar su
-formación.
+Para el Gobierno de La Rioja, la educación constituye un derecho fundamental y
+un instrumento de inclusión, igualdad de oportunidades y movilidad social.
+Asimismo, representa una política pública estratégica orientada al desarrollo,
+la justicia social y la proyección de la provincia. En esa dirección, la
+Provincia impulsa políticas de ampliación y mejora de la infraestructura
+escolar, de conectividad y acceso a herramientas tecnológicas, de
+acompañamiento de trayectorias, de fortalecimiento de la educación técnica y
+la formación profesional, y de transformación de la escuela secundaria. El
+objetivo es ampliar las oportunidades educativas en todo el territorio y
+generar condiciones para que una proporción creciente de la población de
+La Rioja complete sus estudios y continúe su formación.
 
 **Metodología.** El indicador es el porcentaje de población con estudios
 superiores completos (terciario o universitario) entre quienes tienen más de
@@ -1640,14 +1642,21 @@ jornada y quienes lo hicieron con jornada simple.
 
 ## Trayectoria escolar
 
-**¿Qué proporción de la cohorte llega a 5° año del secundario?**
+**¿Qué proporción de una cohorte escolar llega a 5° año del secundario?**
 [Ficha metodológica](#ficha-18-trayectoria).
 
-Indicador acordado con Educación provincial: relación entre la matrícula de
-**5° año** al final de la cohorte teórica y la matrícula de **1° grado** al
-inicio. Mide llegada a 5° respecto del stock inicial; **no** es egreso con
-título ni seguimiento nominal de los mismos alumnos (migración, repitencia y
-reingresos afectan la lectura). Fuente: Relevamiento Anual (La Rioja).
+Se denomina **cohorte teórica** al conjunto de alumnos que ingresan a
+**1° grado** en un año determinado y cuyo recorrido esperado, en el esquema
+educativo de La Rioja (7 años de primaria y 5 de secundaria), culmina en
+**5° año** al cabo de 12 años. El indicador aproxima cuántos, respecto de ese
+stock inicial, se encuentran matriculados en 5° año al final de ese plazo.
+
+**Metodología.** Indicador acordado con Educación provincial. Se calcula como
+la relación entre la matrícula de **5° año** al final de la cohorte teórica y
+la matrícula de **1° grado** al inicio. Mide la llegada a 5° respecto del stock
+inicial; **no** equivale a egreso con título ni a un seguimiento nominal de los
+mismos alumnos (la migración, la repitencia y los reingresos afectan la
+lectura). Fuente: Relevamiento Anual (La Rioja).
 
 ```{r tray-datos}
 library(readr)
@@ -1712,12 +1721,13 @@ mostrar("outputs/plots/18_trayectoria_escolar_desagregada.png")
 en la Ciudad de La Rioja?**
 [Ficha metodológica](#ficha-13-nbi).
 
-En este Monitor la aproximación a pobreza estructural es por Necesidades
-Básicas Insatisfechas (NBI), no por pobreza por ingresos. Un hogar tiene NBI
-total si presenta al menos una privación en hacinamiento, vivienda,
-saneamiento, escolaridad o capacidad de subsistencia. En el monitor se
-presenta como **pobreza por NBI** (no como pobreza multidimensional / IPM: no
-es el mismo índice).
+En el Monitor, la aproximación a la pobreza estructural se realiza mediante el
+enfoque de **Necesidades Básicas Insatisfechas (NBI)**, y no mediante una
+medición de pobreza por ingresos. Un hogar presenta **NBI total** cuando
+registra al menos una privación en hacinamiento, vivienda, saneamiento,
+escolaridad o capacidad de subsistencia. El indicador se presenta como
+**pobreza por NBI**; no corresponde a un índice de pobreza multidimensional
+(IPM), al tratarse de una construcción metodológica distinta.
 
 **Metodología.** Se estiman el % de hogares con NBI y el % de población en
 hogares con NBI, con EPH continua (INDEC), para el aglomerado La Rioja. Se
@@ -1900,15 +1910,11 @@ mostrar("outputs/plots/13b_nbi_poblacion.png")
 
 # Trabajo e ingresos
 
-El trabajo es la principal fuente de ingreso de los hogares. Acá se siguen el
-**desempleo**, el **empleo**, la **informalidad**, los **salarios** formales
-privados, los **puestos** asalariados privados y el **empleo público** por
-habitante: cantidad, calidad y remuneración del empleo en La Rioja frente al
-NOA y al resto del país.
-
-*Esta agrupación sigue la línea de
-[Argendata — Trabajo e ingresos](https://argendata.fund.ar/categorias/trabajo-e-ingresos/)
-(salarios e ingresos, participación laboral, informalidad y desempleo).*
+El trabajo constituye la principal fuente de ingreso de los hogares. En este
+bloque se analizan el **desempleo**, el **empleo**, la **informalidad**, los
+**salarios** formales privados, los **puestos** asalariados privados y el
+**empleo público** por habitante, con el fin de describir cantidad, calidad y
+remuneración del empleo en La Rioja frente al NOA-Resto y al resto del país.
 
 ## Tasa de desempleo
 
@@ -2057,14 +2063,14 @@ mostrar("outputs/plots/04_desoc.png")
 - `r frase_yoy`
 - `r frase_pico`
 
-**¿Y en otros aglomerados?**
+**Comparación con otros aglomerados**
 
 - La tasa de desempleo es menor en la Ciudad de La Rioja que en el resto del
   país.
 - `r frase_comp`
-- Con EPH continua la comparación es entre aglomerados. El patrón reciente
-  muestra a La Rioja por debajo del NOA y del resto del país. Para rankings de
-  cobertura urbana más amplia se usa la EPH Total Urbano.
+- Con EPH continua la comparación corresponde a aglomerados. El patrón
+  reciente sitúa a La Rioja por debajo del NOA y del resto del país. Para
+  rankings de cobertura urbana más amplia se utiliza la EPH Total Urbano.
 
 ### Ficha metodológica {#ficha-04-desempleo}
 
@@ -2096,20 +2102,22 @@ mostrar("outputs/plots/04_desoc.png")
 **¿Cómo evolucionó el empleo en la Ciudad de La Rioja?**
 [Ficha metodológica](#ficha-10-empleo).
 
-Al analizar el mercado laboral, una variable clave es la tasa de empleo, que
-indica el porcentaje de la población ocupada en el mercado.
+Al analizar el mercado laboral, una variable central es la tasa de empleo, que
+indica el porcentaje de la población ocupada.
 
-Para el Gobierno de La Rioja, el empleo es un objetivo central de la política
-económica y social, entendido no solo como ingreso sino como derecho e
-instrumento de inclusión y desarrollo. En una provincia con fuerte presencia
-del Estado y menor peso relativo del sector privado, sostener altos niveles
-de ocupación es especialmente relevante.
+Para el Gobierno de La Rioja, el empleo constituye un objetivo central de la
+política económica y social: no se limita a la generación de ingresos, sino
+que se concibe como derecho e instrumento de inclusión y desarrollo. En una
+provincia con fuerte presencia del Estado y menor peso relativo del sector
+privado, sostener elevados niveles de ocupación resulta especialmente
+relevante.
 
-La política provincial apunta a mantener el empleo existente y ampliar
+La política provincial apunta a mantener el empleo existente y a ampliar
 oportunidades mediante apoyo al sector privado, financiamiento a PyMEs y
 emprendimientos, capacitación laboral y programas de inserción. El objetivo
-no es solo más empleo, sino empleo más sostenible, formal y de mejor calidad,
-fortaleciendo la capacidad del sector privado para generar puestos de trabajo.
+no se restringe a incrementar la cantidad de puestos, sino a promover un
+empleo más sostenible, formal y de mejor calidad, fortaleciendo la capacidad
+del sector privado para generar trabajo.
 
 ```{r empleo-datos}
 library(readr)
@@ -2244,9 +2252,9 @@ del NOA.
 **¿Qué tan informal es el empleo en la Ciudad de La Rioja?**
 [Ficha metodológica](#ficha-09a-informalidad).
 
-La informalidad laboral es uno de los grandes problemas del mercado de trabajo
-argentino. Suele estar asociada a malas condiciones laborales, bajos salarios
-y falta de derechos básicos.
+La informalidad laboral constituye uno de los principales problemas del
+mercado de trabajo argentino. Suele asociarse a condiciones laborales
+precarias, bajos salarios y falta de derechos básicos.
 
 Para el Gobierno de La Rioja, el trabajo constituye un derecho y uno de los
 pilares centrales de la política de desarrollo provincial. Desde esta
@@ -2260,13 +2268,13 @@ En esa línea, la Provincia implementa políticas de formación, capacitación,
 apoyo a emprendimientos, financiamiento y articulación con el sector productivo
 orientadas a facilitar la inserción laboral y el sostenimiento del empleo.
 
-**Metodología.** La definición de informalidad refiere a la situación de
-quienes trabajan sin un contrato formal ni acceso a la protección social,
-como la seguridad social o el seguro de salud. En el caso de los asalariados,
-una forma histórica de medirla es verificar si su empleador realiza o no los
-aportes a la seguridad social. Si no lo hace, ese trabajador no tendrá derecho,
-por ejemplo, a una jubilación en el futuro. Cabe aclarar que estos datos
-refieren únicamente a los asalariados, ya que excluyen a los trabajadores
+**Metodología.** La informalidad refiere a la situación de quienes trabajan
+sin un contrato formal ni acceso a la protección social, como la seguridad
+social o el seguro de salud. En el caso de los asalariados, una forma
+habitual de medirla consiste en verificar si el empleador realiza aportes a
+la seguridad social. De no hacerlo, ese trabajador no tendrá derecho, por
+ejemplo, a una jubilación en el futuro. Cabe aclarar que estos datos
+corresponden únicamente a los asalariados, ya que excluyen a los trabajadores
 independientes.
 
 La Encuesta Permanente de Hogares (EPH) releva información de manera continua
@@ -2449,31 +2457,29 @@ mostrar("outputs/plots/09a_informalidad_aportes.png")
 **¿Cómo se ubican los salarios formales de La Rioja?**
 [Ficha metodológica](#ficha-03-salarios).
 
-Para mirar salarios formales se puede trabajar con dos fuentes
-complementarias. Por un lado, con el Sistema Integrado Previsional Argentino
-(SIPA) la remuneración promedio del sector privado registrado, con cobertura
-provincial y frecuencia mensual. Por otro lado, la EPH: ingresos de personas
-asalariadas registradas (público y privado), útil para separar sector estatal
-y, con IPC, ver variaciones reales (aunque en la EPH continua el dato de
-La Rioja corresponde al aglomerado).
+El análisis de los salarios formales puede abordarse a partir de dos fuentes
+complementarias. Por un lado, el Sistema Integrado Previsional Argentino
+(SIPA) ofrece la remuneración promedio del sector privado registrado, con
+cobertura provincial y frecuencia mensual. Por otro, la EPH releva ingresos de
+personas asalariadas registradas (público y privado), lo que resulta útil para
+separar el sector estatal y, con IPC, observar variaciones reales (en la EPH
+continua, el dato de La Rioja corresponde al aglomerado capital).
 
-**Metodología.** En esta sección del Monitor se emplean los registros del
-SIPA (OEDE). En primer lugar, se presenta la serie en valores nominales
-(pesos corrientes), lo cual resulta útil para elaborar rankings entre
-provincias en un mismo mes y para comparar a La Rioja con el promedio simple
-del resto del NOA y del país. En segundo lugar, se expone la serie
-deflactada por el IPC, orientada a evaluar la tendencia y la evolución del
-poder de compra a lo largo del tiempo.
+**Metodología.** En esta sección del Monitor se emplean los registros del SIPA
+(OEDE). En primer lugar, se presenta la serie en valores nominales (pesos
+corrientes), útil para elaborar rankings entre provincias en un mismo mes y
+para comparar a La Rioja con el promedio simple del resto del NOA y del país.
+En segundo lugar, se expone la serie deflactada por el IPC, orientada a
+evaluar la tendencia y la evolución del poder de compra a lo largo del tiempo.
 
 Dado que los datos del SIPA se estructuran “por todo concepto”, los meses de
 junio y diciembre incorporan el Sueldo Anual Complementario (SAC), lo que
-imprime un marcado patrón estacional en la serie mensual (en forma de
-serrucho). Para neutralizar este comportamiento recurrente, la serie fue
-desestacionalizada y posteriormente deflactada mediante el IPC nacional,
-permitiendo analizar el salario en términos reales. El resultado se expresa
-como un índice con base en enero de 2025 = 100: los valores superiores a 100
-indican un mayor poder de compra respecto a dicha fecha, mientras que los
-inferiores reflejan una disminución.
+genera un marcado patrón estacional en la serie mensual. Para neutralizar ese
+comportamiento recurrente, la serie fue desestacionalizada y posteriormente
+deflactada mediante el IPC nacional, a fin de analizar el salario en términos
+reales. El resultado se expresa como un índice con base en enero de 2025 = 100:
+los valores superiores a 100 indican un mayor poder de compra respecto de esa
+fecha; los inferiores, una disminución.
 
 ```{r sal-datos}
 library(readr)
@@ -2525,12 +2531,6 @@ fmt_pesos <- function(x) {
 }
 fmt_idx <- function(x) format(round(x), big.mark = ".", decimal.mark = ",")
 ```
-
-(El rótulo del último mes —hoy **`r label_mes_ult`**— sale de
-`max(fecha)` en el CSV de índice. Ese máximo lo fija `FECHA_HASTA` en
-`src/03_prep_salarios_privados_SIPA_indice.R` (hoy sep-2025: oct+ del Excel
-SIPA muestra un salto atípico y 2026 duplica meses). Para extender el corte:
-validar el raw, subir `FECHA_HASTA`, re-correr prep/viz y knitear.)
 
 **¿Qué nos dice el último dato nominal (`r label_mes_ult`)?**
 
@@ -2589,12 +2589,15 @@ mostrar("outputs/plots/03_salarios_privados_SIPA_real_sa_indice.png")
 - **Fuente de datos oficial:** SIPA / OEDE (Ministerio de Capital Humano) —
   remuneraciones del sector privado registrado. IPC nacional para el índice
   real.
-- **Frecuencia de actualización:** mensual (SIPA).
+- **Frecuencia de actualización:** mensual (SIPA). La serie del Monitor se
+  presenta hasta el último mes validado del procesamiento (hoy sep-2025),
+  ante inconsistencias en meses posteriores del Excel SIPA.
 - **Limitaciones:** al basarse en registros administrativos formales (SIPA),
   esta métrica no captura ingresos de cuentapropistas informales,
   trabajadores de cooperativas ni asalariados no registrados. No confundir
   con la EPH (aglomerado en la continua) ni con liquidaciones del sector
-  público.
+  público. El detalle operativo del corte (`FECHA_HASTA`) está en el
+  encabezado de `03_prep_salarios_privados_SIPA_indice.R`.
 
 ## Puestos asalariados privados
 
@@ -2602,12 +2605,14 @@ mostrar("outputs/plots/03_salarios_privados_SIPA_real_sa_indice.png")
 [Ficha metodológica](#ficha-05-puestos).
 
 Los puestos asalariados privados registrados (SIPA / OEDE) miden el empleo
-formal privado declarado. Es un indicador de coyuntura del mercado de trabajo
-privado, distinto del empleo público (EPH) y de la cantidad de empresas (SRT).
+formal privado declarado. Constituyen un indicador de coyuntura del mercado
+de trabajo privado, distinto del empleo público (EPH) y de la cantidad de
+empresas (SRT).
 
-**Metodología.** Serie mensual en miles de puestos, sin estacionalidad (hoja
-A.5.2 del reporte de trabajo registrado). Se compara La Rioja con la **suma**
-de puestos de las provincias del NOA-Resto y del resto del país.
+**Metodología.** Se utiliza la serie mensual en miles de puestos, sin
+estacionalidad (hoja A.5.2 del reporte de trabajo registrado). La comparación
+regional se construye con la **suma** de puestos de las provincias del
+NOA-Resto y del resto del país.
 
 ```{r puestos-datos}
 library(readr)
@@ -2720,45 +2725,44 @@ mostrar("outputs/plots/05_puestos_asalariados_privados.png")
 
 ## Empleados públicos cada 1.000 habitantes
 
-**¿Cuánto empleo público hay en La Rioja?**
+**¿Cuál es la magnitud del empleo público en La Rioja?**
 [Ficha metodológica](#ficha-06-empleo-publico).
 
-El empleo público atraviesa todo el país y los tres niveles de gobierno:
-Nación, provincias y municipios. Según el INDEC, en 2024 en Argentina había
-3,8 millones de puestos en el sector público, lo que equivale al 17% del
-empleo total.
+El empleo público es un fenómeno transversal al territorio nacional y a los
+tres niveles de gobierno: Nación, provincias y municipios. Según el INDEC, en
+2024 Argentina registraba 3,8 millones de puestos en el sector público,
+equivalentes al 17% del empleo total.
 
-¿De qué hablamos cuando hablamos de empleo público? Nos referimos a las
-personas que trabajan como asalariadas en una institución del Estado —
-nacional, provincial o municipal—, en cualquiera de sus poderes. En la
-práctica, gran parte de ese empleo se concentra en administración pública y
-defensa, enseñanza y salud.
+Por empleo público se entiende a las personas que trabajan como asalariadas en
+una institución del Estado —nacional, provincial o municipal—, en cualquiera
+de sus poderes. Una proporción elevada de ese empleo se concentra en
+administración pública y defensa, enseñanza y salud.
 
-En La Rioja, el empleo público tiene una relevancia particular dentro de la
-estructura económica provincial. Por su peso relativo, es uno de los
-principales sostenes del ingreso de los hogares y de la demanda interna, ya
-que los salarios del sector estatal se destinan mayoritariamente al consumo
-local y dinamizan el comercio y los servicios. De este modo, no sólo garantiza
-el funcionamiento del Estado y la prestación de servicios esenciales, sino que
-también cumple un rol relevante en el circuito económico provincial.
+En La Rioja, el empleo público ocupa un lugar central en la estructura
+económica provincial. Por su peso relativo, constituye uno de los principales
+sostenes del ingreso de los hogares y de la demanda interna: los salarios del
+sector estatal se destinan mayoritariamente al consumo local y dinamizan el
+comercio y los servicios. Así, además de garantizar el funcionamiento del
+Estado y la prestación de servicios esenciales, cumple un rol relevante en el
+circuito económico provincial.
 
-Esta situación se explica en el marco de una estructura productiva con
-asimetrías regionales y un sector privado que aún no alcanza la escala
-suficiente para absorber toda la demanda laboral. En este contexto, el Estado
-cumple una doble función: sostiene el empleo y los servicios públicos en todo
-el territorio y, al mismo tiempo, impulsa políticas para diversificar la
-economía y fortalecer el sector privado mediante promoción industrial,
-financiamiento, infraestructura y apoyo a PyMEs. El desafío es ampliar el
-empleo privado sin debilitar el rol económico y social del empleo público.
+Esa relevancia se inserta en una estructura productiva con asimetrías
+regionales y en un sector privado que aún no alcanza la escala suficiente para
+absorber toda la demanda laboral. En ese contexto, el Estado cumple una doble
+función: sostiene el empleo y los servicios públicos en el territorio e
+impulsa políticas de diversificación productiva y fortalecimiento del sector
+privado —promoción industrial, financiamiento, infraestructura y apoyo a
+PyMEs—. El objetivo es ampliar el empleo privado sin debilitar el rol
+económico y social del empleo público.
 
-**Metodología.** Empleados públicos cada 1.000 habitantes: cantidad de
+**Metodología.** El indicador mide empleados públicos cada 1.000 habitantes:
 asalariados ocupados del sector estatal por cada 1.000 habitantes de la
 población urbana. Se elabora con la EPH Total Urbano (INDEC), relevada en el
 tercer trimestre de cada año. El numerador corresponde a ocupados asalariados
 del sector público y el denominador a la población urbana total de la muestra,
-ambos ponderados. En el monitor lo estimamos así: asalariados ocupados cuyo
-establecimiento es estatal (`PP04A`). El indicador representa a la población
-**urbana** y no equivale a un padrón administrativo de planta.
+ambos ponderados. En el Monitor se estima a partir de los asalariados ocupados
+cuyo establecimiento es estatal (`PP04A`). El indicador representa a la
+población **urbana** y no equivale a un padrón administrativo de planta.
 
 ```{r emp-pub-datos}
 library(readr)
@@ -2812,9 +2816,9 @@ rank_noa <- ep_prov %>%
   mutate(puesto = row_number())
 
 frase_nivel <- paste0(
-  "La Rioja muestra de manera persistente un nivel de empleo público urbano superior al del resto de las provincias del NOA y al del resto del país. En ",
+  "En La Rioja se observa de manera persistente un nivel de empleo público urbano superior al del resto de las provincias del NOA y al del resto del país. En ",
   anio_ult,
-  " se estiman unos ",
+  " se estiman ",
   fmt_pp(ep_lr$empleados_publicos_cada_1000, 0),
   " empleados públicos cada 1.000 habitantes en la población urbana de La Rioja, frente a ",
   fmt_pp(ep_noa$empleados_publicos_cada_1000, 0),
@@ -2826,7 +2830,7 @@ frase_nivel <- paste0(
 frase_evo <- paste0(
   "Entre ", str_sub(ep_ini$fecha, 1, 4), " y ",
   str_sub(ep_max$fecha, 1, 4),
-  " la serie de La Rioja tiende al alza (de aproximadamente ",
+  " la serie de La Rioja registra una trayectoria ascendente (de aproximadamente ",
   fmt_pp(ep_ini$empleados_publicos_cada_1000, 0),
   " a un máximo cercano a ",
   fmt_pp(ep_max$empleados_publicos_cada_1000, 0),
@@ -2839,7 +2843,7 @@ frase_evo <- paste0(
   } else {
     paste0("el último dato en el máximo de la serie.")
   },
-  " En el mismo período, NOA-Resto y resto del país se mantienen en niveles mucho más bajos y relativamente estables."
+  " En el mismo período, NOA-Resto y resto del país se mantienen en niveles sustancialmente inferiores y con mayor estabilidad."
 )
 
 frase_rank <- ""
@@ -2885,7 +2889,7 @@ mostrar("outputs/plots/06_empleados_publicos_cada_1000_hab.png")
 - `r frase_nivel`
 - `r frase_evo`
 
-**¿Y en las provincias del NOA?**
+**Comparación en el NOA**
 
 ```{r emp-pub-noa}
 mostrar("outputs/plots/06_empleados_publicos_cada_1000_hab_noa.png")
@@ -2894,10 +2898,10 @@ mostrar("outputs/plots/06_empleados_publicos_cada_1000_hab_noa.png")
 - `r frase_rank`
 
 El indicador no evalúa por sí solo si el empleo público es “alto” o “bajo” en
-términos normativos: su valor está en contextualizar la magnitud del sector
-estatal frente a otras jurisdicciones y en el tiempo. Una lectura
-complementaria útil es cruzarlo con empleo privado formal, salarios y
-estructura productiva.
+términos normativos: su utilidad radica en contextualizar la magnitud del
+sector estatal frente a otras jurisdicciones y a lo largo del tiempo. Una
+lectura complementaria consiste en cruzarlo con empleo privado formal,
+salarios y estructura productiva.
 
 **Composición por rama**
 
@@ -2930,11 +2934,13 @@ mostrar("outputs/plots/06_empleados_publicos_composicion_ultimo.png")
 
 # Fichas metodológicas
 
-Bloque de consulta. Cada ficha está debajo de su indicador en el cuerpo del
-informe, en el mismo orden que aparece arriba.
-Texto de referencia para talleres y Words:
+Esta sección reúne el índice de fichas metodológicas. Cada ficha figura
+debajo de su indicador en el cuerpo del informe, en el mismo orden que el
+listado siguiente.
+
+Material de referencia para talleres y documentos Word:
 `informe/analisis_indicadores_provincia/fichas_Indicadores.pptx`.
-Detalle operativo de update: `README.md`.
+Instrucciones de actualización del Monitor: `README.md`.
 
 ## PIB / PBG provincial
 

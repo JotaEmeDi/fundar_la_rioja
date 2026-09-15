@@ -1,4 +1,6 @@
-# Fundar – Monitor Socioeconómico La Rioja
+# Fortalecimiento de capacidades de equipos de la Secretaría de Comunicación y Planificación Pública del Gobierno de La Rioja
+
+## Monitor socioeconómico — La Rioja
 
 Repositorio de código para el procesamiento y visualización de indicadores
 socioeconómicos del Gobierno de La Rioja, desarrollado por
